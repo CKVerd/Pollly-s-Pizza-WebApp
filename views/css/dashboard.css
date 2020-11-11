@@ -35,6 +35,9 @@
     -webkit-box-shadow: 10px 9px 15px -5px rgba(0,0,0,0.5); 
     box-shadow: 10px 9px 15px -5px rgba(0,0,0,0.5);
     border: 0.5px solid rgb(243, 243, 243);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .card-text{
@@ -78,7 +81,7 @@
 .card-info {
     color: black;
     font-weight: 600;
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: 5%;
 }
 
@@ -87,4 +90,16 @@
     font-size: 18px;
     margin-left: 5%;
     margin-top: 25%;
+}
+
+.table-1 {
+    width: 90%;
+    height:80%;
+    margin-top: 1%;
+}
+
+.table-title {
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 1%;
 }
