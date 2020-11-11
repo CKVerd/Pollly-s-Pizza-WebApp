@@ -1,16 +1,16 @@
-.stock-table {
+.sales-table {
     border-collapse: collapse;
     width: 90%;
     -webkit-box-shadow: 0px 8px 15px 5px rgba(0,0,0,0.24); 
     box-shadow: 0px 8px 15px 5px rgba(0,0,0,0.24);
 }
-.stock-table, th{
+.sales-table, th{
     border: 1px solid rgb(216, 216, 216);
     padding: 0.5%;
     text-align: center;
 }
 
-.stock-table, td {
+.sales-table, td {
     border-right: 1px solid rgb(216, 216, 216);
     padding: 2%;
     text-align: center;
@@ -18,21 +18,70 @@
 }
 
 .st-header-1 {
-    width: 20%;
+    width: 15%;
 }
 
 .st-header-2 {
-    width: 40%;
+    width: 30%;
 }
 
 .st-header-3 {
-    width: 20%;
+    width: 10%;
 }
 
 .st-header-4 {
+    width: 5%;
+}
+
+.st-header-5 {
     width: 20%;
 }
 
-.stock-table th {
+.st-header-6 {
+    width: 10%;
+}
+
+.sales-table th {
     background-color: rgb(230, 230, 230);
+}
+
+.row-1 {
+    width: 100%;
+    height: 45%;
+    /* background-color: red; */
+    display:flex;
+    flex-direction:row;
+    align-items: center;
+    justify-content: center;
+}
+
+.row-2 {
+    width: 100%;
+    height: 55%;
+    /* background-color: gray; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+} 
+
+.grid-container{
+    width: 97%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 60% 60% 60% 60%;
+}
+
+.card-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 70%;
+    height: 80%;
+    -webkit-box-shadow: 10px 9px 15px -5px rgba(0,0,0,0.5); 
+    box-shadow: 10px 9px 15px -5px rgba(0,0,0,0.5);
 }
