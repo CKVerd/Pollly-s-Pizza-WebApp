@@ -108,6 +108,27 @@
     margin-right: 15%; 
 }
 
+.card-row-1 {
+    position: relative;
+}
+
+.three-dots {
+    position: absolute;
+    transform: translate(-150%, 20%);
+    width: 10%;
+    height: 20%;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    background:url(/views/res/threedot.png) no-repeat;
+    background-position: center center;
+    transition-duration: .40s;
+}
+
+.three-dots:hover {
+    background-color: rgba(240, 240, 240, 0.822);
+}
+
 .card-row-2 {
     display: flex;
     padding-top: 2%;
