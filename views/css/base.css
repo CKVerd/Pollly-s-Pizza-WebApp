@@ -122,3 +122,39 @@ li:hover {
     width: 85vw;
 }
 
+
+.logout-button {
+    position: absolute;
+    width: 10%;
+    height: 4%;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #f37f7f;
+    font-family: "Raleway";
+    font-style: normal;
+    font-size: 16px;
+    font-weight:600;
+    color: white;
+    transform: translateX(-30%);
+    bottom: 5%;
+}
+
+.logout-button:hover {
+    background-color: #f14040;
+}
+
+.help-button {
+    position: absolute;
+    color: rgb(161, 161, 161) !important;
+    font-weight: 500;
+    font-size: 14px;
+    border-bottom: 1px solid rgb(161, 161, 161);
+    bottom: 12%;
+    margin-left: -0.2%;
+}
+
+.help-button:hover {
+    color: rgb(63, 63, 63) !important;
+    border-bottom: 1px solid rgb(63, 63, 63);
+}
