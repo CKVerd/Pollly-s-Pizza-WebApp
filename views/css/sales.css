@@ -149,7 +149,7 @@
     flex-direction: row;
     justify-content: flex-end;
     width: 100%;
-    margin-top: 10%;
+    margin-top: 13%;
     margin-bottom: 1%;
 }
 
@@ -170,4 +170,38 @@
 
 .submit-button:hover {
     background-color: #40adf1;
+}
+
+.add-product-button {
+    width: 10%;
+    height: 100%;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #7FC7F3;
+    font-family: "Raleway";
+    font-style: normal;
+    font-size: 16px;
+    font-weight:500;
+    color: white;
+    margin-right: 5%;
+}
+
+.add-product-button:hover {
+    background-color: #40adf1;
+}
+
+.edit-button {
+    border: none;
+    background-color: white;
+    outline: none;
+    font-size: 16;
+    font-weight: 500;
+    border-bottom: 1px solid gray;
+    width: 40%;
+    color: gray;
+}
+
+.edit-button:hover {
+    color: black;
 }
