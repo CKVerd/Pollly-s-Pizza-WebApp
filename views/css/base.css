@@ -96,7 +96,6 @@ li:hover {
 .selected {
     border-bottom: solid 3px #469ed4;
     margin-top: -3px;
-    background-color: red;
     margin-left: -60px;
     display:block;
     z-index: 1 !important;

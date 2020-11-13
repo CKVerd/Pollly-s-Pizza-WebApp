@@ -11,6 +11,8 @@
     /* background-color: red; */
     padding-top: 3%;
     padding-left: 3%;
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
 }
 
 .info-container {
@@ -133,6 +135,11 @@
     /* background-color: orange; */
     display: flex;
     flex-direction: column;
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
 }
 
 .sec-answer {
@@ -159,6 +166,11 @@
     height: 95vh;
     width: 20%;
     /* background-color: green; */
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    animation-delay: 0.4s;
 }
 
 .delete-button {
@@ -205,4 +217,57 @@
     font-size: 20px;
     font-weight: 800;
     text-decoration: underline;
+}
+
+@keyframes flyFromRight {
+    from {
+        opacity: 0%;
+        transform: translateX(10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromLeft {
+    from {
+        opacity: 0%;
+        transform: translateX(-10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromDown {
+    from {
+        opacity: 0%;
+        transform: translateY(3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes flyFromUp {
+    from {
+        opacity: 0%;
+        transform: translateY(-3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slowAppear{
+    from{
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
 }
