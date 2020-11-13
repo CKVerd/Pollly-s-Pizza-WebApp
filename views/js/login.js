@@ -21,5 +21,5 @@ function getInfo() {
 			return false
 		}
 	}
-	console.log("incorrect username or password")
+	alert("Incorrect username or password.")
 }
