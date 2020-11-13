@@ -17,7 +17,6 @@
 .inner-col {
     width: 70%;
     height: 100%;
-    background-color: red;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -40,4 +39,31 @@
     width: 80%;
     height: 100%;
     background-color: white;
+
+}
+
+.body-content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; 
+    padding-left: 10%;
+    padding-top: 5%;
+}
+
+.question {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.answer {
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 2;
+}
+
+.q1 {
+    margin-top: 1%;
 }
