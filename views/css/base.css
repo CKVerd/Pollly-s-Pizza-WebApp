@@ -23,6 +23,8 @@
     font-weight: 200;
     font-size: 12px;
     padding-left: 2vw;
+    z-index: 100 !important;
+    position: fixed;
 }
 
 .lower {
@@ -30,11 +32,13 @@
 }
 
 .menu {
-    height: 95vh;
+    padding-top: 3%;
+    height: 100vh;
     width: 15vw;
     background-color: #f5f5f5;
     border-right: 1px solid rgb(240, 240, 240);
     display:flex;
+    position: fixed;
 }
 
 .icons {
@@ -118,14 +122,16 @@ li:hover {
 }
 
 .page {
+    margin-top: 5vh;
     height: 95vh;
     width: 85vw;
+    margin-left: 15vw;
 }
 
 
 .logout-button {
     position: absolute;
-    width: 10%;
+    width: 60%;
     height: 4%;
     border-radius: 50px;
     outline: none;
@@ -137,7 +143,7 @@ li:hover {
     font-weight:600;
     color: white;
     transform: translateX(-30%);
-    bottom: 5%;
+    bottom: 10%;
 }
 
 .logout-button:hover {
@@ -150,7 +156,7 @@ li:hover {
     font-weight: 500;
     font-size: 14px;
     border-bottom: 1px solid rgb(161, 161, 161);
-    bottom: 12%;
+    bottom: 17%;
     margin-left: -0.2%;
 }
 
