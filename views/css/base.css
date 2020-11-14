@@ -10,6 +10,7 @@
     flex-direction: column;
     max-width: 100%;
     overflow-x: hidden;
+
 }
 
 .header {
@@ -161,6 +162,7 @@ li:hover {
 
 /* POPUP */
 .popup {
+    overflow: auto;
     visibility: hidden;
     position: absolute;
     width: 100%;
