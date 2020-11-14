@@ -87,7 +87,7 @@
                         </select>
                         <div class = "sub-row-1">
                             <input type = "text" id = "search-input" class = "searchbar" placeholder = "Search">
-                            <input class = "add-stock" type = "button" value = "Add Stock">
+                            <input class = "add-stock" type = "button" onclick = "showPopup()" value = "Add Stock">
                         </div>
                     </div>
 
@@ -160,6 +160,12 @@
                                 <td><button class = "edit-button">Edit</button></td>
                             </tr>
                         </table>
+                    </div>
+                </div>
+                <div class = "popup">
+                    <div class = "popup-form">
+                        <button class = "close-popup" onclick="closePopup()">X</button>
+                        <h1>POP UP</h1> 
                     </div>
                 </div>
             </div>

@@ -114,7 +114,7 @@
                                 </select>
                             </div>
                             <p class = "header-text header-3">Accounts:</p>
-                            <input class = "add-button" type = "button" value = "Add Account">
+                            <input class = "add-button" type = "button" value = "Add Account" onclick="showPopup()">
                         </div>
 
                     </div>
@@ -130,6 +130,12 @@
                     <div class = "col-3">
                         <input class = "delete-button" type = "button" value = "Delete Account">
                         <input class = "update-button" type = "button" value = "Update">
+                    </div>
+                </div>
+                <div class = "popup">
+                    <div class = "popup-form">
+                        <button class = "close-popup" onclick="closePopup()">X</button>
+                        <h1>POP UP</h1> 
                     </div>
                 </div>
             </div>

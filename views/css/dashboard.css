@@ -1,5 +1,6 @@
 .page {
     overflow-y: hidden;
+    z-index: 0;
 }
 
 .row-1 {
