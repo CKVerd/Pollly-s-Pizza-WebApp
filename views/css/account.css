@@ -83,6 +83,10 @@
     margin-left: 2%;
 }
 
+.change-uname:hover {
+    color: rgb(143, 143, 143);
+}
+
 .change-pass:hover {
     color: rgb(143, 143, 143);
 }
