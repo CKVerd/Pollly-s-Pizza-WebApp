@@ -78,19 +78,21 @@
                         <p class = "header-text">Information</p>
                         <div class = "info-container">
                             <div class = "info-text">
-                                <p class = "inner-text">username:</p>
+                                <p class = "inner-text">account:</p>
                             </div>
 
                             <div class = "info-entry">
                                 <p class = "username-loc">username here</p>
+                                <input type = "password" class = "pass-loc" placeholder = "••••••••">
                             </div>
+
                         </div>
 
                         <div class = "info-rest">
                             <p class = "header-text">Security Questions</p>
                             <div class = "security-div">
                                 <select name="security options" class = "security-1 sec-questions">
-                                    <option value = "q1">Security Question 1</option>
+                                    <option value = "q1">Securifty Question 1</option>
                                     <option value = "q1">Security Question 2</option>
                                     <option value = "q1">Security Question 3</option>
                                     <option value = "q1">Security Question 4</option>
@@ -121,15 +123,15 @@
 
                     <div class = "col-2">
                         <a href = "#" class = "change-uname">change username</a>
-                        <a href = "#" class = "change-pass">change password</a>
+                        <a href = "#" class = "change-pass" onclick="showPopup()">change password</a>
                         <input type = "text" id = "security-ans-1" class = "sec-answer" placeholder = "Answer">
                         <input type = "text" id = "security-ans-2" class = "sec-answer" placeholder = "Answer">
                         <input type = "text" id = "security-ans-3" class = "sec-answer" placeholder = "Answer">
                     </div>
 
                     <div class = "col-3">
-                        <input class = "delete-button" type = "button" value = "Delete Account">
-                        <input class = "update-button" type = "button" value = "Update">
+                        <input class = "delete-button" type = "button" value = "Delete Account" onclick="showPopup()">
+                        <input class = "update-button" type = "button" value = "Update" onclick="showPopup()">
                     </div>
                 </div>
             </div>

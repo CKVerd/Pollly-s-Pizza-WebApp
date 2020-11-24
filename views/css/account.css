@@ -44,12 +44,35 @@
     padding-top: 6%;
     align-items: center;
     margin-left: -10%;
-    text-decoration: underline;
 }
 
 .username-loc {
     font-size: 20px;
     font-weight: 400;
+    text-decoration: underline;
+}
+
+.pass-loc {
+    font-size: 20px;
+    padding: 10 0px;
+    border-radius: 50px;
+    border: 1px solid rgb(216, 216, 216);
+    font-size: 18px;
+    font-weight: 700;
+    width: 60%;
+    text-indent: 10%;
+    -webkit-border-radius: 50px;
+    outline: none;
+    margin-top: 5%;
+    margin-left: 10%;
+
+}
+
+.pass-loc::placeholder {
+    font-weight: 200;
+    font-size: 20px;
+    text-decoration: none;
+    outline: none;
 }
 
 .input-uname {

@@ -63,7 +63,6 @@
 
 .menu-items li {
     margin-top: 50px;
-    transition: ease-out 0.1s;
 }
 
 .menu-icons li {
@@ -157,7 +156,7 @@ li:hover {
     font-size: 14px;
     border-bottom: 1px solid rgb(161, 161, 161);
     bottom: 17%;
-    margin-left: -0.5%;
+    margin-left: -2%;
 }
 
 .help-button:hover {
