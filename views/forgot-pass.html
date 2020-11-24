@@ -27,11 +27,31 @@
                     </div>
                 </div>
                 <div class = "row-body-2">
-                    <p class = "inner-header-2">Enter new password:</p>
-                    <input type = "password" placeholder="Password" class="username-loc second">
-                    <input type = "password" placeholder="Confirm Password" class="username-loc second">
+                    <p class = "inner-header-2">Answer Security Questions:</p>
+                    <div class = "row-ques">
+                        <div class = "col-ques">
+                            <p class = "question q1">Security question here Security question here</p>
+                            <p class = "question q2">Security question here Security question here</p>
+                            <p class = "question q3">Security question here Security question here</p>
+                        </div>
+                        <div class = "col-ans">
+                            <input type = "text" placeholder="Answer" class="username-loc second">
+                            <input type = "text" placeholder="Answer" class="username-loc second">
+                            <input type = "text" placeholder="Answer" class="username-loc second">
+                        </div>
+                    </div>
                     <div class = "body-content">
-                        <input class = "submit-button" type = "button" value = "Submit">
+                        <input class = "next2-button" type = "button" value = "Next" onclick="next2()">
+                    </div>
+                </div>
+                <div class = "row-body-3">
+                    <p class = "inner-header-2">Enter new password:</p>
+                    <div class = "col-ques-2">
+                            <input type = "password" placeholder="New password" class="username-loc third">
+                            <input type = "password" placeholder="Confirm password" class="username-loc third">
+                    </div>
+                    <div class = "body-content">
+                        <input class = "next2-button" type = "button" value = "Submit" >
                     </div>
                 </div>
             </div>

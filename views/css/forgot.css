@@ -54,6 +54,24 @@
     height: 30%;
     pointer-events: none;
 }
+
+.row-body-3 {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    margin-top: 7%;
+    opacity: 0%;
+    width: 60%;
+    height: 30%;
+    pointer-events: none;
+}
+
+.third {
+    width: 50% !important;
+    margin-left: 5% !important;
+}
+
+
 .body-content {
     display: flex;
     flex-direction: row;
@@ -91,10 +109,20 @@
 }
 
 .second {
-    margin-top: 2% !important;
-    margin-left: 17%;
+    margin-top: 5% !important;
+    margin-left: 0% !important;
+    width: 90%;
 }
 
+.q1 {
+    margin-top: 5% !important;
+}
+.q2 {
+    margin-top: 7.5% !important;
+}
+.q3 {
+    margin-top: 8% !important;
+}
 .inner-header {
     font-size: 26px;
     text-decoration: none;
@@ -153,14 +181,14 @@
     animation-fill-mode: forwards;
 }
 
-.next-button:hover, .submit-button:hover  {
+.next-button:hover, .next2-button:hover  {
     background-color: #40adf1;
 }
 
-.submit-button {
-    margin-top: 3%;
+.next2-button {
+    margin-top: 5%;
     width: 15%;
-    height: 50%;
+    height: 60%;
     border-radius: 50px;
     outline: none;
     border: none;
@@ -170,7 +198,12 @@
     font-size: 16px;
     font-weight:500;
     color: white;
-    margin-right: 5%;
+}
+
+.question {
+    font-size: 20px;
+    font-weight: 800;
+    margin-top: 5%;
 }
 .remove {
     animation-name: exitToLeft;
@@ -184,6 +217,38 @@
     animation-duration: 0.8s;
     animation-fill-mode: forwards;
     pointer-events: all !important;
+}
+
+.row-ques {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 100%;
+    margin-top: 2%;
+}
+
+.col-ques {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    padding-left: 16%;
+}
+
+.col-ques-2 {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    height: 100%;
+    padding-top: 2%;
+    padding-left: 16%;
+}
+
+.col-ans {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    height: 100%;
 }
 
 @keyframes exitToLeft {
