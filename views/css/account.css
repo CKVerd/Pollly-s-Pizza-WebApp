@@ -194,10 +194,9 @@
     font-weight: 700;
     max-width: 100%;
     width: 70%;
-    margin-top: 5.5%;
+    margin-top: 6%;
     outline: none;
     text-indent: 15px;
-    height: 5%;
 }
 
 .sec-answer::placeholder {
@@ -206,7 +205,7 @@
 }
 
 #security-ans-1 {
-    margin-top: 58.5%;
+    margin-top: 59%;
 }
 .col-3 {
     height: 95vh;
