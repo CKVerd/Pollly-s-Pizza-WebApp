@@ -194,17 +194,19 @@
     font-weight: 700;
     max-width: 100%;
     width: 70%;
-    margin-top: 6%;
+    margin-top: 5.5%;
     outline: none;
     text-indent: 15px;
+    height: 5%;
 }
 
 .sec-answer::placeholder {
     color: rgb(207, 207, 207);
+    font-size: 18px;
 }
 
 #security-ans-1 {
-    margin-top: 60%;
+    margin-top: 58.5%;
 }
 .col-3 {
     height: 95vh;
