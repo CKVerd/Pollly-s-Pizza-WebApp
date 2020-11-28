@@ -251,6 +251,7 @@
     height: 100%;
 }
 
+
 @keyframes exitToLeft {
     from {
         opacity: 100%;

@@ -12,3 +12,7 @@ function next2() {
     row2.classList.add('remove')
     row3.classList.add('appear')
 }
+
+function goLogin() {
+    window.location.href = "login.html";
+}
