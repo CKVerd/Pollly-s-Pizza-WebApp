@@ -120,6 +120,7 @@
 }
 
 .three-dots {
+    overflow: hidden;
     position: absolute;
     transform: translate(-170%, 40%);
     width: 7%;
