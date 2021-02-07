@@ -92,8 +92,8 @@
     text-indent: 10%;
     font-size: 18px;
     font-weight: 700;
-    -webkit-box-shadow: 1px 5px 39px 14px rgba(0,0,0,0.16); 
-    box-shadow: 1px 5px 39px 3px rgba(0,0,0,0.16); 
+    /* -webkit-box-shadow: 1px 5px 39px 14px rgba(0,0,0,0.16); 
+    box-shadow: 1px 5px 39px 3px rgba(0,0,0,0.16);  */
 }
 
 .input::placeholder {
@@ -119,6 +119,7 @@
 
 .submit-button:hover {
     background-color: #6fabfa;
+    cursor: hand;
 }
 
 .wronginfo {

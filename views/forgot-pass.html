@@ -21,10 +21,12 @@
                 </div>
                 <div class = "row-body">
                     <p class = "inner-header">Enter username below:</p>
-                    <input type = "text" placeholder="Username" class="username-loc">
-                    <div class = "body-content">
-                        <input class = "next-button" type = "button" value = "Next" onclick = "next()">
-                    </div>
+                    <form id = "enter-username-form" onsubmit = "next()">
+                        <input type = "text" placeholder="Username" class="username-loc" id = "username-input">
+                        <div class = "body-content">
+                            <input class = "next-button" type = "button" value = "Next" id = "next1" onclick = "next()">
+                        </div>
+                    </form>
                 </div>
                 <div class = "row-body-2">
                     <p class = "inner-header-2">Answer Security Questions:</p>
