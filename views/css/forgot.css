@@ -44,7 +44,7 @@
     background-color: white;
 }
 
-.row-body-2 {
+/* .row-body-2 {
     display: flex;
     flex-direction: column;
     position: absolute;
@@ -64,7 +64,7 @@
     width: 60%;
     height: 30%;
     pointer-events: none;
-}
+} */
 
 .third {
     width: 50% !important;
@@ -91,7 +91,6 @@
     border: 1px solid rgb(216, 216, 216);
     font-size: 18px;
     font-weight: 700;
-    width: 30%;
     text-indent: 10%;
     -webkit-border-radius: 50px;
     outline: none;
@@ -114,15 +113,6 @@
     width: 90%;
 }
 
-.q1 {
-    margin-top: 5% !important;
-}
-.q2 {
-    margin-top: 7.5% !important;
-}
-.q3 {
-    margin-top: 8% !important;
-}
 .inner-header {
     font-size: 26px;
     text-decoration: none;
@@ -159,7 +149,6 @@
     margin-top: 5%;
 }
 
-
 .next-button {
     margin-top: 3%;
     width: 15%;
@@ -185,25 +174,9 @@
     background-color: #40adf1;
 }
 
-.next2-button {
-    margin-top: 5%;
-    width: 15%;
-    height: 60%;
-    border-radius: 50px;
-    outline: none;
-    border: none;
-    background-color: #7FC7F3;
-    font-family: "Raleway";
-    font-style: normal;
-    font-size: 16px;
-    font-weight:500;
-    color: white;
-}
-
 .question {
     font-size: 20px;
     font-weight: 800;
-    margin-top: 5%;
 }
 .remove {
     animation-name: exitToLeft;
@@ -219,7 +192,7 @@
     pointer-events: all !important;
 }
 
-.row-ques {
+/* .row-ques {
     display: flex;
     flex-direction: row;
     width: 100%;
@@ -249,7 +222,7 @@
     flex-direction: column;
     width: 40%;
     height: 100%;
-}
+} */
 
 
 @keyframes exitToLeft {
