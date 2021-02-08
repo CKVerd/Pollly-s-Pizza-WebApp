@@ -111,8 +111,7 @@
 .item-quantity{
     font-size: 22px;
     font-weight: 600;
-    margin-top: 3%;
-    margin-right: 15%; 
+    margin-top: 3%; 
 }
 
 .card-row-1 {
@@ -150,12 +149,14 @@
 
 .inner-row-1 {
     text-align: right;
+    margin-left: 90%;
 }
 
 .inner-row-2 {
     display: flex;
-    margin-top: 15%;
-    margin-left: -20%;
+    margin-top: 25%;
+    margin-left: 10%;
+    width: 150%;
 }
 
 .quantity-button {
