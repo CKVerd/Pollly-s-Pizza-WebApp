@@ -132,7 +132,7 @@
 
                     <div class = "col-2">
                         <a href = "#" class = "change-uname" onclick="showChangeUsern()">change username</a>
-                        <a href = "#" class = "change-pass" onclick="showPopup()">change password</a>
+                        <a href = "#" class = "change-pass" onclick="showChangePass()">change password</a>
                         
                         <form onsubmit="return showPopup()">
                         <input type = "text" id = "security-ans-1" class = "sec-answer" placeholder = "Answer">
@@ -166,6 +166,19 @@
                         <h1>Confirm Password</h1>
                         <input required type = "text" placeholder = "Enter Password" class = "new-usern">
                         <input type = "submit" class = "next-usern"></input>
+                    </div>
+                </form>
+            </div>
+
+            <div class = "change-pass-popup">
+                <form class = "change-pass-popup-form">
+                    <button class = "close-popup" onclick="closeChangePassPopup()">X</button>
+                    <div class = "change-pass-1">
+                        <h1>Change Password</h1>
+                        <input required type = "password" placeholder = "Old Password" class = "pass-input pass1">
+                        <input required type = "password" placeholder = "New Password" class = "pass-input">
+                        <input required type = "password" placeholder = "Confirm New Password" class = "pass-input">
+                        <input type = "submit" class = "submit-pass"></input>
                     </div>
                 </form>
             </div>

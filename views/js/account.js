@@ -24,3 +24,15 @@ function usernNext1() {
     content2.classList.remove('remove')
     content2.classList.add('appear')
 }
+
+function showChangePass() {
+    var popup = document.querySelector('.change-pass-popup');
+    popup.classList.remove('make-invisible')
+    popup.classList.add('make-visible')
+}
+
+function closeChangePassPopup() {
+    var popup = document.querySelector('.change-pass-popup');
+    popup.classList.remove('make-visible')
+    popup.classList.add('make-invisible')
+}
