@@ -131,22 +131,47 @@
     font-weight: 700;
     max-width: 100%;
     width: 80%;
-    text-indent: 15px;
+    text-indent: 20px;
     -webkit-border-radius: 50px;
     outline: none;
-    margin-top: 6%;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.sec-questions:hover {
+    cursor: hand;
+}
+.dropdown-icon {
+    margin-top: 8px;
+    background: url(/views/res/dropdown.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border: none;
+    z-index: 10 !important;
+    margin-left: -8%;
+    pointer-events: none;
+}
+
+.dropdown-icon:hover {
+    cursor: hand;
+}
+
+.select-container {
+    margin-top: 9%;
+    height: 25px;
+    position: relative;
 }
 
 .security-div {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-.security-1 {
-    margin-top: 9%;
 }
 
 .header-3 {
