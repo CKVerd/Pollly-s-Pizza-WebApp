@@ -206,10 +206,18 @@ li:hover {
     border: none;
     border-radius: 5px;
     outline: none;
+    background-color: transparent;
+    z-index: 100 !important;
 }
 
 .close-popup:hover {
-    background-color: rgb(197, 197, 197);
+    background-color: rgb(230, 230, 230);
+    cursor: hand;
+}
+
+.next-usern:hover {
+    background-color: #40adf1;
+    cursor: hand;
 }
 
 .make-visible {
@@ -265,3 +273,4 @@ li:hover {
         opacity: 100%;
     }
 }
+
