@@ -86,8 +86,12 @@
                             <option value = "q1">None</option>
                         </select>
                         <div class = "sub-row-1">
-                            <input type = "text" id = "search-input" class = "searchbar" placeholder = "Search">
-                            <button class = "search-icon"></button>
+                            <form class = "search-item-form">
+                                <!-- <input type = "text" id = "search-input" class = "searchbar" placeholder = "Search">
+                                <button type = "submit" class = "search-icon"></button> -->
+                                <input type = "text" class = "search-bar" placeholder = "Search">
+                                <button type = "submit" class = "search-icon"></button>
+                            </form>
                             <input class = "add-stock" type = "button" onclick = "showPopup()" value = "Add Stock">
                         </div>
                     </div>
@@ -167,7 +171,7 @@
             <div class = "popup">
                 <div class = "popup-form">
                     <button class = "close-popup" onclick="closePopup()">X</button>
-                    <h1>POP UP</h1> 
+                    <h1>Add Stock</h1> 
                 </div>
             </div>
         </div>

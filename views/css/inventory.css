@@ -11,23 +11,6 @@
     outline: none;
 }
 
-.searchbar {
-    padding: 10 0px;
-    border-radius: 50px;
-    border: 1px solid rgb(216, 216, 216);
-    font-size: 18px;
-    font-weight: 700;
-    max-width: 100%;
-    width: 60%;
-    outline: none;
-    text-indent: 15px;
-    
-}
-
-.searchbar::placeholder {
-    color: rgb(207, 207, 207);
-}
-
 .row-1 {
     width: 100%;
     height: 25%;
@@ -98,23 +81,63 @@
     display: flex;
     flex-direction: row;
     position: relative;
+    width: 90%;
+}
+
+.search-item-form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-bar {
+    height: 90%;
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 10 0px;
+    text-indent: 15px;
+    width: 750px;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.search-bar::placeholder {
+    color: rgb(207, 207, 207);
+    font-size: 18px;
+    font-weight: 700;
+    opacity: 80%;
 }
 
 .search-icon {
     background-image: url(/views/res/search.png);
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 30%;
-    width: 5%;
+    background-size: 35%;
+    width: 10%;
+    height: 100%;
+    position: absolute;
     outline: none;
     border: none;
-    background-color: white;
     z-index: 10 !important;
-    margin-left: -5%;
-    border-top: 1px solid rgb(216, 216, 216);
-    border-bottom: 1px solid rgb(216, 216, 216);
-    border-top-right-radius: 50px;
-    border-bottom-right-radius: 50px;
+    background-color: transparent;
+    opacity: 20%;
+    right: 0;
+}
+
+.search-icon:hover {
+    transition: .5s ease;
+    opacity: 100%;
+    cursor: hand;
+    outline: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.search-item-form {
+    display: flex;
+    position: relative;
 }
 
 .add-stock {
@@ -125,9 +148,10 @@
     border-radius: 50px;
     width: 10%;
     background-color: #7FC7F3;
-    margin-left: 20%;
+    right: 0;
     outline: none;
     border: none;
+    position: absolute;
 }
 
 .add-stock:hover {
