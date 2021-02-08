@@ -132,6 +132,8 @@
                     <div class = "col-2">
                         <a href = "#" class = "change-uname">change username</a>
                         <a href = "#" class = "change-pass" onclick="showPopup()">change password</a>
+                        
+                        <form onsubmit="return showPopup()">
                         <input type = "text" id = "security-ans-1" class = "sec-answer" placeholder = "Answer">
                         <input type = "text" id = "security-ans-2" class = "sec-answer" placeholder = "Answer">
                         <input type = "text" id = "security-ans-3" class = "sec-answer" placeholder = "Answer">
@@ -139,7 +141,8 @@
 
                     <div class = "col-3">
                         <input class = "delete-button" type = "button" value = "Delete Account" onclick="showPopup()">
-                        <input class = "update-button" type = "button" value = "Update" onclick="showPopup()">
+                        <input class = "update-button" type = "submit" value = "Update">
+                    </form>
                     </div>
                 </div>
             </div>
