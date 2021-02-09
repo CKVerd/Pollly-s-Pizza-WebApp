@@ -68,7 +68,8 @@
                                 <a href="account.html">Account</a>
                             </li>
                             <div class = "selected"></div>
-                            <input type="button" id = "logout" class = "logout-button" onclick = "logout()" value = "Logout">
+                            <form action="/logout" method="POST">
+                            <input type="submit" id = "logout" class = "logout-button" value = "Logout"></form>
                             <a href = "help.html" class = "help-button">How to use</a>
                         </ul>
                     </div>

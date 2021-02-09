@@ -194,30 +194,30 @@ app.listen(5000, function () {
     console.log("listening");
   });
 
-app.post("/new",(req, res)=>{
-    const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)"
-    const username = req.body.username;
-    const password = req.body.password;
-    const secq1 = req.body.secq1;
-    const secq2 = req.body.secq2;
-    const secq3 = req.body.secq3;
-    const seca1 = req.body.seca1;
-    const seca2 = req.body.seca2;
-    const seca3 = req.body.seca3;
-    bcrypt.hash(password,saltRounds,(err,hash)=>{
-      db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
-        if(err){
-          console.log(err.message)
-        }else{
-          res.redirect("back");
-        }
+// app.post("/new",(req, res)=>{
+//     const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)"
+//     const username = req.body.username;
+//     const password = req.body.password;
+//     const secq1 = req.body.secq1;
+//     const secq2 = req.body.secq2;
+//     const secq3 = req.body.secq3;
+//     const seca1 = req.body.seca1;
+//     const seca2 = req.body.seca2;
+//     const seca3 = req.body.seca3;
+//     bcrypt.hash(password,saltRounds,(err,hash)=>{
+//       db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
+//         if(err){
+//           console.log(err.message)
+//         }else{
+//           res.redirect("back");
+//         }
         
-      })
-    })
+//       })
+//     })
     
-  })
-  app.get("/register",(req,res)=>{
-    res.render("register")
-  }
-);
+//   })
+//   app.get("/register",(req,res)=>{
+//     res.render("register")
+//   }
+// );
   
