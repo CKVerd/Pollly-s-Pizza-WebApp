@@ -144,7 +144,7 @@
 }
 .dropdown-icon {
     margin-top: 8px;
-    background: url(/views/res/dropdown.png);
+    background: url(/res/dropdown.png);
     background-size: 70%;
     background-repeat: no-repeat;
     background-position: center;
