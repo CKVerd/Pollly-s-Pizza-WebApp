@@ -18,7 +18,7 @@ const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log("Successful connection to the database 'apptest.db'");
+    // console.log("Successful connection to the database 'apptest.db'");
   });
   const sql_login =  `CREATE TABLE IF NOT EXISTS userAccount (
     userID INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -35,7 +35,7 @@ const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    console.log("Successful creation of the 'Login' table");
+    // console.log("Successful creation of the 'Login' table");
   });
 app.use(session({
     secret: 'secret',
