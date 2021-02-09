@@ -1,0 +1,145 @@
+.main {
+    font-family: "Raleway";
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.row-1 {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.inner-col {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.back-button {
+    font-size: 30px;
+    text-decoration: none;
+    font-weight: 800;
+    color: black;
+    margin-top: 5%;
+    margin-left: 10%;
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+}
+
+.back-button:hover{
+    color: #183F76;
+}
+
+.row-body {
+    width: 80%;
+    height: 100%;
+    background-color: white;
+
+}
+
+.body-content {
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box; 
+    padding-left: 10%;
+    padding-top: 5%;
+}
+
+.question {
+    font-size: 20px;
+    font-weight: 600;
+    animation-name: flyFromLeftSmall;
+    animation-duration: 0.8s;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+}
+
+.answer {
+    margin-left: 5%;
+    margin-top: 2%;
+    margin-bottom: 4%;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 2;
+    animation-name: flyFromLeftSmall;
+    animation-duration: 0.8s;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    animation-delay: 0.4s;
+}
+
+.q1 {
+    margin-top: 1%;
+}
+
+@keyframes flyFromRight {
+    from {
+        opacity: 0%;
+        transform: translateX(10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromLeft {
+    from {
+        opacity: 0%;
+        transform: translateX(-10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromLeftSmall {
+    from {
+        opacity: 0%;
+        transform: translateX(-2%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromDown {
+    from {
+        opacity: 0%;
+        transform: translateY(3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes flyFromUp {
+    from {
+        opacity: 0%;
+        transform: translateY(-3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slowAppear{
+    from{
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}

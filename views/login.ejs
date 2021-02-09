@@ -15,13 +15,13 @@
         <div class = "main">
             <div class ="inner">
                 <div class = "login-div">
-                    <form class = "form-1" id = "login-form" onsubmit = "getInfo()">
-                        <input type = "text" class = "input uname" id = "username" placeholder = "username">
-                        <input type = "password" class = "input pword" id = "password" placeholder = "password">
-                        <input type = "submit" class = "submit-button" id = "login-submit" value = "Login" onclick="getInfo()">
+                    <form class = "form-1" method="post" action="/login">
+                        <input type = "text" class = "input uname" id = "username"  name="un" placeholder = "username">
+                        <input type = "password" class = "input pword" id = "password" name="pw" placeholder = "password">
+                        <input type = "submit" class = "submit-button" id = "login-submit" value = "Login">
                     </form>
                 </div>
-                <a href = "forgot-pass-1.html" class = "forgot">Forgot Password</a>
+                <a href = "/forgot-pass1" class = "forgot">Forgot Password</a>
             </div>
         </div>
     </body>

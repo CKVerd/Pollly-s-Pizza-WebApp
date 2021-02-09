@@ -83,7 +83,7 @@
                             </div>
 
                             <div class = "info-entry">
-                                <p class = "username-loc">username here</p>
+                                <p class = "username-loc"><%=username%></p>
                             </div>
 
                         </div>
@@ -154,30 +154,31 @@
                 </div>
             </div>
 
+            
             <div class = "change-usern-popup">
-                <form class = "change-usern-popup-form">
+                <form class = "change-usern-popup-form" action="/changeUsername" method="POST">
                     <button class = "close-popup" onclick="closeUsernPopup()">X</button>
                     <div class = "change-usern-1">
                         <h1>Change Username</h1>
-                        <input required type = "text" placeholder = "New Username" class = "new-usern">
+                        <input required type = "text" placeholder = "New Username" class = "new-usern" name="username">
                         <button class = "next-usern" onclick="usernNext1()">next</button>
                     </div>
                     <div class = "change-usern-2">
                         <h1>Confirm Password</h1>
-                        <input required type = "text" placeholder = "Enter Password" class = "new-usern">
+                        <input required type = "password" placeholder = "Enter Password" class = "new-usern" name="password">
                         <input type = "submit" class = "next-usern"></input>
                     </div>
                 </form>
             </div>
 
             <div class = "change-pass-popup">
-                <form class = "change-pass-popup-form">
+                <form class = "change-pass-popup-form" method="POST" action="/changePass">
                     <button class = "close-popup" onclick="closeChangePassPopup()">X</button>
                     <div class = "change-pass-1">
                         <h1>Change Password</h1>
-                        <input required type = "password" placeholder = "Old Password" class = "pass-input pass1">
-                        <input required type = "password" placeholder = "New Password" class = "pass-input">
-                        <input required type = "password" placeholder = "Confirm New Password" class = "pass-input">
+                        <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1">
+                        <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
+                        <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
                         <input type = "submit" class = "submit-pass"></input>
                     </div>
                 </form>

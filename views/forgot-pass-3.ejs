@@ -11,6 +11,7 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/forgot.css">
+        <link rel="stylesheet" type="text/css" href="css/forgot3.css">
     </head>
     <body>
         <div class = "main">
@@ -19,14 +20,16 @@
                     <a href = "login.html" class = "back-button">◄ </a>
                     <p class = "back-header">Forgot Password</p>
                 </div>
-                <div class = "row-body">
-                    <p class = "inner-header">Enter username below:</p>
-                    <form id = "enter-username-form" onsubmit = "next()">
-                        <input type = "text" placeholder="Username" class="username-loc" id = "username-input">
-                        <div class = "body-content">
-                            <input class = "next-button" type = "button" value = "Next" id = "next1" onclick = "next()">
+                <div class = "row-body-3">
+                    <p class = "inner-header-2">Enter new password:</p>
+                    <form class = "new-pass-form" action="forgot-changePass3" method="POST">
+                        <div class = "password-in">
+                            <input type = "password" placeholder = "Enter new password" class = "password-loc" name="pass">
+                            <input type = "password" placeholder = "Confirm new password" class = "password-loc" name="confirmPass">
+                            <input type = "submit" class = "change-pass-button" value= "Submit">
                         </div>
                     </form>
+                </div>
             </div>
         </div>
     </body>

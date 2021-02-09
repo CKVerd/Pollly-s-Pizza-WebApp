@@ -1,0 +1,568 @@
+.page {
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    z-index: 0;
+}
+
+.col-1 {
+    height: 93vh;
+    width: 40%;
+    /* background-color: red; */
+    padding-top: 3%;
+    padding-left: 3%;
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+}
+
+.info-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 15vh;
+}
+
+.info-text {
+    max-height: 100%;
+    max-width: 50%;
+    /* background-color: green; */
+    padding-top: 6%;
+    padding-left: 8%; 
+}
+
+.inner-text {
+    font-size: 20px;
+    font-weight: 800;
+}
+
+.info-entry {
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    width: 60%;
+    /* background-color: yellow; */
+    padding-top: 6%;
+    align-items: center;
+    margin-left: -10%;
+}
+
+.username-loc {
+    font-size: 20px;
+    font-weight: 400;
+    text-decoration: underline;
+}
+
+.pass-loc {
+    font-size: 20px;
+    padding: 10 0px;
+    border-radius: 50px;
+    border: 1px solid rgb(216, 216, 216);
+    font-size: 18px;
+    font-weight: 700;
+    width: 60%;
+    text-indent: 10%;
+    -webkit-border-radius: 50px;
+    outline: none;
+    margin-top: 5%;
+    margin-left: 10%;
+
+}
+
+.pass-loc::placeholder {
+    font-weight: 200;
+    font-size: 20px;
+    text-decoration: none;
+    outline: none;
+}
+
+.input-uname {
+    font-size: 20px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 50px;
+    border: 1px solid rgb(216, 216, 216);
+    width: 90%;
+}
+
+.input-uname::placeholder {
+    color: rgb(207, 207, 207);
+}
+
+.change-pass{
+    position: absolute;
+    margin-top: 28%;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+    margin-left: 2%;
+}
+
+.change-uname{
+    position: absolute;
+    margin-top: 18.5%;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+    margin-left: 2%;
+}
+
+.change-uname:hover {
+    color: rgb(143, 143, 143);
+}
+
+.change-pass:hover {
+    color: rgb(143, 143, 143);
+}
+
+.info-rest {
+    height: 75vh;
+    width: 100%;
+    /* background-color: orange; */
+    padding-top: 10%;
+}
+
+.sec-questions{
+    padding: 10 0px;
+    border-radius: 50px;
+    border: 1px solid rgb(216, 216, 216);
+    font-size: 18px;
+    font-weight: 700;
+    max-width: 100%;
+    width: 80%;
+    text-indent: 20px;
+    -webkit-border-radius: 50px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.sec-questions:hover {
+    cursor: hand;
+}
+.dropdown-icon {
+    margin-top: 8px;
+    background: url(/views/res/dropdown.png);
+    background-size: 70%;
+    background-repeat: no-repeat;
+    background-position: center;
+    outline: none;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border: none;
+    z-index: 10 !important;
+    margin-left: -8%;
+    pointer-events: none;
+}
+
+.dropdown-icon:hover {
+    cursor: hand;
+}
+
+.select-container {
+    margin-top: 9%;
+    height: 25px;
+    position: relative;
+}
+
+.security-div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.header-3 {
+    margin-top: 15%;
+}
+
+.add-button {
+    width: 30%;
+    height: 6%;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #7FC7F3;
+    font-family: "Raleway";
+    font-style: normal;
+    font-size: 16px;
+    font-weight:500;
+    color: white;
+    margin-top: 5%;
+    margin-left: 10%;
+}
+
+.add-button:hover {
+    background-color: #40adf1;
+}
+
+.col-2 {
+    height: 95vh;
+    width: 40%;
+    /* background-color: orange; */
+    display: flex;
+    flex-direction: column;
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+}
+
+.sec-answer {
+    padding: 10 0px;
+    border-radius: 50px;
+    border: 1px solid rgb(216, 216, 216);
+    font-size: 18px;
+    font-weight: 700;
+    max-width: 100%;
+    width: 70%;
+    margin-top: 6%;
+    outline: none;
+    text-indent: 15px;
+}
+
+.sec-answer::placeholder {
+    color: rgb(207, 207, 207);
+    font-size: 18px;
+}
+
+#security-ans-1 {
+    margin-top: 59%;
+}
+.col-3 {
+    height: 95vh;
+    width: 20%;
+    /* background-color: green; */
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    animation-delay: 0.4s;
+}
+
+.delete-button {
+    width: 60%;
+    height: 5%;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #f37f7f;
+    font-family: "Raleway";
+    font-style: normal;
+    font-size: 16px;
+    font-weight:500;
+    color: white;
+    margin-top: 30%;
+    margin-left: 10%;
+}
+
+.delete-button:hover {
+    background-color: #f14040;
+}
+
+.update-button {
+    width: 60%;
+    height: 5%;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #7FC7F3;
+    font-family: "Raleway";
+    font-style: normal;
+    font-size: 16px;
+    font-weight:500;
+    color: white;
+    margin-top: 134%;
+    margin-left: 10%;
+}
+
+.update-button:hover {
+    background-color: #40adf1;
+}
+
+.header-text {
+    font-size: 20px;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.change-usern-popup {
+    overflow: auto;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(121, 121, 121, 0.322);
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.change-usern-popup-form {
+    width: 20%;
+    height: 20%;
+    margin-top: -10%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.change-usern-popup-form h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: -35%;
+}
+
+.new-usern {
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 8 0px;
+    text-indent: 15px;
+    width: 70%;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    left: 30;
+    top: 70;
+}
+
+.new-usern::placeholder {
+    opacity: 40%;
+}
+
+.change-usern-1 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+}
+
+.next-usern {
+    height: 20%;
+    font-size: 16px;
+    width: 30%;
+    font-weight: 600;
+    bottom: 20;
+    color: white;
+    border-radius: 50px;
+    background-color: #7FC7F3;
+    right: 20;
+    outline: none;
+    border: none;
+    position: absolute;
+}
+
+.next-usern::placeholder{
+    opacity: 40%;
+}
+
+.change-usern-2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: absolute;
+    align-items: center;
+    pointer-events: none;
+    opacity: 0%;
+}
+
+.change-pass-popup {
+    overflow: auto;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(121, 121, 121, 0.322);
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.change-pass-popup-form {
+    width: 20%;
+    height: 30%;
+    margin-top: -10%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.change-pass-1 {
+    width: 100%;
+    position: absolute;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.change-pass-1 h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 5%;
+}
+
+.pass-input {
+    border-radius: 50px;
+    outline: none;
+    border: 1px solid rgb(216, 216, 216);
+    padding: 8 0px;
+    text-indent: 15px;
+    width: 70%;
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: -10%;
+    margin-top: 5%;
+}
+
+.submit-pass {
+    height: 13%;
+    font-size: 16px;
+    width: 30%;
+    font-weight: 600;
+    bottom: 20;
+    color: white;
+    border-radius: 50px;
+    background-color: #7FC7F3;
+    right: 20;
+    outline: none;
+    border: none;
+    position: absolute;
+}
+
+.submit-pass:hover {
+    background-color: #40adf1;
+    cursor: hand;
+}
+
+.pass-input::placeholder {
+    opacity: 40%;
+}
+
+.pass1 {
+    margin-top: 5.5% !important;
+}
+
+.make-visible {
+    visibility: visible;
+    animation-name: slowAppear;
+    animation-duration: 0.4s;
+}
+
+.make-invisible {
+    visibility: hidden;
+    animation-name: slowAppear;
+    animation-duration: 0.4s;
+}
+
+.remove {
+    animation-name: exitToLeft;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+}
+
+.appear {
+    animation-name: enterFromRight;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    pointer-events: all !important;
+}
+
+.disappear {
+    opacity: 0;
+}
+
+@keyframes flyFromRight {
+    from {
+        opacity: 0%;
+        transform: translateX(10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromLeft {
+    from {
+        opacity: 0%;
+        transform: translateX(-10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromDown {
+    from {
+        opacity: 0%;
+        transform: translateY(3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes flyFromUp {
+    from {
+        opacity: 0%;
+        transform: translateY(-3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slowAppear{
+    from{
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes exitToLeft {
+    from {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+    to {
+        opacity: 0%;
+        transform: translateX(-10%);
+    }
+}
+
+@keyframes enterFromRight {
+    from {
+        opacity: 0%;
+        transform: translateX(10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}

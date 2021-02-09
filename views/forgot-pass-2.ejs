@@ -23,17 +23,18 @@
                 <div class = "row-body-2">
                     <p class = "inner-header-2">Answer Security Questions:</p>
                     <div class = "answer-item-container">
-                        <form class = "security-answer-form">
+                        <form class = "security-answer-form" action="/forgot-pass3" method="POST">
                             <div class = "sec-questions">
-                                <label for="question1" class = "question">Security question here Security question here</label>
-                                <label for="question1" class = "question">Security question here Security question here</label>
-                                <label for="question1" class = "question">Security question here Security question here</label>
+                                <label for="question1" class = "question"><%=q1%></label>
+                                <label for="question1" class = "question"><%=q2%></label>
+                                <label for="question1" class = "question"><%=q3%></label>
                             </div>
                             <div class = "sec-answers">
-                                <input type = "text" placeholder="Answer" class="ans-loc a1">
-                                <input type = "text" placeholder="Answer" class="ans-loc a2">
-                                <input type = "text" placeholder="Answer" class="ans-loc a3">
-                                <input class = "next-button2" type = "submit" value = "Next" onclick="next()">
+                            
+                                <input type = "text" placeholder="Answer" class="ans-loc a1" name="a1">
+                                <input type = "text" placeholder="Answer" class="ans-loc a2" name="a2">
+                                <input type = "text" placeholder="Answer" class="ans-loc a3" name="a3">
+                                <input class = "next-button2" type = "submit" value = "Next">
                             </div>
                         </form>
                     </div>
