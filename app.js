@@ -153,18 +153,23 @@ app.post("/login", (req,res) => {
           }
       );
     });
+
 app.post("/changeUsername",(req,res)=>{
   const sql = "UPDATE userAccount SET username = ? WHERE (username = '"+req.session.username+"')";
   const username = req.body.username;
+  if(req.body.password == req.session.password){
   db.run(sql,[username],(err,row)=>{
-    if(req.body.password == req.session.password){
-      res.redirect("/account")
-      
+    if(err){
+      console.log(err.message)
     }else{
-      res.render("/")
+      req.session.username = username;
+      res.render("account",{username:username,q1:req.session.secQues1,q2:req.session.secQues2,q3:req.session.secQues3})
+    }    
+    })
+  }else{
+      res.redirect("/")
     }
   })
-})
 app.post("/changePass",(req,res)=>{
   const sql = "UPDATE userAccount SET password = ? WHERE (username = '"+req.session.username+"')";
   const password = req.body.newPass;
@@ -173,7 +178,10 @@ app.post("/changePass",(req,res)=>{
         db.run(sql,[hash],(err,row)=>{
             if(err){
               return console.log(err.message)
-            } res.redirect("/account");
+            }else{
+              req.session.password = password
+              res.redirect("/account");
+            } 
     });
     }else{
         res.redirect("/");
@@ -181,9 +189,29 @@ app.post("/changePass",(req,res)=>{
       
     })
   })
-app.get("/account",(req,res)=>{
-  res.render("account",{username:req.session.username,q1:req.session.secQues1,q2:req.session.secQues2,q3:req.session.secQues3});
+  app.get("/account",(req,res)=>{
+    res.render("account",{username:req.session.username,q1:req.session.secQues1,q2:req.session.secQues2,q3:req.session.secQues3});
 });
+app.get("/help",(req,res)=>{
+  res.render("help")
+})
+app.get("/statistics",(req,res)=>{
+  res.render("statistics")
+})
+app.get("/sales",(req,res)=>{
+  res.render("sales")
+})
+app.get("/inventory",(req,res)=>{
+  res.render("inventory")
+})
+app.get("/dashboard",(req,res)=>{
+  res.render("index")
+})
+
+
+
+
+
 
 app.post("/logout",(req,res)=>{
   req.session.destroy((err) => {

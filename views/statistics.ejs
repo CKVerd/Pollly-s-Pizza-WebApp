@@ -51,24 +51,25 @@
                     <div class = "menu-col">
                         <ul class = "menu-items">
                             <li>
-                                <a href="index.html">Dashboard</a>
+                                <a href="/dashboard">Dashboard</a>
                             </li>
                             <li class = "menu-item-2">
-                                <a href="inventory.html">Inventory</a>
+                                <a href="/inventory">Inventory</a>
                             </li>
                             <li class = "menu-item-3">
-                                <a href="sales.html">Sales</a>
+                                <a href="/sales">Sales</a>
                                 
                             </li>
                             <li class = "menu-item-4">
-                                <a href="statistics.html">Statistics</a>
+                                <a href="/statistics">Statistics</a>
                             </li>
                             <div class = "selected"></div>
                             <li class = "menu-item-5">
-                                <a href="account.html">Account</a>
+                                <a href="/account">Account</a>
                             </li>
-                            <input type="button" id = "logout" class = "logout-button" onclick = "logout()" value = "Logout">
-                            <a href = "help.html" class = "help-button">How to use</a>
+                            <form action="/logout" method="POST">
+                                <input type="submit" id = "logout" class = "logout-button" value = "Logout"></form>
+                            <a href = "/help" class = "help-button">How to use</a>
                         </ul>
                     </div>
 
