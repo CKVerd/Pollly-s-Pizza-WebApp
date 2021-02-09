@@ -158,7 +158,7 @@ app.post("/changeUsername",(req,res)=>{
   const username = req.body.username;
   db.run(sql,[username],(err,row)=>{
     if(req.body.password == req.session.password){
-      res.render("account",{username:username})
+      res.redirect("/account")
       
     }else{
       res.render("/")
