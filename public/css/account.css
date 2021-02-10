@@ -222,7 +222,7 @@
     border-radius: 50px;
     border: 1px solid rgb(216, 216, 216);
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 300;
     max-width: 100%;
     width: 80%;
     outline: none;
@@ -663,11 +663,14 @@
     }
 
     .sec-questions {
+        padding: 6px 0px;
         font-size: 16px;
     }
 
     .sec-answer {
-        font-size: 16px;
+        padding: 6px 0px;
+        font-size: 14px;
+        font-weight: 300;
     }
     
     .sec-answer::placeholder {
@@ -709,6 +712,10 @@
         margin-right: 5%;
     }
 
+    .change-pass {
+        margin-top: 5%;
+    }
+
     .change-pass-popup h1{
         font-size: 18px;
     }
@@ -731,6 +738,12 @@
 
     .row-2 {
         margin-top: -5%;
+    }
+    
+    .dropdown-icon {
+        background-size: 70%;
+        background-repeat: no-repeat;
+        margin-top: 3%;
     }
   }
 
