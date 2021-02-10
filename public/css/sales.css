@@ -127,7 +127,7 @@
     border-radius: 5px;
     outline: none;
     border: none;
-    background:url(/views/res/threedot.png) no-repeat;
+    background:url(/res/threedot.png) no-repeat;
     background-position: center center;
     transition-duration: .40s;
     background-color: rgba(240, 240, 240, 0.534);
@@ -236,6 +236,50 @@
 
 .edit-button:hover {
     color: black;
+}
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .inner-row-2 {
+        margin-top: 40%;
+        margin-left: 0%;
+    }
+
+    .quantity-button {
+        width: 20px;
+        height: 20px;
+    }
+
+    .item-name {
+        font-size: 16px;
+    }
+
+    .item-quantity {
+        font-size: 18px;
+    }
+
+    .sales-table td{
+        font-size: 14px;
+    }
+
+    .sales-table {
+        width: 80%;
+    }
+
+    .grid-container {
+        width: 87%;
+    }
+
+    .card {
+        height: 90%;
+    }
+
+    .add-product-button {
+        font-size: 14px;
+    }
+
+    .submit-button {
+        font-size: 14px;
+    }
 }
 
 @keyframes flyFromRight {
