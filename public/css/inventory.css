@@ -111,7 +111,7 @@
 }
 
 .search-icon {
-    background-image: url(/views/res/search.png);
+    background-image: url(/res/search.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 35%;
@@ -171,6 +171,53 @@
 
 .edit-button:hover {
     color: #000000;
+}
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .search-icon {
+        background-size: 25%;
+    }
+
+    .category-list {
+        padding: 6px 0px;
+        font-size: 16px;
+    }
+
+    .search-bar {
+        font-size: 16px;
+    }
+
+    .search-bar::placeholder {
+        font-size: 16px;
+        font-weight: 300;
+    }
+
+    .sub-row-1 {
+        margin-top: -2%;
+        position: relative;
+    }
+
+    .add-stock {
+        font-weight: 300;
+        font-size: 16px;
+        right: 80;
+    }
+
+    .stock-table td {
+        font-size: 14px;
+    }
+
+    .edit-button {
+        font-size: 14px;
+    }
+
+    .stock-table {
+        width: 85%;
+    }
+
+    .row-1 {
+        padding-left: 8%;
+    }
 }
 
 @keyframes flyFromRight {
