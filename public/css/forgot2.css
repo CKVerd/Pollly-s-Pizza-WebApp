@@ -63,7 +63,7 @@
     margin-top: 6%;
     border: 1px solid rgb(216, 216, 216);
     font-size: 18px;
-    font-weight: 700;
+    font-weight: 300;
     text-indent: 5%;
     -webkit-border-radius: 50px;
     outline: none;
@@ -90,4 +90,33 @@
     animation-delay: 0.4s;
     opacity: 0;
     animation-fill-mode: forwards;
+}
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .back-button {
+        font-size: 25px;
+    }
+
+    .back-header {
+        font-size: 25px;
+    }
+
+    .inner-header-2 {
+        font-size: 18px;
+    }
+
+    .question {
+        font-size: 16px;
+    }
+
+    .ans-loc {
+        font-size: 16px;
+        padding: 15px 0px;
+        font-weight: 300;
+    }
+
+    .next-button2 {
+        font-size: 16px;
+        height: 12%;
+    }
 }
