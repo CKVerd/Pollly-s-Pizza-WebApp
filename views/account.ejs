@@ -148,7 +148,7 @@
                     <div class = "row-3 info-container">
                         <div class = "inner-col-1 info-column">
                             <p class = "header-text">Accounts</p>
-                            <input class = "add-button" type = "button" value = "Add Account" onclick="showPopup()">
+                            <input class = "add-button" type = "button" value = "Add Account" onclick="showAddAccountPopup()">
                         </div>
                         <div class = "inner-col-2 info-column">
 
@@ -165,6 +165,7 @@
                         <h1>POP UP</h1> 
                     </div>
                 </div>
+
                 <div class = "change-usern-popup">
                     <form class = "change-usern-popup-form" action="/changeUsername" method="POST">
                         <button class = "close-popup" onclick="closeUsernPopup()">X</button>
@@ -190,6 +191,68 @@
                             <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
                             <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
                             <input type = "submit" class = "submit-pass"></input>
+                        </div>
+                    </form>
+                </div>
+
+                <div class = "add-account-popup">
+                    <form class = "add-account-form">
+                        <button class = "close-add close-popup" onclick="closeAddAccountPopup()">X</button>
+                        <div class = "add-account-div">
+                            <h1>Add Account</h1>
+                            <div class = "inner-add-account-div">
+                                <div class = "add-info-label">
+                                    <label>Username:</label>
+                                    <input required type = "text" class = "info-entry">
+                                    <label>Password:</label>
+                                    <input required type = "password" class = "info-entry">
+                                    <label>Confirm Password:</label>
+                                    <input required type = "password" class = "info-entry">
+
+                                </div>
+                                <div class = "add-info-ans">
+                                    <div class = "add-info-sec-ques">
+                                        <p class = "ques-header header-text">Security Questions</p>
+                                        <div class = "inner-security-question-container">
+                                            <select required name="security options" class = "inner-security-questions">
+                                                <option value = "q1"><%=q1%></option>
+                                                <option value = "q1">Security Question 2</option>
+                                                <option value = "q1">Security Question 3</option>
+                                                <option value = "q1">Security Question 4</option>
+                                                <option value = "q1">Security Question 5</option>
+                                            </select>
+                                            <button class = "add-account-icon dropdown-icon"></button>
+                                        </div>
+                                        <div class = "inner-security-question-container">
+                                            <select required name="security options" class = "inner-security-questions">
+                                                <option value = "q1"><%=q1%></option>
+                                                <option value = "q1">Security Question 2</option>
+                                                <option value = "q1">Security Question 3</option>
+                                                <option value = "q1">Security Question 4</option>
+                                                <option value = "q1">Security Question 5</option>
+                                            </select>
+                                            <button class = "add-account-icon dropdown-icon"></button>
+                                        </div>
+                                        <div class = "inner-security-question-container">
+                                            <select required name="security options" class = "inner-security-questions">
+                                                <option value = "q1"><%=q1%></option>
+                                                <option value = "q1">Security Question 2</option>
+                                                <option value = "q1">Security Question 3</option>
+                                                <option value = "q1">Security Question 4</option>
+                                                <option value = "q1">Security Question 5</option>
+                                            </select>
+                                            <button class = "add-account-icon dropdown-icon"></button>
+                                        </div>
+                                    </div>
+
+                                    <div class = "add-info-sec-ans">
+                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer">
+                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer">
+                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer">
+                                        <input class = "add-acc-update-button" type = "submit" value = "Update">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -433,6 +433,183 @@
     margin-top: 5.5% !important;
 }
 
+.add-account-popup {
+    overflow: auto;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(121, 121, 121, 0.322);
+    z-index: 10;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.add-account-form {
+    width: 40%;
+    height: 70%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.add-account-icon {
+    margin-left: -6%;
+    margin-top: 4%;
+}
+
+.ques-header {
+    margin-bottom: 2%;
+    margin-top: -10%;
+}
+.add-account-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-account-div h1 {
+    margin-top: 5%;
+}
+
+.close-add {
+    width: 5%;
+    height: 3%;
+}
+
+.inner-add-account-div {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.add-info-label {
+    width: 100%;
+    height: 50%;
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    padding-top: 1%;
+}
+
+.add-info-ans {
+    /* background-color: green; */
+    width: 100%;
+    height: 50%;
+    display: flex;
+}
+
+.inner-security-question-container {
+    margin-top: 2%;
+    padding-left: 2%;
+}
+
+.add-info-label label {
+    font-size: 18px;
+    font-weight: 700;
+    margin-left: 5%;
+    margin-top: 1%;
+}
+
+.info-entry {
+    width: 87%;
+    margin-left: 6%;
+    outline: none;
+    border-radius: 50px;
+    padding: 8px 0px;
+    border: 1px solid rgb(216, 216, 216);
+    font-size: 18px;
+    max-width: 100%;
+    margin-top: 1%;
+    text-indent: 20px;
+}
+
+.inner-security-questions {
+    padding: 9px 0px;
+    border-radius: 50px;
+    border: 1px solid rgb(216, 216, 216);
+    font-size: 18px;
+    font-weight: 700;
+    max-width: 100%;
+    width: 90%;
+    text-indent: 20px;
+    -webkit-border-radius: 50px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-top: 5%;
+
+}
+
+.add-acc-sec-ans {
+    padding: 9px 0px;
+    border-radius: 50px;
+    border: 1px solid rgb(216, 216, 216);
+    font-size: 18px;
+    font-weight: 700;
+    max-width: 100%;
+    width: 90%;
+    text-indent: 20px;
+    -webkit-border-radius: 50px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    margin-top: 10%;
+}
+
+.add-acc-sec-ans::placeholder {
+    opacity: 40%;
+}
+
+.add-info-sec-ques {
+    width: 60%;
+    height: 100%;
+    padding-left: 5%;
+}
+
+.add-info-sec-ans {
+    width: 40%;
+    height: 100%;
+    margin-top: -2.5%;
+    position: relative;
+}
+
+.add-acc-update-button {
+    width: 40%;
+    height: 13%;
+    outline: none;
+    border: none;
+    background-color: #7FC7F3;
+    font-family: "Raleway";
+    font-style: normal;
+    font-size: 16px;
+    font-weight:500;
+    color: white;
+    border-radius: 50px;
+    position: absolute;
+    bottom: 15;
+    right: 50;
+}
+
+.add-acc-update-button:hover {
+    background-color: #40adf1;
+    cursor: hand;
+}
+
+.add-acc-sec-ans {
+    width: 90%;
+    margin-left: -8%;
+}
 .make-visible {
     visibility: visible;
     animation-name: slowAppear;
