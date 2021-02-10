@@ -128,6 +128,16 @@
     animation-duration: 0.4s;
 }
 
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .input {
+        font-size: 14px !important;
+    }
+
+    .input::placeholder {
+        font-size: 14px !important;
+    }
+}
+
 @keyframes flyFromUp {
     from {
         opacity: 0%;
