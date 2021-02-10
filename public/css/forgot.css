@@ -85,7 +85,6 @@
 }
 
 .username-loc {
-    font-size: 20px;
     padding: 10 0px;
     border-radius: 50px;
     border: 1px solid rgb(216, 216, 216);
@@ -224,7 +223,31 @@
     height: 100%;
 } */
 
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .inner-header {
+        font-size: 20px;
+        margin-top: 5%;
+    }
 
+    .back-button {
+        font-size: 25px;
+    }
+
+    .back-header {
+        font-size: 25px;
+    }
+
+    .username-loc {
+        padding: 8px 0px;
+        font-size: 16px;
+        font-weight: 700;
+        width: 30%;
+    }
+
+    .next-button {
+        font-size: 16px;
+    }
+}
 @keyframes exitToLeft {
     from {
         opacity: 100%;
