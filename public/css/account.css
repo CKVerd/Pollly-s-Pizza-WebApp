@@ -295,7 +295,7 @@
     border-radius: 50px;
     outline: none;
     border: 1px solid rgb(216, 216, 216);
-    padding: 8 0px;
+    padding: 8px 0px;
     text-indent: 15px;
     width: 70%;
     font-size: 18px;
@@ -689,6 +689,44 @@
 
     .inner-col-1 {
         margin-left: 2%;
+    }
+
+    .change-usern-popup h1 {
+        font-size: 18px;
+    }
+
+    .new-usern {
+        padding: 6px 0px;
+        text-indent: 15px;
+        width: 70%;
+        font-size: 14px;
+        margin-top: -5%;
+        font-weight: 300;
+    }
+
+    .next-usern {
+        font-size: 14px;
+        margin-right: 5%;
+    }
+
+    .change-pass-popup h1{
+        font-size: 18px;
+    }
+
+    .pass-input {
+        padding: 6px 0px;
+        text-indent: 15px;
+        width: 70%;
+        font-size: 14px;
+        font-weight: 300;
+        margin-left: -10%;
+        margin-top: 5%;
+    }
+
+    .submit-pass {
+        font-size: 14px;
+        bottom: 15;
+        right: 20;
     }
   }
 
