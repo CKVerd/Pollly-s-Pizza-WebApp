@@ -131,6 +131,36 @@
     
 }
 
+.make-visible {
+    visibility: visible;
+    animation-name: slowAppear;
+    animation-duration: 0.4s;
+}
+
+.make-invisible {
+    visibility: hidden;
+    animation-name: slowAppear;
+    animation-duration: 0.4s;
+}
+
+.remove {
+    animation-name: exitToLeft;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+}
+
+.appear {
+    animation-name: enterFromRight;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    pointer-events: all !important;
+}
+
+.disappear {
+    opacity: 0;
+}
+
 @keyframes flyFromRight {
     from {
         opacity: 0%;
@@ -150,5 +180,80 @@
     to {
         opacity: 100%;
         transform: translateY(0%);
+    }
+}
+
+@keyframes flyFromRight {
+    from {
+        opacity: 0%;
+        transform: translateX(10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromLeft {
+    from {
+        opacity: 0%;
+        transform: translateX(-10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+}
+
+@keyframes flyFromDown {
+    from {
+        opacity: 0%;
+        transform: translateY(3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes flyFromUp {
+    from {
+        opacity: 0%;
+        transform: translateY(-3%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateY(0%);
+    }
+}
+
+@keyframes slowAppear{
+    from{
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
+}
+
+@keyframes exitToLeft {
+    from {
+        opacity: 100%;
+        transform: translateX(0%);
+    }
+    to {
+        opacity: 0%;
+        transform: translateX(-10%);
+    }
+}
+
+@keyframes enterFromRight {
+    from {
+        opacity: 0%;
+        transform: translateX(10%);
+    }
+    to {
+        opacity: 100%;
+        transform: translateX(0%);
     }
 }

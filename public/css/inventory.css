@@ -158,6 +158,7 @@
 }
 
 .add-stock:hover {
+    cursor: hand;
     background-color: #40adf1;
 }
 
@@ -174,6 +175,7 @@
 
 .edit-button:hover {
     color: #000000;
+    cursor: hand;
 }
 
 .dropdown-icon {
@@ -208,14 +210,11 @@
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: -15%;
-    margin-left: -15%;
 }
 
 .add-stock-popup-form {
     width: 20%;
-    height: 20%;
-    margin-top: -10%;
+    height: 50%;
     border-radius: 10px;
     background-color: white;
     display: flex;
@@ -228,6 +227,141 @@
     font-size: 26px;
     font-weight: 700;
     margin-top: 5%;
+}
+
+.inner-add-stock {
+    width: 100%;
+    height: 100%;
+    display:flex;
+    flex-direction: column;
+    padding-top: 5%;
+    position: relative;
+}
+
+.inner-add-stock label {
+    font-size: 20px;
+    font-weight: 700;
+    margin-left: 7%;
+}
+
+.add-input {
+    font-size: 20px;
+    padding: 8px 0px;
+    border-radius: 50px;
+    width: 80%;
+    margin-left: 9%;
+    margin-top: 2%;
+    outline: none;
+    border: 1px solid rgb(216, 216, 216);
+    margin-bottom: 5%;
+    text-indent: 20px;
+}
+
+.category-input {
+    font-size: 20px;
+    padding: 8px 0px;
+    border-radius: 50px;
+    width: 80%;
+    margin-left: 9%;
+    margin-top: 2%;
+    outline: none;
+    border: 1px solid rgb(216, 216, 216);
+    margin-bottom: 5%;
+    text-indent: 20px;
+    outline: none;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.category-input {
+    position: relative;
+}
+
+.edit-stock-popup {
+    overflow: auto;
+    visibility: hidden;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(121, 121, 121, 0.322);
+    z-index: 10 !important;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-stock-popup-form {
+    width: 20%;
+    height: 50%;
+    border-radius: 10px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.edit-stock-popup h1 {
+    font-size: 26px;
+    font-weight: 700;
+    margin-top: 5%;
+}
+.add-stock-icon {
+    margin-left: -10%;
+    margin-top: 4.5%;
+}
+
+.submit-button {
+    position: absolute;
+    height: 10%;
+    width: 30%;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border-radius: 50px;
+    background-color: #7FC7F3;
+    right: 20;
+    bottom: 20;
+    outline: none;
+    border: none;
+    position: absolute;
+}
+
+.submit-button:hover {
+    background-color: #40adf1;
+    cursor: hand;
+}
+
+.make-visible {
+    visibility: visible;
+    animation-name: slowAppear;
+    animation-duration: 0.4s;
+}
+
+.make-invisible {
+    visibility: hidden;
+    animation-name: slowAppear;
+    animation-duration: 0.4s;
+}
+
+.remove {
+    animation-name: exitToLeft;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    pointer-events: none;
+}
+
+.appear {
+    animation-name: enterFromRight;
+    animation-duration: 0.8s;
+    animation-fill-mode: forwards;
+    pointer-events: all !important;
+}
+
+.disappear {
+    opacity: 0;
 }
 
 @media (-webkit-device-pixel-ratio: 1.25) {
