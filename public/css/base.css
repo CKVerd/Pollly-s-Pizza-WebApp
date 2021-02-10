@@ -248,6 +248,10 @@ li:hover {
     .logout-button {
         font-size: 14px;
     }
+
+    .header {
+        font-size: 10px;
+    }
 }
 
 .make-visible {
