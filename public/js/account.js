@@ -27,8 +27,11 @@ function usernNext1() {
 
 function showChangePass() {
     var popup = document.querySelector('.change-pass-popup');
+    var popup2 = document.querySelector('.change-pass-1');
     popup.classList.remove('make-invisible');
     popup.classList.add('make-visible');
+    popup2.classList.remove ('disappear')
+    popup2.classList.add ('appear')
 }
 
 function closeChangePassPopup() {
@@ -39,8 +42,12 @@ function closeChangePassPopup() {
 
 function showAddAccountPopup() {
     var popup = document.querySelector (".add-account-popup");
+    var popup2 = document.querySelector('.add-account-div');
     popup.classList.remove('make-invisible');
     popup.classList.add('make-visible');
+    popup2.classList.remove('disappear');
+    popup2.classList.add('appear');
+
 }
 
 function closeAddAccountPopup() {
@@ -57,6 +64,18 @@ function showDelete() {
 
 function closeDeletePopup() {
     var popup = document.querySelector (".delete-popup");
+    popup.classList.remove('make-visible');
+    popup.classList.add('make-invisible');
+}
+
+function showConfirmPass() {
+    var popup = document.querySelector('.confirm-popup');
+    popup.classList.remove('make-invisible');
+    popup.classList.add('make-visible');
+}
+
+function closeConfirmPopup() {
+    var popup = document.querySelector (".confirm-popup");
     popup.classList.remove('make-visible');
     popup.classList.add('make-invisible');
 }

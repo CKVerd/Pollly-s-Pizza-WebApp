@@ -141,7 +141,16 @@
                                 </div>
                             </div>
                             <div class = "inner-col-3 info-column">
-                                <input class = "update-button" type = "submit" value = "Update">
+                                <input class = "update-button" type = "button" value = "Update" onclick = "showConfirmPass()">
+                            </div>
+
+                            <div class = "confirm-popup">
+                                <div class = "confirm-popup-form">
+                                    <button class = "close-delete close-popup" onclick="closeConfirmPopup()">X</button>
+                                    <h1>Enter Password</h1> 
+                                    <input required type = "password" placeholder = "Enter Password" class = "delete-pass-input pass-input pass1">
+                                    <button class = "confirm-next next-usern">Submit</button>
+                                </div>
                             </div>
                         </form>
                     </div>
@@ -163,7 +172,7 @@
                     <form class = "delete-popup-form">
                         <button class = "close-delete close-popup" onclick="closeDeletePopup()">X</button>
                         <h1>Enter Password</h1> 
-                        <input required type = "password" placeholder = "Enter Password" class = "pass-input pass1">
+                        <input required type = "password" placeholder = "Enter Password" class = "delete-pass-input pass-input pass1">
                         <input class = "delete-acc-inner delete-button" type = "submit" value = "Delete Account">
                     </form>
                 </div>
