@@ -728,6 +728,10 @@
         bottom: 15;
         right: 20;
     }
+
+    .row-2 {
+        margin-top: -5%;
+    }
   }
 
 .make-visible {
