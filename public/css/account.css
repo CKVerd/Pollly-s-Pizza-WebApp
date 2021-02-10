@@ -218,7 +218,7 @@
 }
 
 .sec-answer {
-    padding: 10 0px;
+    padding: 11 0px;
     border-radius: 50px;
     border: 1px solid rgb(216, 216, 216);
     font-size: 18px;
@@ -227,7 +227,7 @@
     width: 80%;
     outline: none;
     text-indent: 15px;
-    margin-top: 5%;
+    margin-top: 4.5%;
 }
 
 .sec-answer::placeholder {
@@ -608,12 +608,13 @@
 .add-acc-sec-ans {
     width: 90%;
     margin-left: -8%;
+    font-weight: 300;
 }
 
 @media (-webkit-device-pixel-ratio: 1.25) {
     .inner-security-questions {
         padding: 7px 0px;
-        font-size: 16px;
+        font-size: 14px;
     }
     .add-acc-sec-ans {
         margin-top: 10%;
@@ -668,9 +669,10 @@
     }
 
     .sec-answer {
-        padding: 6px 0px;
+        padding: 7px 0px;
         font-size: 14px;
         font-weight: 300;
+        margin-top: 5%;
     }
     
     .sec-answer::placeholder {
@@ -744,6 +746,14 @@
         background-size: 70%;
         background-repeat: no-repeat;
         margin-top: 3%;
+    }
+
+    .add-account-icon {
+        margin-top: 4%;
+    }
+
+    .add-acc-sec-ans {
+        font-size: 14px;
     }
   }
 
