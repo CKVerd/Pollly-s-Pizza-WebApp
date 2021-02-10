@@ -220,6 +220,36 @@ li:hover {
     cursor: hand;
 }
 
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .menu-items a {
+        font-size: 16px;
+    }
+
+    .icon-2 {
+        margin-top: -3px;
+    }
+    .icon-3 {
+        margin-top: -3px;
+    } 
+    
+    .icon-4 {
+        margin-top: -5px;
+    }
+    
+    .icon-5 {
+        margin-top: 5px;
+    }
+
+    .help-button {
+        margin-left: -1%;
+        font-size: 12px !important;
+    }
+
+    .logout-button {
+        font-size: 14px;
+    }
+}
+
 .make-visible {
     visibility: visible;
     animation-name: slowAppear;

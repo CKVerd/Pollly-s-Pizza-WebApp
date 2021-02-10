@@ -259,7 +259,6 @@
     background-color: #40adf1;
 }
 
-
 .change-usern-popup {
     overflow: auto;
     visibility: hidden;
@@ -610,6 +609,89 @@
     width: 90%;
     margin-left: -8%;
 }
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .inner-security-questions {
+        padding: 7px 0px;
+        font-size: 16px;
+    }
+    .add-acc-sec-ans {
+        margin-top: 10%;
+        font-size: 16px;
+        padding: 7px 0px;
+    }
+
+    .add-info-sec-ans {
+        margin-top: -0.5%;
+    }
+
+    .header-text {
+        font-size: 18px;
+    }
+
+    .add-info-label label {
+        font-size: 16px;
+    }
+    
+    .info-entry {
+        margin-top: 0.5%;
+        padding: 7px 0px;
+    }
+
+    .add-info-sec-ques {
+        padding-top: 2%;
+    }
+
+    .inner-text {
+        font-size: 16px;
+    }
+    
+    .username-loc {
+        font-size: 16px;
+    }
+
+    .change-uname{
+        font-size: 16px;
+    }
+
+    .change-pass{
+        font-size: 16px;
+    }
+
+    .delete-button {
+        font-size: 12px;
+    }
+
+    .sec-questions {
+        font-size: 16px;
+    }
+
+    .sec-answer {
+        font-size: 16px;
+    }
+    
+    .sec-answer::placeholder {
+        font-size: 16px;
+    }
+
+    .update-button {
+        margin-top: 50%;
+        font-size: 14px;
+    }
+
+    .add-button {
+        font-size: 14px;
+    }
+
+    .row-1 {
+        margin-top: 2%;
+    }
+
+    .inner-col-1 {
+        margin-left: 2%;
+    }
+  }
+
 .make-visible {
     visibility: visible;
     animation-name: slowAppear;
