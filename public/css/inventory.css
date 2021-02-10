@@ -413,6 +413,41 @@
     .dropdown-icon {
         background-size: 70%;
     }
+
+    .add-stock-popup-form h1 {
+        font-size: 20px;
+    }
+
+    .add-stock-popup-form label {
+        font-size: 16px;
+    }
+
+    .edit-stock-popup-form h1 {
+        font-size: 20px;
+    }
+
+    .edit-stock-popup-form label {
+        font-size: 16px;
+    }
+
+
+    .add-input {
+        font-size: 16px;
+        padding: 6px 0px;
+    }
+    
+    .category-input {
+        font-size: 16px;
+        padding: 6px 0px;
+    }
+
+    .submit-button {
+        font-size: 16px;
+        height: 9%;
+        width: 30%;
+        font-size: 14px;
+        font-weight: 600;
+    }
 }
 
 @keyframes flyFromRight {
