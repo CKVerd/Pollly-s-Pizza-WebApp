@@ -91,7 +91,7 @@
                             </div>
                         </div>
                         <div class = "inner-col-3 info-column">
-                            <input class = "delete-button" type = "button" value = "Delete Account" onclick="showPopup()">
+                            <input class = "delete-button" type = "button" value = "Delete Account" onclick="showDelete()">
                         </div>
                     </div>
                     <div class = "row-2 info-container">
@@ -159,11 +159,13 @@
                     </div>
                 </div>
 
-                <div class = "popup">
-                    <div class = "popup-form">
-                        <button class = "close-popup" onclick="closePopup()">X</button>
-                        <h1>POP UP</h1> 
-                    </div>
+                <div class = "delete-popup">
+                    <form class = "delete-popup-form">
+                        <button class = "close-delete close-popup" onclick="closeDeletePopup()">X</button>
+                        <h1>Enter Password</h1> 
+                        <input required type = "password" placeholder = "Enter Password" class = "pass-input pass1">
+                        <input class = "delete-acc-inner delete-button" type = "submit" value = "Delete Account">
+                    </form>
                 </div>
 
                 <div class = "change-usern-popup">

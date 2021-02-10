@@ -39,13 +39,24 @@ function closeChangePassPopup() {
 
 function showAddAccountPopup() {
     var popup = document.querySelector (".add-account-popup");
-    var popup = document.querySelector (".add-account-popup");
     popup.classList.remove('make-invisible');
     popup.classList.add('make-visible');
 }
 
 function closeAddAccountPopup() {
     var popup = document.querySelector (".add-account-popup");
+    popup.classList.remove('make-visible');
+    popup.classList.add('make-invisible');
+}
+
+function showDelete() {
+    var popup = document.querySelector('.delete-popup');
+    popup.classList.remove('make-invisible');
+    popup.classList.add('make-visible');
+}
+
+function closeDeletePopup() {
+    var popup = document.querySelector (".delete-popup");
     popup.classList.remove('make-visible');
     popup.classList.add('make-invisible');
 }
