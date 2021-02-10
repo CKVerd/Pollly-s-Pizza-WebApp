@@ -280,6 +280,10 @@
     .submit-button {
         font-size: 14px;
     }
+
+    .edit-button {
+        font-size: 14px;
+    }
 }
 
 @keyframes flyFromRight {
