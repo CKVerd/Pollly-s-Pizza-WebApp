@@ -1,6 +1,6 @@
 .page {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     overflow: hidden;
     z-index: 0;
 }
@@ -19,60 +19,133 @@
     display: flex;
     flex-direction: row;
     width: 100%;
-    height: 15vh;
+    height: 30vh;
 }
 
-.info-text {
-    max-height: 100%;
-    max-width: 50%;
-    /* background-color: green; */
-    padding-top: 6%;
-    padding-left: 8%; 
+.row-2 {
+    height: 35vh !important;
+}
+
+.username-info {
+    display: flex;
+}
+
+.header-text {
+    font-size: 20px;
+    font-weight: 800;
+    text-decoration: underline;
+}
+
+.info-column {
+    width: 45vw;
+    height: 100%;
+    /* background-color: red; */
+    padding-top: 3%;
+    padding-left: 3%;
+}
+
+.inner-col-1 {
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+}
+
+.inner-col-2{
+    opacity: 0;
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+    animation-delay: 0.2s;
+    animation-fill-mode: forwards;
+}
+
+.inner-col-3{
+    opacity: 0;
+    animation-name: flyFromLeft;
+    animation-duration: 0.8s;
+    animation-delay: 0.4s;
+    animation-fill-mode: forwards;
 }
 
 .inner-text {
+    margin-top: 5%;
     font-size: 20px;
     font-weight: 800;
-}
-
-.info-entry {
-    display: flex;
-    flex-direction: column;
-    max-height: 100%;
-    width: 60%;
-    /* background-color: yellow; */
-    padding-top: 6%;
-    align-items: center;
-    margin-left: -10%;
+    margin-left: 5%;
 }
 
 .username-loc {
     font-size: 20px;
     font-weight: 400;
     text-decoration: underline;
+    margin-top: 5%;
+    margin-left: 5%;
 }
 
-.pass-loc {
+.change-pass{
+    margin-top: 3%;
     font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+}
+
+.change-uname{
+    margin-top: 10%;
+    font-size: 20px;
+    font-weight: 700;
+    text-decoration: none;
+    color: rgb(170, 170, 170);
+}
+
+.change-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.delete-button {
+    width: 30%;
+    height: 15%;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #f37f7f;
+    font-family: "Raleway";
+    font-style: normal;
+    font-size: 16px;
+    font-weight:500;
+    color: white;
+    margin-top: 8%;
+}
+
+.delete-button:hover {
+    background-color: #f14040;
+}
+
+.security-options-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-left: 5%;
+    margin-top: 5%;
+}
+
+.sec-questions{
     padding: 10 0px;
     border-radius: 50px;
     border: 1px solid rgb(216, 216, 216);
     font-size: 18px;
     font-weight: 700;
-    width: 60%;
-    text-indent: 10%;
+    max-width: 100%;
+    width: 90%;
+    text-indent: 20px;
     -webkit-border-radius: 50px;
     outline: none;
-    margin-top: 5%;
-    margin-left: 10%;
-
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
 }
 
-.pass-loc::placeholder {
-    font-weight: 200;
-    font-size: 20px;
-    text-decoration: none;
-    outline: none;
+.sec-questions:hover {
+    cursor: hand;
 }
 
 .input-uname {
@@ -88,25 +161,6 @@
     color: rgb(207, 207, 207);
 }
 
-.change-pass{
-    position: absolute;
-    margin-top: 28%;
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: none;
-    color: rgb(170, 170, 170);
-    margin-left: 2%;
-}
-
-.change-uname{
-    position: absolute;
-    margin-top: 18.5%;
-    font-size: 20px;
-    font-weight: 700;
-    text-decoration: none;
-    color: rgb(170, 170, 170);
-    margin-left: 2%;
-}
 
 .change-uname:hover {
     color: rgb(143, 143, 143);
@@ -116,45 +170,17 @@
     color: rgb(143, 143, 143);
 }
 
-.info-rest {
-    height: 75vh;
-    width: 100%;
-    /* background-color: orange; */
-    padding-top: 10%;
-}
-
-.sec-questions{
-    padding: 10 0px;
-    border-radius: 50px;
-    border: 1px solid rgb(216, 216, 216);
-    font-size: 18px;
-    font-weight: 700;
-    max-width: 100%;
-    width: 80%;
-    text-indent: 20px;
-    -webkit-border-radius: 50px;
-    outline: none;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-.sec-questions:hover {
-    cursor: hand;
-}
 .dropdown-icon {
-    margin-top: 8px;
     background: url(/res/dropdown.png);
-    background-size: 70%;
-    background-repeat: no-repeat;
-    background-position: center;
-    outline: none;
-    width: 30px;
-    height: 30px;
     position: absolute;
-    border: none;
     z-index: 10 !important;
-    margin-left: -8%;
+    margin-left: -10%;
+    margin-top: 2%;
+    height: 20px;
+    width: 20px;
+    background-size: 100%;
+    outline: none;
+    border: none;
     pointer-events: none;
 }
 
@@ -163,24 +189,13 @@
 }
 
 .select-container {
-    margin-top: 9%;
-    height: 25px;
+    margin-top: 5%;
     position: relative;
-}
-
-.security-div {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.header-3 {
-    margin-top: 15%;
 }
 
 .add-button {
     width: 30%;
-    height: 6%;
+    height: 15%;
     border-radius: 50px;
     outline: none;
     border: none;
@@ -190,7 +205,7 @@
     font-size: 16px;
     font-weight:500;
     color: white;
-    margin-top: 5%;
+    margin-top: 10%;
     margin-left: 10%;
 }
 
@@ -198,17 +213,8 @@
     background-color: #40adf1;
 }
 
-.col-2 {
-    height: 95vh;
-    width: 40%;
-    /* background-color: orange; */
-    display: flex;
-    flex-direction: column;
-    animation-name: flyFromLeft;
-    animation-duration: 0.8s;
-    opacity: 0%;
-    animation-fill-mode: forwards;
-    animation-delay: 0.2s;
+.row-2 {
+    margin-top: -3%;
 }
 
 .sec-answer {
@@ -218,54 +224,25 @@
     font-size: 18px;
     font-weight: 700;
     max-width: 100%;
-    width: 70%;
-    margin-top: 6%;
+    width: 80%;
     outline: none;
     text-indent: 15px;
+    margin-top: 5%;
 }
 
 .sec-answer::placeholder {
     color: rgb(207, 207, 207);
     font-size: 18px;
+    opacity: 40%;
 }
 
-#security-ans-1 {
-    margin-top: 59%;
-}
-.col-3 {
-    height: 95vh;
-    width: 20%;
-    /* background-color: green; */
-    animation-name: flyFromLeft;
-    animation-duration: 0.8s;
-    opacity: 0%;
-    animation-fill-mode: forwards;
-    animation-delay: 0.4s;
-}
-
-.delete-button {
-    width: 60%;
-    height: 5%;
-    border-radius: 50px;
-    outline: none;
-    border: none;
-    background-color: #f37f7f;
-    font-family: "Raleway";
-    font-style: normal;
-    font-size: 16px;
-    font-weight:500;
-    color: white;
-    margin-top: 30%;
-    margin-left: 10%;
-}
-
-.delete-button:hover {
-    background-color: #f14040;
+.security-answers {
+    margin-top: 10%;
 }
 
 .update-button {
-    width: 60%;
-    height: 5%;
+    width: 30%;
+    height: 15%;
     border-radius: 50px;
     outline: none;
     border: none;
@@ -275,19 +252,13 @@
     font-size: 16px;
     font-weight:500;
     color: white;
-    margin-top: 134%;
-    margin-left: 10%;
+    margin-top: 43%;
 }
 
 .update-button:hover {
     background-color: #40adf1;
 }
 
-.header-text {
-    font-size: 20px;
-    font-weight: 800;
-    text-decoration: underline;
-}
 
 .change-usern-popup {
     overflow: auto;

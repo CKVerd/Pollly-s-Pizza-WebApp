@@ -2,7 +2,7 @@
     <head>
         <title>Account</title>
         <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=+(1/window.devicePixelRatio))">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- FONTS -->
         <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
@@ -74,116 +74,125 @@
                             <a href = "/help" class = "help-button">How to use</a>
                         </ul>
                     </div>
-
                 </div>
-                <div class = "page">
-                    <div class = "col-1">
-                        <p class = "header-text">Information</p>
-                        <div class = "info-container">
-                            <div class = "info-text">
+                <div class = page>
+                    <div class = "row-1 info-container">
+                        <div class = "inner-col-1 info-column">
+                            <p class = "header-text">Information</p>
+                            <div class = "username-info">
                                 <p class = "inner-text">account:</p>
-                            </div>
-
-                            <div class = "info-entry">
                                 <p class = "username-loc"><%=username%></p>
                             </div>
-
                         </div>
+                        <div class = "inner-col-2 info-column">
+                            <div class = "change-info">
+                                <a href = "#" class = "change-uname" onclick="showChangeUsern()">change username</a>
+                                <a href = "#" class = "change-pass" onclick="showChangePass()">change password</a>
+                            </div>
+                        </div>
+                        <div class = "inner-col-3 info-column">
+                            <input class = "delete-button" type = "button" value = "Delete Account" onclick="showPopup()">
+                        </div>
+                    </div>
+                    <div class = "row-2 info-container">
+                        <form class = "info-container">
+                            <div class = "inner-col-1 info-column">
+                                <p class = "header-text">Security Questions</p>
+                                <div class = "security-options-container">
+                                    <div class = "select-container">
+                                        <select name="security options" class = "security-1 sec-questions">
+                                            <option value = "q1"><%=q1%></option>
+                                            <option value = "q1">Security Question 2</option>
+                                            <option value = "q1">Security Question 3</option>
+                                            <option value = "q1">Security Question 4</option>
+                                            <option value = "q1">Security Question 5</option>
+                                        </select>
+                                        <button class = "dropdown-icon"></button>
+                                    </div>
 
-                        <div class = "info-rest">
-                            <p class = "header-text">Security Questions</p>
-                            <div class = "security-div">
-                                <div class = select-container>
-                                    <select name="security options" class = "security-1 sec-questions">
-                                        <option value = "q1"><%=q1%></option>
-                                        <option value = "q1">Security Question 2</option>
-                                        <option value = "q1">Security Question 3</option>
-                                        <option value = "q1">Security Question 4</option>
-                                        <option value = "q1">Security Question 5</option>
-                                    </select>
-                                    <button type = "submit" class = "dropdown-icon"></button>
-                                 </div>
+                                    <div class = "select-container">
+                                        <select name="security options" class = "security-1 sec-questions">
+                                            <option value = "q1"><%=q1%></option>
+                                            <option value = "q1">Security Question 2</option>
+                                            <option value = "q1">Security Question 3</option>
+                                            <option value = "q1">Security Question 4</option>
+                                            <option value = "q1">Security Question 5</option>
+                                        </select>
+                                        <button class = "dropdown-icon"></button>
+                                    </div>
 
-                                <div class = select-container>
-                                    <select name="security options" class = "security-2 sec-questions">
-                                        <option value = "q1"><%=q2%></option>
-                                        <option value = "q1">Security Question 2</option>
-                                        <option value = "q1">Security Question 3</option>
-                                        <option value = "q1">Security Question 4</option>
-                                        <option value = "q1">Security Question 5</option>
-                                    </select>
-                                    <button type = "submit" class = "dropdown-icon"></button>
-                                </div>
-
-                                <div class = select-container>
-                                    <select name="security options" class = "security-3 sec-questions">
-                                        <option value = "q1"><%=q3%></option>
-                                        <option value = "q1">Security Question 2</option>
-                                        <option value = "q1">Security Question 3</option>
-                                        <option value = "q1">Security Question 4</option>
-                                        <option value = "q1">Security Question 5</option>
-                                    </select>
-                                    <button type = "submit" class = "dropdown-icon"></button>
+                                    <div class = "select-container">
+                                        <select name="security options" class = "security-1 sec-questions">
+                                            <option value = "q1"><%=q1%></option>
+                                            <option value = "q1">Security Question 2</option>
+                                            <option value = "q1">Security Question 3</option>
+                                            <option value = "q1">Security Question 4</option>
+                                            <option value = "q1">Security Question 5</option>
+                                        </select>
+                                        <button class = "dropdown-icon"></button>
+                                    </div>
                                 </div>
                             </div>
-                            <p class = "header-text header-3">Accounts:</p>
+                            <div class = "inner-col-2 info-column">
+                                <div class = "security-answers">
+                                    <input type = "text" id = "security-ans-1" class = "sec-answer" placeholder = "Answer">
+                                    <input type = "text" id = "security-ans-2" class = "sec-answer" placeholder = "Answer">
+                                    <input type = "text" id = "security-ans-3" class = "sec-answer" placeholder = "Answer">
+                                </div>
+                            </div>
+                            <div class = "inner-col-3 info-column">
+                                <input class = "update-button" type = "submit" value = "Update">
+                            </div>
+                        </form>
+                    </div>
+                    <div class = "row-3 info-container">
+                        <div class = "inner-col-1 info-column">
+                            <p class = "header-text">Accounts</p>
                             <input class = "add-button" type = "button" value = "Add Account" onclick="showPopup()">
                         </div>
+                        <div class = "inner-col-2 info-column">
 
+                        </div>
+                        <div class = "inner-col-3 info-column">
+
+                        </div>
                     </div>
+                </div>
 
-                    <div class = "col-2">
-                        <a href = "#" class = "change-uname" onclick="showChangeUsern()">change username</a>
-                        <a href = "#" class = "change-pass" onclick="showChangePass()">change password</a>
-                        
-                        <form onsubmit="return showPopup()">
-                        <input type = "text" id = "security-ans-1" class = "sec-answer" placeholder = "Answer">
-                        <input type = "text" id = "security-ans-2" class = "sec-answer" placeholder = "Answer">
-                        <input type = "text" id = "security-ans-3" class = "sec-answer" placeholder = "Answer">
+                <div class = "popup">
+                    <div class = "popup-form">
+                        <button class = "close-popup" onclick="closePopup()">X</button>
+                        <h1>POP UP</h1> 
                     </div>
-
-                    <div class = "col-3">
-                        <input class = "delete-button" type = "button" value = "Delete Account" onclick="showPopup()">
-                        <input class = "update-button" type = "submit" value = "Update">
+                </div>
+                <div class = "change-usern-popup">
+                    <form class = "change-usern-popup-form" action="/changeUsername" method="POST">
+                        <button class = "close-popup" onclick="closeUsernPopup()">X</button>
+                        <div class = "change-usern-1">
+                            <h1>Change Username</h1>
+                            <input required type = "text" placeholder = "New Username" class = "new-usern" name="username">
+                            <button class = "next-usern" onclick="usernNext1()">next</button>
+                        </div>
+                        <div class = "change-usern-2">
+                            <h1>Confirm Password</h1>
+                            <input required type = "password" placeholder = "Enter Password" class = "new-usern" name="password">
+                            <input type = "submit" class = "next-usern"></input>
+                        </div>
                     </form>
-                    </div>
                 </div>
-            </div>
-            <div class = "popup">
-                <div class = "popup-form">
-                    <button class = "close-popup" onclick="closePopup()">X</button>
-                    <h1>POP UP</h1> 
+
+                <div class = "change-pass-popup">
+                    <form class = "change-pass-popup-form" method="POST" action="/changePass">
+                        <button class = "close-popup" onclick="closeChangePassPopup()">X</button>
+                        <div class = "change-pass-1">
+                            <h1>Change Password</h1>
+                            <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1">
+                            <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
+                            <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
+                            <input type = "submit" class = "submit-pass"></input>
+                        </div>
+                    </form>
                 </div>
-            </div>
-
-            
-            <div class = "change-usern-popup">
-                <form class = "change-usern-popup-form" action="/changeUsername" method="POST">
-                    <button class = "close-popup" onclick="closeUsernPopup()">X</button>
-                    <div class = "change-usern-1">
-                        <h1>Change Username</h1>
-                        <input required type = "text" placeholder = "New Username" class = "new-usern" name="username">
-                        <button class = "next-usern" onclick="usernNext1()">next</button>
-                    </div>
-                    <div class = "change-usern-2">
-                        <h1>Confirm Password</h1>
-                        <input required type = "password" placeholder = "Enter Password" class = "new-usern" name="password">
-                        <input type = "submit" class = "next-usern"></input>
-                    </div>
-                </form>
-            </div>
-
-            <div class = "change-pass-popup">
-                <form class = "change-pass-popup-form" method="POST" action="/changePass">
-                    <button class = "close-popup" onclick="closeChangePassPopup()">X</button>
-                    <div class = "change-pass-1">
-                        <h1>Change Password</h1>
-                        <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1">
-                        <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
-                        <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
-                        <input type = "submit" class = "submit-pass"></input>
-                    </div>
-                </form>
             </div>
         </div>
     </body>
