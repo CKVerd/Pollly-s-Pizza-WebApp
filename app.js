@@ -40,7 +40,10 @@ const db = new sqlite3.Database(db_name, (err) => {
 app.use(session({
     secret: 'secret',
     resave: true,
-    saveUninitialized: true
+    saveUninitialized: true,
+    cookie:{
+      maxAge:600000
+    }
   }));
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
