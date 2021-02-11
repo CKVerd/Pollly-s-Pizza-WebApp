@@ -129,7 +129,7 @@ app.post("/login", (req,res) => {
     const password = req.body.pw;
     
     db.all(sql,username,(err,row)=>{
-        console.log(row[0])
+        
         if (err){
           res.redirect("back");
         }
@@ -189,6 +189,33 @@ app.post("/changePass",(req,res)=>{
       
     })
   })
+  app.post("/changeSec",(req,res)=>{
+    const sql = "UPDATE userAccount SET secQues1= ?, secQues2 = ?, secQues3 = ?,secAnsw1 = ?, secAnsw2 = ?, secAnsw3 = ? WHERE (username = '"+req.session.username+"')";
+    const password = req.body.oldpw;
+    const secq1 = req.body.security1;
+    const secq2 = req.body.security2;
+    const secq3 = req.body.security3;
+    const seca1 = req.body.ua1;
+    const seca2 = req.body.ua2;
+    const seca3 = req.body.ua3;
+      if(password == req.session.password){
+          db.run(sql,[secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
+              if(err){
+                console.log(err.message)
+                req.session.secQues1 =secq1
+                req.session.secQues2 = secq2
+                req.session.secQues3 = secq3
+              }else{
+                console.log(req.session.password)
+                res.render("account",{username:req.session.username,q1:secq1,q2:secq2,q3:secq3});
+              } 
+      });
+      }else{
+        //"error" password doesnt match
+          res.redirect("/");
+        }
+        
+      })
   app.post("/new",(req, res)=>{
     const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)"
     const username = req.body.user;
@@ -210,7 +237,7 @@ app.post("/changePass",(req,res)=>{
           }
           
         })
-      }else
+      }else{
       //error password and confirm password doesnt match
       res.redirect("back")
       }
