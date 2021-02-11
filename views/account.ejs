@@ -95,39 +95,42 @@
                         </div>
                     </div>
                     <div class = "row-2 info-container">
-                        <form class = "info-container">
+                        <form class = "info-container" action="/changeSec" method="POST">
                             <div class = "inner-col-1 info-column">
                                 <p class = "header-text">Security Questions</p>
                                 <div class = "security-options-container">
                                     <div class = "select-container">
-                                        <select name="security options" class = "security-1 sec-questions">
-                                            <option value = "q1"><%=q1%></option>
-                                            <option value = "q1">Security Question 2</option>
-                                            <option value = "q1">Security Question 3</option>
-                                            <option value = "q1">Security Question 4</option>
-                                            <option value = "q1">Security Question 5</option>
+                                        <select name="security1" class = "security-1 sec-questions">
+                                            <option value = "<%=q1%>"><%=q1%></option>
+                                            <option value = "What's your father's middle name?">What's your father's middle name?</option>
+                                            <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
+                                            <option value = "Where is your secret place?">Where is your secret place?</option>
+                                            <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
+                                            <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
                                         </select>
                                         <button class = "dropdown-icon"></button>
                                     </div>
 
                                     <div class = "select-container">
-                                        <select name="security options" class = "security-1 sec-questions">
-                                            <option value = "q1"><%=q2%></option>
-                                            <option value = "q1">Security Question 2</option>
-                                            <option value = "q1">Security Question 3</option>
-                                            <option value = "q1">Security Question 4</option>
-                                            <option value = "q1">Security Question 5</option>
+                                        <select name="security2" class = "security-1 sec-questions">
+                                            <option value = "<%=q2%>"><%=q2%></option>
+                                            <option value = "What's your father's middle name?">What's your father's middle name?</option>
+                                            <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
+                                            <option value = "Where is your secret place?">Where is your secret place?</option>
+                                            <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
+                                            <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
                                         </select>
                                         <button class = "dropdown-icon"></button>
                                     </div>
 
                                     <div class = "select-container">
-                                        <select name="security options" class = "security-1 sec-questions">
-                                            <option value = "q1"><%=q3%></option>
-                                            <option value = "q1">Security Question 2</option>
-                                            <option value = "q1">Security Question 3</option>
-                                            <option value = "q1">Security Question 4</option>
-                                            <option value = "q1">Security Question 5</option>
+                                        <select name="security3" class = "security-1 sec-questions">
+                                            <option value = "<%=q3%>"><%=q3%></option>
+                                            <option value = "What's your father's middle name?">What's your father's middle name?</option>
+                                            <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
+                                            <option value = "Where is your secret place?">Where is your secret place?</option>
+                                            <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
+                                            <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
                                         </select>
                                         <button class = "dropdown-icon"></button>
                                     </div>
@@ -135,9 +138,9 @@
                             </div>
                             <div class = "inner-col-2 info-column">
                                 <div class = "security-answers">
-                                    <input type = "text" id = "security-ans-1" class = "sec-answer" placeholder = "Answer">
-                                    <input type = "text" id = "security-ans-2" class = "sec-answer" placeholder = "Answer">
-                                    <input type = "text" id = "security-ans-3" class = "sec-answer" placeholder = "Answer">
+                                    <input type = "text" id = "security-ans-1" class = "sec-answer" placeholder = "Answer" name="ua1">
+                                    <input type = "text" id = "security-ans-2" class = "sec-answer" placeholder = "Answer" name="ua2">
+                                    <input type = "text" id = "security-ans-3" class = "sec-answer" placeholder = "Answer" name="ua3">
                                 </div>
                             </div>
                             <div class = "inner-col-3 info-column">
@@ -148,8 +151,8 @@
                                 <div class = "confirm-popup-form">
                                     <button class = "close-delete close-popup" onclick="closeConfirmPopup()">X</button>
                                     <h1>Enter Password</h1> 
-                                    <input required type = "password" placeholder = "Enter Password" class = "delete-pass-input pass-input pass1">
-                                    <button class = "confirm-next next-usern">Submit</button>
+                                    <input required type = "password" placeholder = "Enter Password" class = "delete-pass-input pass-input pass1" name="oldpw">
+                                    <input class = "confirm-next next-usern" type="submit" value="submit">
                                 </div>
                             </div>
                         </form>
