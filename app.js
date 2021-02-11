@@ -148,7 +148,7 @@ app.post("/login", (req,res) => {
               }
             });
            } else{
-              console.log("user doesn't exist")
+            res.redirect("back");
             }
           }
       );
@@ -245,6 +245,23 @@ app.post("/changePass",(req,res)=>{
     })
     
   })
+  app.post("/delete", (req, res) => {
+    const sql = "DELETE FROM userAccount WHERE username = ?";
+    if(req.body.delAccount == req.session.password){
+      db.run(sql, req.session.username, err => {
+        if(err){
+          console.log(err.message)
+        }else{
+          res.redirect("/");
+        }
+        
+      });
+    }else{
+      console.log(err.message)
+      res.redirect("back")
+    }
+   
+  });
   app.get("/account",(req,res)=>{
     res.render("account",{username:req.session.username,q1:req.session.secQues1,q2:req.session.secQues2,q3:req.session.secQues3});
 });
