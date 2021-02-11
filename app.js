@@ -145,6 +145,9 @@ app.post("/login", (req,res) => {
               req.session.secQues1 = row[0].secQues1;
           req.session.secQues2 = row[0].secQues2;
           req.session.secQues3 = row[0].secQues3;
+          req.session.secAnsw1 = row[0].secAnsw1;
+          req.session.secAnsw2 = row[0].secAnsw2;
+          req.session.secAnsw3 = row[0].secAnsw3;
               res.redirect('/account')
               }else{
                 res.redirect("back");
@@ -203,14 +206,22 @@ app.post("/changePass",(req,res)=>{
     const seca3 = req.body.ua3;
       if(password == req.session.password){
           db.run(sql,[secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
-              if(err){
-                console.log(err.message)
-                req.session.secQues1 =secq1
+            req.session.secQues1 =secq1
                 req.session.secQues2 = secq2
-                req.session.secQues3 = secq3
+                req.session.secQues3 = secq3  
+            if(err){
+                console.log(err.message)  
               }else{
-                console.log(req.session.password)
-                res.render("account",{username:req.session.username,q1:secq1,q2:secq2,q3:secq3});
+                
+                res.render("account",{
+                  username:req.session.username,
+                  q1:secq1,
+                  q2:secq2,
+                  q3:secq3,
+                  a1:seca1,
+                  a2:seca2,
+                  a3:seca3,
+                });
               } 
       });
       }else{
@@ -266,7 +277,15 @@ app.post("/changePass",(req,res)=>{
    
   });
   app.get("/account",(req,res)=>{
-    res.render("account",{username:req.session.username,q1:req.session.secQues1,q2:req.session.secQues2,q3:req.session.secQues3});
+    res.render("account",{
+      username:req.session.username,
+      q1:req.session.secQues1,
+      q2:req.session.secQues2,
+      q3:req.session.secQues3,
+      a1:req.session.secAnsw1,
+      a2:req.session.secAnsw2,
+      a3:req.session.secAnsw3,
+    });
 });
 app.get("/help",(req,res)=>{
   res.render("help")
