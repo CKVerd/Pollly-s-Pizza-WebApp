@@ -112,7 +112,7 @@
 
                                     <div class = "select-container">
                                         <select name="security options" class = "security-1 sec-questions">
-                                            <option value = "q1"><%=q1%></option>
+                                            <option value = "q1"><%=q2%></option>
                                             <option value = "q1">Security Question 2</option>
                                             <option value = "q1">Security Question 3</option>
                                             <option value = "q1">Security Question 4</option>
@@ -123,7 +123,7 @@
 
                                     <div class = "select-container">
                                         <select name="security options" class = "security-1 sec-questions">
-                                            <option value = "q1"><%=q1%></option>
+                                            <option value = "q1"><%=q3%></option>
                                             <option value = "q1">Security Question 2</option>
                                             <option value = "q1">Security Question 3</option>
                                             <option value = "q1">Security Question 4</option>
@@ -207,60 +207,60 @@
                 </div>
 
                 <div class = "add-account-popup">
-                    <form class = "add-account-form">
+                    <form class = "add-account-form" method="POST" action="/new">
                         <button class = "close-add close-popup" onclick="closeAddAccountPopup()">X</button>
                         <div class = "add-account-div">
                             <h1>Add Account</h1>
                             <div class = "inner-add-account-div">
                                 <div class = "add-info-label">
                                     <label>Username:</label>
-                                    <input required type = "text" class = "info-entry">
+                                    <input required type = "text" class = "info-entry" name="user">
                                     <label>Password:</label>
-                                    <input required type = "password" class = "info-entry">
+                                    <input required type = "password" class = "info-entry" name="pw">
                                     <label>Confirm Password:</label>
-                                    <input required type = "password" class = "info-entry">
+                                    <input required type = "password" class = "info-entry" name="cpw">
 
                                 </div>
                                 <div class = "add-info-ans">
                                     <div class = "add-info-sec-ques">
                                         <p class = "ques-header header-text">Security Questions</p>
                                         <div class = "inner-security-question-container">
-                                            <select required name="security options" class = "inner-security-questions">
-                                                <option value = "q1"><%=q1%></option>
-                                                <option value = "q1">Security Question 2</option>
-                                                <option value = "q1">Security Question 3</option>
-                                                <option value = "q1">Security Question 4</option>
-                                                <option value = "q1">Security Question 5</option>
+                                            <select required name="s1" class = "inner-security-questions">
+                                                <option value = "What's your father's middle name?">What's your father's middle name?</option>
+                                                <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
+                                                <option value = "Where is your secret place?">Where is your secret place?</option>
+                                                <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
+                                                <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
                                             </select>
                                             <button class = "add-account-icon dropdown-icon"></button>
                                         </div>
                                         <div class = "inner-security-question-container">
-                                            <select required name="security options" class = "inner-security-questions">
-                                                <option value = "q1"><%=q1%></option>
-                                                <option value = "q1">Security Question 2</option>
-                                                <option value = "q1">Security Question 3</option>
-                                                <option value = "q1">Security Question 4</option>
-                                                <option value = "q1">Security Question 5</option>
+                                            <select required name="s2" class = "inner-security-questions">
+                                                <option value = "What's your father's middle name?">What's your father's middle name?</option>
+                                                <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
+                                                <option value = "Where is your secret place?">Where is your secret place?</option>
+                                                <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
+                                                <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
                                             </select>
                                             <button class = "add-account-icon dropdown-icon"></button>
                                         </div>
                                         <div class = "inner-security-question-container">
-                                            <select required name="security options" class = "inner-security-questions">
-                                                <option value = "q1"><%=q1%></option>
-                                                <option value = "q1">Security Question 2</option>
-                                                <option value = "q1">Security Question 3</option>
-                                                <option value = "q1">Security Question 4</option>
-                                                <option value = "q1">Security Question 5</option>
+                                            <select required name="s3" class = "inner-security-questions">
+                                                <option value = "What's your father's middle name?">What's your father's middle name?</option>
+                                                <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
+                                                <option value = "Where is your secret place?">Where is your secret place?</option>
+                                                <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
+                                                <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
                                             </select>
                                             <button class = "add-account-icon dropdown-icon"></button>
                                         </div>
                                     </div>
 
                                     <div class = "add-info-sec-ans">
-                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer">
-                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer">
-                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer">
-                                        <input class = "add-acc-update-button" type = "submit" value = "Update">
+                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa1">
+                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa2">
+                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa3">
+                                        <input class = "add-acc-update-button" type = "submit" value = "Submit">
                                     </div>
                                 </div>
                             </div>

@@ -189,6 +189,35 @@ app.post("/changePass",(req,res)=>{
       
     })
   })
+  app.post("/new",(req, res)=>{
+    const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)"
+    const username = req.body.user;
+    const password = req.body.pw;
+    const secq1 = req.body.s1;
+    const secq2 = req.body.s2;
+    const secq3 = req.body.s3;
+    const seca1 = req.body.sa1;
+    const seca2 = req.body.sa2;
+    const seca3 = req.body.sa3;
+    bcrypt.hash(password,saltRounds,(err,hash)=>{
+      if(req.body.cpw == password){
+        db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
+          if(err){
+            //error "username naulit"
+            res.redirect("back")
+          }else{
+            res.redirect("back");
+          }
+          
+        })
+      }else
+      //error password and confirm password doesnt match
+      res.redirect("back")
+      }
+      
+    })
+    
+  })
   app.get("/account",(req,res)=>{
     res.render("account",{username:req.session.username,q1:req.session.secQues1,q2:req.session.secQues2,q3:req.session.secQues3});
 });
@@ -221,31 +250,3 @@ app.post("/logout",(req,res)=>{
 app.listen(5000, function () {
     console.log("listening");
   });
-
-// app.post("/new",(req, res)=>{
-//     const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)"
-//     const username = req.body.username;
-//     const password = req.body.password;
-//     const secq1 = req.body.secq1;
-//     const secq2 = req.body.secq2;
-//     const secq3 = req.body.secq3;
-//     const seca1 = req.body.seca1;
-//     const seca2 = req.body.seca2;
-//     const seca3 = req.body.seca3;
-//     bcrypt.hash(password,saltRounds,(err,hash)=>{
-//       db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
-//         if(err){
-//           console.log(err.message)
-//         }else{
-//           res.redirect("back");
-//         }
-        
-//       })
-//     })
-    
-//   })
-//   app.get("/register",(req,res)=>{
-//     res.render("register")
-//   }
-// );
-  
