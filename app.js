@@ -63,23 +63,20 @@ app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
+//forgot password routes
 app.get("/", (req, res) => {
     res.render("login");
   });
 app.get("/forgot-pass1",(req,res)=>{
     res.render("forgot-pass-1")
-    
-    
 });
+
 app.get("/forgot-pass2",(req,res)=>{
-  res.render("forgot-pass-2")
-  
-  
+  res.render("forgot-pass-2")  
 });
+
 app.get("/forgot-pass3",(req,res)=>{
-  res.render("forgot-pass-3")
-  
-  
+  res.render("forgot-pass-3") 
 });
 app.post("/forgot-pass2",(req,res)=>{
     const sql = "SELECT * FROM userAccount WHERE username = ?";
@@ -128,7 +125,8 @@ app.post("/forgot-pass3",(req,res)=>{
           res.redirect("/forgot-pass3")
         }
         else{
-          res.redirect("back")
+          //error "incorrect answer"
+          res.redirect("/")
         }
     
       })
@@ -149,88 +147,19 @@ app.post("/forgot-changePass3",(req,res)=>{
       
     })
   })
-app.post("/sort",(req,res)=>{
-  const sql_high = "SELECT * FROM stock ORDER BY stockQty DESC"
-  const sql_low = "SELECT * FROM stock ORDER BY stockQty ASC"
-  const sql_vegetable = "SELECT * FROM stock WHERE category ='Vegetables'"
-  const sql_dairy = "SELECT * FROM stock WHERE category ='Dairy'"
-  const sql_meats = "SELECT * FROM stock WHERE category ='Meats'"
-  const sql_seafoods = "SELECT * FROM stock WHERE category ='Seafood'"
-  const sql_fruit = "SELECT * FROM stock WHERE category ='Fruits'"
-  if(req.body.sort == "Stock Amount (High)"){
-    db.all(sql_high, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }else{
-        console.log(rows)
-        res.render("inventory", { rows: rows });
-      }
-      
-    });
-  }else if (req.body.sort == "Stock Amount (Low)"){
-    db.all(sql_low, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }else{
-        console.log(rows)
-        res.render("inventory", { rows: rows });
-      }
-      
-      
-    });
-  }else if (req.body.sort == "Vegetables"){
-    db.all(sql_vegetable, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }else{
-        console.log(rows)
-        res.render("inventory", { rows: rows });
-      }
-    });
-  }else if (req.body.sort == "Dairy"){
-    db.all(sql_dairy, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }else{
-        console.log(rows)
-        res.render("inventory", { rows: rows });
-      }
-    });
-  }else if (req.body.sort == "Meats"){
-    db.all(sql_meats, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }else{
-        console.log(rows)
-        res.render("inventory", { rows: rows });
-      }
-    });
-  }else if (req.body.sort == "Seafood"){
-    db.all(sql_seafoods, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }else{
-        console.log(rows)
-        res.render("inventory", { rows: rows });
-      }
-    });
-  }else if (req.body.sort == "Fruits"){
-    db.all(sql_fruit, [], (err, rows) => {
-      if (err) {
-        console.error(err.message);
-      }else{
-        console.log(rows)
-        res.render("inventory", { rows: rows });
-      }
-    });
-  }
 
-  
-  
- 
+//account routes
+app.get("/account",(req,res)=>{
+    res.render("account",{
+      username:req.session.username,
+      q1:req.session.secQues1,
+      q2:req.session.secQues2,
+      q3:req.session.secQues3,
+      a1:req.session.secAnsw1,
+      a2:req.session.secAnsw2,
+      a3:req.session.secAnsw3,
+    });
 });
-
-
 app.post("/login", (req,res) => {
     const sql = "SELECT * FROM userAccount WHERE username = ?";
     const username = req.body.un;
@@ -332,7 +261,7 @@ app.post("/changePass",(req,res)=>{
         }
         
       })
-  app.post("/new",(req, res)=>{
+app.post("/new",(req, res)=>{
     const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)"
     const username = req.body.user;
     const password = req.body.pw;
@@ -356,13 +285,47 @@ app.post("/changePass",(req,res)=>{
       }else{
       //error password and confirm password doesnt match
       res.redirect("back")
-      }
-      
+      }  
     })
-    
   })
-  
-  app.post("/addStock",(req,res)=>{
+
+  app.post("/delete", (req, res) => {
+    const sql = "DELETE FROM userAccount WHERE username = ?";
+    if(req.body.delAccount == req.session.password){
+      db.run(sql, req.session.username, (err,rows) => {
+        if(err){
+          console.log(err.message)
+        }else{
+          res.redirect("/");
+        }        
+      });
+    }else{
+      //error "Incorrect password"
+      res.redirect("back")
+    }
+  });
+
+  app.post("/logout",(req,res)=>{
+    req.session.destroy((err) => {
+      res.redirect('/') // will always fire after session is destroyed
+    })
+  })
+
+//inventory   
+app.get("/inventory",(req,res)=>{
+  const sql = "SELECT * FROM stock"
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      return console.error(err.message);
+    }else{
+      
+      res.render("inventory", { rows: rows });
+    }
+    
+   
+  });
+}) 
+app.post("/addStock",(req,res)=>{
     const sql_insert = "INSERT INTO stock(ingredients,category,stockQty,amountThreshold)VALUES(?,?,?,?)"
     const ingredients = req.body.Item;
     const category = req.body.category;
@@ -392,23 +355,80 @@ app.post("/changePass",(req,res)=>{
       }
     });
   });
-  app.post("/delete", (req, res) => {
-    const sql = "DELETE FROM userAccount WHERE username = ?";
-    if(req.body.delAccount == req.session.password){
-      db.run(sql, req.session.username, (err) => {
-        if(err){
-          console.log(err.message)
+app.post("/sort",(req,res)=>{
+    const sql_high = "SELECT * FROM stock ORDER BY stockQty DESC"
+    const sql_low = "SELECT * FROM stock ORDER BY stockQty ASC"
+    const sql_vegetable = "SELECT * FROM stock WHERE category ='Vegetables'"
+    const sql_dairy = "SELECT * FROM stock WHERE category ='Dairy'"
+    const sql_meats = "SELECT * FROM stock WHERE category ='Meats'"
+    const sql_seafoods = "SELECT * FROM stock WHERE category ='Seafood'"
+    const sql_fruit = "SELECT * FROM stock WHERE category ='Fruits'"
+    if(req.body.sort == "Stock Amount (High)"){
+      db.all(sql_high, [], (err, rows) => {
+        if (err) {
+          console.error(err.message);
         }else{
-          res.redirect("/");
-        }
-        
+          console.log(rows)
+          res.render("inventory", { rows: rows });
+        }  
       });
-    }else{
-      console.log(err.message)
-      res.redirect("back")
+    }else if (req.body.sort == "Stock Amount (Low)"){
+      db.all(sql_low, [], (err, rows) => {
+        if (err) {
+          console.error(err.message);
+        }else{
+          console.log(rows)
+          res.render("inventory", { rows: rows });
+        }      
+      });
+    }else if (req.body.sort == "Vegetables"){
+      db.all(sql_vegetable, [], (err, rows) => {
+        if (err) {
+          console.error(err.message);
+        }else{
+          console.log(rows)
+          res.render("inventory", { rows: rows });
+        }
+      });
+    }else if (req.body.sort == "Dairy"){
+      db.all(sql_dairy, [], (err, rows) => {
+        if (err) {
+          console.error(err.message);
+        }else{
+          console.log(rows)
+          res.render("inventory", { rows: rows });
+        }
+      });
+    }else if (req.body.sort == "Meats"){
+      db.all(sql_meats, [], (err, rows) => {
+        if (err) {
+          console.error(err.message);
+        }else{
+          console.log(rows)
+          res.render("inventory", { rows: rows });
+        }
+      });
+    }else if (req.body.sort == "Seafood"){
+      db.all(sql_seafoods, [], (err, rows) => {
+        if (err) {
+          console.error(err.message);
+        }else{
+          console.log(rows)
+          res.render("inventory", { rows: rows });
+        }
+      });
+    }else if (req.body.sort == "Fruits"){
+      db.all(sql_fruit, [], (err, rows) => {
+        if (err) {
+          console.error(err.message);
+        }else{
+          console.log(rows)
+          res.render("inventory", { rows: rows });
+        }
+      });
     }
-   
   });
+
   app.get("/edit/:id", (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM stock WHERE stockID = ?";
@@ -417,17 +437,7 @@ app.post("/changePass",(req,res)=>{
       res.render("edit", { model: row });
     });
   });
-  app.get("/account",(req,res)=>{
-    res.render("account",{
-      username:req.session.username,
-      q1:req.session.secQues1,
-      q2:req.session.secQues2,
-      q3:req.session.secQues3,
-      a1:req.session.secAnsw1,
-      a2:req.session.secAnsw2,
-      a3:req.session.secAnsw3,
-    });
-});
+
 app.get("/help",(req,res)=>{
   res.render("help")
 })
@@ -437,19 +447,7 @@ app.get("/statistics",(req,res)=>{
 app.get("/sales",(req,res)=>{
   res.render("sales")
 })
-app.get("/inventory",(req,res)=>{
-  const sql = "SELECT * FROM stock"
-  db.all(sql, [], (err, rows) => {
-    if (err) {
-      return console.error(err.message);
-    }else{
-      
-      res.render("inventory", { rows: rows });
-    }
-    
-   
-  });
-})
+
 app.get("/dashboard",(req,res)=>{
   res.render("index")
 })
@@ -459,11 +457,7 @@ app.get("/dashboard",(req,res)=>{
 
 
 
-app.post("/logout",(req,res)=>{
-  req.session.destroy((err) => {
-    res.redirect('/') // will always fire after session is destroyed
-  })
-})
+
 app.listen(5000, function () {
     console.log("listening");
   });
