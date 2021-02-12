@@ -11,6 +11,7 @@ const bcrypt = require("bcrypt");
 const saltRounds = 10;
 const db_name = path.join(__dirname, "data", "PollyPizza.db");
 var answer = new Array(3);
+var question = new Array(3);
 var pass;
 var uN;
 
@@ -37,6 +38,19 @@ const db = new sqlite3.Database(db_name, (err) => {
     }
     // console.log("Successful creation of the 'Login' table");
   });
+  const sql_insert =  `CREATE TABLE IF NOT EXISTS stock (
+    stockID INTEGER PRIMARY KEY AUTOINCREMENT,
+    ingredients VARCHAR(50) UNIQUE NOT NULL,
+    category VARCHAR(50) NOT NULL,
+    stockQty INT(50) NOT NULL,
+    amountThreshold INT(50) NOT NULL
+  );`;
+  db.run(sql_insert, (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    // console.log("Successful creation of the 'Login' table");
+  });
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -57,6 +71,16 @@ app.get("/forgot-pass1",(req,res)=>{
     
     
 });
+app.get("/forgot-pass2",(req,res)=>{
+  res.render("forgot-pass-2")
+  
+  
+});
+app.get("/forgot-pass3",(req,res)=>{
+  res.render("forgot-pass-3")
+  
+  
+});
 app.post("/forgot-pass2",(req,res)=>{
     const sql = "SELECT * FROM userAccount WHERE username = ?";
     const username = req.body.un;
@@ -66,7 +90,7 @@ app.post("/forgot-pass2",(req,res)=>{
         console.log(err.message)
       }else
         if(row.length>0){
-         const question = [
+        question = [
            row[0].secQues1,
            row[0].secQues2,
            row[0].secQues3
@@ -101,7 +125,7 @@ app.post("/forgot-pass3",(req,res)=>{
       }else
         if((ans1==answer[0]&&(ans2==answer[1]&&(ans3==answer[2])))){ 
          
-          res.render('forgot-pass-3')
+          res.redirect("/forgot-pass3")
         }
         else{
           res.redirect("back")
@@ -173,7 +197,8 @@ app.post("/changeUsername",(req,res)=>{
     }    
     })
   }else{
-      res.redirect("/")
+     //error "Incorrect password"
+      res.redirect("/account")
     }
   })
 app.post("/changePass",(req,res)=>{
@@ -190,7 +215,8 @@ app.post("/changePass",(req,res)=>{
             } 
     });
     }else{
-        res.redirect("/");
+      //error "Incorrect password"
+        res.redirect("/account");
       }
       
     })
@@ -221,7 +247,7 @@ app.post("/changePass",(req,res)=>{
       });
       }else{
         //"error" password doesnt match
-          res.redirect("/");
+          res.redirect("/account");
         }
         
       })
@@ -257,7 +283,7 @@ app.post("/changePass",(req,res)=>{
   app.post("/delete", (req, res) => {
     const sql = "DELETE FROM userAccount WHERE username = ?";
     if(req.body.delAccount == req.session.password){
-      db.run(sql, req.session.username, err => {
+      db.run(sql, req.session.username, (err) => {
         if(err){
           console.log(err.message)
         }else{
