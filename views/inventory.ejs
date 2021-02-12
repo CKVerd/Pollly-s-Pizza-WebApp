@@ -175,28 +175,27 @@
                 </div>
             </div>
             <div class = "add-stock-popup">
-                <form class = "add-stock-popup-form">
+                <form class = "add-stock-popup-form" method="POST" action="/addStock">
                     <button class = "close-popup" onclick="closeAddStockPopup()">X</button>
                     <h1>Add Stock</h1> 
                     <div class = "inner-add-stock">
                         <label>Item Name:</label>
-                        <input required class = "add-input">
+                        <input required class = "add-input" name="Item">
                         <label>Amount in Stock</label>
-                        <input required class = "add-input">
+                        <input required class = "add-input" name="AmountStock">
                         <label>Threshold</label>
-                        <input required class = "add-input">
+                        <input required class = "add-input" name="threshold">
                         <label>Category</label>
                         <div class = "category-container">
-                            <select required class = "category-input">
+                            <select  name = "category" required class = "category-input">
                                 <option value = "" disabled selected>Select</option>
-                                    <option value = "q1">Vegetables</option>
-                                    <option value = "q1">Dairy</option>
-                                    <option value = "q1">Meats</option>
-                                    <option value = "q1">Seafood</option>
-                                    <option value = "q1">Fruits</option>
-                                    <option value = "q1">Stock Amount (Low)</option>
-                                    <option value = "q1">Stock Amount (High)</option>
-                                    <option value = "q1">None</option>
+                                    <option value = "Vegetables">Vegetables</option>
+                                    <option value = "Dairy">Dairy</option>
+                                    <option value = "Meats">Meats</option>
+                                    <option value = "Seafood">Seafood</option>
+                                    <option value = "Fruits">Fruits</option>
+                                    <option value = "Stock Amount (Low)">Stock Amount (Low)</option>
+                                    <option value = "Stock Amount (High)">Stock Amount (High)</option>
                             </select>
                             <button class = "add-stock-icon dropdown-icon"></button>
                         </div>

@@ -280,6 +280,22 @@ app.post("/changePass",(req,res)=>{
     })
     
   })
+  
+  app.post("/addStock",(req,res)=>{
+    const sql_insert = "INSERT INTO stock(ingredients,category,stockQty,amountThreshold)VALUES(?,?,?,?)"
+    const ingredients = req.body.Item;
+    const category = req.body.category;
+    const Threshold = req.body.threshold;
+    const Stock = req.body.AmountStock
+    db.run(sql_insert,[ingredients,category,Threshold,Stock],(err,row)=>{
+      if(err){
+        console.log(err.message)
+      }else{
+        res.render("inventory")
+      }
+    })
+
+  })
   app.post("/delete", (req, res) => {
     const sql = "DELETE FROM userAccount WHERE username = ?";
     if(req.body.delAccount == req.session.password){
