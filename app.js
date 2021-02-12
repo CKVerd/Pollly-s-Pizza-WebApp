@@ -291,7 +291,7 @@ app.post("/changePass",(req,res)=>{
       if(err){
         console.log(err.message)
       }else{
-        res.render("inventory")
+        res.redirect("/inventory")
       }
     })
 
@@ -334,7 +334,17 @@ app.get("/sales",(req,res)=>{
   res.render("sales")
 })
 app.get("/inventory",(req,res)=>{
-  res.render("inventory")
+  const sql = "SELECT * FROM stock"
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      return console.error(err.message);
+    }else{
+      console.log(rows)
+      res.render("inventory", { rows: rows });
+    }
+    
+   
+  });
 })
 app.get("/dashboard",(req,res)=>{
   res.render("index")

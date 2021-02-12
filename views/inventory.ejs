@@ -103,6 +103,7 @@
                     </div>
 
                     <div class = "row-2">
+                        
                         <table class = "stock-table">
                             <tr>
                                 <th class = "st-header-1">Category</th>
@@ -110,66 +111,15 @@
                                 <th class = "st-header-3">In Stock</th>
                                 <th class = "st-header-4">Actions</th>
                             </tr>
+                           
+                            <% for (const inv of rows) { %>
                             <tr>
-                                <td>Vegetables</td>
-                                <td>Tomatoes</td>
-                                <td>20kg</td>
+                                <td><%=inv.category%></td>
+                                <td><%=inv.ingredients%></td>
+                                <td><%=inv.stockQty%></td>
                                 <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
                             </tr>
-                            <tr>
-                                <td>Vegetables</td>
-                                <td>Lettuce</td>
-                                <td>0.5kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Meats</td>
-                                <td>Pepperoni</td>
-                                <td>12kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Dairy</td>
-                                <td>Full Cream Milk</td>
-                                <td>2L</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Fruits</td>
-                                <td>Mango</td>
-                                <td>1.5kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Fruits</td>
-                                <td>Apple</td>
-                                <td>1kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Fruits</td>
-                                <td>Melon</td>
-                                <td>1kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Vegetables</td>
-                                <td>Brocolli</td>
-                                <td>0.5kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Seafood</td>
-                                <td>Scallops</td>
-                                <td>0.5kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
-                            <tr>
-                                <td>Dairy</td>
-                                <td>Cheese</td>
-                                <td>1.2kg</td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
-                            </tr>
+                            <% } %>
                         </table>
                     </div>
                 </div>
