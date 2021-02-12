@@ -75,20 +75,23 @@
                     </div>
 
                 </div>
+                <form action="/sort" method="post">
                 <div class = "page">
                     <div class = "row-1">
                         <div class = "select-container">
-                            <select name="security options" class = "category-list">
+                            
+                            <select onchange = "this.form.submit()" name="sort" class = "category-list">
                                 <option value = "" disabled selected>Sort</option>
-                                <option value = "q1">Vegetables</option>
-                                <option value = "q1">Dairy</option>
-                                <option value = "q1">Meats</option>
-                                <option value = "q1">Seafood</option>
-                                <option value = "q1">Fruits</option>
-                                <option value = "q1">Stock Amount (Low)</option>
-                                <option value = "q1">Stock Amount (High)</option>
+                                <option value = "Vegetables">Vegetables</option>
+                                <option value = "Dairy">Dairy</option>
+                                <option value = "Meats">Meats</option>
+                                <option value = "Seafood">Seafood</option>
+                                <option value = "Fruits">Fruits</option>
+                                <option value = "Stock Amount (Low)">Stock Amount (Low)</option>
+                                <option value = "Stock Amount (High)">Stock Amount (High)</option>
                                 <option value = "q1">None</option>
                             </select>
+                        </form>
                             <button class = "dropdown-icon"></button>
                         </div>
                         <div class = "sub-row-1">
@@ -117,7 +120,7 @@
                                 <td><%=inv.category%></td>
                                 <td><%=inv.ingredients%></td>
                                 <td><%=inv.stockQty%></td>
-                                <td><button class = "edit-button" onclick = "showEditPopup()">Edit</button></td>
+                                <td><a class = "edit-button" href = "/edit/<%=inv.stockID%>">Edit</a></td>
                             </tr>
                             <% } %>
                         </table>
@@ -144,8 +147,7 @@
                                     <option value = "Meats">Meats</option>
                                     <option value = "Seafood">Seafood</option>
                                     <option value = "Fruits">Fruits</option>
-                                    <option value = "Stock Amount (Low)">Stock Amount (Low)</option>
-                                    <option value = "Stock Amount (High)">Stock Amount (High)</option>
+                                    
                             </select>
                             <button class = "add-stock-icon dropdown-icon"></button>
                         </div>
@@ -154,28 +156,25 @@
                 </form>
             </div>
             <div class = "edit-stock-popup">
-                <form class = "edit-stock-popup-form">
+                <form class = "edit-stock-popup-form" method="POST" action="/edit/<%=rows.stockID%>">
                     <button class = "close-popup" onclick="closeEditStockPopup()">X</button>
                     <h1>Edit Stock</h1> 
                     <div class = "inner-add-stock">
                         <label>Item Name:</label>
-                        <input required class = "add-input">
+                        <input required class = "add-input" name="eName">
                         <label>Amount in Stock</label>
-                        <input required class = "add-input">
+                        <input required class = "add-input" name="eStock">
                         <label>Threshold</label>
-                        <input required class = "add-input">
+                        <input required class = "add-input" name="eThres">
                         <label>Category</label>
-                        <div class = "category-container">
-                            <select required class = "category-input">
+                        <div class = "category-container" >
+                            <select required class = "category-input" name="eCategory">
                                 <option value = "" disabled selected>Select</option>
-                                    <option value = "q1">Vegetables</option>
-                                    <option value = "q1">Dairy</option>
-                                    <option value = "q1">Meats</option>
-                                    <option value = "q1">Seafood</option>
-                                    <option value = "q1">Fruits</option>
-                                    <option value = "q1">Stock Amount (Low)</option>
-                                    <option value = "q1">Stock Amount (High)</option>
-                                    <option value = "q1">None</option>
+                                    <option value = "Vegetables">Vegetables</option>
+                                    <option value = "Dairy">Dairy</option>
+                                    <option value = "Meats">Meats</option>
+                                    <option value = "Seafood">Seafood</option>
+                                    <option value = "Fruits">Fruits</option>
                             </select>
                             <button class = "add-stock-icon dropdown-icon"></button>
                         </div>

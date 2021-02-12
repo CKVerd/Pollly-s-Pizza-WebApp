@@ -149,6 +149,87 @@ app.post("/forgot-changePass3",(req,res)=>{
       
     })
   })
+app.post("/sort",(req,res)=>{
+  const sql_high = "SELECT * FROM stock ORDER BY stockQty DESC"
+  const sql_low = "SELECT * FROM stock ORDER BY stockQty ASC"
+  const sql_vegetable = "SELECT * FROM stock WHERE category ='Vegetables'"
+  const sql_dairy = "SELECT * FROM stock WHERE category ='Dairy'"
+  const sql_meats = "SELECT * FROM stock WHERE category ='Meats'"
+  const sql_seafoods = "SELECT * FROM stock WHERE category ='Seafood'"
+  const sql_fruit = "SELECT * FROM stock WHERE category ='Fruits'"
+  if(req.body.sort == "Stock Amount (High)"){
+    db.all(sql_high, [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+      }else{
+        console.log(rows)
+        res.render("inventory", { rows: rows });
+      }
+      
+    });
+  }else if (req.body.sort == "Stock Amount (Low)"){
+    db.all(sql_low, [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+      }else{
+        console.log(rows)
+        res.render("inventory", { rows: rows });
+      }
+      
+      
+    });
+  }else if (req.body.sort == "Vegetables"){
+    db.all(sql_vegetable, [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+      }else{
+        console.log(rows)
+        res.render("inventory", { rows: rows });
+      }
+    });
+  }else if (req.body.sort == "Dairy"){
+    db.all(sql_dairy, [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+      }else{
+        console.log(rows)
+        res.render("inventory", { rows: rows });
+      }
+    });
+  }else if (req.body.sort == "Meats"){
+    db.all(sql_meats, [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+      }else{
+        console.log(rows)
+        res.render("inventory", { rows: rows });
+      }
+    });
+  }else if (req.body.sort == "Seafood"){
+    db.all(sql_seafoods, [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+      }else{
+        console.log(rows)
+        res.render("inventory", { rows: rows });
+      }
+    });
+  }else if (req.body.sort == "Fruits"){
+    db.all(sql_fruit, [], (err, rows) => {
+      if (err) {
+        console.error(err.message);
+      }else{
+        console.log(rows)
+        res.render("inventory", { rows: rows });
+      }
+    });
+  }
+
+  
+  
+ 
+});
+
 
 app.post("/login", (req,res) => {
     const sql = "SELECT * FROM userAccount WHERE username = ?";
@@ -287,7 +368,7 @@ app.post("/changePass",(req,res)=>{
     const category = req.body.category;
     const Threshold = req.body.threshold;
     const Stock = req.body.AmountStock
-    db.run(sql_insert,[ingredients,category,Threshold,Stock],(err,row)=>{
+    db.run(sql_insert,[ingredients,category,Stock,Threshold],(err,row)=>{
       if(err){
         console.log(err.message)
       }else{
@@ -296,6 +377,21 @@ app.post("/changePass",(req,res)=>{
     })
 
   })
+  app.post("/edit/:id", (req, res) => {
+    const id = req.params.id;
+    const ingredients = req.body.eName;
+    const category = req.body.eCategory;
+    const Threshold = req.body.eThres;
+    const Stock = req.body.eStock
+    const sql = "UPDATE stock SET ingredients = ?, category = ?, stockQty = ?, amountThreshold = ? WHERE (stockID = ?)";
+    db.run(sql, [ingredients,category,Stock,Threshold,id], err => {
+      if(err){
+        console.log(err.message)
+      }else{
+        res.redirect("/inventory")
+      }
+    });
+  });
   app.post("/delete", (req, res) => {
     const sql = "DELETE FROM userAccount WHERE username = ?";
     if(req.body.delAccount == req.session.password){
@@ -312,6 +408,14 @@ app.post("/changePass",(req,res)=>{
       res.redirect("back")
     }
    
+  });
+  app.get("/edit/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "SELECT * FROM stock WHERE stockID = ?";
+    db.get(sql, id, (err, row) => {
+      // if (err) ...
+      res.render("edit", { model: row });
+    });
   });
   app.get("/account",(req,res)=>{
     res.render("account",{
@@ -339,7 +443,7 @@ app.get("/inventory",(req,res)=>{
     if (err) {
       return console.error(err.message);
     }else{
-      console.log(rows)
+      
       res.render("inventory", { rows: rows });
     }
     
