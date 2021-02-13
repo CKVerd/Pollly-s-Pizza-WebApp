@@ -449,7 +449,16 @@ app.get("/sales",(req,res)=>{
 })
 
 app.get("/dashboard",(req,res)=>{
-  res.render("index")
+  const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
+  db.all(sql_lowStock,[],(err,rows)=>{
+    if(err){
+      console.log(err.message)
+    }else{
+      console.log(rows)
+      res.render("index",{model:rows})
+    }
+  })
+  
 })
 
 

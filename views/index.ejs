@@ -82,12 +82,13 @@
                                 <p class = "card-header-1">LOW STOCK!</p>
                                 <div class = "low-stock-items">
                                     <ul class = "low-stock-list">
-                                        <li>Lettuce</li>
-                                        <li>Tomatoes</li>
+                                        <% for (const low of model) { %>
+                                        <li><%=low.ingredients%></li><%}%>
+                                        <!-- <li>Tomatoes</li>
                                         <li>Milk</li>
                                         <li>Flour</li>
                                         <li>Scallops</li>
-                                        <li>Pepperoni</li>
+                                        <li>Pepperoni</li> -->
                                     </ul>
                                 </div>
                             </div>
