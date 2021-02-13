@@ -429,12 +429,12 @@ app.post("/sort",(req,res)=>{
     }
   });
 
-  app.get("/edit/:id", (req, res) => {
+  app.get("/edit", (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM stock WHERE stockID = ?";
     db.get(sql, id, (err, row) => {
       // if (err) ...
-      res.render("edit", { model: row });
+      res.render("edit");
     });
   });
 app.post("/search",(req,res)=>{
