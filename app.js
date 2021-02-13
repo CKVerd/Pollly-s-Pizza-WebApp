@@ -437,6 +437,17 @@ app.post("/sort",(req,res)=>{
       res.render("edit", { model: row });
     });
   });
+app.post("/search",(req,res)=>{
+  const item = req.body.search;
+  const sql_search = "SELECT * from stock where ingredients LIKE '"+req.body.search+"%'"
+  db.all(sql_search,[],(err,rows)=>{
+    if(err){
+      console.log(err.message)
+    }else{
+      res.render("inventory", { rows: rows });
+    }
+  })
+})
 
 app.get("/help",(req,res)=>{
   res.render("help")

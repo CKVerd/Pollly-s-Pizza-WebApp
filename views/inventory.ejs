@@ -95,11 +95,11 @@
                             <button class = "dropdown-icon"></button>
                         </div>
                         <div class = "sub-row-1">
-                            <form class = "search-item-form">
+                            <form class = "search-item-form" method="POST" action="/search">
                                 <!-- <input type = "text" id = "search-input" class = "searchbar" placeholder = "Search">
                                 <button type = "submit" class = "search-icon"></button> -->
-                                <input type = "text" class = "search-bar" placeholder = "Search">
-                                <button type = "submit" class = "search-icon"></button>
+                                <input type = "text" class = "search-bar" placeholder = "Search" name="search">
+                                <input type = "submit" class = "search-icon" value="">
                             </form>
                             <input class = "add-stock" type = "button" onclick = "showAddPopup()" value = "Add Stock">
                         </div>
