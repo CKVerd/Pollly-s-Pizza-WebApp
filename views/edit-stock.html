@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>Forgot Password</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- FONTS -->
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <!-- JS -->
+        <script src="js/forgot.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/base.css">
+        <link rel="stylesheet" type="text/css" href="css/edit-stock.css">
+    </head>
+    <body>
+        <div class = "main">
+            <div class = "inner-col">
+                <div class = "row-1">
+                    <a href = "back" class = "back-button">◄ Inventory</a>
+                </div>
+                <div class = "row-body">
+                    <h1>Edit Stock</h1>
+                    <form class="entry">
+                        <div class = "inner-card">
+                            <label>Item Name</label>
+                            <input type = "text" class = "input">
+                            <label>Amount in Stock</label>
+                            <input type = "text" class = "input">
+                            <label>Threshold</label>
+                            <input type = "text" class = "input">
+                            <label>Category</label>
+                            <div class = "category-container">
+                                <select  name = "category" required class = "category-input">
+                                    <option value = "" disabled selected>Select</option>
+                                    <option value = "Vegetables">Vegetables</option>
+                                    <option value = "Dairy">Dairy</option>
+                                    <option value = "Meats">Meats</option>
+                                    <option value = "Seafood">Seafood</option>
+                                    <option value = "Fruits">Fruits</option>
+                                </select>
+                                <button class = "dropdown-icon"></button>
+                            </div>
+                            <div class = "delete-div">
+                                <button type = "button" class = "delete-button">Delete</button>
+                            </div>
+                            <div class = "outcome">
+                                <button type = "button" class = "cancel-button">Cancel</button>
+                                <button type = "submit" class = "submit-button">Submit</button>
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
