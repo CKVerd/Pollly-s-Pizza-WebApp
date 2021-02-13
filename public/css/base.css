@@ -147,6 +147,7 @@ li:hover {
 
 .logout-button:hover {
     background-color: #f14040;
+    cursor: hand;
 }
 
 .help-button {
