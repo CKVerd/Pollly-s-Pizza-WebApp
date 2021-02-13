@@ -118,6 +118,7 @@
 
 .delete-button:hover {
     background-color: #f14040;
+    cursor: hand;
 }
 
 .security-options-container {
@@ -211,6 +212,7 @@
 
 .add-button:hover {
     background-color: #40adf1;
+    cursor: hand;
 }
 
 .row-2 {
@@ -257,6 +259,7 @@
 
 .update-button:hover {
     background-color: #40adf1;
+    cursor: hand;
 }
 
 .change-usern-popup {
