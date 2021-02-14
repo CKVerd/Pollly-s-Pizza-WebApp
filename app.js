@@ -349,6 +349,8 @@ app.post("/addStock",(req,res)=>{
     const sql = "UPDATE stock SET ingredients = ?, category = ?, stockQty = ?, amountThreshold = ? WHERE (stockID = ?)";
     db.run(sql, [ingredients,category,Stock,Threshold,id], err => {
       if(err){
+        //error "naulit yung ingredients"
+        //res.redirect("back")
         console.log(err.message)
       }else{
         res.redirect("/inventory")
@@ -429,12 +431,16 @@ app.post("/sort",(req,res)=>{
     }
   });
 
-  app.get("/edit", (req, res) => {
+  app.get("/edit/:id", (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM stock WHERE stockID = ?";
     db.get(sql, id, (err, row) => {
-      // if (err) ...
-      res.render("edit");
+      if (err){
+        console.log(err.message)
+    }else{
+      res.render("edit-stock",{model:row});
+    }
+     
     });
   });
 app.post("/search",(req,res)=>{
