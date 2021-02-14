@@ -89,7 +89,7 @@
                                 <option value = "Fruits">Fruits</option>
                                 <option value = "Stock Amount (Low)">Stock Amount (Low)</option>
                                 <option value = "Stock Amount (High)">Stock Amount (High)</option>
-                                <option value = "q1">None</option>
+                                
                             </select>
                         </form>
                             <button class = "dropdown-icon"></button>
@@ -120,7 +120,7 @@
                                 <td><%=inv.category%></td>
                                 <td><%=inv.ingredients%></td>
                                 <td><%=inv.stockQty%></td>
-                                <td><a class = "edit-button" href = "/edit/<%=inv.stockID %>">Edit</a></td>
+                                <td><a class = "edit-button" href = "/edit/<%=inv.stockID %>">Edit/Delete</a></td>
                             </tr>
                             <% } %>
                         </table>
@@ -138,9 +138,10 @@
                         <input required class = "add-input" name="AmountStock">
                         <label>Threshold</label>
                         <input required class = "add-input" name="threshold">
-                        <label>Category</label>
+                        <label for="category">Category</label>
                         <div class = "category-container">
-                            <select  name = "category" required class = "category-input">
+                            <input required class = "add-input" list="cat" name="category" id="category">
+                            <datalist name = "category" required class = "category-input" id="cat">
                                 <option value = "" disabled selected>Select</option>
                                     <option value = "Vegetables">Vegetables</option>
                                     <option value = "Dairy">Dairy</option>
@@ -148,8 +149,9 @@
                                     <option value = "Seafood">Seafood</option>
                                     <option value = "Fruits">Fruits</option>
                                     
-                            </select>
-                            <button class = "add-stock-icon dropdown-icon"></button>
+                                    
+                            </datalist>
+                            <!-- <button class = "add-stock-icon dropdown-icon"></button> -->
                         </div>
                         <input class = "submit-button" type = "submit" value = "Submit">
                     </div> 

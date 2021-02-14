@@ -372,11 +372,7 @@ app.post("/addStock",(req,res)=>{
 app.post("/sort",(req,res)=>{
     const sql_high = "SELECT * FROM stock ORDER BY stockQty DESC"
     const sql_low = "SELECT * FROM stock ORDER BY stockQty ASC"
-    const sql_vegetable = "SELECT * FROM stock WHERE category ='Vegetables'"
-    const sql_dairy = "SELECT * FROM stock WHERE category ='Dairy'"
-    const sql_meats = "SELECT * FROM stock WHERE category ='Meats'"
-    const sql_seafoods = "SELECT * FROM stock WHERE category ='Seafood'"
-    const sql_fruit = "SELECT * FROM stock WHERE category ='Fruits'"
+    const sql_sort = "SELECT * FROM stock WHERE category ='"+req.body.sort+"'"
     if(req.body.sort == "Stock Amount (High)"){
       db.all(sql_high, [], (err, rows) => {
         if (err) {
@@ -395,44 +391,8 @@ app.post("/sort",(req,res)=>{
           res.render("inventory", { rows: rows });
         }      
       });
-    }else if (req.body.sort == "Vegetables"){
-      db.all(sql_vegetable, [], (err, rows) => {
-        if (err) {
-          console.error(err.message);
-        }else{
-          console.log(rows)
-          res.render("inventory", { rows: rows });
-        }
-      });
-    }else if (req.body.sort == "Dairy"){
-      db.all(sql_dairy, [], (err, rows) => {
-        if (err) {
-          console.error(err.message);
-        }else{
-          console.log(rows)
-          res.render("inventory", { rows: rows });
-        }
-      });
-    }else if (req.body.sort == "Meats"){
-      db.all(sql_meats, [], (err, rows) => {
-        if (err) {
-          console.error(err.message);
-        }else{
-          console.log(rows)
-          res.render("inventory", { rows: rows });
-        }
-      });
-    }else if (req.body.sort == "Seafood"){
-      db.all(sql_seafoods, [], (err, rows) => {
-        if (err) {
-          console.error(err.message);
-        }else{
-          console.log(rows)
-          res.render("inventory", { rows: rows });
-        }
-      });
-    }else if (req.body.sort == "Fruits"){
-      db.all(sql_fruit, [], (err, rows) => {
+    }else if (req.body.sort){
+      db.all(sql_sort, [], (err, rows) => {
         if (err) {
           console.error(err.message);
         }else{
@@ -450,6 +410,7 @@ app.get("/edit/:id", (req, res) => {
       if (err){
         console.log(err.message)
     }else{
+      console.log(row)
       res.render("edit-stock",{model:row});
     }
      
