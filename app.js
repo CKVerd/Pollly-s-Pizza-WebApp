@@ -357,6 +357,18 @@ app.post("/addStock",(req,res)=>{
       }
     });
   });
+  app.post("/delete/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "DELETE FROM stock WHERE (stockID = ?)";
+    db.run(sql, id, err => {
+      if(err){
+
+        console.log(err.message)
+      }else{
+        res.redirect("/inventory")
+      }
+    });
+  });
 app.post("/sort",(req,res)=>{
     const sql_high = "SELECT * FROM stock ORDER BY stockQty DESC"
     const sql_low = "SELECT * FROM stock ORDER BY stockQty ASC"
@@ -431,7 +443,7 @@ app.post("/sort",(req,res)=>{
     }
   });
 
-  app.get("/edit/:id", (req, res) => {
+app.get("/edit/:id", (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM stock WHERE stockID = ?";
     db.get(sql, id, (err, row) => {
@@ -439,6 +451,18 @@ app.post("/sort",(req,res)=>{
         console.log(err.message)
     }else{
       res.render("edit-stock",{model:row});
+    }
+     
+    });
+  });
+app.get("/delete/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "SELECT * FROM stock WHERE stockID = ?";
+    db.get(sql, id, (err, row) => {
+      if (err){
+        console.log(err.message)
+    }else{
+      res.render("delete-stock",{model:row});
     }
      
     });
