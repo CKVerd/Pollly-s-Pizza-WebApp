@@ -185,7 +185,7 @@
     width: 20px;
     position: absolute;
     margin-left: -2%;
-    margin-top: 0.5%;
+    margin-top: 0.6%;
     z-index: 10 !important;
     outline: none;
     border: none;
@@ -362,6 +362,10 @@
 
 .disappear {
     opacity: 0;
+}
+
+.select-container {
+    position: relative;
 }
 
 @media (-webkit-device-pixel-ratio: 1.25) {
