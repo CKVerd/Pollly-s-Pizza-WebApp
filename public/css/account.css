@@ -5,6 +5,12 @@
     z-index: 0;
 }
 
+.error-row {
+    height: 10%;
+    width: 100%;
+    background-color: red;
+}
+
 .col-1 {
     height: 93vh;
     width: 40%;
@@ -690,6 +696,10 @@
     margin-top: 5%;
 }
 
+.row-1 {
+    margin-top: -2%;
+}
+
 
 @media (-webkit-device-pixel-ratio: 1.25) {
     .inner-security-questions {
@@ -769,7 +779,7 @@
     }
 
     .row-1 {
-        margin-top: 2%;
+        margin-top: -2%;
     }
 
     .inner-col-1 {
