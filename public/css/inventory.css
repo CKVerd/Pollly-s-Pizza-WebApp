@@ -448,6 +448,10 @@
         font-size: 14px;
         font-weight: 600;
     }
+
+    .add-stock-popup-form {
+        height: 55%;
+    }
 }
 
 @keyframes flyFromRight {
