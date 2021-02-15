@@ -1,3 +1,6 @@
+body {
+    overflow-x: hidden;
+}
 .page {
     display: flex;
     flex-direction: column;
