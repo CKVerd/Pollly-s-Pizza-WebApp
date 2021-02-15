@@ -1,3 +1,4 @@
+
 const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
@@ -265,7 +266,7 @@ app.post("/changePass",(req,res)=>{
       });
       }else{
         //"error" Security Questions update: password doesnt match
-          req.flash("ernamepass", " Incorrect password")
+          req.flash("ernamepass", " Incorrect password, please try again")
           res.redirect("/account");
         }
         
