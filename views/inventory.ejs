@@ -140,8 +140,7 @@
                         <input required class = "add-input" name="threshold">
                         <label for="category">Category</label>
                         <div class = "category-container">
-                            <input required class = "add-input" list="cat" name="category" id="category">
-                            <datalist name = "category" required class = "category-input" id="cat">
+                            <select name = "category" required class = "category-input" id="cat">
                                 <option value = "" disabled selected>Select</option>
                                     <option value = "Vegetables">Vegetables</option>
                                     <option value = "Dairy">Dairy</option>
@@ -150,8 +149,8 @@
                                     <option value = "Fruits">Fruits</option>
                                     
                                     
-                            </datalist>
-                            <!-- <button class = "add-stock-icon dropdown-icon"></button> -->
+                            </select>
+                            <button class = "add-stock-icon dropdown-icon"></button>
                         </div>
                         <input class = "submit-button" type = "submit" value = "Submit">
                     </div> 
