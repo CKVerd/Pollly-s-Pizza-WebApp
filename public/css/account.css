@@ -9,6 +9,7 @@
     height: 10%;
     width: 100%;
     background-color: red;
+    z-index: 100 !important;
 }
 
 .col-1 {
@@ -697,7 +698,7 @@
 }
 
 .row-1 {
-    margin-top: -2%;
+    margin-top: -2%;    
 }
 
 
