@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
 const app = express();
+const flash = require("connect-flash");
 const sqlite3 = require("sqlite3").verbose();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
@@ -64,8 +65,9 @@ app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.urlencoded({ extended: true }));
 //forgot password routes
+app.use(flash())
 app.get("/", (req, res) => {
-    res.render("login");
+    res.render("login", {message: req.flash("warn")});
   });
 app.get("/forgot-pass1",(req,res)=>{
     res.render("forgot-pass-1")
@@ -158,6 +160,7 @@ app.get("/account",(req,res)=>{
       a1:req.session.secAnsw1,
       a2:req.session.secAnsw2,
       a3:req.session.secAnsw3,
+      message: req.flash("ernamepass")
     });
 });
 app.post("/login", (req,res) => {
@@ -183,12 +186,14 @@ app.post("/login", (req,res) => {
           req.session.secAnsw2 = row[0].secAnsw2;
           req.session.secAnsw3 = row[0].secAnsw3;
               res.redirect('/account')
-              }else{
-                res.redirect("back");
-              }
-            });
-           } else{
-            res.redirect("back");
+            }else{
+              req.flash("warn", "Incorrect password")
+              res.redirect("back");
+            }
+          });
+         } else{
+          req.flash("warn", "User doesn't Exist")
+          res.redirect("back");
             }
           }
       );
@@ -207,7 +212,8 @@ app.post("/changeUsername",(req,res)=>{
     }    
     })
   }else{
-     //error "Incorrect password"
+     //error "Change username = Incorrect password"
+      req.flash("ernamepass", "Incorrect password, please try again")
       res.redirect("/account")
     }
   })
@@ -225,8 +231,10 @@ app.post("/changePass",(req,res)=>{
             } 
     });
     }else{
-      //error "Incorrect password"
+      //error "Change Password = Incorrect password"
+        req.flash("ernamepass", "Incorrect password, please try again")
         res.redirect("/account");
+
       }
       
     })
@@ -256,7 +264,8 @@ app.post("/changePass",(req,res)=>{
               } 
       });
       }else{
-        //"error" password doesnt match
+        //"error" Security Questions update: password doesnt match
+          req.flash("ernamepass", " Incorrect password")
           res.redirect("/account");
         }
         
@@ -275,7 +284,8 @@ app.post("/new",(req, res)=>{
       if(req.body.cpw == password){
         db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
           if(err){
-            //error "username naulit"
+            //error "Add account = username naulit"
+            req.flash("ernamepass", "Username already exists")
             res.redirect("back")
           }else{
             res.redirect("back");
@@ -283,7 +293,8 @@ app.post("/new",(req, res)=>{
           
         })
       }else{
-      //error password and confirm password doesnt match
+      //error password and confirm password doesnt match = Add Account: 
+      req.flash("ernamepass", "Passwords doesn't match")
       res.redirect("back")
       }  
     })
@@ -300,7 +311,8 @@ app.post("/new",(req, res)=>{
         }        
       });
     }else{
-      //error "Incorrect password"
+      //error "Delete acc = Incorrect password"
+      req.flash("ernamepass", "Incorrect password, please try again")
       res.redirect("back")
     }
   });

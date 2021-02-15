@@ -13,6 +13,8 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/account.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
     </head>
     <body>
         <div class = "main">
@@ -76,9 +78,17 @@
                     </div>
                 </div>
                 <div class = page>
-                    <div class = "error-row">
-                            
-                    </div>
+                    
+                    <div class = "blank-row">
+                        <% if (message && message.length > 0 ){%>
+                            <div class = "error-row">
+                                <span class="fa fa-exclamation-circle"></span>
+                                <span class="msg_account"><%= message %></span>
+                            </div>
+                         <% } %>   
+                        </div>                   
+                     
+                     
                     <div class = "row-1 info-container">
                         <div class = "inner-col-1 info-column">
                             <p class = "header-text">Information</p>
