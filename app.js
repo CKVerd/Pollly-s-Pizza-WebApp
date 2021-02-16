@@ -129,7 +129,7 @@ app.post("/forgot-pass3",(req,res)=>{
         }
         else{
           //error "incorrect answer"
-          res.redirect("/")
+          res.redirect("back")
         }
     
       })
