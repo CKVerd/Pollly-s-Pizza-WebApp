@@ -75,7 +75,7 @@ app.get("/forgot-pass1",(req,res)=>{
 });
 
 app.get("/forgot-pass2",(req,res)=>{
-  res.render("forgot-pass-2")  
+  res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2]})
 });
 
 app.get("/forgot-pass3",(req,res)=>{
