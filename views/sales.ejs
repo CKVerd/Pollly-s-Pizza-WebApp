@@ -279,16 +279,116 @@
                         </div>
                     </div>
                     <div class = "row-3">
-                        <input class = "add-product-button" type = "button" value = "Add Product" onclick="showPopup()">
+                        <input class = "add-product-button" type = "button" value = "Add Product" onclick="showAddProductPopup()">
                         <input class = "submit-button" type = "button" value = "Submit">
                     </div>
                 </div>
             </div>
-            <div class = "popup">
-                <div class = "popup-form">
-                    <button class = "close-popup" onclick="closePopup()">X</button>
-                    <h1>POP UP</h1> 
-                </div>
+            <div class = "add-product-popup">
+                <form class = "add-product-popup-form">
+                    <button class = "close-popup" onclick="closeAddProductPopup()">X</button>
+                    <h1>Add Product</h1>
+                    <div class = "inner-add-form">
+                        <label>Product Name</label>
+                        <input required class = "add-input" type= "text">
+                        <label>Image</label>
+                        <input required class = "image-input" accept="image/x-png,image/jpeg" type = "file">
+                        <label>Price</label>
+                        <input required class = "add-input" type = "text">
+                        <label>Ingredients</label>
+                        <div class = "ingredient-input">
+                            <div class = "ingredient-name">
+                                <label>Ingredient Name</label>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                                <select name = "" required class = "ingredient-name add-input">
+                                    <option value = "" disabled selected>Ingredient</option>
+                                </select>
+                            </div>
+                            <div class = "ingredient-qty">
+                                <label>Qty.</label>
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                                <input required class = "ingredient-add add-input" type= "text">
+                            </div>
+                        </div>
+                        <div class = "submit-row">
+                            <input class = "ingredient-submit submit-button" type = "submit" value = "Submit">
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </body>
