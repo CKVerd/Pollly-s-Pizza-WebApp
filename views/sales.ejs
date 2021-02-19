@@ -122,15 +122,16 @@
                     </div>
                     <div class = "row-2">
                         <div class = "grid-container">
+                            <% for (const inv of rows) { %>
                             <div class = "card-container">
                                 <div class = "card item-1">
                                     <div class = "card-row-1">
-                                        <img class = "item-image pizza1" src="res/pizza1.png" alt="Pizza 1">
+                                        <img class = "item-image pizza1" src="uploads/<%=inv.imageProduct%>" alt="Pizza 1">
                                         <button class = "three-dots"></button>
                                     </div>
                                     <div class = "card-row-2">
                                         <div class = "card-col-1">
-                                            <p class = "item-name">Cheese Pizza</p>
+                                            <p class = "item-name"><%=inv.productName%></p>
                                         </div>
                                         <div class = "card-col-2">
                                             <div class = "inner-row-1">
@@ -144,7 +145,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class = "card-container">
+                            <%}%>
+                            <!-- <div class = "card-container">
                                 <div class = "card item-1">
                                     <div class = "card-row-1">
                                         <img class = "item-image pizza3" src="res/pizza2.png" alt="Pizza 2">
@@ -275,7 +277,7 @@
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class = "row-3">
@@ -285,18 +287,18 @@
                 </div>
             </div>
             <div class = "add-product-popup">
-                <form class = "add-product-popup-form">
+                <form class = "add-product-popup-form" action="/addproduct" method="POST" enctype="multipart/form-data">
                     <button class = "close-popup" onclick="closeAddProductPopup()">X</button>
                     <h1>Add Product</h1>
                     <div class = "inner-add-form">
                         <label>Product Name</label>
-                        <input required class = "add-input" type= "text">
+                        <input required class = "add-input" type= "text" name="productName">
                         <label>Image</label>
-                        <input required class = "image-input" accept="image/x-png,image/jpeg" type = "file">
+                        <input required class = "image-input"  type = "file" name="myImage">
                         <label>Price</label>
-                        <input required class = "add-input" type = "text">
+                        <input required class = "add-input" type = "text" name="price">
                         <label>Ingredients</label>
-                        <div class = "ingredient-input">
+                        <!-- <div class = "ingredient-input">
                             <div class = "ingredient-name">
                                 <label>Ingredient Name</label>
                                 <select name = "" required class = "ingredient-name add-input">
@@ -384,7 +386,7 @@
                                 <input required class = "ingredient-add add-input" type= "text">
                             </div>
                         </div>
-                        <div class = "submit-row">
+                        <div class = "submit-row"> -->
                             <input class = "ingredient-submit submit-button" type = "submit" value = "Submit">
                         </div>
                     </div>

@@ -10,6 +10,7 @@ const cookieParser = require("cookie-parser");
 const session = require('express-session');
 const e = require("express");
 const bcrypt = require("bcrypt");
+const multer = require('multer');
 const saltRounds = 10;
 const db_name = path.join(__dirname, "data", "PollyPizza.db");
 var answer = new Array(3);
@@ -53,6 +54,18 @@ const db = new sqlite3.Database(db_name, (err) => {
     }
     // console.log("Successful creation of the 'Login' table");
   });
+  const sql_product =  `CREATE TABLE IF NOT EXISTS Product (
+    productId INTEGER PRIMARY KEY AUTOINCREMENT,
+    productName VARCHAR(50) UNIQUE NOT NULL,
+    price INT(50) NOT NULL,
+    imageProduct VARCHAR(100) NOT NULL
+  );`;
+  db.run(sql_product, (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log("Successful creation of the 'Login' table");
+  });
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -61,6 +74,38 @@ app.use(session({
       maxAge:600000
     }
   }));
+// Set Storage Engine
+const storage = multer.diskStorage({
+  destination: 'public/uploads',
+  filename: function(req, file, cb){
+    cb(null,file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+  }
+});
+
+// Init Upload
+const upload = multer({
+  storage: storage,
+  limits:{fileSize: 1000000},
+  fileFilter: function(req, file, cb){
+    checkFileType(file, cb);
+  }
+}).single('myImage');
+
+// Check File Type
+function checkFileType(file, cb){
+  // Allowed ext
+  const filetypes = /jpeg|jpg|png|gif/;
+  // Check ext
+  const extname = filetypes.test(path.extname(file.originalname).toLowerCase());
+  // Check mime
+  const mimetype = filetypes.test(file.mimetype);
+
+  if(mimetype && extname){
+    return cb(null,true);
+  } else {
+    cb('Error: Images Only!');
+  }
+}
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname, "public")));
@@ -452,6 +497,46 @@ app.post("/search",(req,res)=>{
     }
   })
 })
+//sales
+app.get("/sales",(req,res)=>{
+  const sql = "SELECT * FROM Product"
+  db.all(sql, [], (err, rows) => {
+    if (err) {
+      return console.error(err.message);
+    }else{
+      
+      res.render("sales", { rows: rows });
+    }
+    
+   
+  });
+})
+app.post("/addproduct" ,(req,res)=>{
+  const sql_product = "INSERT INTO Product(productName,price,imageProduct)VALUES(?,?,?)";
+  console.log(req.body)
+  upload(req, res, (err) => {
+    const filename = req.file.filename
+    console.log(req.body)
+    if(err){
+      console.log(err.message)
+    } else {
+      if(req.file == undefined){
+        console.log(req.file)
+      } else {
+        db.run(sql_product,[req.body.productName,req.body.price,req.file.filename],(err)=>{
+          const filename = req.file.filename
+          if(err){
+              console.log(err.message);
+          }else{
+            res.redirect("/sales")
+          }
+      })
+        
+      }
+    }
+  });
+});
+
 
 app.get("/help",(req,res)=>{
   res.render("help")
@@ -459,9 +544,7 @@ app.get("/help",(req,res)=>{
 app.get("/statistics",(req,res)=>{
   res.render("statistics")
 })
-app.get("/sales",(req,res)=>{
-  res.render("sales")
-})
+
 
 app.get("/dashboard",(req,res)=>{
   const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
