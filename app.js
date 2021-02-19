@@ -66,6 +66,18 @@ const db = new sqlite3.Database(db_name, (err) => {
     }
     console.log("Successful creation of the 'Login' table");
   });
+  const sql_recipe =  `CREATE TABLE IF NOT EXISTS Recipe1 (
+    ingredients VARCHAR(50),
+    productName VARCHAR(50) ,
+    recipe_qty INT(50)
+    
+  );`;
+  db.run(sql_recipe, (err) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log("Successful creation of the 'Login' table");
+  });
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -500,23 +512,33 @@ app.post("/search",(req,res)=>{
 //sales
 app.get("/sales",(req,res)=>{
   const sql = "SELECT * FROM Product"
+  const sql_ingredients = "Select ingredients From stock"
   db.all(sql, [], (err, rows) => {
     if (err) {
       return console.error(err.message);
     }else{
+      db.all(sql_ingredients,[],(err,ing)=>{
+        if(err){
+          console.log(err.message)
+        }else{
+          res.render("sales", { rows: rows , model:ing });
+        }
+      }
       
-      res.render("sales", { rows: rows });
-    }
+      
+      )};
     
    
   });
 })
+
 app.post("/addproduct" ,(req,res)=>{
   const sql_product = "INSERT INTO Product(productName,price,imageProduct)VALUES(?,?,?)";
+  const sql_ingredients = "Insert INTO Recipe1(ingredients,productName,recipe_qty)VALUES(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?)"
   console.log(req.body)
   upload(req, res, (err) => {
     const filename = req.file.filename
-    console.log(req.body)
+    
     if(err){
       console.log(err.message)
     } else {
@@ -528,14 +550,36 @@ app.post("/addproduct" ,(req,res)=>{
           if(err){
               console.log(err.message);
           }else{
-            res.redirect("/sales")
+            var insert =[]
+            var i = 0;
+            var BreakException = {};
+
+            try {
+              req.body.qty.forEach(function(Arrays) {
+                if (req.body.qty[i] == null) throw BreakException;
+                insert.push(req.body.ingredients[i],req.body.productName,req.body.qty[i])
+                i++
+                
+              });
+            } catch (e) {
+              if (e !== BreakException) throw e;
+            }
+            console.log(req.body.qty[2])
+            db.run(sql_ingredients,insert,(err)=>{
+              if(err){
+                console.log(err.message)
+              }else{
+                console.log("sucess")
+              }
+            })
           }
       })
         
       }
     }
   });
-});
+  
+  });
 
 
 app.get("/help",(req,res)=>{
