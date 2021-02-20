@@ -535,10 +535,8 @@ app.get("/sales",(req,res)=>{
 app.post("/addproduct" ,(req,res)=>{
   const sql_product = "INSERT INTO Product(productName,price,imageProduct)VALUES(?,?,?)";
   const sql_ingredients = "Insert INTO Recipe1(ingredients,productName,recipe_qty)VALUES(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?)"
-  console.log(req.body)
   upload(req, res, (err) => {
     const filename = req.file.filename
-    
     if(err){
       console.log(err.message)
     } else {
@@ -547,31 +545,39 @@ app.post("/addproduct" ,(req,res)=>{
       } else {
         db.run(sql_product,[req.body.productName,req.body.price,req.file.filename],(err)=>{
           const filename = req.file.filename
+          
           if(err){
               console.log(err.message);
           }else{
-            var insert =[]
+            var insert = []
             var i = 0;
-            var BreakException = {};
-
-            try {
-              req.body.qty.forEach(function(Arrays) {
-                if (req.body.qty[i] == null) throw BreakException;
+            var flag = true;
+            console.log(req.body.ingredients3 == undefined)
+            console.log(req.body.qty[2]=="")
+            
+               while(flag == true){
                 insert.push(req.body.ingredients[i],req.body.productName,req.body.qty[i])
                 i++
+                console.log(req.body.qty)
+                if(req.body.qty[i]==""){
+                  flag = false;
+                }
                 
-              });
-            } catch (e) {
-              if (e !== BreakException) throw e;
-            }
-            console.log(req.body.qty[2])
-            db.run(sql_ingredients,insert,(err)=>{
-              if(err){
-                console.log(err.message)
-              }else{
-                console.log("sucess")
-              }
-            })
+               }
+               db.run(sql_ingredients,insert,(err)=>{
+                if(err){
+                  console.log(err.message)
+                 }else{
+                  //  console.log(insert)
+                 }
+               })
+              
+              
+               
+              
+                
+             
+            
           }
       })
         
