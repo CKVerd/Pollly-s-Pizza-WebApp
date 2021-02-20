@@ -127,16 +127,16 @@ app.use(flash())
 app.get("/", (req, res) => {
     res.render("login", {message: req.flash("warn")});
   });
-app.get("/forgot-pass1",(req,res)=>{
-    res.render("forgot-pass-1")
+  app.get("/forgot-pass1",(req,res)=>{
+    res.render("forgot-pass-1", {message: req.flash("erpass1")})
 });
 
 app.get("/forgot-pass2",(req,res)=>{
-  res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2]})
+  res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message: req.flash("erpass2")})
 });
 
 app.get("/forgot-pass3",(req,res)=>{
-  res.render("forgot-pass-3") 
+  res.render("forgot-pass-3", {message: req.flash("erpass3")}) 
 });
 app.post("/forgot-pass2",(req,res)=>{
     const sql = "SELECT * FROM userAccount WHERE username = ?";
@@ -159,10 +159,11 @@ app.post("/forgot-pass2",(req,res)=>{
          ]
          uN = row[0].username
          pass = row[0].password
-         res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2]})
+         res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message:""})
         }
         
         else{
+          req.flash("erpass1", "User doesn't Exist")
           res.redirect("back")
         }
         
@@ -185,7 +186,7 @@ app.post("/forgot-pass3",(req,res)=>{
           res.redirect("/forgot-pass3")
         }
         else{
-          //error "incorrect answer"
+          req.flash("erpass2", "Incorrect Answer")
           res.redirect("back")
         }
     
@@ -202,6 +203,7 @@ app.post("/forgot-changePass3",(req,res)=>{
             } res.redirect("/");
     });
 }else{
+        req.flash("erpass3", "Passwords doesn't match")
         res.redirect("back");
       }
       

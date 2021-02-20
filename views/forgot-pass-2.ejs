@@ -13,6 +13,7 @@
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/forgot.css">
         <link rel="stylesheet" type="text/css" href="css/forgot2.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <div class = "main">
@@ -20,7 +21,15 @@
                 <div class = "row-1">
                     <a href = "/forgot-pass1" class = "back-button">◄ </a>
                     <p class = "back-header">Forgot Password</p>
+                        <% if (message && message.length > 0 ){%>
+                            <div class ="error-col">
+                                <span class="fa fa-exclamation-circle"></span>
+                                <span class="msg_forgot2"><%= message %></span>
+                            </div>
+                        <% } %>
                 </div>
+                    
+                     
                 <div class = "row-body-2">
                     <p class = "inner-header-2">Answer Security Questions:</p>
                     <div class = "answer-item-container">
