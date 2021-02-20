@@ -24,60 +24,60 @@ const db = new sqlite3.Database(db_name, (err) => {
     }
     // console.log("Successful connection to the database 'apptest.db'");
   });
-  const sql_login =  `CREATE TABLE IF NOT EXISTS userAccount (
-    userID INTEGER PRIMARY KEY AUTOINCREMENT,
-    username VARCHAR(50) UNIQUE NOT NULL,
-    password VARCHAR(50) NOT NULL,
-    secQues1 VARCHAR(100) NOT NULL,
-    secQues2 VARCHAR(100) NOT NULL,
-    secQues3 VARCHAR(100) NOT NULL,
-    secAnsw1 VARCHAR(100) NOT NULL,
-    secAnsw2 VARCHAR(100) NOT NULL,
-    secAnsw3 VARCHAR(100) NOT NULL
-  );`;
-  db.run(sql_login, (err) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    // console.log("Successful creation of the 'Login' table");
-  });
-  const sql_insert =  `CREATE TABLE IF NOT EXISTS stock (
-    stockID INTEGER PRIMARY KEY AUTOINCREMENT,
-    ingredients VARCHAR(50) UNIQUE NOT NULL,
-    category VARCHAR(50) NOT NULL,
-    stockQty INT(50) NOT NULL,
-    amountThreshold INT(50) NOT NULL
-  );`;
-  db.run(sql_insert, (err) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    // console.log("Successful creation of the 'Login' table");
-  });
-  const sql_product =  `CREATE TABLE IF NOT EXISTS Product (
-    productId INTEGER PRIMARY KEY AUTOINCREMENT,
-    productName VARCHAR(50) UNIQUE NOT NULL,
-    price INT(50) NOT NULL,
-    imageProduct VARCHAR(100) NOT NULL
-  );`;
-  db.run(sql_product, (err) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    console.log("Successful creation of the 'Login' table");
-  });
-  const sql_recipe =  `CREATE TABLE IF NOT EXISTS Recipe1 (
-    ingredients VARCHAR(50),
-    productName VARCHAR(50) ,
-    recipe_qty INT(50)
+  // const sql_login =  `CREATE TABLE IF NOT EXISTS userAccount (
+  //   userID INTEGER PRIMARY KEY AUTOINCREMENT,
+  //   username VARCHAR(50) UNIQUE NOT NULL,
+  //   password VARCHAR(50) NOT NULL,
+  //   secQues1 VARCHAR(100) NOT NULL,
+  //   secQues2 VARCHAR(100) NOT NULL,
+  //   secQues3 VARCHAR(100) NOT NULL,
+  //   secAnsw1 VARCHAR(100) NOT NULL,
+  //   secAnsw2 VARCHAR(100) NOT NULL,
+  //   secAnsw3 VARCHAR(100) NOT NULL
+  // );`;
+  // db.run(sql_login, (err) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   }
+  //   // console.log("Successful creation of the 'Login' table");
+  // });
+  // const sql_insert =  `CREATE TABLE IF NOT EXISTS stock (
+  //   stockID INTEGER PRIMARY KEY AUTOINCREMENT,
+  //   ingredients VARCHAR(50) UNIQUE NOT NULL,
+  //   category VARCHAR(50) NOT NULL,
+  //   stockQty INT(50) NOT NULL,
+  //   amountThreshold INT(50) NOT NULL
+  // );`;
+  // db.run(sql_insert, (err) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   }
+  //   // console.log("Successful creation of the 'Login' table");
+  // });
+  // const sql_product =  `CREATE TABLE IF NOT EXISTS Product (
+  //   productId INTEGER PRIMARY KEY AUTOINCREMENT,
+  //   productName VARCHAR(50) UNIQUE NOT NULL,
+  //   price INT(50) NOT NULL,
+  //   imageProduct VARCHAR(100) NOT NULL
+  // );`;
+  // db.run(sql_product, (err) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   }
+  //   console.log("Successful creation of the 'Login' table");
+  // });
+  // const sql_recipe =  `CREATE TABLE IF NOT EXISTS Recipe (
+  //   ingredients VARCHAR(50),
+  //   productName VARCHAR(50) ,
+  //   recipe_qty INT(50)
     
-  );`;
-  db.run(sql_recipe, (err) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    console.log("Successful creation of the 'Login' table");
-  });
+  // );`;
+  // db.run(sql_recipe, (err) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   }
+  //   console.log("Successful creation of the 'Login' table");
+  // });
 app.use(session({
     secret: 'secret',
     resave: true,
@@ -534,7 +534,7 @@ app.get("/sales",(req,res)=>{
 
 app.post("/addproduct" ,(req,res)=>{
   const sql_product = "INSERT INTO Product(productName,price,imageProduct)VALUES(?,?,?)";
-  const sql_ingredients = "Insert INTO Recipe1(ingredients,productName,recipe_qty)VALUES(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?)"
+  const sql_ingredients = "Insert INTO Recipe(ingredients,productName,recipe_qty)VALUES(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?)"
   upload(req, res, (err) => {
     const filename = req.file.filename
     if(err){
@@ -552,14 +552,16 @@ app.post("/addproduct" ,(req,res)=>{
             var insert = []
             var i = 0;
             var flag = true;
-            console.log(req.body.ingredients3 == undefined)
-            console.log(req.body.qty[2]=="")
+           
             
                while(flag == true){
                 insert.push(req.body.ingredients[i],req.body.productName,req.body.qty[i])
                 i++
-                console.log(req.body.qty)
+                
                 if(req.body.qty[i]==""){
+                  flag = false;
+                }
+                else if(i == 20){
                   flag = false;
                 }
                 
@@ -568,7 +570,7 @@ app.post("/addproduct" ,(req,res)=>{
                 if(err){
                   console.log(err.message)
                  }else{
-                  //  console.log(insert)
+                  res.redirect("/sales")
                  }
                })
               
