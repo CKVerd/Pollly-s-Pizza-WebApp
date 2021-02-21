@@ -12,23 +12,13 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/forgot.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
-        
         <div class = "main">
             <div class = "inner-col">
                 <div class = "row-1">
                     <a href = "/" class = "back-button">◄ </a>
                     <p class = "back-header">Forgot Password</p>
-                   
-                        <% if (message && message.length > 0 ){%>
-                            <div class ="error-col">
-                                <span class="fa fa-exclamation-circle"></span>
-                                <span class="msg_forgot1"><%= message %></span>
-                            </div>
-                         <% } %>
-                    
                 </div>
                 <div class = "row-body">
                     <p class = "inner-header">Enter username below:</p>
