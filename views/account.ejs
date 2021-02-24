@@ -86,7 +86,7 @@
                                 <span class="msg_account"><%= message %></span>
                             </div>
                          <% } %>   
-                        </div>                   
+                    </div>                   
                      
                      
                     <div class = "row-1 info-container">
@@ -116,10 +116,10 @@
                                         <select name="security1" class = "security-1 sec-questions">
                                             <option value = "<%=q1%>"><%=q1%></option>
                                             <option value = "What's your father's middle name?">What's your father's middle name?</option>
-                                            <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
+                                            <option value = "What was the model of your first car?">What was the model of your first car?</option>
+                                            <option value = "What is your favorite love team?">What is your favorite love team?</option>
+                                            <option value = "What is your favorite constellation?">What is your favorite constellation?</option>
                                             <option value = "Where is your secret place?">Where is your secret place?</option>
-                                            <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
-                                            <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
                                         </select>
                                         <button class = "dropdown-icon"></button>
                                     </div>
@@ -127,11 +127,11 @@
                                     <div class = "select-container">
                                         <select name="security2" class = "security-1 sec-questions">
                                             <option value = "<%=q2%>"><%=q2%></option>
-                                            <option value = "What's your father's middle name?">What's your father's middle name?</option>
-                                            <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
-                                            <option value = "Where is your secret place?">Where is your secret place?</option>
-                                            <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
-                                            <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
+                                            <option value = "What is your childhood nickname?">What is your childhood nickname?</option>
+                                            <option value = "What was the first film you saw?">What was the first film you saw?</option>
+                                            <option value = "What was the first dish you cooked?">What was the first dish you cooked?</option>
+                                            <option value = "What was your first dream job?">What was your first dream job?</option>
+                                            <option value = "Who is your favorite cartoon?">Who is your favorite cartoon?</option>
                                         </select>
                                         <button class = "dropdown-icon"></button>
                                     </div>
@@ -139,11 +139,11 @@
                                     <div class = "select-container">
                                         <select name="security3" class = "security-1 sec-questions">
                                             <option value = "<%=q3%>"><%=q3%></option>
-                                            <option value = "What's your father's middle name?">What's your father's middle name?</option>
-                                            <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
-                                            <option value = "Where is your secret place?">Where is your secret place?</option>
-                                            <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
-                                            <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
+                                            <option value = "What ice cream flavor do you hate?">What ice cream flavor do you hate?</option>
+                                            <option value = "What amount was your first salary?">What amount was your first salary?</option>
+                                            <option value = "What was the first book you've read?">What was the first book you've read?</option>
+                                            <option value = "What was the name of your first pet?">What was the name of your first pet?</option>
+                                            <option value = "What was your first favorite tv show?">What was your first favorite tv show?</option>
                                         </select>
                                         <button class = "dropdown-icon"></button>
                                     </div>
@@ -151,9 +151,9 @@
                             </div>
                             <div class = "inner-col-2 info-column">
                                 <div class = "security-answers">
-                                    <input type = "password" id = "security-ans-1" class = "sec-answer" placeholder = "Answer" name="ua1" value="<%=a1%>">
-                                    <input type = "password" id = "security-ans-2" class = "sec-answer" placeholder = "Answer" name="ua2" value="<%=a2%>">
-                                    <input type = "password" id = "security-ans-3" class = "sec-answer" placeholder = "Answer" name="ua3" value="<%=a3%>">
+                                    <input required type = "password" id = "security-ans-1" class = "sec-answer" placeholder = "Answer" name="ua1" value="<%=a1%>">
+                                    <input required type = "password" id = "security-ans-2" class = "sec-answer" placeholder = "Answer" name="ua2" value="<%=a2%>">
+                                    <input required type = "password" id = "security-ans-3" class = "sec-answer" placeholder = "Answer" name="ua3" value="<%=a3%>">
                                 </div>
                             </div>
                             <div class = "inner-col-3 info-column">
@@ -244,32 +244,32 @@
                                             <select required name="s1" class = "inner-security-questions">
                                                 <option value = "" disabled selected>Select</option>
                                                 <option value = "What's your father's middle name?">What's your father's middle name?</option>
-                                                <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
-                                                <option value = "Where is your secret place?">Where is your secret place?</option>
-                                                <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
-                                                <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
+                                                <option value = "What was the model of your first car?">What was the model of your first car?</option>
+                                                <option value = "What is your favorite love team?">What is your favorite love team?</option>
+                                                <option value = "What is your favorite constellation?">What is your favorite constellation?</option>
+                                                <option value = "Where is your secret place?">Where is your secret place?</option>    
                                             </select>
                                             <button class = "add-account-icon dropdown-icon"></button>
                                         </div>
                                         <div class = "inner-security-question-container">
                                             <select required name="s2" class = "inner-security-questions">
                                                 <option value = "" disabled selected>Select</option>
-                                                <option value = "What's your father's middle name?">What's your father's middle name?</option>
-                                                <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
-                                                <option value = "Where is your secret place?">Where is your secret place?</option>
-                                                <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
-                                                <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
+                                                <option value = "What is your childhood nickname?">What is your childhood nickname?</option>
+                                                <option value = "What was the first film you saw?">What was the first film you saw?</option>
+                                                <option value = "What was the first dish you cooked?">What was the first dish you cooked?</option>
+                                                <option value = "What was your first dream job?">What was your first dream job?</option>
+                                                <option value = "Who is your favorite cartoon?">Who is your favorite cartoon?</option>
                                             </select>
                                             <button class = "add-account-icon dropdown-icon"></button>
                                         </div>
                                         <div class = "inner-security-question-container">
                                             <select required name="s3" class = "inner-security-questions">
                                                 <option value = "" disabled selected>Select</option>
-                                                <option value = "What's your father's middle name?">What's your father's middle name?</option>
-                                                <option value = "What was the plate no. of your first car?">What was the plate no. of your first car?</option>
-                                                <option value = "Where is your secret place?">Where is your secret place?</option>
-                                                <option value = "Who was your favorite childhood teacher?">Who was your favorite childhood teacher?</option>
-                                                <option value = "What's the name of the first school you attended?">What's the name of the first school you attended?</option>
+                                                <option value = "What ice cream flavor do you hate?">What ice cream flavor do you hate?</option>
+                                                <option value = "What amount was your first salary?">What amount was your first salary?</option>
+                                                <option value = "What was the first book you've read?">What was the first book you've read?</option>
+                                                <option value = "What was the name of your first pet?">What was the name of your first pet?</option>
+                                                <option value = "What was your first favorite tv show?">What was your first favorite tv show?</option>
                                             </select>
                                             <button class = "add-account-icon dropdown-icon"></button>
                                         </div>

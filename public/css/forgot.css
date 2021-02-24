@@ -7,6 +7,28 @@
     width: 100%;
     height: 100%;
 }
+.error-col{
+    width: 35%;
+    margin-left: 10%; /*5% , 8%, 10%, 15%, 23%, 25%,  */
+    margin-right: 10%;
+    margin-top: 5%;
+    z-index: 100 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffdddd;
+    border-radius: 8px;
+    border-left: 10px solid #f44336;
+}
+.msg_forgot1 {
+    color: black;
+    font-size: 15px;
+}
+.error-col .fa-exclamation-circle {
+    font-size: 21px;
+    color:#f44336;
+    padding-right: 8px;
+}
 
 .row-1 {
     display: flex;

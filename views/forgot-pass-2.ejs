@@ -13,13 +13,21 @@
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/forgot.css">
         <link rel="stylesheet" type="text/css" href="css/forgot2.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
+       
         <div class = "main">
             <div class = "inner-col">
                 <div class = "row-1">
                     <a href = "/forgot-pass1" class = "back-button">◄ </a>
                     <p class = "back-header">Forgot Password</p>
+                    <% if (message && message.length > 0 ){%>
+                        <div class ="error-col">
+                            <span class="fa fa-exclamation-circle"></span>
+                            <span class="msg_forgot2"><%= message %></span>
+                        </div>
+                    <% } %>
                 </div>
                 <div class = "row-body-2">
                     <p class = "inner-header-2">Answer Security Questions:</p>
@@ -32,9 +40,9 @@
                             </div>
                             <div class = "sec-answers">
                             
-                                <input type = "text" placeholder="Answer" class="ans-loc a1" name="a1">
-                                <input type = "text" placeholder="Answer" class="ans-loc a2" name="a2">
-                                <input type = "text" placeholder="Answer" class="ans-loc a3" name="a3">
+                                <input required type = "text" placeholder="Answer" class="ans-loc a1" name="a1">
+                                <input required type = "text" placeholder="Answer" class="ans-loc a2" name="a2">
+                                <input required type = "text" placeholder="Answer" class="ans-loc a3" name="a3">
                                 <input class = "next-button2" type = "submit" value = "Next">
                             </div>
                         </form>

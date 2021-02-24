@@ -13,20 +13,28 @@
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/forgot.css">
         <link rel="stylesheet" type="text/css" href="css/forgot3.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
+        
         <div class = "main">
             <div class = "inner-col">
                 <div class = "row-1">
                     <a href = "/forgot-pass2" class = "back-button">◄ </a>
                     <p class = "back-header">Forgot Password</p>
+                    <% if (message && message.length > 0 ){%>
+                        <div class ="error-col">
+                            <span class="fa fa-exclamation-circle"></span>
+                            <span class="msg_forgot3"><%= message %></span>
+                        </div>
+                    <% } %>
                 </div>
                 <div class = "row-body-3">
                     <p class = "inner-header-2">Enter new password:</p>
                     <form class = "new-pass-form" action="forgot-changePass3" method="POST">
                         <div class = "password-in">
-                            <input type = "password" placeholder = "Enter new password" class = "password-loc" name="pass">
-                            <input type = "password" placeholder = "Confirm new password" class = "password-loc" name="confirmPass">
+                            <input required type = "password" placeholder = "Enter new password" class = "password-loc" name="pass">
+                            <input required type = "password" placeholder = "Confirm new password" class = "password-loc" name="confirmPass">
                             <input type = "submit" class = "change-pass-button" value= "Submit">
                         </div>
                     </form>

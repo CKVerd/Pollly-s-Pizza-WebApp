@@ -127,16 +127,16 @@ app.use(flash())
 app.get("/", (req, res) => {
     res.render("login", {message: req.flash("warn")});
   });
-app.get("/forgot-pass1",(req,res)=>{
-    res.render("forgot-pass-1")
+  app.get("/forgot-pass1",(req,res)=>{
+    res.render("forgot-pass-1", {message: req.flash("erpass1")})
 });
 
 app.get("/forgot-pass2",(req,res)=>{
-  res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2]})
+  res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message: req.flash("erpass2")})
 });
 
 app.get("/forgot-pass3",(req,res)=>{
-  res.render("forgot-pass-3") 
+  res.render("forgot-pass-3", {message: req.flash("erpass3")}) 
 });
 app.post("/forgot-pass2",(req,res)=>{
     const sql = "SELECT * FROM userAccount WHERE username = ?";
@@ -159,10 +159,11 @@ app.post("/forgot-pass2",(req,res)=>{
          ]
          uN = row[0].username
          pass = row[0].password
-         res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2]})
+         res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message:""})
         }
         
         else{
+          req.flash("erpass1", "Username doesn't exist, please try again")
           res.redirect("back")
         }
         
@@ -185,7 +186,7 @@ app.post("/forgot-pass3",(req,res)=>{
           res.redirect("/forgot-pass3")
         }
         else{
-          //error "incorrect answer"
+          req.flash("erpass2", "Incorrect answers, please try again")
           res.redirect("back")
         }
     
@@ -202,6 +203,7 @@ app.post("/forgot-changePass3",(req,res)=>{
             } res.redirect("/");
     });
 }else{
+        req.flash("erpass3", "Passwords don't match, please try again")
         res.redirect("back");
       }
       
@@ -245,12 +247,12 @@ app.post("/login", (req,res) => {
           req.session.secAnsw3 = row[0].secAnsw3;
               res.redirect('/account')
             }else{
-              req.flash("warn", "Incorrect password")
+              req.flash("warn", "The credentials you entered did not match our records")
               res.redirect("back");
             }
           });
          } else{
-          req.flash("warn", "User doesn't Exist")
+          req.flash("warn", "The credentials you entered did not match our records")
           res.redirect("back");
             }
           }
@@ -290,7 +292,7 @@ app.post("/changePass",(req,res)=>{
     });
     }else{
       //error "Change Password = Incorrect password"
-        req.flash("ernamepass", "Incorrect password, please try again")
+        req.flash("ernamepass", "Passwords don't match, please try again")
         res.redirect("/account");
 
       }
@@ -323,7 +325,7 @@ app.post("/changePass",(req,res)=>{
       });
       }else{
         //"error" Security Questions update: password doesnt match
-          req.flash("ernamepass", " Incorrect password, please try again")
+          req.flash("ernamepass", "Incorrect Password, please try again")
           res.redirect("/account");
         }
         
@@ -352,7 +354,7 @@ app.post("/new",(req, res)=>{
         })
       }else{
       //error password and confirm password doesnt match = Add Account: 
-      req.flash("ernamepass", "Passwords doesn't match")
+      req.flash("ernamepass", "Passwords don't match")
       res.redirect("back")
       }  
     })
@@ -389,7 +391,7 @@ app.get("/inventory",(req,res)=>{
       return console.error(err.message);
     }else{
       
-      res.render("inventory", { rows: rows });
+      res.render("inventory", { rows: rows, message: req.flash("erinventory") });
     }
     
    
@@ -404,6 +406,8 @@ app.post("/addStock",(req,res)=>{
     db.run(sql_insert,[ingredients,category,Stock,Threshold],(err,row)=>{
       if(err){
         console.log(err.message)
+        req.flash("erinventory", "Ingredient already exists")
+        res.redirect("/inventory")
       }else{
         res.redirect("/inventory")
       }
@@ -419,8 +423,9 @@ app.post("/addStock",(req,res)=>{
     const sql = "UPDATE stock SET ingredients = ?, category = ?, stockQty = ?, amountThreshold = ? WHERE (stockID = ?)";
     db.run(sql, [ingredients,category,Stock,Threshold,id], err => {
       if(err){
-        //error "naulit yung ingredients"
-        //res.redirect("back")
+        //res.render("/edit", {message: req.flash("erinventory") });
+        req.flash("erinventory", "Ingredient name already exists")
+        res.redirect("/inventory")
         console.log(err.message)
       }else{
         res.redirect("/inventory")
@@ -432,7 +437,6 @@ app.post("/addStock",(req,res)=>{
     const sql = "DELETE FROM stock WHERE (stockID = ?)";
     db.run(sql, id, err => {
       if(err){
-
         console.log(err.message)
       }else{
         res.redirect("/inventory")
@@ -449,7 +453,7 @@ app.post("/sort",(req,res)=>{
           console.error(err.message);
         }else{
           console.log(rows)
-          res.render("inventory", { rows: rows });
+          res.render("inventory", { rows: rows, message: req.flash("erinventory") });
         }  
       });
     }else if (req.body.sort == "Stock Amount (Low)"){
@@ -458,7 +462,7 @@ app.post("/sort",(req,res)=>{
           console.error(err.message);
         }else{
           console.log(rows)
-          res.render("inventory", { rows: rows });
+          res.render("inventory", { rows: rows, message: req.flash("erinventory") });
         }      
       });
     }else if (req.body.sort){
@@ -467,7 +471,7 @@ app.post("/sort",(req,res)=>{
           console.error(err.message);
         }else{
           console.log(rows)
-          res.render("inventory", { rows: rows });
+          res.render("inventory", { rows: rows, message: req.flash("erinventory") });
         }
       });
     }
@@ -478,6 +482,7 @@ app.get("/edit/:id", (req, res) => {
     const sql = "SELECT * FROM stock WHERE stockID = ?";
     db.get(sql, id, (err, row) => {
       if (err){
+
         console.log(err.message)
     }else{
       console.log(row)
@@ -505,7 +510,7 @@ app.post("/search",(req,res)=>{
     if(err){
       console.log(err.message)
     }else{
-      res.render("inventory", { rows: rows });
+      res.render("inventory", { rows: rows, message: req.flash("erinventory") });
     }
   })
 })

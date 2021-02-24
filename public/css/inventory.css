@@ -13,11 +13,40 @@
     -webkit-appearance: none;
     -moz-appearance: none;
 }
+.blank-row {
+    margin-top: -15px;
+    margin-bottom: -20px;
+    height: 17%;
+    width: 100%;
+    background-color: white;
+    display: flex;  
+}
+.error-row {
+    width: 50%;
+    margin-left: 25%; 
+    margin-right: 50%; /*50% or 45% or */
+    z-index: 100 !important;
+    background-color: #ffdddd;
+    align-items: center;
+    justify-content: center;
+    border-radius: 7px;
+    border-left: 10px solid #f44336;
+    display: flex;
+}
+.msg_inventory {
+    color: black;
+    font-size: 15px;
+}
+.error-row .fa-exclamation-circle {
+    font-size: 21px;
+    color:#f44336;
+    padding-right: 8px;
+}
 
 .row-1 {
     width: 100%;
     height: 25%;
-    /* background-color: red; */
+    /* background-color: red; 25%*/
     display:flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -366,6 +395,7 @@
 
 .select-container {
     position: relative;
+    width: 100%; /*added by pat width*/
 }
 
 @media (-webkit-device-pixel-ratio: 1.25) {
