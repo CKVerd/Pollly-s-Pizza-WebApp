@@ -3,10 +3,12 @@
     width: 90%;
     -webkit-box-shadow: 0px 8px 15px -2px rgba(0,0,0,0.15); 
     box-shadow: 0px 8px 15px -2px rgba(0,0,0,0.15);
+    margin-top: 3%;
 }
+
 .sales-table, th{
     border: 1px solid rgb(216, 216, 216);
-    padding: 0.5%;
+    padding: 1%;
     text-align: center;
 }
 
@@ -30,7 +32,7 @@
 }
 
 .st-header-4 {
-    width: 5%;
+    width: 6%;
 }
 
 .st-header-5 {
@@ -47,7 +49,6 @@
 
 .row-1 {
     width: 100%;
-    height: 45%;
     /* background-color: red; */
     display:flex;
     flex-direction:row;
@@ -59,7 +60,6 @@
 
 .row-2 {
     width: 100%;
-    height: 55%;
     /* background-color: gray; */
     display: flex;
     flex-direction: column;
@@ -77,7 +77,7 @@
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 60% 60% 60% 60%;
+    grid-template-rows: 50% 50% 50% 50%;
     grid-row-gap: 10%;
 }
 
@@ -86,6 +86,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    height: 300px;
 }
 
 .card {
@@ -230,15 +231,16 @@
     border: none;
     background-color: white;
     outline: none;
-    font-size: 16;
+    font-size: 16px;
     font-weight: 500;
     border-bottom: 1px solid gray;
-    width: 40%;
+    width: 50%;
     color: gray;
 }
 
 .edit-button:hover {
     color: black;
+    cursor: hand;
 }
 
 .add-product-popup {
@@ -387,6 +389,9 @@
         margin-left: 0%;
     }
 
+    .card-container {
+        height: 270px;
+    }
     .quantity-button {
         width: 20px;
         height: 20px;
@@ -397,10 +402,14 @@
     }
 
     .item-quantity {
-        font-size: 18px;
+        font-size: 16px;
     }
 
     .sales-table td{
+        font-size: 14px;
+    }
+
+    .sales-table th{
         font-size: 14px;
     }
 
@@ -410,9 +419,11 @@
 
     .grid-container {
         width: 87%;
-        overflow-y: scroll;
     }
 
+    .st-header-4 {
+        width: 8%;
+    }
     .card {
         height: 90%;
     }
@@ -463,6 +474,11 @@
     
     .ingredient-name {
         font-size: 14px;
+    }
+
+    .edit-product {
+        font-size: 12px;
+        left: 15;
     }
 
 }
