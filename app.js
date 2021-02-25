@@ -246,7 +246,7 @@ app.post("/login", (req,res) => {
           req.session.secAnsw1 = row[0].secAnsw1;
           req.session.secAnsw2 = row[0].secAnsw2;
           req.session.secAnsw3 = row[0].secAnsw3;
-              res.redirect('/account')
+              res.redirect('/dashboard')
             }else{
               req.flash("warn", "The credentials you entered did not match our records")
               res.redirect("back");
