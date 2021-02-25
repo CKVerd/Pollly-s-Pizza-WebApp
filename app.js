@@ -573,6 +573,145 @@ app.post("/addproduct" ,(req,res)=>{
     }
   });
   });
+  app.get("/editProduct/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "SELECT * FROM Product WHERE productId = ?";
+    const sql_ingredients = "Select ingredients From stock"
+    db.get(sql, id, (err, row) => {
+      const productName = row.productName
+      if (err){
+        console.log(err.message)
+    }else{
+      db.all(sql_ingredients,[],(err,ing)=>{
+        if(err){
+          console.log(err.message)
+        }else{
+          const sql_recipe= "SELECT ingredients,recipe_qty FROM Recipe WHERE productName = '"+productName+"'"
+          db.all(sql_recipe,[],(err,recipe)=>{
+            // console.log(productName)
+            // console.log(recipe)
+            if(err){
+              console.log(err.message)
+            }else{
+              res.render("edit-product",{rows : row , model: ing , recipe:recipe})
+            }
+          })
+        }
+      })
+    }
+    });
+  });
+  app.post("/editProduct/:id", (req, res) => {
+    const id = req.params.id;
+    const productName = req.body.productName;
+    const price = req.body.price;
+    const sql = "UPDATE Product SET productName = ?, price = ? WHERE (productId = ?)";
+    const sql_update = `UPDATE Recipe set ingredients = ?,recipe_qty = ? productName = ? WHERE productName = ? AND ingredients = ?`
+    const sql_updateproduct = "UPDATE Recipe SET productName = ? WHERE (productName = ?)"
+    const sql_product = "Select * From Product where (productId = ?) "
+    var selectProduct;
+    db.all(sql_product,[id],(err,product)=>{
+      selectProduct = product
+      
+     
+      if(err){
+        console.log(err.message)
+      }else{
+        db.run(sql, [productName,price,id], (err) => {
+          console.log(product)
+          if(err){
+            //error "naulit yung productname"
+            //res.redirect("back")
+            console.log(err.message)
+            
+          }else{
+            
+                db.run(sql_updateproduct,[req.body.productName,selectProduct[0].productName],(err,row)=>{
+                  if(err){
+                    console.log(err.message)
+                  }
+                })
+             
+            var i = 0
+          }res.redirect("/sales")
+        })
+      }
+    })
+       
+          
+      
+              
+            
+       
+        
+      });
+            
+            
+            
+
+
+
+
+
+
+
+
+
+
+            // const sql_product = "SELECT * FROM Product WHERE productId = ?";
+            // db.get(sql_product,id,(err,row)=>{
+            //   const product = row.productName
+            //   console.log(row.productName)
+            //   if(err){
+            //     console.log(err.message)
+            //   }else{
+                
+            //     const sql_recipe= "SELECT ingredients FROM Recipe WHERE productName = '"+product+"'"
+            //     db.all(sql_recipe,[],(err,recipe)=>{ 
+            //       recipes = recipe
+            //       if(err){  
+            //         console.log(err.message)
+            //       }else{
+            //         var a = 0;
+            //         var b = 0;
+            //         // console.log(req.body.ingredients)
+            //         // console.log(recipe)
+            //         for (const inv of req.body.ingredients){ 
+            //           console.log(inv)
+            //           db.run(sql_update,[req.body.ingredients,req.body.qty,req.body.productName,product,recipe[a].ingredients],(err)=>{
+            //             // console.log(a) 
+            //             // console.log(req.body.ingredients[a])
+            //             // console.log(req.body.qty[a])
+            //             console.log(recipe[a].ingredients)
+            //             // console.log(product)
+                        
+                        
+            //             if(err){
+            //               console.log(err.message)
+            //             }else{  
+            //             }
+            //             a++
+                        
+            //           })
+            //           // if(req.body.qty[b]){
+            //           //   console.log("falsy")
+            //           //   break;
+                        
+            //           // }
+            //           // else if(b == 20){
+            //           //   flag = false;
+            //           //   console.log("truty")
+            //           // }
+            //           // b++
+                    
+                       
+            //         }
+            //       }
+            //     })
+            //   }
+              
+            // })
+  
 
 
 app.get("/help",(req,res)=>{
