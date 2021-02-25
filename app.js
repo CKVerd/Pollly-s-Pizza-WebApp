@@ -1,4 +1,3 @@
-
 const express = require("express");
 const path = require("path");
 const ejs = require("ejs");
@@ -13,10 +12,12 @@ const bcrypt = require("bcrypt");
 const multer = require('multer');
 const saltRounds = 10;
 const db_name = path.join(__dirname, "data", "PollyPizza.db");
-var answer = new Array(3);
-var question = new Array(3);
-var pass;
-var uN;
+const moment = require('moment');
+const formatter = new Intl.NumberFormat('en-PH', {
+  style: 'currency',
+  currency: 'PHP',
+  minimumFractionDigits: 2
+})
 
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
@@ -539,7 +540,7 @@ app.get("/sales",(req,res)=>{
 
 app.post("/addproduct" ,(req,res)=>{
   const sql_product = "INSERT INTO Product(productName,price,imageProduct)VALUES(?,?,?)";
-  const sql_ingredients = "Insert INTO Recipe(ingredients,productName,recipe_qty)VALUES(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?),(?,?,?)"
+  const sql_ingredients = "Insert INTO Recipe(ingredients,productName,recipe_qty)VALUES(?,?,?)"
   upload(req, res, (err) => {
     const filename = req.file.filename
     if(err){
@@ -550,48 +551,27 @@ app.post("/addproduct" ,(req,res)=>{
       } else {
         db.run(sql_product,[req.body.productName,req.body.price,req.file.filename],(err)=>{
           const filename = req.file.filename
-          
           if(err){
               console.log(err.message);
           }else{
-            var insert = []
             var i = 0;
             var flag = true;
-           
-            
-               while(flag == true){
-                insert.push(req.body.ingredients[i],req.body.productName,req.body.qty[i])
-                i++
-                
-                if(req.body.qty[i]==""){
-                  flag = false;
-                }
-                else if(i == 20){
-                  flag = false;
-                }
-                
-               }
-               db.run(sql_ingredients,insert,(err)=>{
-                if(err){
-                  console.log(err.message)
-                 }else{
-                  res.redirect("/sales")
-                 }
-               })
-              
-              
-               
-              
-                
-             
-            
-          }
-      })
-        
+            for (const inv of req.body.ingredients){  
+                db.run(sql_ingredients,[req.body.ingredients[i],req.body.productName,req.body.qty[i]],(err)=>{
+                  console.log(req.body.ingredients[i])
+                  console.log(req.body.qty)
+                  if(err){
+                    console.log(err.message)
+                   }else{ 
+                   }
+                 })     
+                i++               
+               }                                                                               
+          }res.redirect("/sales")
+      })   
       }
     }
   });
-  
   });
 
 
