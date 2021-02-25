@@ -87,13 +87,15 @@
                                 <th class = "st-header-6">Actions</th>
                             </tr>
                             <tr>
-                                <td>5/26/2020</td>
-                                <td>Scallop Pizza</td>
-                                <td>Php. 500</td>
-                                <td>1</td>
-                                <td>Php. 500</td>
+                                <% for (const sale of sales) { %>
+                                <td><%=sale.DT%></td>
+                                <td><%=sale.productName%></td>
+                                <td><%=formatter.format(sale.Price)%></td>
+                                <td><%=sale.sales_qty%></td>
+                                <td><%=formatter.format(sale.totalPrice)%></td>
                                 <td><button class = "edit-button" onclick = "showConfirmDeletePopup()">Delete</button></td>
                             </tr>
+                            <%}%>
                          </table>
                     </div>
                     <div class = "row-2">
@@ -108,6 +110,7 @@
                                         <div class = "card-col-1">
                                             <p class = "item-name"><%=inv.productName%></p>
                                             <a class = "edit-product" href = "/editProduct/<%=inv.productId %>">Edit/Delete</a>
+                                            <a class = "edit-button" href = "/addSale/<%=inv.productId %>">Add Sale</a>
                                         </div>
                                         <div class = "card-col-2">
                                             <div class = "inner-row-1">

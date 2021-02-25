@@ -109,8 +109,8 @@
                         <div class = "card-1">
                             <div class = "card-text">
                                 <p class = "card-header-3">SALES THIS MONTH</p>
-                                <p class = "card-info">Php. 2030.00</p>
-                                <p class = "card-footer">August 2020</p>
+                                <p class = "card-info"><%=formatter.format(sales[0].total_sales)%></p>
+                                <p class = "card-footer"><%= moment().format('MMMM YYYY'); %></p>
                             </div>
                             <div class = "card-icon">
                                 

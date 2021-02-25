@@ -519,6 +519,7 @@ app.post("/search",(req,res)=>{
 app.get("/sales",(req,res)=>{
   const sql = "SELECT * FROM Product"
   const sql_ingredients = "Select ingredients From stock"
+  const sql_sales = "SELECT * FROM Sales"
   db.all(sql, [], (err, rows) => {
     if (err) {
       return console.error(err.message);
@@ -527,7 +528,14 @@ app.get("/sales",(req,res)=>{
         if(err){
           console.log(err.message)
         }else{
-          res.render("sales", { rows: rows , model:ing });
+          db.all(sql_sales, [],(err,sales)=>{
+            if(err){
+              console.log(err.message)
+            }else{
+              res.render("sales", { rows: rows , model:ing , sales:sales , formatter:formatter });
+            }
+          })
+          
         }
       }
       
@@ -722,6 +730,61 @@ app.post("/deleteProduct/:id", (req, res) => {
           }
         });
       });
+app.get("/addSale/:id", (req, res) => {
+        const id = req.params.id;
+        const sql = "SELECT * FROM Product WHERE productId = ?";
+        const sql_ingredients = "Select ingredients From stock"
+        db.get(sql, id, (err, row) => {
+          const productName = row.productName
+          if (err){
+            console.log(err.message)
+        }else{
+          db.all(sql_ingredients,[],(err,ing)=>{
+            if(err){
+              console.log(err.message)
+            }else{
+              const sql_recipe= "SELECT ingredients,recipe_qty FROM Recipe WHERE productName = '"+productName+"'"
+              db.all(sql_recipe,[],(err,recipe)=>{
+                // console.log(productName)
+                // console.log(recipe)
+                if(err){
+                  console.log(err.message)
+                }else{
+                  res.render("add-sale",{rows : row});
+                }
+              })
+            }
+          })
+        }
+        });
+      });
+      app.post("/addSales",(req,res)=>{
+        const sql_addSales = "INSERT INTO Sales(productName,price,sales_qty,totalPrice)VALUES(?,?,?,?)"
+        const sql_search = " Select * FROM Recipe WHERE productName = ?"
+        const sql_stock = " Select * FROM Stock"
+       
+        db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
+          if(err){
+            console.log(err.message)
+            
+          }else{
+            db.all(sql_search,[req.body.ProductName],(err,product)=>{
+              if(err){
+                console.log(err.message)
+              }else{
+                console.log(product)
+                db.all(sql_stock,[],(err,stock)=>{
+                  if(err){
+                    console.log(err.message)
+                  }else{
+                   res.redirect("/sales")
+                  }
+                })
+              }
+            })
+          }
+        })
+      })
             
             
             
@@ -749,12 +812,19 @@ app.get("/statistics",(req,res)=>{
 
 app.get("/dashboard",(req,res)=>{
   const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
+  const sql_monthlySales = "SELECT strftime('%Y-%m', DT) AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month;"
   db.all(sql_lowStock,[],(err,rows)=>{
     if(err){
       console.log(err.message)
     }else{
-      console.log(rows)
-      res.render("index",{model:rows})
+      db.all(sql_monthlySales,[],(err,sales)=>{
+        if(err){
+          console.log(err.message)
+        }else{
+          res.render("index",{model:rows , sales:sales , moment:moment , formatter:formatter})
+        }
+      })
+      // 
     }
   })
   
