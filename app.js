@@ -750,7 +750,7 @@ app.get("/addSale/:id", (req, res) => {
                 if(err){
                   console.log(err.message)
                 }else{
-                  res.render("add-sale",{rows : row});
+                  res.render("add-sale",{rows : row, recipe:recipe , model:ing});
                 }
               })
             }
@@ -758,7 +758,7 @@ app.get("/addSale/:id", (req, res) => {
         }
         });
       });
-      app.post("/addSales",(req,res)=>{
+app.post("/addSales",(req,res)=>{
         const sql_addSales = "INSERT INTO Sales(productName,price,sales_qty,totalPrice)VALUES(?,?,?,?)"
         const sql_search = " Select * FROM Recipe WHERE productName = ?"
         const sql_stock = " Select * FROM Stock"
@@ -812,12 +812,13 @@ app.get("/statistics",(req,res)=>{
 
 app.get("/dashboard",(req,res)=>{
   const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
-  const sql_monthlySales = "SELECT strftime('%Y-%m', DT) AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month;"
+  const sql_monthlySales = "SELECT strftime('%Y-%m', 'now') AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month;"
   db.all(sql_lowStock,[],(err,rows)=>{
     if(err){
       console.log(err.message)
     }else{
       db.all(sql_monthlySales,[],(err,sales)=>{
+        console.log(sales)
         if(err){
           console.log(err.message)
         }else{

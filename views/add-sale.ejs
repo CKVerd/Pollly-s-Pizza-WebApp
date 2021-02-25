@@ -1,12 +1,17 @@
 <form action="/addSales" method="post">
 Product Name
-<input type="text" name="ProductName" id="" value="<%=rows.productName%>">
+<input required type="text" name="ProductName" id="" value="<%=rows.productName%>">
 Price
-<input type="text" name="Price" id="Text2" value="<%=rows.price%>">
+<input required type="text" name="Price" id="Text2" value="<%=rows.price%>">
 Quantity
-<input type="number" name="Qty" id="Text1" onchange="multiply()">
+<input required type="number" name="Qty" id="Text1" onchange="multiply()">
 Total
-<input type="text" name="Total" id="txtresult">
+<input type="text" readonly name="Total" id="txtresult">
+<% for (const inv of recipe) { %>
+    <input required  readonly type="hidden" name="ingredients[]" class = "ingredient-name add-input" value="<%=inv.ingredients%>"><%}%>
+<% for (const inv of recipe) { %>
+    <input class = "ingredient-add add-input" type= "hidden" value="<%=inv.recipe_qty%>" readonly name= "qty[]">
+        <%}%>
 <input type="submit" value="submit">
 </form>
 <script>
