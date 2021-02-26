@@ -761,25 +761,35 @@ app.get("/addSale/:id", (req, res) => {
 app.post("/addSales",(req,res)=>{
         const sql_addSales = "INSERT INTO Sales(productName,price,sales_qty,totalPrice)VALUES(?,?,?,?)"
         const sql_search = " Select * FROM Recipe WHERE productName = ?"
-        const sql_stock = " Select * FROM Stock"
-       
+        const sql_stock = " Select * FROM Stock WHERE ingredients = ?"
+        const sql_update = "UPDATE stock set stockQty = ? - (? * ?) WHERE ingredients = ?"
+       var stocks;
         db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
           if(err){
             console.log(err.message)
             
           }else{
             db.all(sql_search,[req.body.ProductName],(err,product)=>{
+              console.log(product)
               if(err){
                 console.log(err.message)
               }else{
-                console.log(product)
-                db.all(sql_stock,[],(err,stock)=>{
+                for(const inv of req.body.ingredients){
+                db.all(sql_stock,[inv],(err,stock)=>{
                   if(err){
                     console.log(err.message)
                   }else{
-                   res.redirect("/sales")
+                    db.run(sql_update,stock[0].stockQty,req.body.qty[0],req.body.Qty,stock[0].ingredients,(err,row)=>{
+                      if(err){
+                        console.log(err.message)
+                      }else{
+                        console.log("updated")
+                      }
+                    })
+                   
                   }
-                })
+                })}
+                
               }
             })
           }
