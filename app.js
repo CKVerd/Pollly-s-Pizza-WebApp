@@ -619,16 +619,13 @@ app.post("/addproduct" ,(req,res)=>{
     const sql_product = "Select * From Product where (productId = ?) "
     var selectProduct;
     db.all(sql_product,[id],(err,product)=>{
-
       if(err){
         console.log(err.message)
       }else{
         db.run(sql, [productName,price,id], (err) => {
           console.log(product)
           if(err){
-           
-            console.log(err.message)
-            
+            console.log(err.message)      
           }else{
                 db.run(sql_updateproduct,[req.body.productName,product[0].productName],(err,row)=>{
                   if(err){
@@ -640,50 +637,17 @@ app.post("/addproduct" ,(req,res)=>{
                   if(err){  
                     console.log(err.message)
                   }else{
-                    var a = 0;
-                    var b = 0;
-                    // console.log(recipe)
-                    // console.log(recipe)
-                    for (const inv of req.body.ingredients){ 
-                      // console.log(inv)
-                      db.run(sql_update,[req.body.ingredients[a],req.body.qty[a],req.body.productName,recipe[a].ingredients],(err)=>{
-                        // console.log(a) 
-                        console.log(req.body.ingredients[a])
-                        console.log(req.body.qty[a])
-                        console.log(recipe[a].ingredients)
-                        console.log(req.body.productName)
-                        
-                        
-                        
-                        if(err){
-                          console.log(err.message)
-                        }else{  
-                        }
-                        a++
-                        
-                      })
-                      // if(req.body.qty[b]){
-                      //   console.log("falsy")
-                      //   break;
-                        
-                      // }
-                      // else if(b == 20){
-                      //   flag = false;
-                      //   console.log("truty")
-                      // }
-                      // b++
-                    
-                       
-                    }
+                    res.redirect("/sales")
+                  
                   }
                 })
                   }
                 })       
-          }res.redirect("/sales")
+          }
         })
       }
-    })   
-      });
+     })   
+    });
 app.get("/deleteProduct/:id", (req, res) => {
         const id = req.params.id;
         const sql = "SELECT * FROM Product WHERE productId = ?";
@@ -788,7 +752,7 @@ app.post("/addSales",(req,res)=>{
                     })
                    
                   }
-                })}
+                })}res.redirect("/sales")
                 
               }
             })
