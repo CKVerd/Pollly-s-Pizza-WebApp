@@ -86,8 +86,8 @@
                         <div class = "card-2">
                             <div class = "card-text">
                                 <p class = "card-header-2">Best Selling Product</p>
-                                <p class = "card-info">Scallop Pizza</p>
-                                <p class = "card-footer">As of 11/20/2020</p>
+                                <p class = "card-info"><%=best[0].productName%></p>
+                                <p class = "card-footer">As of <%= moment().format('MMMM DD YYYY'); %></p>
                             </div>
                             <div class = "card-icon">
                                 
@@ -96,8 +96,8 @@
                         <div class = "card-2">
                             <div class = "card-text">
                                 <p class = "card-header-2">Most used Ingredient</p>
-                                <p class = "card-info">Flour</p>
-                                <p class = "card-footer">As of 11/20/2020</p>
+                                <p class = "card-info"><%=most[0].ingredients%></p>
+                                <p class = "card-footer">As of <%= moment().format('MMMM DD YYYY'); %></p>
                             </div>
                             <div class = "card-icon">
                                 
@@ -106,8 +106,8 @@
                         <div class = "card-2">
                             <div class = "card-text">
                                 <p class = "card-header-3">Least Sold Product</p>
-                                <p class = "card-info">Cheese Overload</p>
-                                <p class = "card-footer">As of 11/20/2020</p>
+                                <p class = "card-info"><%=least[0].productName%></p>
+                                <p class = "card-footer">As of <%= moment().format('MMMM DD YYYY'); %></p>
                             </div>
                             <div class = "card-icon">
                                 

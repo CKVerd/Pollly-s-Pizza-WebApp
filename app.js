@@ -447,8 +447,9 @@ app.post("/addStock",(req,res)=>{
 app.post("/sort",(req,res)=>{
     const sql_high = "SELECT * FROM stock ORDER BY stockQty DESC"
     const sql_low = "SELECT * FROM stock ORDER BY stockQty ASC"
+    const sql_recently = "SELECT * FROM stock ORDER BY stockID DESC"
     const sql_sort = "SELECT * FROM stock WHERE category ='"+req.body.sort+"'"
-    if(req.body.sort == "Stock Amount (High)"){
+    if(req.body.sort == "High to Low"){
       db.all(sql_high, [], (err, rows) => {
         if (err) {
           console.error(err.message);
@@ -457,7 +458,7 @@ app.post("/sort",(req,res)=>{
           res.render("inventory", { rows: rows, message: req.flash("erinventory") });
         }  
       });
-    }else if (req.body.sort == "Stock Amount (Low)"){
+    }else if (req.body.sort == "Low to High"){
       db.all(sql_low, [], (err, rows) => {
         if (err) {
           console.error(err.message);
@@ -466,7 +467,17 @@ app.post("/sort",(req,res)=>{
           res.render("inventory", { rows: rows, message: req.flash("erinventory") });
         }      
       });
-    }else if (req.body.sort){
+    }else if (req.body.sort == "Recently Added"){
+      db.all(sql_recently,[],(err,rows)=>{
+        if (err) {
+          console.error(err.message);
+        }else{
+          console.log(rows)
+          res.render("inventory", { rows: rows, message: req.flash("erinventory") });
+        }
+      })
+    }
+    else if (req.body.sort){
       db.all(sql_sort, [], (err, rows) => {
         if (err) {
           console.error(err.message);
@@ -476,6 +487,7 @@ app.post("/sort",(req,res)=>{
         }
       });
     }
+    
   });
 
 app.get("/edit/:id", (req, res) => {
@@ -727,7 +739,7 @@ app.post("/addSales",(req,res)=>{
         const sql_search = " Select * FROM Recipe WHERE productName = ?"
         const sql_stock = " Select * FROM Stock WHERE ingredients = ?"
         const sql_update = "UPDATE stock set stockQty = ? - (? * ?) WHERE ingredients = ?"
-       var stocks;
+      
         db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
           if(err){
             console.log(err.message)
@@ -780,12 +792,37 @@ app.get("/help",(req,res)=>{
   res.render("help")
 })
 app.get("/statistics",(req,res)=>{
-  res.render("statistics")
+  const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"
+  const sql_least = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) ASC LIMIT 5"
+  const sql_most = "SELECT ingredients, SUM(stockQty) AS TotalQuantity FROM stock GROUP BY ingredients ORDER BY SUM(stockQty) ASC LIMIT 5"
+  db.all(sql_best,[],(err,best)=>{
+    if(err){
+      console.log(err.message)
+    }else{
+      db.all(sql_least,[],(err,least)=>{
+        if(err){
+          console.log(err.message)
+        }else{
+          db.all(sql_most,[],(err,most)=>{
+            if(err){
+              console.log(err.message)
+            }else{
+              res.render("statistics", {best : best , least:least, most:most, moment:moment})
+            }
+          })
+          
+        }
+      })
+      // 
+    }
+  })
+  
 })
 
 
 app.get("/dashboard",(req,res)=>{
   const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
+  const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"
   const sql_monthlySales = "SELECT strftime('%Y-%m', 'now') AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month;"
   db.all(sql_lowStock,[],(err,rows)=>{
     if(err){

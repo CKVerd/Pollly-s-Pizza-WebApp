@@ -91,13 +91,14 @@
                             
                             <select onchange = "this.form.submit()" name="sort" class = "category-list">
                                 <option value = "" disabled selected>Sort</option>
+                                <option value = "Recently Added">Recently Added</option>
                                 <option value = "Vegetables">Vegetables</option>
                                 <option value = "Dairy">Dairy</option>
                                 <option value = "Meats">Meats</option>
                                 <option value = "Seafood">Seafood</option>
                                 <option value = "Fruits">Fruits</option>
-                                <option value = "Stock Amount (Low)">Stock Amount (Low)</option>
-                                <option value = "Stock Amount (High)">Stock Amount (High)</option>
+                                <option value = "Low to High">Low to High</option>
+                                <option value = "High to Low">High to Low</option>
                                 
                             </select>
                             <button class = "dropdown-icon"></button>
@@ -165,7 +166,7 @@
                     </div> 
                 </form>
             </div>
-            <div class = "edit-stock-popup">
+            <!-- <div class = "edit-stock-popup">
                 <form class = "edit-stock-popup-form" method="POST" action="/edit/<%=rows.stockID%>">
                     <button class = "close-popup" onclick="closeEditStockPopup()">X</button>
                     <h1>Edit Stock</h1> 
@@ -191,7 +192,7 @@
                         <input class = "submit-button" type = "submit" value = "Submit">
                     </div> 
                 </form>
-            </div>
+            </div> -->
         </div>
     </body>
 </html>

@@ -24,9 +24,9 @@
                     <form class="entry" action="/editProduct/<%=rows.productId%>" method="post">
                         <div class = "inner-card">
                             <label>Product Name</label>
-                            <input  type = "text" class = "input" name = "productName" value="<%=rows.productName%>">
+                            <input  required type = "text" class = "input" name = "productName" value="<%=rows.productName%>">
                             <label>Price</label>
-                            <input readonly type = "text" class = "input" name="price" value="<%=rows.price%>">
+                            <input required type = "text" class = "input" name="price" value="<%=rows.price%>">
                             <label>Ingredients</label>
                             <div class = "ingredient-input">                                
                                 <div class = "ingredient-name">
