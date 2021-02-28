@@ -13,6 +13,7 @@ const multer = require('multer');
 const saltRounds = 10;
 const db_name = path.join(__dirname, "data", "PollyPizza.db");
 const moment = require('moment');
+const Chart = require('chart.js')
 const formatter = new Intl.NumberFormat('en-PH', {
   style: 'currency',
   currency: 'PHP',
@@ -828,12 +829,13 @@ app.get("/dashboard",(req,res)=>{
     if(err){
       console.log(err.message)
     }else{
+      console.log(rows)
       db.all(sql_monthlySales,[],(err,sales)=>{
         console.log(sales)
         if(err){
           console.log(err.message)
         }else{
-          res.render("index",{model:rows , sales:sales , moment:moment , formatter:formatter})
+          res.render("index",{model:rows , sales:sales , moment:moment , formatter:formatter, Chart:Chart})
         }
       })
       // 
