@@ -135,7 +135,7 @@
     font-size: 18px;
     font-weight: 700;
     margin-top: 3%;
-    margin-left: 10%;
+    margin-left: 12%;
 }
 
 .item-quantity{
@@ -154,7 +154,7 @@
 
 .card-row-3 {
     display: flex;
-    margin-top: 10%;
+    margin-top: 7%;
     justify-content: space-around;
 }
 
@@ -485,10 +485,15 @@
 
     .item-name {
         font-size: 16px;
+        margin-left: 10%;
     }
 
     .item-quantity {
         font-size: 16px;
+    }
+
+    .card-row-3 {
+        margin-top: 10%;
     }
 
     .sales-table td{
