@@ -189,6 +189,10 @@
     cursor: hand;
 }
 
+.delete-input {
+    background-color: rgb(237, 237, 237);
+    pointer-events: none;
+}
 
 @media (-webkit-device-pixel-ratio: 1.25) {
     .delete-button {

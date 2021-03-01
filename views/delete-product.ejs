@@ -24,15 +24,15 @@
                     <form class="entry" action="/deleteProduct/<%=rows.productId%>" method="post">
                         <div class = "inner-card">
                             <label>Product Name</label>
-                            <input type = "text" class = "input" name = "productName" value="<%=rows.productName%>">
+                            <input readonly type = "text" class = "delete-input input" name = "productName" value="<%=rows.productName%>">
                             <label>Price</label>
-                            <input type = "text" class = "input" name="price" value="<%=rows.price%>">
+                            <input readonly type = "text" class = "delete-input input" name="price" value="<%=rows.price%>">
                             <label>Ingredients</label>
                             <div class = "ingredient-input">                                
                                 <div class = "ingredient-name">
                                     <label>Ingredient Name</label>
                                     <% for (const inv of recipe) { %>
-                                    <select required  name="ingredients[]" class = "ingredient-name add-input">
+                                    <select required  name="ingredients[]" class = "delete-input ingredient-name add-input">
                                         <option value = "<%=inv.ingredients%>"  selected ><%=inv.ingredients%></option>
                                         <% for (const inv of model) { %>
                                             <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
@@ -41,7 +41,7 @@
                                 <div class = "ingredient-qty">
                                     <label>Qty.</label>
                                     <% for (const inv of recipe) { %>
-                                    <input class = "ingredient-add add-input" type= "text" value="<%=inv.recipe_qty%>" name= "qty[]">
+                                    <input readonly class = "delete-input ingredient-add add-input" type= "text" value="<%=inv.recipe_qty%>" name= "qty[]">
                                     <%}%>
                                 </div>
                             </div>

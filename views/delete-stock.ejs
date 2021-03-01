@@ -24,15 +24,15 @@
                     <form class="entry" action="/delete/<%=model.stockID%>" method="post">
                         <div class = "inner-card">
                             <label>Item Name</label>
-                            <input disabled type = "text" class = "input" name="eName" value="<%= model.ingredients %>">
+                            <input readonly type = "text" class = "delete-input input" name="eName" value="<%= model.ingredients %>">
                             <label>Amount in Stock</label>
-                            <input disabled type = "text" class = "input" name="eStock" value="<%= model.stockQty %>">
+                            <input readonly type = "text" class = "delete-input input" name="eStock" value="<%= model.stockQty %>">
                             <label>Threshold</label>
-                            <input disabled type = "text" class = "input" value="<%=model.amountThreshold%>" name="eThres">
+                            <input readonly type = "text" class = "delete-input input" value="<%=model.amountThreshold%>" name="eThres">
                             <label>Category</label>
                             <div class = "category-container">
-                                <select disabled name = "category" required class = "category-input">
-                                    <option value = "<%= model.category %>" disabled selected><%= model.category %></option>
+                                <select readonly name = "category" required class = "delete-input category-input">
+                                    <option value = "<%= model.category %>" readonly selected><%= model.category %></option>
                                     <option value = "Vegetables">Vegetables</option>
                                     <option value = "Dairy">Dairy</option>
                                     <option value = "Meats">Meats</option>

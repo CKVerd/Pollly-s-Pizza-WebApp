@@ -23,6 +23,11 @@
     position: relative;
 }
 
+.delete-input {
+    background-color: rgb(237, 237, 237);
+    pointer-events: none;
+}
+
 .inner-col {
     width: 70%;
     height: 100%;
