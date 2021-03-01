@@ -1,0 +1,48 @@
+<html>
+    <head>
+        <title>Delete Product</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- FONTS -->
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+
+        <!-- JS -->
+        <script src="js/forgot.js"></script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="css/base.css">
+        <link rel="stylesheet" type="text/css" href="css/delete-sale.css">
+    </head>
+    <body>
+        <div class = "main">
+            <div class = "inner-col">
+                <div class = "row-1">
+                    <a href = "" class = "back-button">◄ Sales</a>
+                </div>
+                <div class = "row-body" >
+                    <h1>Delete Sale</h1>
+                    <form class="entry" action="/deleteProduct/<%=rows.productId%>" method="post">
+                        <div class = "inner-card">
+                            <label>Date</label>
+                            <input readonly type = "text" class = "delete-input input">
+                            <label>Product</label>
+                            <input readonly type = "text" class = "delete-input input">
+                            <label>Price</label>
+                            <input readonly type = "text" class = "delete-input input">
+                            <label>Quantity</label>
+                            <input readonly type = "text" class = "delete-input input">
+                            <label>Total</label>
+                            <input readonly type = "text" class = "delete-input input">
+                            <div class = "row-4">
+                                <div class = "outcome">
+                                    <button type = "button" class = "cancel-button">Cancel</button>
+                                    <input type = "submit" class = "delete-button" value="Delete">
+                                </div>
+                            </div>
+                        </div> 
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
