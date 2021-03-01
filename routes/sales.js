@@ -63,7 +63,7 @@ router.get("/sales",(req,res)=>{
               if(err){
                 console.log(err.message)
               }else{
-                res.render("sales", { rows: rows , model:ing , sales:sales , formatter:formatter });
+                res.render("sales", { rows: rows , model:ing , sales:sales , formatter:formatter, message: req.flash("eraddproduct")});
               }
             })
             
@@ -92,6 +92,7 @@ router.post("/addproduct" ,(req,res)=>{
             const filename = req.file.filename
             if(err){
                 console.log(err.message);
+                req.flash("eraddproduct", "Product already exists")
             }else{
               var i = 0;
               var flag = true;
@@ -101,12 +102,16 @@ router.post("/addproduct" ,(req,res)=>{
                     console.log(req.body.qty)
                     if(err){
                       console.log(err.message)
+                      
                      }else{ 
+                      //req.flash("eraddproduct", "Product already exists")
                      }
                    })     
                   i++               
                  }                                                                               
-            }res.redirect("/sales")
+            }//res.render("login", {message: req.flash("warn")});
+            
+            res.redirect("/sales")
         })   
         }
       }
@@ -157,7 +162,9 @@ router.post("/editProduct/:id", (req, res) => {
           db.run(sql, [productName,price,id], (err) => {
             console.log(product)
             if(err){
-              console.log(err.message)      
+              console.log(err.message)    
+              req.flash("eraddproduct", "Edit Product: Product name already exists")
+              res.redirect("/sales")
             }else{
                 db.run(sql_updateproduct,[req.body.productName,product[0].productName],(err,row)=>{
                     if(err){
@@ -166,8 +173,10 @@ router.post("/editProduct/:id", (req, res) => {
                     db.all(sql_recipe,[req.body.productName],(err,recipe)=>{ 
                         if(err){  
                             console.log(err.message)
+                            
                         }else{
-                            res.redirect("/sales")
+
+                          res.redirect("/sales")
                     
                     }
                   })
