@@ -5,6 +5,7 @@
     background-color: white;
     display: flex;  
 }
+
 .error-row {
     width: 50%;
     margin-left: 40%; 
@@ -53,11 +54,11 @@
 }
 
 .st-header-2 {
-    width: 30%;
+    width: 25%;
 }
 
 .st-header-3 {
-    width: 10%;
+    width: 15%;
 }
 
 .st-header-4 {
@@ -103,11 +104,10 @@
 
 .grid-container{
     width: 97%;
-    height: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 50% 50% 50% 50%;
-    grid-row-gap: 10%;
+    grid-row-gap: 5%;
+
 }
 
 .card-container {
@@ -148,33 +148,18 @@
     position: relative;
 }
 
-.three-dots {
-    overflow: hidden;
-    position: absolute;
-    transform: translate(-170%, 40%);
-    width: 7%;
-    height: 15%;
-    border-radius: 5px;
-    outline: none;
-    border: none;
-    background:url(/res/threedot.png) no-repeat;
-    background-position: center center;
-    transition-duration: .40s;
-    background-color: rgba(240, 240, 240, 0.534);
-    background-size: 40%;
-}
-
-.three-dots:hover {
-    background-color: rgb(240, 240, 240);
-}
-
 .card-row-2 {
+    margin-top: 5%;
+}
+
+.card-row-3 {
     display: flex;
-    padding-top: 2%;
+    margin-top: 10%;
+    justify-content: space-around;
 }
 
 .card-col-1 {
-    width: 70%;
+    width: 100%;
     position: relative;
 }
 
@@ -205,6 +190,7 @@
 #add-button {
     margin-left: 15%;
 }
+
 
 .row-3 {
     display: flex;
@@ -395,9 +381,6 @@
 }
 
 .edit-product {
-    position: absolute;
-    bottom: 0;
-    left: 20;
     border: none;
     background-color: white;
     outline: none;
@@ -509,7 +492,7 @@
     }
 
     .sales-table td{
-        font-size: 14px;
+        font-size: 12px;
     }
 
     .sales-table th{

@@ -120,18 +120,11 @@
                                     <div class = "card-row-2">
                                         <div class = "card-col-1">
                                             <p class = "item-name"><%=inv.productName%></p>
-                                            <a class = "edit-product" href = "/editProduct/<%=inv.productId %>">Edit/Delete</a>
-                                            <a class = "edit-button" href = "/addSale/<%=inv.productId %>">Add Sale</a>
                                         </div>
-                                        <div class = "card-col-2">
-                                            <div class = "inner-row-1">
-                                                <p class = "item-quantity" id = "item-quantity">0</p>
-                                            </div>
-                                            <div class = "inner-row-2">
-                                                <input class = "quantity-button" id = "minus-button" onclick = "removeClick()" type = "button" value = "-">
-                                                <input class = "quantity-button" id = "add-button" onclick = "addClick()" type = "button" value = "+">
-                                            </div>
-                                        </div>
+                                    </div>
+                                    <div class = "card-row-3">
+                                        <a class = "edit-product" href = "/editProduct/<%=inv.productId %>">Edit/Delete</a>
+                                        <a class = "edit-product" href = "/addSale/<%=inv.productId %>">Add Sale</a>
                                     </div>
                                 </div>
                             </div>
