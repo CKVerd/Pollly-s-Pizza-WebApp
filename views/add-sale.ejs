@@ -1,26 +1,56 @@
-<form action="/addSales" method="post">
-Product Name
-<input required type="text" name="ProductName" id="" value="<%=rows.productName%>">
-Price
-<input required type="text" name="Price" id="Text2" value="<%=rows.price%>">
-Quantity
-<input required type="number" name="Qty" id="Text1" onchange="multiply()">
-Total
-<input type="text" readonly name="Total" id="txtresult">
-<% for (const inv of recipe) { %>
-    <input required  readonly type="hidden" name="ingredients[]" class = "ingredient-name add-input" value="<%=inv.ingredients%>"><%}%>
-<% for (const inv of recipe) { %>
-    <input class = "ingredient-add add-input" type= "hidden" value="<%=inv.recipe_qty%>" readonly name= "qty[]">
-        <%}%>
-<input type="submit" value="submit">
-</form>
-<script>
-function multiply() {
+<html>
+    <head>
+        <title>Forgot Password</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- FONTS -->
+        <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-var first_number = parseInt(document.getElementById("Text1").value);
-var second_number = parseInt(document.getElementById("Text2").value);
-var result = first_number * second_number;
+        <!-- JS -->
+        <script>
+            function multiply() {
 
-document.getElementById("txtresult").value = result;
-}
-</script>
+            var first_number = parseInt(document.getElementById("Text1").value);
+            var second_number = parseInt(document.getElementById("Text2").value);
+            var result = first_number * second_number;
+
+            document.getElementById("txtresult").value = result;
+            }
+        </script>
+
+        <!-- CSS -->
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/css/add-sale.css">
+    </head>
+    <body>
+        <div class = "main">
+            <div class = "inner-col">
+                <div class = "row-1">
+                    <a href = "" class = "back-button">◄ Sales</a>
+                </div>
+                <div class = "row-body" >
+                    <h1>Add Sale</h1>
+                    <form class = "add-form" action="/addSales" method="post">
+                        <label>Product Name</label>
+                        <input required type="text" name="ProductName" id="" value="<%=rows.productName%>">
+                        <label>Price</label>
+                        <input required type="text" name="Price" id="Text2" value="<%=rows.price%>">
+                        <label>Quantity</label>
+                        <input required type="number" name="Qty" id="Text1" onchange="multiply()">
+                        <label>Total</label>
+                        <input type="text" readonly name="Total" id="txtresult" class = "totalOut">
+                        <% for (const inv of recipe) { %>
+                            <input required  readonly type="hidden" name="ingredients[]" class = "ingredient-name add-input" value="<%=inv.ingredients%>"><%}%>
+                        <% for (const inv of recipe) { %>
+                        <input class = "ingredient-add add-input" type= "hidden" value="<%=inv.recipe_qty%>" readonly name= "qty[]">
+                            <%}%>
+                        <div class = "outcome">
+                            <button type = "button" class = "cancel-button">Cancel</button>
+                            <input type = "submit" class = "submit-button">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
