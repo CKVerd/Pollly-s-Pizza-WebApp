@@ -249,13 +249,14 @@ router.post("/new",(req, res)=>{
   })
 
   router.post("/delete", (req, res) => {
-    const sql = "DELETE FROM userAccount WHERE username = ?";
+    const sql = "DELETE FROM userAccount WHERE username = ? AND username != 'admin'";
     if(req.body.delAccount == req.session.password){
       db.run(sql, req.session.username, (err,rows) => {
         if(err){
           console.log(err.message)
         }else{
-          res.redirect("/");
+          //error admin account cannot be deleted
+          res.redirect("back");
         }        
       });
     }else{
