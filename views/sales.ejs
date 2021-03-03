@@ -9,7 +9,7 @@
         <!-- JS -->
         <script src="js/main.js"></script>
         <script src="js/sales.js"></script>
-        
+
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/sales.css">
@@ -86,6 +86,7 @@
                             </div>
                          <% } %>   
                     </div>       
+                    <h1 class = "sales-header">Sales</h1> 
                     <div class = "row-1">
                         <table class = "sales-table">
                             <tr>
@@ -107,6 +108,10 @@
                             </tr>
                             <%}%>
                         </table>
+                    </div>
+                    <div class = "footer">
+                        <h1>Products</h1>
+                        <input class = "add-product-button" type = "button" value = "Add Product" onclick="showAddProductPopup()">
                     </div>
                     <div class = "row-2">
                         <div class = "grid-container">
@@ -130,12 +135,9 @@
                             <%}%>
                         </div>
                     </div>
-                    <div class = "row-3">
-                        <input class = "add-product-button" type = "button" value = "Add Product" onclick="showAddProductPopup()">
-                        <input class = "submit-button" type = "button" value = "Submit">
-                    </div>
                 </div>
             </div>
+
             <div class = "add-product-popup">
                 <form class = "add-product-popup-form" action="/addproduct" method="POST" enctype="multipart/form-data">
                     <button class = "close-popup" onclick="closeAddProductPopup()">X</button>

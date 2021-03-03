@@ -5,7 +5,10 @@
     background-color: white;
     display: flex;  
 }
-
+.page {
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 .error-row {
     width: 50%;
     margin-left: 40%; 
@@ -112,25 +115,34 @@ th {
 }
 
 .row-2 {
+    margin-top: 2%;
     width: 100%;
-    /* background-color: gray; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 5%;
     animation-name: flyFromDown;
     opacity: 0%;
     animation-fill-mode: forwards;
     animation-delay: 0.4s;
     animation-duration: 0.8s;
+    display: inline-block;
 } 
+
+.footer {
+    margin-top: 5%;
+    height: 5%;
+    width: 100%;
+    position: relative;
+}
 
 .grid-container{
     width: 97%;
     display: grid;
+    grid-row: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-row-gap: 5%;
-
+    clear: both;
+    margin-left: 2%;
 }
 
 .card-container {
@@ -257,8 +269,14 @@ th {
     font-size: 16px;
     font-weight:500;
     color: white;
-    margin-right: 2%;
+    position: absolute;
+    right: 70;
+    top: 0;
+}
 
+.footer h1 {
+    margin-left: 5.5%;
+    font-weight: 700;
 }
 
 .add-product-button:hover {
@@ -279,6 +297,10 @@ th {
 .edit-button:hover {
     color: black;
     cursor: hand;
+}
+
+.sales-header {
+    margin-left: 5%;
 }
 
 .add-product-popup {
@@ -525,10 +547,6 @@ th {
 
     .sales-table th{
         font-size: 14px;
-    }
-
-    .sales-table {
-
     }
 
     .grid-container {
