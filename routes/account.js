@@ -256,6 +256,7 @@ router.post("/new",(req, res)=>{
           console.log(err.message)
         }else{
           //error admin account cannot be deleted
+          req.flash("ernamepass", '"admin" account cannot be deleted')
           res.redirect("back");
         }        
       });
