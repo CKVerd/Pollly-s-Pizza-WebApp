@@ -167,6 +167,7 @@ th {
     align-items: center;
     height: 300px;
     width: 350px;
+    overflow-wrap:break-word;
 }
 
 .card {
@@ -174,6 +175,7 @@ th {
     height: 95%;
     -webkit-box-shadow: 10px 9px 15px -5px rgba(0,0,0,0.15); 
     box-shadow: 10px 9px 15px -5px rgba(0,0,0,0.15);
+    position: relative;
 }
 
 .item-image {
@@ -207,11 +209,15 @@ th {
     display: flex;
     margin-top: 7%;
     justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    bottom: 10;
 }
 
 .card-col-1 {
     width: 100%;
     position: relative;
+    bottom: 0;
 }
 
 .inner-row-1 {
