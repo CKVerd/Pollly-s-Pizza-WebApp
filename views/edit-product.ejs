@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Forgot Password</title>
+        <title>Edit Product</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- FONTS -->
@@ -17,7 +17,7 @@
         <div class = "main">
             <div class = "inner-col">
                 <div class = "row-1">
-                    <a href = "" class = "back-button">◄ Sales</a>
+                    <a href = "/sales" class = "back-button">◄ Sales</a>
                 </div>
                 <div class = "row-body" >
                     <h1>Edit Product</h1>
@@ -48,7 +48,7 @@
                                     <button type = "button" class = "delete-button" onclick ="window.location.href = '/deleteProduct/<%= rows.productId %>'">Delete</button>
                                 </div>
                                 <div class = "outcome">
-                                    <button type = "button" class = "cancel-button">Cancel</button>
+                                    <button type = "button" class = "cancel-button" onclick ="window.location.href = '/sales'">Cancel</button>
                                     <input type = "submit" class = "submit-button">
                                 </div>
                             </div>

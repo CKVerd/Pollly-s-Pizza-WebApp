@@ -1,6 +1,6 @@
 <html>
     <head>
-        <title>Delete Product</title>
+        <title>Delete Sale</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- FONTS -->
@@ -17,7 +17,7 @@
         <div class = "main">
             <div class = "inner-col">
                 <div class = "row-1">
-                    <a href = "" class = "back-button">◄ Sales</a>
+                    <a href = "/sales" class = "back-button">◄ Sales</a>
                 </div>
                 <div class = "row-body" >
                     <h1>Delete Sale</h1>
@@ -35,7 +35,7 @@
                             <input readonly type = "text" class = "delete-input input" value = "<%=model.totalPrice%>">
                             <div class = "row-4">
                                 <div class = "outcome">
-                                    <button type = "button" class = "cancel-button">Cancel</button>
+                                    <button type = "button" class = "cancel-button" onclick ="window.location.href = '/sales'">Cancel</button>
                                     <input type = "submit" class = "delete-button" value="Delete">
                                 </div>
                             </div>
