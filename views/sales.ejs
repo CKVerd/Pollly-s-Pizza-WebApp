@@ -84,7 +84,14 @@
                                 <span class="fa fa-exclamation-circle"></span>
                                 <span class="msg_sales"><%= message %></span>
                             </div>
-                         <% } %>   
+                         <% } %>  
+                         
+                         <% if (success && success.length > 0 ){%>
+                            <div class = "succ-row">
+                                <span class="fa fa-check-circle"></span>
+                                <span class="msg_sales"><%= success %></span>
+                            </div>
+                         <% } %>    
                     </div>       
                     <h1 class = "sales-header">Sales</h1> 
                     <div class = "row-1">

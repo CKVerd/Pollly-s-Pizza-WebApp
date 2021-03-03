@@ -80,13 +80,19 @@
                 <div class = page>
                     
                     <div class = "blank-row">
-                        <% if (message && message.length > 0 ){%>
+                        <% if (fail && fail.length > 0 ){%>
                             <div class = "error-row">
                                 <span class="fa fa-exclamation-circle"></span>
-                                <span class="msg_account"><%= message %></span>
+                                <span class="msg_account"><%= fail %></span>
                             </div>
                          <% } %>   
-                    </div>                   
+                         <% if (success && success.length > 0 ){%>
+                            <div class = "succ-row">
+                                <span class="fa fa-check-circle"></span>
+                                <span class="msg_account"><%= success %></span>
+                            </div>
+                         <% } %>   
+                    </div>               
                      
                      
                     <div class = "row-1 info-container">

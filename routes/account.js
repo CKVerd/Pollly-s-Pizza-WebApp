@@ -13,7 +13,7 @@ const db = new sqlite3.Database(db_name, (err) => {
   });
 
 router.get("/", (req, res) => {
-    res.render("login", {message: req.flash("warn")});
+    res.render("login", {fail: req.flash("warn"), success: req.flash("success")});
   });
   router.get("/forgot-pass1",(req,res)=>{
     res.render("forgot-pass-1", {message: req.flash("erpass1")})
@@ -85,10 +85,13 @@ router.post("/forgot-changePass3",(req,res)=>{
   const password = req.body.pass
   bcrypt.hash(password,saltRounds,(err,hash)=>{
     if(req.body.pass == req.body.confirmPass){
+      req.flash("success", "Password successfully changed")
         db.run(sql,[hash],(err,row)=>{
             if(err){
               return console.log(err.message)
-            } res.redirect("/");
+            } 
+            
+            res.redirect("/");
     });
 }else{
         req.flash("erpass3", "Passwords don't match, please try again")
@@ -108,7 +111,8 @@ router.get("/account",(req,res)=>{
       a1:req.session.secAnsw1,
       a2:req.session.secAnsw2,
       a3:req.session.secAnsw3,
-      message: req.flash("ernamepass")
+      fail: req.flash("ernamepass"),
+      success: req.flash("succnamepass")
     });
 });
 router.post("/login", (req,res) => {
@@ -152,10 +156,12 @@ router.post("/changeUsername",(req,res)=>{
   const username = req.body.username;
   if(req.body.password == req.session.password){
   db.run(sql,[username],(err,row)=>{
+    req.flash("succnamepass", "Username changed successfully")
     if(err){
       console.log(err.message)
     }else{
       req.session.username = username;
+      
       res.redirect("/account")
     }    
     })
@@ -170,6 +176,7 @@ router.post("/changePass",(req,res)=>{
   const password = req.body.newPass;
   bcrypt.hash(password,saltRounds,(err,hash)=>{
     if((req.body.newPass == req.body.confirmPass)&&(req.body.oldPass == req.session.password)){
+      req.flash("succnamepass", "Password changed successfully")
         db.run(sql,[hash],(err,row)=>{
             if(err){
               return console.log(err.message)
@@ -197,6 +204,7 @@ router.post("/changePass",(req,res)=>{
     const seca2 = req.body.ua2;
     const seca3 = req.body.ua3;
       if(password == req.session.password){
+        req.flash("succnamepass", "Security answer changed successfully")
           db.run(sql,[secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
                 req.session.secQues1 =secq1
                 req.session.secQues2 = secq2
@@ -230,6 +238,7 @@ router.post("/new",(req, res)=>{
     const seca3 = req.body.sa3;
     bcrypt.hash(password,saltRounds,(err,hash)=>{
       if(req.body.cpw == password){
+        req.flash("succnamepass", "New account successfully added")
         db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
           if(err){
             //error "Add account = username naulit"

@@ -16,7 +16,7 @@ router.get("/inventory",(req,res)=>{
         return console.error(err.message);
       }else{
         
-        res.render("inventory", { rows: rows, message: req.flash("erinventory") });
+        res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
       }
       
      
@@ -34,6 +34,7 @@ router.get("/inventory",(req,res)=>{
           req.flash("erinventory", "Ingredient already exists")
           res.redirect("/inventory")
         }else{
+          req.flash("succinv", "Ingredient successfully added")
           res.redirect("/inventory")
         }
       })
@@ -53,6 +54,7 @@ router.get("/inventory",(req,res)=>{
           res.redirect("/inventory")
           console.log(err.message)
         }else{
+          req.flash("succinv", ingredients + " successfully edited")
           res.redirect("/inventory")
         }
       });
@@ -64,6 +66,7 @@ router.get("/inventory",(req,res)=>{
         if(err){
           console.log(err.message)
         }else{
+          req.flash("succinv", "Ingredient successfully deleted")
           res.redirect("/inventory")
         }
       });

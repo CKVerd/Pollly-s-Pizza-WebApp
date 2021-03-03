@@ -63,7 +63,7 @@ router.get("/sales",(req,res)=>{
               if(err){
                 console.log(err.message)
               }else{
-                res.render("sales", { rows: rows , model:ing , sales:sales , formatter:formatter, message: req.flash("eraddproduct")});
+                res.render("sales", { rows: rows , model:ing , sales:sales , formatter:formatter, message: req.flash("eraddproduct"), success: req.flash("succsale")});
               }
             })
             
@@ -94,6 +94,7 @@ router.post("/addproduct" ,(req,res)=>{
                 console.log(err.message);
                 req.flash("eraddproduct", "Product already exists")
             }else{
+              req.flash("succsale", "Product successfully added")
               var i = 0;
               var flag = true;
               for (const inv of req.body.ingredients){  
@@ -166,6 +167,7 @@ router.post("/editProduct/:id", (req, res) => {
               req.flash("eraddproduct", "Edit Product: Product name already exists")
               res.redirect("/sales")
             }else{
+              req.flash("succsale", productName + " Successfully edited")
                 db.run(sql_updateproduct,[req.body.productName,product[0].productName],(err,row)=>{
                     if(err){
                       console.log(err.message)
@@ -196,10 +198,12 @@ router.get("/deleteProduct/:id", (req, res) => {
             if (err){
               console.log(err.message)
           }else{
+            
             db.all(sql_ingredients,[],(err,ing)=>{
               if(err){
                 console.log(err.message)
               }else{
+                
                 const sql_recipe= "SELECT ingredients,recipe_qty FROM Recipe WHERE productName = '"+productName+"'"
                 db.all(sql_recipe,[],(err,recipe)=>{
                   // console.log(productName)
@@ -223,6 +227,7 @@ router.post("/deleteProduct/:id", (req, res) => {
             if(err){
               console.log(err.message)
             }else{
+              req.flash("succsale",  "Product Successfully deleted")
             db.run(sql_Recipe,[req.body.productName],err=>{
               if(err){
                 console.log(err.message)
@@ -308,6 +313,7 @@ router.get("/addSale/:id", (req, res) => {
                     if(err){
                       console.log(err.message)
                     }else{
+                      
                       console.log("updated")
                     }
                     
@@ -317,8 +323,11 @@ router.get("/addSale/:id", (req, res) => {
                 
                 
               }
-               
-            })}res.redirect("/sales")
+              
+              
+            })}
+            req.flash("succsale",  "Sale transaction successfully added")
+            res.redirect("/sales")
             
           }
         })
@@ -344,6 +353,7 @@ router.post("/deleteSale/:id", (req, res) => {
       if(err){
         console.log(err.message)
       }else{
+        req.flash("succsale",  "Sale transaction successfully deleted")
         res.redirect("/sales")
       }
     });
