@@ -10,8 +10,8 @@
         <script src="js/forgot.js"></script>
 
         <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="css/base.css">
-        <link rel="stylesheet" type="text/css" href="css/delete-sale.css">
+        <link rel="stylesheet" type="text/css" href="/css/base.css">
+        <link rel="stylesheet" type="text/css" href="/css/delete-sale.css">
     </head>
     <body>
         <div class = "main">
@@ -21,18 +21,18 @@
                 </div>
                 <div class = "row-body" >
                     <h1>Delete Sale</h1>
-                    <form class="entry" action="/deleteProduct/<%=rows.productId%>" method="post">
+                    <form class="entry" action="/deleteSale/<%=model.salesID%>" method="post">
                         <div class = "inner-card">
                             <label>Date</label>
-                            <input readonly type = "text" class = "delete-input input">
+                            <input readonly type = "text" class = "delete-input input" value = "<%=model.DT%>">
                             <label>Product</label>
-                            <input readonly type = "text" class = "delete-input input">
+                            <input readonly type = "text" class = "delete-input input" value = "<%=model.productName%>">
                             <label>Price</label>
-                            <input readonly type = "text" class = "delete-input input">
+                            <input readonly type = "text" class = "delete-input input" value = "<%=model.Price%>">
                             <label>Quantity</label>
-                            <input readonly type = "text" class = "delete-input input">
+                            <input readonly type = "text" class = "delete-input input" value = "<%=model.sales_qty%>">
                             <label>Total</label>
-                            <input readonly type = "text" class = "delete-input input">
+                            <input readonly type = "text" class = "delete-input input" value = "<%=model.totalPrice%>">
                             <div class = "row-4">
                                 <div class = "outcome">
                                     <button type = "button" class = "cancel-button">Cancel</button>

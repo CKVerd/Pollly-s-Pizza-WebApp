@@ -50,7 +50,7 @@ const storage = multer.diskStorage({
 router.get("/sales",(req,res)=>{
     const sql = "SELECT * FROM Product"
     const sql_ingredients = "Select ingredients From stock"
-    const sql_sales = "SELECT * FROM Sales"
+    const sql_sales = "SELECT * FROM Sales ORDER by salesID DESC"
     db.all(sql, [], (err, rows) => {
       if (err) {
         return console.error(err.message);
@@ -304,7 +304,7 @@ router.get("/addSale/:id", (req, res) => {
                 
                   db.run(sql_update,inv.recipe_qty,req.body.Qty,inv.ingredients,(err,row)=>{
                    
-                    console.log(stock[0].stockQty + " "+  inv.recipe_qty + "-" + inv.ingredients + ' =' + qty[3])//need maiterate
+                    
                     if(err){
                       console.log(err.message)
                     }else{
@@ -325,4 +325,27 @@ router.get("/addSale/:id", (req, res) => {
       }
     })
   })
+router.get("/deleteSale/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "SELECT * FROM Sales WHERE salesID = ?";
+    db.get(sql, id, (err, row) => {
+      if (err){
+        console.log(err.message)
+    }else{
+      res.render("delete-sale",{model:row});
+    }
+     
+    });
+  });
+router.post("/deleteSale/:id", (req, res) => {
+    const id = req.params.id;
+    const sql = "DELETE FROM Sales WHERE (salesID = ?)";
+    db.run(sql, id, err => {
+      if(err){
+        console.log(err.message)
+      }else{
+        res.redirect("/sales")
+      }
+    });
+  });
 module.exports = router;

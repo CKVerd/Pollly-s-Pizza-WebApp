@@ -103,7 +103,7 @@
                                 <td><%=formatter.format(sale.Price)%></td>
                                 <td><%=sale.sales_qty%></td>
                                 <td><%=formatter.format(sale.totalPrice)%></td>
-                                <td><button class = "edit-button" onclick = "">Delete</button></td>
+                                <td><button class = "edit-button" onclick = "window.location.href = '/deleteSale/<%= sale.salesID %>'">Delete</button></td>
                             </tr>
                             <%}%>
                         </table>
