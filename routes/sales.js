@@ -98,8 +98,8 @@ router.post("/addproduct" ,(req,res)=>{
               var flag = true;
               for (const inv of req.body.ingredients){  
                   db.run(sql_ingredients,[req.body.ingredients[i],req.body.productName,req.body.qty[i]],(err)=>{
-                    console.log(req.body.ingredients[i])
-                    console.log(req.body.qty)
+                    console.log(req.body.ingredients[i] + "-" + inv + "-" + req.body.qty[i])
+                    
                     if(err){
                       console.log(err.message)
                       
@@ -253,7 +253,9 @@ router.get("/addSale/:id", (req, res) => {
                   if(err){
                     console.log(err.message)
                   }else{
-                    res.render("add-sale",{rows : row, recipe:recipe , model:ing});
+                    var a = 0;
+                  var b = 0;
+                    res.render("add-sale",{rows : row, recipe:recipe ,a:a,b:b, model:ing});
                   }
                 })
               }
@@ -261,42 +263,66 @@ router.get("/addSale/:id", (req, res) => {
           }
           });
         });
-router.post("/addSales",(req,res)=>{
-          const sql_addSales = "INSERT INTO Sales(productName,price,sales_qty,totalPrice)VALUES(?,?,?,?)"
-          const sql_search = " Select * FROM Recipe WHERE productName = ?"
-          const sql_stock = " Select * FROM Stock WHERE ingredients = ?"
-          const sql_update = "UPDATE stock set stockQty = ? - (? * ?) WHERE ingredients = ?"
+
+  router.post("/addSales",(req,res)=>{
+    const sql_addSales = "INSERT INTO Sales(productName,price,sales_qty,totalPrice)VALUES(?,?,?,?)"
+    const sql_search = " Select * FROM Recipe WHERE productName = ?"
+    const sql_stock = " Select * FROM Stock WHERE ingredients = ?"
+    const sql_update = "UPDATE stock set stockQty =stockQty - (? * ?) WHERE ingredients = ?"
+    var qty = []
+    for(const recipe of req.body.qty){
+    
+    var b = 0
+                qty.push(recipe)
+                b++
+                console.log(qty)
+  }
+  console.log(qty)
+  
+    db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
+      if(err){
+        console.log(err.message)
         
-          db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
-            if(err){
-              console.log(err.message)
+      }else{
+        var a = 0;
+        db.all(sql_search,[req.body.ProductName],(err,product)=>{
+          console.log(product)
+          if(err){
+            console.log(err.message)
+          }else{
+            for(const inv of product){
+         
+            db.all(sql_stock,[inv.ingredients],(err,stock)=>{
+              // console.log(stock[0].stockQty + "-" + stock[0].ingredients + ' -' + req.body.qty[a])
               
-            }else{
-              db.all(sql_search,[req.body.ProductName],(err,product)=>{
-                console.log(product)
-                if(err){
-                  console.log(err.message)
-                }else{
-                  for(const inv of req.body.ingredients){
-                var a = 0;
-                  db.all(sql_stock,[inv],(err,stock)=>{
+              if(err){
+                console.log(err.message)
+                
+              }else{
+                console.log("===========================================================")
+                
+                
+                  db.run(sql_update,inv.recipe_qty,req.body.Qty,inv.ingredients,(err,row)=>{
+                   
+                    console.log(stock[0].stockQty + " "+  inv.recipe_qty + "-" + inv.ingredients + ' =' + qty[3])//need maiterate
                     if(err){
                       console.log(err.message)
                     }else{
-                      db.run(sql_update,stock[0].stockQty,req.body.qty[a],req.body.Qty,stock[0].ingredients,(err,row)=>{
-                        if(err){
-                          console.log(err.message)
-                        }else{
-                          console.log("updated")
-                        }
-                      })
-                     
-                    }a++
-                  })}res.redirect("/sales")
+                      console.log("updated")
+                    }
+                    
+                  })
+                  a++
                   
-                }
-              })
-            }
-          })
+                
+                
+              }
+               
+            })}res.redirect("/sales")
+            
+          }
         })
+      }
+    })
+  })
 module.exports = router;
