@@ -7,19 +7,13 @@ const sqlite3 = require("sqlite3").verbose();
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const session = require('express-session');
-// const bcrypt = require("bcrypt"); 
-// const multer = require('multer');
-// const saltRounds = 10; 
 const db_name = path.join(__dirname, "data", "PollyPizza.db");
-const moment = require('moment');
-const formatter = new Intl.NumberFormat('en-PH', {
-  style: 'currency',
-  currency: 'PHP',
-  minimumFractionDigits: 2
-})
 const indexRoutes = require('./routes/account')
 const inventoryRoutes = require('./routes/inventory')
 const salesRoutes = require('./routes/sales')
+const statRoute = require('./routes/statistics')
+const dashboardRoutes = require('./routes/dashboard')
+const helpRoutes = require('./routes/help')
 
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
@@ -129,60 +123,12 @@ app.use(flash())
 app.use(indexRoutes);
 app.use(inventoryRoutes);
 app.use(salesRoutes);
-app.get("/help",(req,res)=>{
-  res.render("help")
-})
-app.get("/statistics",(req,res)=>{
-  const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"
-  const sql_least = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) ASC LIMIT 5"
-  const sql_most = "SELECT ingredients, SUM(stockQty) AS TotalQuantity FROM stock GROUP BY ingredients ORDER BY SUM(stockQty) ASC LIMIT 5"
-  db.all(sql_best,[],(err,best)=>{
-    if(err){
-      console.log(err.message)
-    }else{
-      db.all(sql_least,[],(err,least)=>{
-        if(err){
-          console.log(err.message)
-        }else{
-          db.all(sql_most,[],(err,most)=>{
-            if(err){
-              console.log(err.message)
-            }else{
-              res.render("statistics", {best : best , least:least, most:most, moment:moment})
-            }
-          })
-          
-        }
-      })
-       
-    }
-  })
-  
-})
+app.use(statRoute);
+app.use(dashboardRoutes);
+app.use(helpRoutes);
 
 
-app.get("/dashboard",(req,res)=>{
-  const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
-  const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"
-  const sql_monthlySales = "SELECT strftime('%Y-%m', 'now') AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month;"
-  db.all(sql_lowStock,[],(err,rows)=>{
-    if(err){
-      console.log(err.message)
-    }else{
-      console.log(rows)
-      db.all(sql_monthlySales,[],(err,sales)=>{
-        console.log(sales)
-        if(err){
-          console.log(err.message)
-        }else{
-          res.render("index",{model:rows , sales:sales , moment:moment , formatter:formatter})
-        }
-      })
-       
-    }
-  })
-  
-})
+
 
 
 

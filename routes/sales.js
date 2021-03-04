@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
-const multer = require('multer');
-const { throws } = require('assert');
+const multer = require('multer');;
 const db_name = path.join('./data', "PollyPizza.db");
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
