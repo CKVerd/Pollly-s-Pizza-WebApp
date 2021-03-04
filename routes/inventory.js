@@ -66,6 +66,7 @@ const db = new sqlite3.Database(db_name, (err) => {
         }
       })
       }else{
+        //error edit amount ng stock less than or equal to zero din
         console.log("less than zero")
         res.redirect("/inventory")
         
