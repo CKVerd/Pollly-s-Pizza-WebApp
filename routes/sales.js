@@ -3,6 +3,7 @@ const router = express.Router({ mergeParams: true });
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const multer = require('multer');
+const { throws } = require('assert');
 const db_name = path.join('./data', "PollyPizza.db");
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
@@ -48,7 +49,7 @@ const storage = multer.diskStorage({
     }
   }
 router.get("/sales",(req,res)=>{
-    const sql = "SELECT * FROM Product"
+    const sql = "SELECT * FROM Product ORDER by productId DESC"
     const sql_ingredients = "Select ingredients From stock"
     const sql_sales = "SELECT * FROM Sales ORDER by salesID DESC"
     db.all(sql, [], (err, rows) => {
@@ -151,11 +152,10 @@ router.post("/editProduct/:id", (req, res) => {
       const productName = req.body.productName;
       const price = req.body.price;
       const sql = "UPDATE Product SET productName = ?, price = ? WHERE (productId = ?)";
-      const sql_update = `UPDATE Recipe set ingredients = ?,recipe_qty = ? WHERE productName = ? AND ingredients = ?`
+      const sql_update = `UPDATE Recipe set ingredients = ?,recipe_qty = ? WHERE productName = ? AND ingredients = ? `
       const sql_updateproduct = "UPDATE Recipe SET productName = ? WHERE (productName = ?)"
       const sql_product = "Select * From Product where (productId = ?) "
       const sql_recipe= "SELECT ingredients FROM Recipe WHERE productName = ?"
-      var selectProduct;
       db.all(sql_product,[id],(err,product)=>{
         if(err){
           console.log(err.message)
@@ -177,9 +177,22 @@ router.post("/editProduct/:id", (req, res) => {
                             console.log(err.message)
                             
                         }else{
+                          
+                          var i = 0;
+                          for (const inv of req.body.ingredients){
+                           
+                            console.log(`${inv}=${req.body.qty[i]}=${req.body.productName}=${recipe[i].ingredients}=${inv}`)
+                            db.run(sql_update,inv,req.body.qty[i],req.body.productName,recipe[i].ingredients,(err,update)=>{
+                              
+                              if(err){
+                                console.log(err.message)
+                              }else{
 
-                          res.redirect("/sales")
-                    
+                              }
+                            })
+                            i++
+                          }
+                    res.redirect('/sales')
                     }
                   })
                     }
@@ -274,57 +287,28 @@ router.get("/addSale/:id", (req, res) => {
     const sql_search = " Select * FROM Recipe WHERE productName = ?"
     const sql_stock = " Select * FROM Stock WHERE ingredients = ?"
     const sql_update = "UPDATE stock set stockQty =stockQty - (? * ?) WHERE ingredients = ?"
-    var qty = []
-    for(const recipe of req.body.qty){
-    
-    var b = 0
-                qty.push(recipe)
-                b++
-                console.log(qty)
-  }
-  console.log(qty)
-  
     db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
       if(err){
         console.log(err.message)
         
       }else{
-        var a = 0;
         db.all(sql_search,[req.body.ProductName],(err,product)=>{
           console.log(product)
           if(err){
             console.log(err.message)
           }else{
             for(const inv of product){
-         
             db.all(sql_stock,[inv.ingredients],(err,stock)=>{
-              // console.log(stock[0].stockQty + "-" + stock[0].ingredients + ' -' + req.body.qty[a])
-              
               if(err){
-                console.log(err.message)
-                
+                console.log(err.message) 
               }else{
-                console.log("===========================================================")
-                
-                
                   db.run(sql_update,inv.recipe_qty,req.body.Qty,inv.ingredients,(err,row)=>{
-                   
-                    
                     if(err){
                       console.log(err.message)
-                    }else{
-                      
-                      console.log("updated")
+                    }else{       
                     }
-                    
-                  })
-                  a++
-                  
-                
-                
+                  })      
               }
-              
-              
             })}
             req.flash("succsale",  "Sale transaction successfully added")
             res.redirect("/sales")

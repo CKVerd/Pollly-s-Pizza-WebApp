@@ -9,7 +9,7 @@ const db = new sqlite3.Database(db_name, (err) => {
     }
     // console.log("Successful connection to the database 'apptest.db'");
   });
-router.get("/inventory",(req,res)=>{
+ router.get("/inventory",(req,res)=>{
     const sql = "SELECT * FROM stock"
     db.all(sql, [], (err, rows) => {
       if (err) {
@@ -28,17 +28,23 @@ router.get("/inventory",(req,res)=>{
       const category = req.body.category;
       const Threshold = req.body.threshold;
       const Stock = req.body.AmountStock
+      if(Stock>0){
       db.run(sql_insert,[ingredients,category,Stock,Threshold],(err,row)=>{
-        if(err){
-          console.log(err.message)
-          req.flash("erinventory", "Ingredient already exists")
-          res.redirect("/inventory")
-        }else{
-          req.flash("succinv", "Ingredient successfully added")
-          res.redirect("/inventory")
-        }
+        
+          if(err){
+            console.log(err.message)
+            req.flash("erinventory", "Ingredient already exists")
+            res.redirect("/inventory")
+          }else{
+            req.flash("succinv", "Ingredient successfully added")
+            res.redirect("/inventory")
+          } 
       })
-  
+    }else{
+      //error less than or equal to zero // bala na kayo kung pano nyo iwoword
+      console.log("Less than zero")
+      res.redirect("/inventory")
+    }
     })
     router.post("/edit/:id", (req, res) => {
       const id = req.params.id;
@@ -47,6 +53,7 @@ router.get("/inventory",(req,res)=>{
       const Threshold = req.body.eThres;
       const Stock = req.body.eStock
       const sql = "UPDATE stock SET ingredients = ?, category = ?, stockQty = ?, amountThreshold = ? WHERE (stockID = ?)";
+      if(Stock>0){
       db.run(sql, [ingredients,category,Stock,Threshold,id], err => {
         if(err){
           //res.render("/edit", {message: req.flash("erinventory") });
@@ -57,7 +64,12 @@ router.get("/inventory",(req,res)=>{
           req.flash("succinv", ingredients + " successfully edited")
           res.redirect("/inventory")
         }
-      });
+      })
+      }else{
+        console.log("less than zero")
+        res.redirect("/inventory")
+        
+      };
     });
     router.post("/delete/:id", (req, res) => {
       const id = req.params.id;
@@ -82,7 +94,7 @@ router.get("/inventory",(req,res)=>{
             console.error(err.message);
           }else{
             console.log(rows)
-            res.render("inventory", { rows: rows, message: req.flash("erinventory") });
+            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }  
         });
       }else if (req.body.sort == "Low to High"){
@@ -91,7 +103,7 @@ router.get("/inventory",(req,res)=>{
             console.error(err.message);
           }else{
             console.log(rows)
-            res.render("inventory", { rows: rows, message: req.flash("erinventory") });
+            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }      
         });
       }else if (req.body.sort == "Recently Added"){
@@ -100,7 +112,7 @@ router.get("/inventory",(req,res)=>{
             console.error(err.message);
           }else{
             console.log(rows)
-            res.render("inventory", { rows: rows, message: req.flash("erinventory") });
+            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }
         })
       }
@@ -110,7 +122,7 @@ router.get("/inventory",(req,res)=>{
             console.error(err.message);
           }else{
             console.log(rows)
-            res.render("inventory", { rows: rows, message: req.flash("erinventory") });
+            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }
         });
       }
@@ -150,7 +162,7 @@ router.get("/inventory",(req,res)=>{
       if(err){
         console.log(err.message)
       }else{
-        res.render("inventory", { rows: rows, message: req.flash("erinventory") });
+        res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
       }
     })
   })
