@@ -7,7 +7,6 @@ const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    // console.log("Successful connection to the database 'apptest.db'");
   });
  router.get("/inventory",(req,res)=>{
     const sql = "SELECT * FROM stock"
@@ -94,7 +93,6 @@ const db = new sqlite3.Database(db_name, (err) => {
           if (err) {
             console.error(err.message);
           }else{
-            console.log(rows)
             res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }  
         });
@@ -103,7 +101,6 @@ const db = new sqlite3.Database(db_name, (err) => {
           if (err) {
             console.error(err.message);
           }else{
-            console.log(rows)
             res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }      
         });
@@ -112,7 +109,6 @@ const db = new sqlite3.Database(db_name, (err) => {
           if (err) {
             console.error(err.message);
           }else{
-            console.log(rows)
             res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }
         })
@@ -122,7 +118,6 @@ const db = new sqlite3.Database(db_name, (err) => {
           if (err) {
             console.error(err.message);
           }else{
-            console.log(rows)
             res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }
         });
@@ -138,7 +133,6 @@ const db = new sqlite3.Database(db_name, (err) => {
   
           console.log(err.message)
       }else{
-        console.log(row)
         res.render("edit-stock",{model:row});
       }
        
