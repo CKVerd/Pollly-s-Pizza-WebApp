@@ -270,7 +270,7 @@ router.post("/new",(req, res)=>{
         }        
       });
     }else{
-      //error "Delete acc = something went wrong
+      //error "Delete acc = something went wrong di kasi alam kung admin or maling passsword kaya something went wrong na lng
       req.flash("ernamepass", "Incorrect password, please try again")
       res.redirect("back")
     }
