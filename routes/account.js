@@ -265,13 +265,13 @@ router.post("/new",(req, res)=>{
           console.log(err.message)
         }else{
           //success deleted successfully
-          // req.flash("ernamepass", '"admin" account cannot be deleted')
+          req.flash("success", "Account deleted successfully")
           res.redirect("/");
         }        
       });
     }else{
       //error "Delete acc = something went wrong di kasi alam kung admin or maling passsword kaya something went wrong na lng
-      req.flash("ernamepass", "Incorrect password, please try again")
+      req.flash("ernamepass", "Delete account: Something went wrong, please try again")
       res.redirect("back")
     }
   });

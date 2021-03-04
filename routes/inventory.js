@@ -41,6 +41,7 @@ const db = new sqlite3.Database(db_name, (err) => {
       })
     }else{
       //error less than or equal to zero // bala na kayo kung pano nyo iwoword
+      req.flash("erinventory", "Amount in stock must be more than 0")
       console.log("Less than zero")
       res.redirect("/inventory")
     }
@@ -66,6 +67,7 @@ const db = new sqlite3.Database(db_name, (err) => {
       })
       }else{
         //error edit amount ng stock less than or equal to zero din
+        req.flash("erinventory", "Amount in stock must be more than 0")
         console.log("less than zero")
         res.redirect("/inventory")
         
