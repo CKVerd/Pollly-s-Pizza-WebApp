@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
-const multer = require('multer');;
+const multer = require('multer');
+const middleware = require('../middleware/middleware')
 const db_name = path.join('./data', "PollyPizza.db");
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
@@ -47,7 +48,7 @@ const storage = multer.diskStorage({
       cb('Error: Images Only!');
     }
   }
-router.get("/sales",(req,res)=>{
+router.get("/sales",middleware.auth,(req,res)=>{
     const sql = "SELECT * FROM Product ORDER by productId DESC"
     const sql_ingredients = "Select ingredients From stock"
     const sql_sales = "SELECT * FROM Sales ORDER by salesID DESC"
@@ -99,8 +100,6 @@ router.post("/addproduct" ,(req,res)=>{
               var flag = true;
               for (const inv of req.body.ingredients){  
                   db.run(sql_ingredients,[req.body.ingredients[i],req.body.productName,req.body.qty[i]],(err)=>{
-                    console.log(req.body.ingredients[i] + "-" + inv + "-" + req.body.qty[i])
-                    
                     if(err){
                       console.log(err.message)
                       
@@ -118,7 +117,7 @@ router.post("/addproduct" ,(req,res)=>{
       }
     });
     });
-router.get("/editProduct/:id", (req, res) => {
+router.get("/editProduct/:id",middleware.auth, (req, res) => {
       const id = req.params.id;
       const sql = "SELECT * FROM Product WHERE productId = ?";
       const sql_ingredients = "Select ingredients From stock"
@@ -201,7 +200,7 @@ router.post("/editProduct/:id", (req, res) => {
         }
        })   
       });
-router.get("/deleteProduct/:id", (req, res) => {
+router.get("/deleteProduct/:id",middleware.auth, (req, res) => {
           const id = req.params.id;
           const sql = "SELECT * FROM Product WHERE productId = ?";
           const sql_ingredients = "Select ingredients From stock"
@@ -250,7 +249,7 @@ router.post("/deleteProduct/:id", (req, res) => {
             }
           });
         });
-router.get("/addSale/:id", (req, res) => {
+router.get("/addSale/:id",middleware.auth, (req, res) => {
           const id = req.params.id;
           const sql = "SELECT * FROM Product WHERE productId = ?";
           const sql_ingredients = "Select ingredients From stock"
@@ -317,7 +316,7 @@ router.get("/addSale/:id", (req, res) => {
       }
     })
   })
-router.get("/deleteSale/:id", (req, res) => {
+router.get("/deleteSale/:id",middleware.auth, (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM Sales WHERE salesID = ?";
     db.get(sql, id, (err, row) => {

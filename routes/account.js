@@ -4,6 +4,8 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
+const session = require('express-session');
+const middleware = require('../middleware/middleware')
 const db_name = path.join('./data', "PollyPizza.db");
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
@@ -102,7 +104,7 @@ router.post("/forgot-changePass3",(req,res)=>{
   })
 
 //account routes
-router.get("/account",(req,res)=>{
+router.get("/account",middleware.auth,(req,res)=>{
     res.render("account",{
       username:req.session.username,
       q1:req.session.secQues1,
@@ -281,4 +283,5 @@ router.post("/new",(req, res)=>{
       res.redirect('/') // will always fire after session is destroyed
     })
   })
+  
   module.exports = router;

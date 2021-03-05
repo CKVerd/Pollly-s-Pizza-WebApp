@@ -2,13 +2,14 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
+const middleware = require('../middleware/middleware')
 const db_name = path.join('./data', "PollyPizza.db");
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
   });
- router.get("/inventory",(req,res)=>{
+ router.get("/inventory",middleware.auth,(req,res)=>{
     const sql = "SELECT * FROM stock"
     db.all(sql, [], (err, rows) => {
       if (err) {
@@ -127,7 +128,7 @@ const db = new sqlite3.Database(db_name, (err) => {
       
     });
   
-  router.get("/edit/:id", (req, res) => {
+  router.get("/edit/:id",middleware.auth, (req, res) => {
       const id = req.params.id;
       const sql = "SELECT * FROM stock WHERE stockID = ?";
       db.get(sql, id, (err, row) => {
@@ -140,7 +141,7 @@ const db = new sqlite3.Database(db_name, (err) => {
        
       });
     });
-  router.get("/delete/:id", (req, res) => {
+  router.get("/delete/:id",middleware.auth, (req, res) => {
       const id = req.params.id;
       const sql = "SELECT * FROM stock WHERE stockID = ?";
       db.get(sql, id, (err, row) => {

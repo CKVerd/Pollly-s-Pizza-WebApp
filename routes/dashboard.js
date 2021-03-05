@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router({ mergeParams: true });
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
-const multer = require('multer');;
+const middleware = require('../middleware/middleware');
 const db_name = path.join('./data', "PollyPizza.db");
 const moment = require('moment');
 const formatter = new Intl.NumberFormat('en-PH', {
@@ -16,7 +16,7 @@ const db = new sqlite3.Database(db_name, (err) => {
     }
     // console.log("Successful connection to the database 'apptest.db'");
   });
-router.get("/dashboard",(req,res)=>{
+router.get("/dashboard",middleware.auth,(req,res)=>{
     const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
     const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"
     const sql_monthlySales = "SELECT strftime('%Y-%m', 'now') AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month;"
