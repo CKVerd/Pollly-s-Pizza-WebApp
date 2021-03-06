@@ -4,7 +4,7 @@ middlewareObj.auth =  function(req,res,next){
   if(req.session.loggedin == true){
     next()
   }else{
-    req.flash('error', 'You need to be logged in to access that route')
+    req.flash('error', 'Please login using your credentials')
     res.redirect("/")
   }
 }
