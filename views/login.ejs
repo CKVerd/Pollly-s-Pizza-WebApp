@@ -24,6 +24,12 @@
                     <span class="msg"><%= fail %></span>
                     </div>
             <% } %>
+            <% if (denied && denied.length > 0 ){%>
+                <div class ="popup">
+                    <span class="fa fa-exclamation-circle"></span>
+                    <span class="msg"><%= denied %></span>
+                    </div>
+            <% } %>
 
             <% if (success && success.length > 0 ){%>
                 <div class ="popup2">

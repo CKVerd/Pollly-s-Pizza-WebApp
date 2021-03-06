@@ -15,7 +15,7 @@ const db = new sqlite3.Database(db_name, (err) => {
   });
 
 router.get("/", (req, res) => {
-    res.render("login", {fail: req.flash("warn"), success: req.flash("success")});
+    res.render("login", {fail: req.flash("warn"), success: req.flash("success"), denied : req.flash("error")});
   });
   router.get("/forgot-pass1",(req,res)=>{
     res.render("forgot-pass-1", {message: req.flash("erpass1")})
@@ -114,7 +114,8 @@ router.get("/account",middleware.auth,(req,res)=>{
       a2:req.session.secAnsw2,
       a3:req.session.secAnsw3,
       fail: req.flash("ernamepass"),
-      success: req.flash("succnamepass")
+      success: req.flash("succnamepass"),
+      
     });
 });
 router.post("/login", (req,res) => {
