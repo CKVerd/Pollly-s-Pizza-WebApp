@@ -79,7 +79,6 @@
                     <div class = "row-1">
                         <div class = "card-1">
                             <canvas id= "myChart" ></canvas>
-                            <p class = "table-title">Sales for the year 2019</p>
                         </div>
                     </div>
                     <div class = "row-2">
@@ -125,7 +124,6 @@
         data: {
             labels: ["<%=bar[6].DT%>","<%=bar[5].DT%>","<%=bar[4].DT%>","<%=bar[3].DT%>","<%=bar[2].DT%>",'<%=bar[1].DT%>','<%=bar[0].DT%>'],
             datasets: [{
-                label: 'Weekly Sales',
                 data: [ "<%=bar[6].totalSum%>", "<%=bar[5].totalSum%>", "<%=bar[4].totalSum%>", "<%=bar[3].totalSum%>","<%=bar[2].totalSum%>","<%=bar[1].totalSum%>","<%=bar[0].totalSum%>"],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
@@ -147,12 +145,35 @@
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
+
         scales: {
             yAxes: [{
                 ticks: {
                     beginAtZero: true
                 }
             }]
+        },
+        
+        layout: {
+            padding: {
+                left: 40,
+                right: 40,
+                top: 10,
+                bottom: 10
+            }
+        },
+        
+        title: {
+            display: true,
+            text: 'Amount of Sales per Week (in Php.)',
+            fontSize: 16
+        },
+
+        legend: {
+            display: false,
+            position:'right'
         }
     }
 });

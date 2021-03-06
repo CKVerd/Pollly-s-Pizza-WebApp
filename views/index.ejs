@@ -150,12 +150,33 @@
         }]
     },
     options: {
+        responsive: true,
+        maintainAspectRatio: false,
         scales: {
             yAxes: [{
                 ticks: {
                     beginAtZero: true
                 }
             }]
+        },
+        layout: {
+            padding: {
+                left: 40,
+                right: 50,
+                top: 10,
+                bottom: 15
+            }
+        },
+        
+        title: {
+            display: true,
+            text: 'Amount of Sales in the year (INSERT YEAR HERE) (in Php.)',
+            fontSize: 16
+        },
+
+        legend: {
+            display: false,
+            position:'right'
         }
     }
 });
