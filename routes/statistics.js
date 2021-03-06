@@ -20,6 +20,7 @@ router.get("/statistics",middleware.auth,(req,res)=>{
     const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"
     const sql_least = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) ASC LIMIT 5"
     const sql_most = "SELECT ingredients, SUM(stockQty) AS TotalQuantity FROM stock GROUP BY ingredients ORDER BY SUM(stockQty) ASC LIMIT 5"
+    const sql_bar = "SELECT   DT, sum(totalPrice) as totalSum FROM Sales GROUP BY DT ORDER by DT DESC LIMIT 7"
     db.all(sql_best,[],(err,best)=>{
       if(err){
         console.log(err.message)
@@ -32,7 +33,14 @@ router.get("/statistics",middleware.auth,(req,res)=>{
               if(err){
                 console.log(err.message)
               }else{
-                res.render("statistics", {best : best , least:least, most:most, moment:moment})
+                db.all(sql_bar,[],(err,bar)=>{
+                  if(err){
+                    console.log(err.message)
+                  }else{
+                    res.render("statistics", {best : best , least:least, most:most,bar:bar, moment:moment})
+                  }
+                })
+                
               }
             })
             

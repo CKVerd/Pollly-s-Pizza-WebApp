@@ -119,14 +119,14 @@
         </div>
         <script src="js/Chart.bundle.min.js"></script>
         <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
+         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July','August','September','October','November','December'],
+            labels: ["<%=bar[6].DT%>","<%=bar[5].DT%>","<%=bar[4].DT%>","<%=bar[3].DT%>","<%=bar[2].DT%>",'<%=bar[1].DT%>','<%=bar[0].DT%>'],
             datasets: [{
-                label: 'Sales',
-                data: [ 3, 5, 2, 3],
+                label: 'Weekly Sales',
+                data: [ "<%=bar[6].totalSum%>", "<%=bar[5].totalSum%>", "<%=bar[4].totalSum%>", "<%=bar[3].totalSum%>","<%=bar[2].totalSum%>","<%=bar[1].totalSum%>","<%=bar[0].totalSum%>"],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',
