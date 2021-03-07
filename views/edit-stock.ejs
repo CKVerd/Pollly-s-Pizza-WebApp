@@ -24,11 +24,11 @@
                     <form class="entry" action="/edit/<%=model.stockID%>" method="post">
                         <div class = "inner-card">
                             <label>Item Name</label>
-                            <input type = "text" class = "input" name="eName" value="<%= model.ingredients %>">
+                            <input type = "text" class = "input"  name="eName" value="<%= model.ingredients %>">
                             <label>Amount in Stock</label>
-                            <input type = "text" class = "input" name="eStock" value="<%= model.stockQty %>" >
+                            <input type = "number" class = "input" name="eStock" value="<%= model.stockQty %>" >
                             <label>Threshold</label>
-                            <input type = "text" class = "input" value="<%=model.amountThreshold%>" name="eThres">
+                            <input type = "number" class = "input" value="<%=model.amountThreshold%>" name="eThres">
                             <label>Category</label>
                             <div class = "category-container" >
                                 <select required class = "category-input" name="eCategory">
