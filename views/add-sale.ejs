@@ -30,9 +30,9 @@
                     <h1>Add Sale</h1>
                     <form class = "add-form" action="/addSales" method="post">
                         <label>Product Name</label>
-                        <input required type="text" name="ProductName" id="" value="<%=rows.productName%>">
+                        <input required  readonly type="text" name="ProductName" id="" class = "totalOut" value="<%=rows.productName%>">
                         <label>Price</label>
-                        <input required type="text" name="Price" id="Text2" value="<%=rows.price%>">
+                        <input required  readonly type="text" name="Price" id="Text2" class = "totalOut" value="<%=rows.price%>">
                         <label>Quantity</label>
                         <input required type="number" name="Qty" id="Text1" onchange="multiply()">
                         <label>Total</label>
