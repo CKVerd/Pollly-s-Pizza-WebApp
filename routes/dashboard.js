@@ -18,8 +18,7 @@ const db = new sqlite3.Database(db_name, (err) => {
   });
 router.get("/dashboard",middleware.auth,(req,res)=>{
     const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
-    const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"
-    const sql_monthlySales = "SELECT strftime('%Y-%m', 'now') AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month;"
+    const sql_monthlySales = "SELECT strftime('%Y-%m', DT) AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month ASC LIMIT 2;"
     db.all(sql_lowStock,[],(err,rows)=>{
       if(err){
         console.log(err.message)
