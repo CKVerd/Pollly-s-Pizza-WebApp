@@ -179,7 +179,7 @@ router.post("/editProduct/:id", (req, res) => {
                           var i = 0;
                           for (const inv of req.body.ingredients){
                            
-                            console.log(`${inv}=${req.body.qty[i]}=${req.body.productName}=${recipe[i].ingredients}=${inv}`)
+                            console.log(`${inv}=${req.body.qty[i]}=${req.body.productName}=${recipe[i].ingredients}=${recipe[i].recipe_qty}`)
                             db.run(sql_update,inv,req.body.qty[i],req.body.productName,recipe[i].ingredients,recipe[i].recipe_qty,(err,update)=>{
                               
                               if(err){
