@@ -150,10 +150,10 @@ router.post("/editProduct/:id", (req, res) => {
       const productName = req.body.productName;
       const price = req.body.price;
       const sql = "UPDATE Product SET productName = ?, price = ? WHERE (productId = ?)";
-      const sql_update = `UPDATE Recipe set ingredients = ?,recipe_qty = ? WHERE productName = ? AND ingredients = ? `
+      const sql_update = `UPDATE Recipe set ingredients = ?,recipe_qty = ? WHERE productName = ? AND ingredients = ?  AND recipe_qty = ?`
       const sql_updateproduct = "UPDATE Recipe SET productName = ? WHERE (productName = ?)"
       const sql_product = "Select * From Product where (productId = ?) "
-      const sql_recipe= "SELECT ingredients FROM Recipe WHERE productName = ?"
+      const sql_recipe= "SELECT * FROM Recipe WHERE productName = ?"
       db.all(sql_product,[id],(err,product)=>{
         if(err){
           console.log(err.message)
@@ -180,7 +180,7 @@ router.post("/editProduct/:id", (req, res) => {
                           for (const inv of req.body.ingredients){
                            
                             console.log(`${inv}=${req.body.qty[i]}=${req.body.productName}=${recipe[i].ingredients}=${inv}`)
-                            db.run(sql_update,inv,req.body.qty[i],req.body.productName,recipe[i].ingredients,(err,update)=>{
+                            db.run(sql_update,inv,req.body.qty[i],req.body.productName,recipe[i].ingredients,recipe[i].recipe_qty,(err,update)=>{
                               
                               if(err){
                                 console.log(err.message)
