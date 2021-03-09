@@ -5,6 +5,12 @@ const sqlite3 = require("sqlite3").verbose();
 const multer = require('multer');
 const middleware = require('../middleware/middleware')
 const db_name = path.join('./data', "PollyPizza.db");
+const formatter = new Intl.NumberFormat('en-PH', {
+  style: 'currency',
+  currency: 'PHP',
+  minimumFractionDigits: 2
+})
+con
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);

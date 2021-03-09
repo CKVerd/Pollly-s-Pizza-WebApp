@@ -10,7 +10,7 @@ const db = new sqlite3.Database(db_name, (err) => {
     }
   });
  router.get("/inventory",middleware.auth,(req,res)=>{
-    const sql = "SELECT * FROM stock"
+    const sql = "SELECT * FROM stock ORDER BY stockID DESC"
     db.all(sql, [], (err, rows) => {
       if (err) {
         return console.error(err.message);
@@ -54,7 +54,7 @@ const db = new sqlite3.Database(db_name, (err) => {
       const Threshold = req.body.eThres;
       const Stock = req.body.eStock
       const sql = "UPDATE stock SET ingredients = ?, category = ?, stockQty = ?, amountThreshold = ? WHERE (stockID = ?)";
-      if(Stock>0){
+      if(Stock>0 && Threshold>0){
       db.run(sql, [ingredients,category,Stock,Threshold,id], err => {
         if(err){
           //res.render("/edit", {message: req.flash("erinventory") });
@@ -68,7 +68,7 @@ const db = new sqlite3.Database(db_name, (err) => {
       })
       }else{
         //error edit amount ng stock less than or equal to zero din
-        req.flash("erinventory", "Amount in stock must be more than 0")
+        req.flash("erinventory", "Amount must be more than 0")
         console.log("less than zero")
         res.redirect("/inventory")
         

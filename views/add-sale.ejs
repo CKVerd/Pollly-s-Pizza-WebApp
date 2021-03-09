@@ -34,7 +34,7 @@
                         <label>Price</label>
                         <input required  readonly type="text" name="Price" id="Text2" class = "totalOut" value="<%=rows.price%>">
                         <label>Quantity</label>
-                        <input required type="number" name="Qty" id="Text1" onchange="multiply()">
+                        <input required type="number" name="Qty" id="Text1" min="1" onchange="multiply()">
                         <label>Total</label>
                         <input type="text" readonly name="Total" id="txtresult" class = "totalOut">
                         <% for (const inv of recipe) { %>
