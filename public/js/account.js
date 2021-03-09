@@ -17,12 +17,18 @@ function closeUsernPopup() {
 }
 
 function usernNext1() {
+    const username = document.getElementById("username").value
     var content = document.querySelector('.change-usern-1');
     var content2 = document.querySelector('.change-usern-2');
-    content.classList.remove('appear');
-    content.classList.add('remove');
-    content2.classList.remove('remove');
-    content2.classList.add('appear');
+    if (username != ""){
+        content.classList.remove('appear');
+        content.classList.add('remove');
+        content2.classList.remove('remove');
+        content2.classList.add('appear');
+    }else{
+        alert("All filled must be filled")
+    }
+  
 }
 
 function showChangePass() {
@@ -72,6 +78,22 @@ function showConfirmPass() {
     var popup = document.querySelector('.confirm-popup');
     popup.classList.remove('make-invisible');
     popup.classList.add('make-visible');
+ 
+    
+}
+function showConfirmPassUpdate() {
+    const q1 = document.getElementById("security-ans-1").value
+    const q2 = document.getElementById("security-ans-2").value
+    const q3 = document.getElementById("security-ans-3").value
+    if(q1 != "" && q2 != "" && q3 != ""){
+        var popup = document.querySelector('.confirm-popup');
+        popup.classList.remove('make-invisible');
+        popup.classList.add('make-visible');
+    }else{
+        alert("All fields must be filled")
+    }
+    
+    
 }
 
 function closeConfirmPopup() {

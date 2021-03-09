@@ -207,7 +207,7 @@ router.post("/changePass",(req,res)=>{
     const seca2 = req.body.ua2;
     const seca3 = req.body.ua3;
       if(password == req.session.password){
-        req.flash("succnamepass", "Security answer changed successfully")
+        
           db.run(sql,[secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
                 req.session.secQues1 =secq1
                 req.session.secQues2 = secq2
@@ -218,7 +218,7 @@ router.post("/changePass",(req,res)=>{
             if(err){
                 console.log(err.message)  
               }else{
-                
+                req.flash("succnamepass", "Security answer changed successfully")
                 res.redirect("/account")
               } 
       });
@@ -241,13 +241,14 @@ router.post("/new",(req, res)=>{
     const seca3 = req.body.sa3;
     bcrypt.hash(password,saltRounds,(err,hash)=>{
       if(req.body.cpw == password){
-        req.flash("succnamepass", "New account successfully added")
+        
         db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
           if(err){
             //error "Add account = username naulit"
             req.flash("ernamepass", "Username already exists")
             res.redirect("back")
           }else{
+            req.flash("succnamepass", "New account successfully added")
             res.redirect("back");
           }
           

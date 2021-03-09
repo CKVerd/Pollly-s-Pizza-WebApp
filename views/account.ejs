@@ -163,7 +163,7 @@
                                 </div>
                             </div>
                             <div class = "inner-col-3 info-column">
-                                <input class = "update-button" type = "button" value = "Update" onclick = "showConfirmPass()">
+                                <input class = "update-button" type = "button" value = "Update"  onclick = "showConfirmPassUpdate()">
                             </div>
 
                             <div class = "confirm-popup">
@@ -200,11 +200,12 @@
                 </div>
 
                 <div class = "change-usern-popup">
+                    
                     <form class = "change-usern-popup-form" action="/changeUsername" method="POST">
                         <button class = "close-popup" onclick="closeUsernPopup()">X</button>
                         <div class = "change-usern-1">
                             <h1>Change Username</h1>
-                            <input required type = "text" placeholder = "New Username" class = "new-usern" name="username">
+                            <input required type = "text" placeholder = "New Username" class = "new-usern" name="username" id="username">
                             <button class = "next-usern" onclick="usernNext1()">Next</button>
                         </div>
                         <div class = "change-usern-2">
@@ -216,6 +217,7 @@
                 </div>
 
                 <div class = "change-pass-popup">
+                   
                     <form class = "change-pass-popup-form" method="POST" action="/changePass">
                         <button class = "close-popup" onclick="closeChangePassPopup()">X</button>
                         <div class = "change-pass-1">
