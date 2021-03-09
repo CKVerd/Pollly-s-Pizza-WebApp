@@ -10,18 +10,14 @@ const formatter = new Intl.NumberFormat('en-PH', {
   currency: 'PHP',
   minimumFractionDigits: 2
 })
-con
+
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
     // console.log("Successful connection to the database 'routertest.db'");
   });
-  const formatter = new Intl.NumberFormat('en-PH', {
-  style: 'currency',
-  currency: 'PHP',
-  minimumFractionDigits: 2
-})
+
 // Set Storage Engine
 const storage = multer.diskStorage({
     destination: 'public/uploads',

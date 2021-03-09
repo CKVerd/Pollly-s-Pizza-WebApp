@@ -26,7 +26,7 @@
                             <label>Product Name</label>
                             <input  required type = "text" class = "input" name = "productName" value="<%=rows.productName%>">
                             <label>Price</label>
-                            <input required type = "number" class = "input" name="price" value="<%=rows.price%>">
+                            <input required type = "number" class = "input" min="1" name="price" value="<%=rows.price%>">
                             <label>Ingredients</label>
                             <div class = "ingredient-input">                                
                                 <div class = "ingredient-name">
@@ -42,7 +42,7 @@
                                     <div class = "ingredient-qty">
                                         <label>Qty.</label>
                                         <% for (const inv of recipe) { %>
-                                        <input class = "ingredient-add add-input" type= "number" value="<%=inv.recipe_qty%>" name= "qty[]">
+                                        <input class = "ingredient-add add-input" type= "number" value="<%=inv.recipe_qty%>" name= "qty[]" >
                                         <%}%>
                                 </div>
                             </div>
