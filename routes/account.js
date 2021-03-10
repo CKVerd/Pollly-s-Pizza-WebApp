@@ -179,11 +179,12 @@ router.post("/changePass",(req,res)=>{
   const password = req.body.newPass;
   bcrypt.hash(password,saltRounds,(err,hash)=>{
     if((req.body.newPass == req.body.confirmPass)&&(req.body.oldPass == req.session.password)){
-      req.flash("succnamepass", "Password changed successfully")
+      
         db.run(sql,[hash],(err,row)=>{
             if(err){
               return console.log(err.message)
             }else{
+              req.flash("succnamepass", "Password changed successfully")
               req.session.password = password
               res.redirect("/account");
             } 
