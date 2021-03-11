@@ -1,5 +1,6 @@
 body {
     overflow-x: hidden;
+    overflow-y: hidden;
 }
 .page {
     display: flex;
@@ -342,6 +343,14 @@ body {
     position: relative;
 }
 
+.change-usern-popup-form-inner{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .change-usern-popup-form h1 {
     font-size: 26px;
     font-weight: 700;
@@ -433,6 +442,14 @@ body {
     position: relative;
 }
 
+.change-pass-popup-form-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .change-pass-1 {
     width: 100%;
     position: absolute;
@@ -512,6 +529,14 @@ body {
     flex-direction: column;
     align-items: center;
     position: relative;
+}
+
+.add-account-form-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .add-account-icon {
@@ -694,6 +719,14 @@ body {
     position: relative;
 }
 
+.delete-popup-form-inner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .close-delete {
     height: 15%;
 }
@@ -722,7 +755,7 @@ body {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    margin-top: -15%;
+    margin-top: -17%;
     margin-left: -15%;
 }
 

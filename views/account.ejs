@@ -191,108 +191,115 @@
                 </div>
 
                 <div class = "delete-popup">
-                    <form class = "delete-popup-form" action="/delete" method="POST">
+                    <div class ="delete-popup-form">
                         <button class = "close-delete close-popup" onclick="closeDeletePopup()">X</button>
-                        <h1>Enter Password</h1> 
-                        <input required type = "password" placeholder = "Enter Password" class = "delete-pass-input pass-input pass1" name="delAccount">
-                        <input class = "delete-acc-inner delete-button" type = "submit" value = "Delete Account">
-                    </form>
+                        <form class = "delete-popup-form-inner" action="/delete" method="POST">
+                            <h1>Enter Password</h1> 
+                            <input required type = "password" placeholder = "Enter Password" class = "delete-pass-input pass-input pass1" name="delAccount">
+                            <input class = "delete-acc-inner delete-button" type = "submit" value = "Delete Account">
+                        </form>
+                     </div>
                 </div>
 
                 <div class = "change-usern-popup">
-                    
-                    <form class = "change-usern-popup-form" action="/changeUsername" method="POST">
-                        <button class = "close-popup" onclick="closeUsernPopup()">X</button>
-                        <div class = "change-usern-1">
-                            <h1>Change Username</h1>
-                            <input required type = "text" placeholder = "New Username" class = "new-usern" name="username" id="username">
-                            <button class = "next-usern" onclick="usernNext1()">Next</button>
-                        </div>
-                        <div class = "change-usern-2">
-                            <h1>Confirm Password</h1>
-                            <input required type = "password" placeholder = "Enter Password" class = "new-usern" name="password">
-                            <input type = "submit" class = "next-usern"></input>
-                        </div>
-                    </form>
+                    <div class = "change-usern-popup-form">
+                    <button class = "close-popup" onclick="closeUsernPopup()">X</button>
+                        <form class = "change-usern-popup-form-inner" action="/changeUsername" method="POST">
+                            
+                            <div class = "change-usern-1">
+                                <h1>Change Username</h1>
+                                <input required type = "text" placeholder = "New Username" class = "new-usern" name="username" id="username">
+                                <button class = "next-usern" onclick="usernNext1()">Next</button>
+                            </div>
+                            <div class = "change-usern-2">
+                                <h1>Confirm Password</h1>
+                                <input required type = "password" placeholder = "Enter Password" class = "new-usern" name="password">
+                                <input type = "submit" class = "next-usern"></input>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <div class = "change-pass-popup">
-                   
-                    <form class = "change-pass-popup-form" method="POST" action="/changePass">
-                        <button class = "close-popup" onclick="closeChangePassPopup()">X</button>
-                        <div class = "change-pass-1">
-                            <h1>Change Password</h1>
-                            <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1">
-                            <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
-                            <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
-                            <input type = "submit" class = "submit-pass"></input>
-                        </div>
-                    </form>
+                    <div class = "change-pass-popup-form">
+                    <button class = "close-popup" onclick="closeChangePassPopup()">X</button>
+                        <form class = "change-pass-popup-form-inner" method="POST" action="/changePass">
+                            <div class = "change-pass-1">
+                                <h1>Change Password</h1>
+                                <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1">
+                                <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
+                                <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
+                                <input type = "submit" class = "submit-pass"></input>
+                            </div>
+                        </form>
+                    </div>
                 </div>
 
                 <div class = "add-account-popup">
-                    <form class = "add-account-form" method="POST" action="/new">
+                    <div class = "add-account-form">
                         <button class = "close-add close-popup" onclick="closeAddAccountPopup()">X</button>
-                        <div class = "add-account-div">
-                            <h1>Add Account</h1>
-                            <div class = "inner-add-account-div">
-                                <div class = "add-info-label">
-                                    <label>Username:</label>
-                                    <input required type = "text" class = "info-entry" name="user">
-                                    <label>Password:</label>
-                                    <input required type = "password" class = "info-entry" name="pw">
-                                    <label>Confirm Password:</label>
-                                    <input required type = "password" class = "info-entry" name="cpw">
+                        <form class = "add-account-form-inner" method="POST" action="/new">
+                            <div class = "add-account-div">
+                                <h1>Add Account</h1>
+                                <div class = "inner-add-account-div">
+                                    <div class = "add-info-label">
+                                        <label>Username:</label>
+                                        <input required type = "text" class = "info-entry" name="user">
+                                        <label>Password:</label>
+                                        <input required type = "password" class = "info-entry" name="pw">
+                                        <label>Confirm Password:</label>
+                                        <input required type = "password" class = "info-entry" name="cpw">
 
-                                </div>
-                                <div class = "add-info-ans">
-                                    <div class = "add-info-sec-ques">
-                                        <p class = "ques-header header-text">Security Questions</p>
-                                        <div class = "inner-security-question-container">
-                                            <select required name="s1" class = "inner-security-questions">
-                                                <option value = "" disabled selected>Select</option>
-                                                <option value = "What's your father's middle name?">What's your father's middle name?</option>
-                                                <option value = "What was the model of your first car?">What was the model of your first car?</option>
-                                                <option value = "What is your favorite love team?">What is your favorite love team?</option>
-                                                <option value = "What is your favorite constellation?">What is your favorite constellation?</option>
-                                                <option value = "Where is your secret place?">Where is your secret place?</option>    
-                                            </select>
-                                            <button class = "add-account-icon dropdown-icon"></button>
-                                        </div>
-                                        <div class = "inner-security-question-container">
-                                            <select required name="s2" class = "inner-security-questions">
-                                                <option value = "" disabled selected>Select</option>
-                                                <option value = "What is your childhood nickname?">What is your childhood nickname?</option>
-                                                <option value = "What was the first film you saw?">What was the first film you saw?</option>
-                                                <option value = "What was the first dish you cooked?">What was the first dish you cooked?</option>
-                                                <option value = "What was your first dream job?">What was your first dream job?</option>
-                                                <option value = "Who is your favorite cartoon?">Who is your favorite cartoon?</option>
-                                            </select>
-                                            <button class = "add-account-icon dropdown-icon"></button>
-                                        </div>
-                                        <div class = "inner-security-question-container">
-                                            <select required name="s3" class = "inner-security-questions">
-                                                <option value = "" disabled selected>Select</option>
-                                                <option value = "What ice cream flavor do you hate?">What ice cream flavor do you hate?</option>
-                                                <option value = "What amount was your first salary?">What amount was your first salary?</option>
-                                                <option value = "What was the first book you've read?">What was the first book you've read?</option>
-                                                <option value = "What was the name of your first pet?">What was the name of your first pet?</option>
-                                                <option value = "What was your first favorite tv show?">What was your first favorite tv show?</option>
-                                            </select>
-                                            <button class = "add-account-icon dropdown-icon"></button>
-                                        </div>
                                     </div>
+                                    <div class = "add-info-ans">
+                                        <div class = "add-info-sec-ques">
+                                            <p class = "ques-header header-text">Security Questions</p>
+                                            <div class = "inner-security-question-container">
+                                                <select required name="s1" class = "inner-security-questions">
+                                                    <option value = "" disabled selected>Select</option>
+                                                    <option value = "What's your father's middle name?">What's your father's middle name?</option>
+                                                    <option value = "What was the model of your first car?">What was the model of your first car?</option>
+                                                    <option value = "What is your favorite love team?">What is your favorite love team?</option>
+                                                    <option value = "What is your favorite constellation?">What is your favorite constellation?</option>
+                                                    <option value = "Where is your secret place?">Where is your secret place?</option>    
+                                                </select>
+                                                <button class = "add-account-icon dropdown-icon"></button>
+                                            </div>
+                                            <div class = "inner-security-question-container">
+                                                <select required name="s2" class = "inner-security-questions">
+                                                    <option value = "" disabled selected>Select</option>
+                                                    <option value = "What is your childhood nickname?">What is your childhood nickname?</option>
+                                                    <option value = "What was the first film you saw?">What was the first film you saw?</option>
+                                                    <option value = "What was the first dish you cooked?">What was the first dish you cooked?</option>
+                                                    <option value = "What was your first dream job?">What was your first dream job?</option>
+                                                    <option value = "Who is your favorite cartoon?">Who is your favorite cartoon?</option>
+                                                </select>
+                                                <button class = "add-account-icon dropdown-icon"></button>
+                                            </div>
+                                            <div class = "inner-security-question-container">
+                                                <select required name="s3" class = "inner-security-questions">
+                                                    <option value = "" disabled selected>Select</option>
+                                                    <option value = "What ice cream flavor do you hate?">What ice cream flavor do you hate?</option>
+                                                    <option value = "What amount was your first salary?">What amount was your first salary?</option>
+                                                    <option value = "What was the first book you've read?">What was the first book you've read?</option>
+                                                    <option value = "What was the name of your first pet?">What was the name of your first pet?</option>
+                                                    <option value = "What was your first favorite tv show?">What was your first favorite tv show?</option>
+                                                </select>
+                                                <button class = "add-account-icon dropdown-icon"></button>
+                                            </div>
+                                        </div>
 
-                                    <div class = "add-info-sec-ans">
-                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa1">
-                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa2">
-                                        <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa3">
-                                        <input class = "add-acc-update-button" type = "submit" value = "Submit">
+                                        <div class = "add-info-sec-ans">
+                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa1">
+                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa2">
+                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa3">
+                                            <input class = "add-acc-update-button" type = "submit" value = "Submit">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
