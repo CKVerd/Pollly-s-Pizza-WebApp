@@ -146,149 +146,151 @@
             </div>
 
             <div class = "add-product-popup">
-                <form class = "add-product-popup-form" action="/addproduct" method="POST" enctype="multipart/form-data">
+                <div class = "add-product-popup-form">
                     <button class = "close-popup" onclick="closeAddProductPopup()">X</button>
-                    <h1>Add Product</h1>
-                    <div class = "inner-add-form">
-                        <label>Product Name</label>
-                        <input required class = "add-input" type= "text" name="productName">
-                        <label>Image</label>
-                        <input required class = "image-input"  type = "file" name="myImage">
-                        <label>Price</label>
-                        <input required class = "add-input" type = "number" name="price" min="1" >
-                        <label>Ingredients</label>
-                        <input type="button" value="Create Element" onclick="createNewElement();"/>
-                        <div class = "ingredient-input">
-                            <div class = "ingredient-name" id="newElementId">
-                                <label>Ingredient Name</label>
-                                <select name = "ingredients[]" required class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" required class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                    <form class = "add-product-popup-form-inner" action="/addproduct" method="POST" enctype="multipart/form-data">
+                        <h1>Add Product</h1>
+                        <div class = "inner-add-form">
+                            <label>Product Name</label>
+                            <input required class = "add-input" type= "text" name="productName">
+                            <label>Image</label>
+                            <input required class = "image-input"  type = "file" name="myImage">
+                            <label>Price</label>
+                            <input required class = "add-input" type = "number" name="price" min="1" >
+                            <label>Ingredients</label>
+                            <input type="button" value="Create Element" onclick="createNewElement();"/>
+                            <div class = "ingredient-input">
+                                <div class = "ingredient-name" id="newElementId">
+                                    <label>Ingredient Name</label>
+                                    <select name = "ingredients[]" required class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]"  required class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <!--<select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" required class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select>
+                                    <select name = "ingredients[]"  required class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select><select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <!--<select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select><select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select><select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select><select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select><select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select><select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select><select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select><select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select>
+                                    <select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select>
+                                    <select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select>
+                                    <select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]"  class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
-                                    <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
-                                    <option value = "" disabled selected>Select</option>
-                                    <% for (const inv of model) { %>
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select>
+                                    <select name = "ingredients[]"  class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select> -->
+                                    </select>
+                                    <select name = "ingredients[]" class = "ingredient-name add-input">
+                                        <option value = "" disabled selected>Select</option>
+                                        <% for (const inv of model) { %>
+                                            <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
+                                    </select> -->
+                                </div>
+                                <div class = "ingredient-qty" id="qty">
+                                    <label>Qty.</label>
+                                    <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
+                                    <!--<input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                    <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1"> -->
+                                    
+                                    
+                                </div>
                             </div>
-                            <div class = "ingredient-qty" id="qty">
-                                <label>Qty.</label>
-                                <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
-                                <!--<input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1"> -->
-                                
-                                
+                            <div class = "submit-row">
+                                <input class = "ingredient-submit submit-button" type = "submit" value = "Submit">
                             </div>
                         </div>
-                        <div class = "submit-row">
-                            <input class = "ingredient-submit submit-button" type = "submit" value = "Submit">
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
         <script>
