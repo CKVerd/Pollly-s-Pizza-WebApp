@@ -28,7 +28,6 @@
                             <label>Price</label>
                             <input required type = "number" class = "input" min="1" name="price" value="<%=rows.price%>">
                             <label>Ingredients</label>
-                            <input type="button" value="Create Element" onclick="createNewElement();"/>
                             <div class = "ingredient-input">                                
                                 <div class = "ingredient-name" id= "newElementId">
                                     <label>Ingredient Name</label>
@@ -47,14 +46,13 @@
                                         <%}%>
                                 </div>
                             </div>
+                            <div class = "row-before-4">
+                                <input class = "new-button" type="button" value="Add Ingredient" onclick="createNewElement();"/>
+                            </div>
                             <div class = "row-4">
-                                <div class = "delete-div">
-                                    <button type = "button" class = "delete-button" onclick ="window.location.href = '/deleteProduct/<%= rows.productId %>'">Delete</button>
-                                </div>
-                                <div class = "outcome">
-                                    <button type = "button" class = "cancel-button" onclick ="window.location.href = '/sales'">Cancel</button>
-                                    <input type = "submit" class = "submit-button">
-                                </div>
+                                <button type = "button" class = "delete-button outcome-button" onclick ="window.location.href = '/deleteProduct/<%= rows.productId %>'">Delete</button>
+                                <button type = "button" class = "cancel-button outcome-button" onclick ="window.location.href = '/sales'">Cancel</button>
+                                <input type = "submit" class = "submit-button outcome-button">
                             </div>
                         </div> 
                     </form>

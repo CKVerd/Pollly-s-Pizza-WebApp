@@ -16,11 +16,9 @@
 }
 
 .row-4 {
-    padding-top: 8%;
-    display: flex;
+    margin-top: 5%;
     width: 100%;
     height: 5%;
-    position: relative;
 }
 
 .delete-input {
@@ -43,7 +41,6 @@
     color: black;
     margin-top: 5%;
     margin-left: 10%;
-    animation-name: flyFromLeft;
     animation-duration: 0.8s;
 }
 
@@ -51,16 +48,46 @@
     color: #183F76;
 }
 
+.row-before-4 {
+    height: 60px;
+    width: 100%;
+}
+
+.row-4 {
+    height: 60px;
+    width: 100%;
+    display: flex;
+    position: relative;
+}
+
+.new-button {
+    margin-top: 2%;
+    width: 30%;
+    height: 70%;
+    font-size: 16px;
+    border-radius: 50px;
+    outline: none;
+    border: none;
+    background-color: #dcdcdc;
+    color: white;
+    font-weight: 600;
+}
+
+.new-button:hover {
+    background-color: #aaaaaa;
+    cursor: hand;
+}
+
 .row-body {
     width: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding-bottom: 10%;
 }
 
 .inner-card {
     width: 80%;
-    height: 80%;
     display:flex;
     flex-direction: column;
     position: relative;
@@ -127,7 +154,6 @@
 
 .entry {
     width: 100%;
-    height: 100%;
     display: flex;
     justify-content: center;
 }
@@ -150,7 +176,7 @@
 
 .submit-button {
     height: 70%;
-    width: 50%;
+    width: 30%;
     font-size: 16px;
     font-weight: 600;
     color: white;
@@ -158,6 +184,8 @@
     background-color: #7FC7F3;
     outline: none;
     border: none;
+    position: absolute;
+    right: 0;
 }
 
 .submit-button:hover {
@@ -167,7 +195,7 @@
 
 .cancel-button {
     height: 70%;
-    width: 50%;
+    width: 30%;
     font-size: 16px;
     font-weight: 600;
     color: white;
@@ -175,7 +203,8 @@
     background-color: #dcdcdc;
     outline: none;
     border: none;
-    margin-right: 5%;
+    position: absolute;
+    right: 200;
 }
 
 .cancel-button:hover {
@@ -185,7 +214,7 @@
 
 .delete-button {
     height: 70%;
-    width: 50%;
+    width: 30%;
     font-size: 16px;
     font-weight: 600;
     color: white;
@@ -234,12 +263,6 @@
     width: 20%;
 }
 
-.ingredient-add {
-    margin-top: 6%;
-    margin-bottom: 7.25%;
-    font-size: 18px;
-}
-
 .ingredient-name {
     font-size: 18px;
 }
@@ -272,7 +295,7 @@
 }
 
 .ingredient-add {
-    margin-top: 6%;
+    margin-top: 7%;
     margin-bottom: 7.25%;
     font-size: 18px;
     width: 100%;
@@ -281,15 +304,15 @@
 
 @media (-webkit-device-pixel-ratio: 1.25) {
     .delete-button {
-        margin-top: 20%;
+        
     }
 
     .cancel-button {
-        margin-top: 20%;
+        
     }  
 
     .submit-button {
-        margin-top: 20%;
+        
     }
 }
 
