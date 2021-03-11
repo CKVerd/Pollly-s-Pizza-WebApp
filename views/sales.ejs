@@ -166,17 +166,17 @@
                                     <% for (const inv of model) { %>
                                     <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
                                 </select>
-                                <!-- <select name = "ingredients[]" class = "ingredient-name add-input">
+                                <select name = "ingredients[]" required class = "ingredient-name add-input">
                                     <option value = "" disabled selected>Select</option>
                                     <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
                                 </select>
-                                <select name = "ingredients[]"  class = "ingredient-name add-input">
+                                <select name = "ingredients[]"  required class = "ingredient-name add-input">
                                     <option value = "" disabled selected>Select</option>
                                     <% for (const inv of model) { %>
                                     <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
                                 </select>
-                                <select name = "ingredients[]" class = "ingredient-name add-input">
+                                <!--<select name = "ingredients[]" class = "ingredient-name add-input">
                                     <option value = "" disabled selected>Select</option>
                                     <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
@@ -261,9 +261,9 @@
                             <div class = "ingredient-qty" id="qty">
                                 <label>Qty.</label>
                                 <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
-                                <!-- <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
+                                <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
+                                <!--<input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
