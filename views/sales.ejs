@@ -157,10 +157,11 @@
                         <label>Price</label>
                         <input required class = "add-input" type = "number" name="price" min="1" >
                         <label>Ingredients</label>
+                        <input type="button" value="Create Element" onclick="createNewElement();"/>
                         <div class = "ingredient-input">
-                            <div class = "ingredient-name">
+                            <div class = "ingredient-name" id="newElementId">
                                 <label>Ingredient Name</label>
-                                <select name = "ingredients[]" required class = "ingredient-name add-input">
+                                <!-- <select name = "ingredients[]" required class = "ingredient-name add-input">
                                     <option value = "" disabled selected>Select</option>
                                     <% for (const inv of model) { %>
                                     <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
@@ -255,11 +256,11 @@
                                     <option value = "" disabled selected>Select</option>
                                     <% for (const inv of model) { %>
                                         <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
-                                </select>
+                                </select> -->
                             </div>
-                            <div class = "ingredient-qty">
+                            <div class = "ingredient-qty" id="qty">
                                 <label>Qty.</label>
-                                <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
+                                <!-- <input name = "qty[]" required class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
@@ -278,7 +279,7 @@
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
                                 <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
-                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1">
+                                <input name = "qty[]" class = "ingredient-add add-input" type= "number" min="1"> -->
                                 
                                 
                             </div>
@@ -290,5 +291,19 @@
                 </form>
             </div>
         </div>
+        <script>
+            function createNewElement() {
+    // First create a DIV element.
+	var txtNewInputBox1 = document.createElement('div');
+    var txtNewInputBox2 = document.createElement('div');
+
+    // Then add the content (a new input box) of the element.
+	txtNewInputBox1.innerHTML = "<select type='text' id='newInputBox' name = 'ingredients[]' class = 'ingredient-name add-input'><option value = '' disabled selected>Select</option><% for (const inv of model) { %> <option value = '<%=inv.ingredients%>'><%=inv.ingredients%></option><%}%> </select>";
+    txtNewInputBox2.innerHTML = "<input name = 'qty[]'  class = 'ingredient-add add-input' type= 'number' min='1'>"
+    // Finally put it where it is supposed to appear.
+	document.getElementById("newElementId").appendChild(txtNewInputBox1);
+    document.getElementById("qty").appendChild(txtNewInputBox2);
+}
+        </script>
     </body>
 </html>

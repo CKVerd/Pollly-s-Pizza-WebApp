@@ -48,3 +48,4 @@ function closeConfirmDeletePopup() {
     popup.classList.add('make-invisible');
 }
 
+
