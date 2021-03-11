@@ -156,6 +156,7 @@ router.post("/editProduct/:id", (req, res) => {
       const sql_updateproduct = "UPDATE Recipe SET productName = ? WHERE (productName = ?)"
       const sql_product = "Select * From Product where (productId = ?) "
       const sql_recipe= "SELECT * FROM Recipe WHERE productName = ?"
+      const sql_ingredients = "Insert INTO Recipe(ingredients,productName,recipe_qty)VALUES(?,?,?)"
       db.all(sql_product,[id],(err,product)=>{
         if(err){
           console.log(err.message)
@@ -177,11 +178,9 @@ router.post("/editProduct/:id", (req, res) => {
                             console.log(err.message)
                             
                         }else{
-                          
+                           
                           var i = 0;
                           for (const inv of req.body.ingredients){
-                           
-                            console.log(`${inv}=${req.body.qty[i]}=${req.body.productName}=${recipe[i].ingredients}=${recipe[i].recipe_qty}`)
                             db.run(sql_update,inv,req.body.qty[i],req.body.productName,recipe[i].ingredients,recipe[i].recipe_qty,(err,update)=>{
                               
                               if(err){
@@ -192,8 +191,25 @@ router.post("/editProduct/:id", (req, res) => {
                             })
                             i++
                           }
-                    res.redirect('/sales')
+                          if(req.body.ingredient){
+                            var a=0;
+                            for (const inv of req.body.ingredient){  
+                              
+                              db.run(sql_ingredients,[req.body.ingredient[a],req.body.productName,req.body.qtya[a]],(err)=>{
+                                if(err){
+                                  console.log(err.message)
+                                  
+                                 }else{ 
+                                  //req.flash("eraddproduct", "Product already exists")
+                                 }
+                               })     
+                              a++               
+                             }    
+                          }
+                          
+                          res.redirect('/sales')
                     }
+                    
                   })
                     }
                   })       

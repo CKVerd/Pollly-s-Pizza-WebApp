@@ -32,7 +32,7 @@
                                 <div class = "ingredient-name">
                                     <label>Ingredient Name</label>
                                     <% for (const inv of recipe) { %>
-                                    <select required  name="ingredients[]" class = "delete-input ingredient-name add-input">
+                                    <select  name="ingredients[]" class = "delete-input ingredient-name add-input">
                                         <option value = "<%=inv.ingredients%>"  selected ><%=inv.ingredients%></option>
                                         <% for (const inv of model) { %>
                                             <option value = "<%=inv.ingredients%>"><%=inv.ingredients%></option><%}%>
@@ -49,7 +49,7 @@
                                 <div class = "delete-div">
                                 </div>
                                 <div class = "outcome">
-                                    <button type = "button" class = "cancel-button" onclick ="window.location.href = '/back'">Cancel</button>
+                                    <button type = "button" class = "cancel-button" onclick ="window.location.href = '/sales'">Cancel</button>
                                     <input type = "submit" class = "delete-button" value="Delete">
                                 </div>
                             </div>
