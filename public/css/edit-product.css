@@ -204,7 +204,7 @@
     outline: none;
     border: none;
     position: absolute;
-    right: 200;
+    right: 260;
 }
 
 .cancel-button:hover {
@@ -296,23 +296,20 @@
 
 .ingredient-add {
     margin-top: 7%;
-    margin-bottom: 7.25%;
+    margin-bottom: 6.5%;
     font-size: 18px;
     width: 100%;
 }
 
 
 @media (-webkit-device-pixel-ratio: 1.25) {
-    .delete-button {
-        
-    }
 
     .cancel-button {
-        
+        right: 210;
     }  
 
-    .submit-button {
-        
+    .ingredient-add {
+        margin-bottom: 7.25%;
     }
 }
 
