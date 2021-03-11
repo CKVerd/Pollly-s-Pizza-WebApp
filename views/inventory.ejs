@@ -142,33 +142,35 @@
                 </div>
             </div>
             <div class = "add-stock-popup">
-                <form class = "add-stock-popup-form" method="POST" action="/addStock">
+                <div class = "add-stock-popup-form">
                     <button class = "close-popup" onclick="closeAddStockPopup()">X</button>
-                    <h1>Add Stock</h1> 
-                    <div class = "inner-add-stock">
-                        <label>Item Name:</label>
-                        <input required class = "add-input" name="Item">
-                        <label>Amount in Stock</label>
-                        <input required class = "add-input" name="AmountStock" type="number" min="1">
-                        <label>Threshold</label>
-                        <input required class = "add-input" name="threshold" type="number" min="1">
-                        <label for="category">Category</label>
-                        <div class = "category-container">
-                            <select required name = "category" required class = "category-input" id="cat">
-                                <option value = "" disabled selected>Select</option>
-                                    <option value = "Vegetables">Vegetables</option>
-                                    <option value = "Dairy">Dairy</option>
-                                    <option value = "Meats">Meats</option>
-                                    <option value = "Seafood">Seafood</option>
-                                    <option value = "Fruits">Fruits</option>
-                                    
-                                    
-                            </select>
-                            <button class = "add-stock-icon dropdown-icon"></button>
-                        </div>
-                        <input class = "submit-button" type = "submit" value = "Submit">
-                    </div> 
-                </form>
+                    <form class = "add-stock-popup-form-inner" method="POST" action="/addStock">
+                        <h1>Add Stock</h1> 
+                        <div class = "inner-add-stock">
+                            <label>Item Name:</label>
+                            <input required class = "add-input" name="Item">
+                            <label>Amount in Stock</label>
+                            <input required class = "add-input" name="AmountStock" type="number" min="1">
+                            <label>Threshold</label>
+                            <input required class = "add-input" name="threshold" type="number" min="1">
+                            <label for="category">Category</label>
+                            <div class = "category-container">
+                                <select required name = "category" required class = "category-input" id="cat">
+                                    <option value = "" disabled selected>Select</option>
+                                        <option value = "Vegetables">Vegetables</option>
+                                        <option value = "Dairy">Dairy</option>
+                                        <option value = "Meats">Meats</option>
+                                        <option value = "Seafood">Seafood</option>
+                                        <option value = "Fruits">Fruits</option>
+                                        
+                                        
+                                </select>
+                                <button class = "add-stock-icon dropdown-icon"></button>
+                            </div>
+                            <input class = "submit-button" type = "submit" value = "Submit">
+                        </div> 
+                    </form>
+                </div>
             </div>
            
         </div>

@@ -270,6 +270,14 @@
     position: relative;
 }
 
+.add-stock-popup-form-inner {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .add-stock-popup h1 {
     font-size: 26px;
     font-weight: 700;
