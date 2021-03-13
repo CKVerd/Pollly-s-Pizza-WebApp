@@ -156,12 +156,21 @@ const db = new sqlite3.Database(db_name, (err) => {
   router.post("/search",(req,res)=>{
     const item = req.body.search;
     const sql_search = "SELECT * from stock where ingredients LIKE '"+req.body.search+"%'"
+   
     db.all(sql_search,[],(err,rows)=>{
       if(err){
         console.log(err.message)
-      }else{
+      }
+      else{
         res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
       }
+      
+
+   
+    
+
+
+
     })
   })
   module.exports = router;

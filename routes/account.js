@@ -96,7 +96,7 @@ router.post("/forgot-changePass3",(req,res)=>{
             res.redirect("/");
     });
 }else{
-        req.flash("erpass3", "Passwords don't match, please try again")
+        req.flash("erpass3", "Incorrect passwords, please try again")
         res.redirect("back");
       }
       
@@ -191,7 +191,7 @@ router.post("/changePass",(req,res)=>{
     });
     }else{
       //error "Change Password = Incorrect password"
-        req.flash("ernamepass", "Passwords don't match, please try again")
+        req.flash("ernamepass", "Incorrect passwords, please try again")
         res.redirect("/account");
 
       }
@@ -256,7 +256,7 @@ router.post("/new",(req, res)=>{
         })
       }else{
       //error password and confirm password doesnt match = Add Account: 
-      req.flash("ernamepass", "Passwords don't match")
+      req.flash("ernamepass", "Incorrect passwords, please try again")
       res.redirect("back")
       }  
     })

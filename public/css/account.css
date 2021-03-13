@@ -433,7 +433,7 @@ body {
 
 .change-pass-popup-form {
     width: 20%;
-    height: 30%;
+    height: 32%; /*30 orignal - please check*/
     margin-top: -10%;
     border-radius: 10px;
     background-color: white;
@@ -731,6 +731,11 @@ body {
 .close-delete {
     height: 15%;
 }
+
+.close-popup{
+    height: 15%; /*i added this -pat*/
+}
+
 
 .delete-popup h1 {
     font-size: 26px;
