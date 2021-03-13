@@ -23,8 +23,8 @@
 }
 .error-row {
     width: 50%;
-    margin-left: 25%; 
-    margin-right: 50%; /*50% or 45% or */
+    margin-left: 23%; /*25%*/
+    margin-right: 48%; /*50% or 45% or */
     z-index: 100 !important;
     background-color: #ffdddd;
     align-items: center;
