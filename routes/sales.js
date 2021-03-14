@@ -15,7 +15,6 @@ const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    // console.log("Successful connection to the database 'routertest.db'");
   });
 
 // Set Storage Engine
@@ -134,8 +133,6 @@ router.get("/editProduct/:id",middleware.auth, (req, res) => {
           }else{
             const sql_recipe= "SELECT ingredients,recipe_qty FROM Recipe WHERE productName = '"+productName+"'"
             db.all(sql_recipe,[],(err,recipe)=>{
-              // console.log(productName)
-              // console.log(recipe)
               if(err){
                 console.log(err.message)
               }else{
@@ -175,18 +172,14 @@ router.post("/editProduct/:id", (req, res) => {
                     }else{
                     db.all(sql_recipe,[req.body.productName],(err,recipe)=>{ 
                         if(err){  
-                            console.log(err.message)
-                            
+                            console.log(err.message) 
                         }else{
-                           
                           var i = 0;
                           for (const inv of req.body.ingredients){
                             db.run(sql_update,inv,req.body.qty[i],req.body.productName,recipe[i].ingredients,recipe[i].recipe_qty,(err,update)=>{
-                              
                               if(err){
                                 console.log(err.message)
                               }else{
-
                               }
                             })
                             i++
@@ -235,8 +228,6 @@ router.get("/deleteProduct/:id",middleware.auth, (req, res) => {
                 
                 const sql_recipe= "SELECT ingredients,recipe_qty FROM Recipe WHERE productName = '"+productName+"'"
                 db.all(sql_recipe,[],(err,recipe)=>{
-                  // console.log(productName)
-                  // console.log(recipe)
                   if(err){
                     console.log(err.message)
                   }else{
@@ -282,14 +273,12 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
               }else{
                 const sql_recipe= "SELECT ingredients,recipe_qty FROM Recipe WHERE productName = '"+productName+"'"
                 db.all(sql_recipe,[],(err,recipe)=>{
-                  // console.log(productName)
-                  // console.log(recipe)
                   if(err){
                     console.log(err.message)
                   }else{
                     var a = 0;
                   var b = 0;
-                    res.render("sales/add-sale",{rows : row, recipe:recipe ,a:a,b:b, model:ing});
+                    res.render("sales/add-sale",{rows : row, recipe:recipe , model:ing});
                   }
                 })
               }
@@ -309,7 +298,6 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
         
       }else{
         db.all(sql_search,[req.body.ProductName],(err,product)=>{
-          console.log(product)
           if(err){
             console.log(err.message)
           }else{

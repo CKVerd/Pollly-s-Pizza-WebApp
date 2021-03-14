@@ -41,7 +41,6 @@ const db = new sqlite3.Database(db_name, (err) => {
           } 
       })
     }else{
-      //error less than or equal to zero // bala na kayo kung pano nyo iwoword
       req.flash("erinventory", "Amount in stock must be more than 0")
       console.log("Less than zero")
       res.redirect("/inventory")
@@ -57,7 +56,6 @@ const db = new sqlite3.Database(db_name, (err) => {
       if(Stock>0 && Threshold>0){
       db.run(sql, [ingredients,category,Stock,Threshold,id], err => {
         if(err){
-          //res.render("/edit", {message: req.flash("erinventory") });
           req.flash("erinventory", "Ingredient name already exists")
           res.redirect("/inventory")
           console.log(err.message)
@@ -67,9 +65,7 @@ const db = new sqlite3.Database(db_name, (err) => {
         }
       })
       }else{
-        //error edit amount ng stock less than or equal to zero din
         req.flash("erinventory", "Amount must be more than 0")
-        console.log("less than zero")
         res.redirect("/inventory")
         
       };
@@ -136,7 +132,6 @@ const db = new sqlite3.Database(db_name, (err) => {
       const sql = "SELECT * FROM stock WHERE stockID = ?";
       db.get(sql, id, (err, row) => {
         if (err){
-  
           console.log(err.message)
       }else{
         res.render("inventory/edit-stock",{model:row});
@@ -159,7 +154,6 @@ const db = new sqlite3.Database(db_name, (err) => {
   router.post("/search",(req,res)=>{
     const item = req.body.search;
     const sql_search = "SELECT * from stock where ingredients LIKE '"+req.body.search+"%'"
-   // const sql_name = "SELECT * ingredients from stock"
     db.all(sql_search,[],(err,rows)=>{
       if(err){
         console.log(err.message)

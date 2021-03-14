@@ -14,7 +14,7 @@ const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    // console.log("Successful connection to the database 'apptest.db'");
+   
   });
 router.get("/statistics",middleware.auth,(req,res)=>{
     const sql_best = "SELECT productName, SUM(sales_qty) AS TotalQuantity FROM Sales GROUP BY productName ORDER BY SUM(sales_qty) DESC LIMIT 5"

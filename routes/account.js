@@ -11,7 +11,6 @@ const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    // console.log("Successful connection to the database 'apptest.db'");
   });
 
 router.get("/", (req, res) => {
@@ -32,7 +31,6 @@ router.post("/forgot-pass2",(req,res)=>{
     const sql = "SELECT * FROM userAccount WHERE username = ?";
     const username = req.body.un;
     db.all(sql,[username],(err,row)=>{
-      // console.log(row)
       if(err){
         console.log(err.message)
       }else
@@ -275,7 +273,6 @@ router.post("/new",(req, res)=>{
         }        
       });
     }else{
-      //error "Delete acc = something went wrong di kasi alam kung admin or maling passsword kaya something went wrong na lng
       req.flash("ernamepass", "Delete account: Something went wrong, please try again")
       res.redirect("back")
     }

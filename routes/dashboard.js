@@ -14,7 +14,7 @@ const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
       return console.error(err.message);
     }
-    // console.log("Successful connection to the database 'apptest.db'");
+   
   });
 router.get("/dashboard",middleware.auth,(req,res)=>{
     const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
@@ -24,9 +24,7 @@ router.get("/dashboard",middleware.auth,(req,res)=>{
       if(err){
         console.log(err.message)
       }else{
-        console.log(rows)
         db.all(sql_monthlySales,[],(err,sales)=>{
-          console.log(sales)
           if(err){
             console.log(err.message)
           }else{
