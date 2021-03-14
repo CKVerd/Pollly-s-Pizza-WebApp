@@ -16,7 +16,7 @@ const db = new sqlite3.Database(db_name, (err) => {
         return console.error(err.message);
       }else{
         
-        res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
+        res.render("inventory/inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
       }
       
      
@@ -96,7 +96,7 @@ const db = new sqlite3.Database(db_name, (err) => {
           if (err) {
             console.error(err.message);
           }else{
-            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
+            res.render("inventory/inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }  
         });
       }else if (req.body.sort == "Low to High"){
@@ -104,7 +104,7 @@ const db = new sqlite3.Database(db_name, (err) => {
           if (err) {
             console.error(err.message);
           }else{
-            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
+            res.render("inventory/inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }      
         });
       }else if (req.body.sort == "Recently Added"){
@@ -112,7 +112,7 @@ const db = new sqlite3.Database(db_name, (err) => {
           if (err) {
             console.error(err.message);
           }else{
-            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
+            res.render("inventory/inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }
         })
       }
@@ -124,7 +124,7 @@ const db = new sqlite3.Database(db_name, (err) => {
             if(rows == ""){ 
               req.flash("erinventory", "No ingredients in this category") 
              }
-            res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
+            res.render("inventory/inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
           }
         });
       }
@@ -139,7 +139,7 @@ const db = new sqlite3.Database(db_name, (err) => {
   
           console.log(err.message)
       }else{
-        res.render("edit-stock",{model:row});
+        res.render("inventory/edit-stock",{model:row});
       }
        
       });
@@ -151,7 +151,7 @@ const db = new sqlite3.Database(db_name, (err) => {
         if (err){
           console.log(err.message)
       }else{
-        res.render("delete-stock",{model:row});
+        res.render("inventory/delete-stock",{model:row});
       }
        
       });
@@ -167,7 +167,7 @@ const db = new sqlite3.Database(db_name, (err) => {
       else{
         if(rows == ""){ 
          req.flash("erinventory", "Ingredient doesn't exist, please try again") 
-        } res.render("inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
+        } res.render("inventory/inventory", { rows: rows, message: req.flash("erinventory"), success:req.flash("succinv") });
       }
     
     })

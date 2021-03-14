@@ -15,18 +15,18 @@ const db = new sqlite3.Database(db_name, (err) => {
   });
 
 router.get("/", (req, res) => {
-    res.render("login", {fail: req.flash("warn"), success: req.flash("success"), denied : req.flash("error")});
+    res.render("account/login", {fail: req.flash("warn"), success: req.flash("success"), denied : req.flash("error")});
   });
   router.get("/forgot-pass1",(req,res)=>{
-    res.render("forgot-pass-1", {message: req.flash("erpass1")})
+    res.render("account/forgot-pass-1", {message: req.flash("erpass1")})
 });
 
 router.get("/forgot-pass2",(req,res)=>{
-  res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message: req.flash("erpass2")})
+  res.render("account/forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message: req.flash("erpass2")})
 });
 
 router.get("/forgot-pass3",(req,res)=>{
-  res.render("forgot-pass-3", {message: req.flash("erpass3")}) 
+  res.render("account/forgot-pass-3", {message: req.flash("erpass3")}) 
 });
 router.post("/forgot-pass2",(req,res)=>{
     const sql = "SELECT * FROM userAccount WHERE username = ?";
@@ -49,7 +49,7 @@ router.post("/forgot-pass2",(req,res)=>{
          ]
          uN = row[0].username
          pass = row[0].password
-         res.render("forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message:""})
+         res.render("account/forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message:""})
         }
         
         else{
@@ -105,7 +105,7 @@ router.post("/forgot-changePass3",(req,res)=>{
 
 //account routes
 router.get("/account",middleware.auth,(req,res)=>{
-    res.render("account",{
+    res.render("account/account",{
       username:req.session.username,
       q1:req.session.secQues1,
       q2:req.session.secQues2,

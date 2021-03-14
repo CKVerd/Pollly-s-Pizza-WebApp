@@ -66,7 +66,7 @@ router.get("/sales",middleware.auth,(req,res)=>{
               if(err){
                 console.log(err.message)
               }else{
-                res.render("sales", { rows: rows , model:ing , sales:sales , formatter:formatter, message: req.flash("eraddproduct"), success: req.flash("succsale")});
+                res.render("sales/sales", { rows: rows , model:ing , sales:sales , formatter:formatter, message: req.flash("eraddproduct"), success: req.flash("succsale")});
               }
             })
             
@@ -139,7 +139,7 @@ router.get("/editProduct/:id",middleware.auth, (req, res) => {
               if(err){
                 console.log(err.message)
               }else{
-                res.render("edit-product",{rows : row , model: ing , recipe:recipe})
+                res.render("sales/edit-product",{rows : row , model: ing , recipe:recipe})
               }
             })
           }
@@ -240,7 +240,7 @@ router.get("/deleteProduct/:id",middleware.auth, (req, res) => {
                   if(err){
                     console.log(err.message)
                   }else{
-                    res.render("delete-product",{rows : row , model: ing , recipe:recipe})
+                    res.render("sales/delete-product",{rows : row , model: ing , recipe:recipe})
                   }
                 })
               }
@@ -289,7 +289,7 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
                   }else{
                     var a = 0;
                   var b = 0;
-                    res.render("add-sale",{rows : row, recipe:recipe ,a:a,b:b, model:ing});
+                    res.render("sales/add-sale",{rows : row, recipe:recipe ,a:a,b:b, model:ing});
                   }
                 })
               }
@@ -341,7 +341,7 @@ router.get("/deleteSale/:id",middleware.auth, (req, res) => {
       if (err){
         console.log(err.message)
     }else{
-      res.render("delete-sale",{model:row});
+      res.render("sales/delete-sale",{model:row});
     }
      
     });

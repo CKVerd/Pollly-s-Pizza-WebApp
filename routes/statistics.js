@@ -37,7 +37,7 @@ router.get("/statistics",middleware.auth,(req,res)=>{
                   if(err){
                     console.log(err.message)
                   }else{
-                    res.render("statistics", {best : best , least:least, most:most,bar:bar, moment:moment})
+                    res.render("statistics/statistics", {best : best , least:least, most:most,bar:bar, moment:moment})
                   }
                 })
                 

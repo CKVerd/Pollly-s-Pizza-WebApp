@@ -34,7 +34,7 @@ router.get("/dashboard",middleware.auth,(req,res)=>{
               if(err){
                 console.log(err.message)
               }else{
-                res.render("index",{model:rows , sales:sales ,weekly:weekly, moment:moment , formatter:formatter})
+                res.render("dashboard/index",{model:rows , sales:sales ,weekly:weekly, moment:moment , formatter:formatter})
               }
             })
             
