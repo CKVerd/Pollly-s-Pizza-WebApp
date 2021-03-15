@@ -5,7 +5,7 @@ const router = express.Router({ mergeParams: true });
 const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const session = require('express-session');
-const middleware = require('../middleware/middleware')
+const middleware = require('../middleware/middleware');
 const db_name = path.join('./data', "PollyPizza.db");
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
@@ -17,15 +17,15 @@ router.get("/", (req, res) => {
     res.render("account/login", {fail: req.flash("warn"), success: req.flash("success"), denied : req.flash("error")});
   });
   router.get("/forgot-pass1",(req,res)=>{
-    res.render("account/forgot-pass-1", {message: req.flash("erpass1")})
+    res.render("account/forgot-pass-1", {message: req.flash("erpass1")});
 });
 
 router.get("/forgot-pass2",(req,res)=>{
-  res.render("account/forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message: req.flash("erpass2")})
+  res.render("account/forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message: req.flash("erpass2")});
 });
 
 router.get("/forgot-pass3",(req,res)=>{
-  res.render("account/forgot-pass-3", {message: req.flash("erpass3")}) 
+  res.render("account/forgot-pass-3", {message: req.flash("erpass3")}); 
 });
 router.post("/forgot-pass2",(req,res)=>{
     const sql = "SELECT * FROM userAccount WHERE username = ?";
@@ -45,14 +45,14 @@ router.post("/forgot-pass2",(req,res)=>{
            row[0].secAnsw2,
            row[0].secAnsw3,
          ]
-         uN = row[0].username
-         pass = row[0].password
-         res.render("account/forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message:""})
+         uN = row[0].username;
+         pass = row[0].password;
+         res.render("account/forgot-pass-2",{q1:question[0],q2:question[1],q3:question[2], message:""});
         }
         
         else{
-          req.flash("erpass1", "Username doesn't exist, please try again")
-          res.redirect("back")
+          req.flash("erpass1", "Username doesn't exist, please try again");
+          res.redirect("back");
         }
         
       }
@@ -67,39 +67,40 @@ router.post("/forgot-pass3",(req,res)=>{
     const ans3 = req.body.a3;
     db.all(sql,[ans1,ans2,ans3],(err,row)=>{
       if(err){
-        console.log(err.message)
+        console.log(err.message);
       }else
         if((ans1==answer[0]&&(ans2==answer[1]&&(ans3==answer[2])))){ 
          
-          res.redirect("/forgot-pass3")
+          res.redirect("/forgot-pass3");
         }
         else{
-          req.flash("erpass2", "Incorrect answers, please try again")
-          res.redirect("back")
+          req.flash("erpass2", "Incorrect answers, please try again");
+          res.redirect("back");
         }
     
-      })
-})
+      });
+});
 router.post("/forgot-changePass3",(req,res)=>{
   const sql = "UPDATE userAccount SET password = ? WHERE (username = '"+uN+"')";
   const password = req.body.pass
   bcrypt.hash(password,saltRounds,(err,hash)=>{
     if(req.body.pass == req.body.confirmPass){
-      req.flash("success", "Password successfully changed")
+      
         db.run(sql,[hash],(err,row)=>{
             if(err){
-              return console.log(err.message)
-            } 
-            
-            res.redirect("/");
-    });
-}else{
-        req.flash("erpass3", "Incorrect passwords, please try again")
+              return console.log(err.message);
+            }else{
+              req.flash("success", "Password successfully changed");
+              res.redirect("/");
+            }         
+          });
+  }else{
+        req.flash("erpass3", "Incorrect passwords, please try again");
         res.redirect("back");
       }
       
-    })
-  })
+    });
+  });
 
 //account routes
 router.get("/account",middleware.auth,(req,res)=>{
@@ -138,14 +139,14 @@ router.post("/login", (req,res) => {
           req.session.secAnsw1 = row[0].secAnsw1;
           req.session.secAnsw2 = row[0].secAnsw2;
           req.session.secAnsw3 = row[0].secAnsw3;
-              res.redirect('/dashboard')
+              res.redirect('/dashboard');
             }else{
-              req.flash("warn", "The credentials you entered did not match our records")
+              req.flash("warn", "The credentials you entered did not match our records");
               res.redirect("back");
             }
           });
          } else{
-          req.flash("warn", "The credentials you entered did not match our records")
+          req.flash("warn", "The credentials you entered did not match our records");
           res.redirect("back");
             }
           }
@@ -159,17 +160,17 @@ router.post("/changeUsername",(req,res)=>{
   db.run(sql,[username],(err,row)=>{
     req.flash("succnamepass", "Username changed successfully")
     if(err){
-      console.log(err.message)
+      console.log(err.message);
     }else{
       req.session.username = username;
       
-      res.redirect("/account")
+      res.redirect("/account");
     }    
     })
   }else{
      //error "Change username = Incorrect password"
-      req.flash("ernamepass", "Incorrect password, please try again")
-      res.redirect("/account")
+      req.flash("ernamepass", "Incorrect password, please try again");
+      res.redirect("/account");
     }
   })
 router.post("/changePass",(req,res)=>{
@@ -180,16 +181,16 @@ router.post("/changePass",(req,res)=>{
       
         db.run(sql,[hash],(err,row)=>{
             if(err){
-              return console.log(err.message)
+              return console.log(err.message);
             }else{
-              req.flash("succnamepass", "Password changed successfully")
+              req.flash("succnamepass", "Password changed successfully");
               req.session.password = password
               res.redirect("/account");
             } 
     });
     }else{
       //error "Change Password = Incorrect password"
-        req.flash("ernamepass", "Incorrect passwords, please try again")
+        req.flash("ernamepass", "Incorrect passwords, please try again");
         res.redirect("/account");
 
       }
@@ -208,28 +209,28 @@ router.post("/changePass",(req,res)=>{
       if(password == req.session.password){
         
           db.run(sql,[secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
-                req.session.secQues1 =secq1
-                req.session.secQues2 = secq2
-                req.session.secQues3 = secq3 
-                req.session.secAnsw1 =seca1
-                req.session.secAnsw2 = seca2
-                req.session.secAnsw3 = seca3 
+                req.session.secQues1 =secq1;
+                req.session.secQues2 = secq2;
+                req.session.secQues3 = secq3;
+                req.session.secAnsw1 =seca1;
+                req.session.secAnsw2 = seca2;
+                req.session.secAnsw3 = seca3;
             if(err){
-                console.log(err.message)  
+                console.log(err.message)  ;
               }else{
-                req.flash("succnamepass", "Security answer changed successfully")
-                res.redirect("/account")
+                req.flash("succnamepass", "Security answer changed successfully");
+                res.redirect("/account");
               } 
       });
       }else{
         //"error" Security Questions update: password doesnt match
-          req.flash("ernamepass", "Incorrect Password, please try again")
+          req.flash("ernamepass", "Incorrect Password, please try again");
           res.redirect("/account");
         }
         
       })
 router.post("/new",(req, res)=>{
-    const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)"
+    const sql_insert = "INSERT INTO userAccount(username,password,secQues1,secQues2,secQues3,secAnsw1,secAnsw2,secAnsw3)VALUES(?,?,?,?,?,?,?,?)";
     const username = req.body.user;
     const password = req.body.pw;
     const secq1 = req.body.s1;
@@ -244,10 +245,10 @@ router.post("/new",(req, res)=>{
         db.run(sql_insert,[username,hash,secq1,secq2,secq3,seca1,seca2,seca3],(err,row)=>{
           if(err){
             //error "Add account = username naulit"
-            req.flash("ernamepass", "Username already exists")
-            res.redirect("back")
+            req.flash("ernamepass", "Username already exists");
+            res.redirect("back");
           }else{
-            req.flash("succnamepass", "New account successfully added")
+            req.flash("succnamepass", "New account successfully added");
             res.redirect("back");
           }
           
@@ -255,25 +256,25 @@ router.post("/new",(req, res)=>{
       }else{
       //error password and confirm password doesnt match = Add Account: 
       req.flash("ernamepass", "Incorrect passwords, please try again")
-      res.redirect("back")
+      res.redirect("back");
       }  
-    })
-  })
+    });
+  });
 
   router.post("/delete", (req, res) => {
     const sql = "DELETE FROM userAccount WHERE username = ? AND username != 'admin'";
     if((req.body.delAccount == req.session.password) && (req.session.username != 'admin')){
       db.run(sql, req.session.username, (err,rows) => {
         if(err){
-          console.log(err.message)
+          console.log(err.message);
         }else{
           //success deleted successfully
-          req.flash("success", "Account deleted successfully")
+          req.flash("success", "Account deleted successfully");
           res.redirect("/");
         }        
       });
     }else{
-      req.flash("ernamepass", "Delete account: Something went wrong, please try again")
+      req.flash("ernamepass", "Delete account: Something went wrong, please try again");
       res.redirect("back")
     }
   });
@@ -281,7 +282,7 @@ router.post("/new",(req, res)=>{
   router.post("/logout",(req,res)=>{
     req.session.destroy((err) => {
       res.redirect('/') // will always fire after session is destroyed
-    })
-  })
+    });
+  });
   
   module.exports = router;
