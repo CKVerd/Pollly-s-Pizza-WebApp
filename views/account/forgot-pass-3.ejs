@@ -33,8 +33,8 @@
                     <p class = "inner-header-2">Enter new password:</p>
                     <form class = "new-pass-form" action="forgot-changePass3" method="POST">
                         <div class = "password-in">
-                            <input required type = "password" placeholder = "Enter new password" class = "password-loc" name="pass" minlength="8">
-                            <input required type = "password" placeholder = "Confirm new password" class = "password-loc" name="confirmPass" minlength="8">
+                            <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder = "Enter new password" class = "password-loc" name="pass" minlength="8">
+                            <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder = "Confirm new password" class = "password-loc" name="confirmPass" minlength="8">
                             <input type = "submit" class = "change-pass-button" value= "Submit">
                         </div>
                     </form>

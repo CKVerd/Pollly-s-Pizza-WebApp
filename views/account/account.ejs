@@ -246,9 +246,9 @@
                                         <label>Username:</label>
                                         <input required type = "text" class = "info-entry" name="user">
                                         <label>Password:</label>
-                                        <input required type = "password" class = "info-entry" name="pw" minlength="8">
+                                        <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" class = "info-entry" name="pw" minlength="8">
                                         <label>Confirm Password:</label>
-                                        <input required type = "password" class = "info-entry" name="cpw" minlength="8">
+                                        <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" class = "info-entry" name="cpw" minlength="8">
 
                                     </div>
                                     <div class = "add-info-ans">
