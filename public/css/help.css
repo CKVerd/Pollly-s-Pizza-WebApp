@@ -6,16 +6,32 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    
+}
+
+.h1-polly{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-left: 24;
 }
 
 .row-1 {
+    margin-left: 25%;
+    margin-right: 20%;
+    padding-bottom: 0%;
     display: flex;
     flex-direction: row;
-    width: 100%;
+    width: 80%;
+    position: absolute;
+    z-index: 80;
+    background-color: white;
 }
 
 .inner-col {
-    width: 70%;
+    margin-left: 10%;
+    width: 100%;
     height: 100%;
     display: flex;
     flex-direction: column;
@@ -28,9 +44,11 @@
     font-weight: 800;
     color: black;
     margin-top: 5%;
-    margin-left: 10%;
+    margin-left: 3.5%;
     animation-name: flyFromLeft;
     animation-duration: 0.8s;
+    z-index: 100;
+    background-color: white;
 }
 
 .back-button:hover{
@@ -49,10 +67,55 @@
     height: 100%;
     box-sizing: border-box; 
     padding-left: 10%;
-    padding-top: 5%;
+    padding-top: 4%;
+    margin-top: 90;
 }
 
-.question {
+.hdr {
+    margin-left: -50px;
+    font-size: 28px;
+    font-weight: 600;
+    animation-name: flyFromLeftSmall;
+    animation-duration: 0.8s;
+    opacity: 0%;
+    animation-fill-mode: forwards;
+    animation-delay: 0.2s;
+    line-height: 2.5;
+    /*color:#1a1169;*/
+    /*text-decoration: underline;*/ 
+}
+
+.anchor {
+    margin-top: 45px;
+    display: block;
+    height: 115px; /*same height as header*/
+    margin-top: -115px; /*same height as header*/
+    visibility: hidden;
+}
+
+.line-bar {
+    margin-left: -50px;
+    margin-top: -8;
+    margin-bottom: 20px;
+    border-top: 1px solid black;
+    border-bottom: 0px;
+}
+
+.qnsmarks-icon1{
+    margin-top:-3;
+    margin-bottom: 12;
+    height: 25;
+    width: 25;
+}
+
+.qnsmarks-icon2{
+    margin-top: -13;
+    margin-bottom: 12;
+    height: 25;
+    width: 25;
+}
+
+.qsn {
     font-size: 20px;
     font-weight: 600;
     animation-name: flyFromLeftSmall;
@@ -62,10 +125,10 @@
     animation-delay: 0.2s;
 }
 
-.answer {
+.ans {
     margin-left: 5%;
     margin-top: 2%;
-    margin-bottom: 4%;
+    margin-bottom: 2%;
     text-align: justify;
     text-justify: inter-word;
     line-height: 2;
@@ -76,9 +139,11 @@
     animation-delay: 0.4s;
 }
 
-.q1 {
+.qsn login {
     margin-top: 1%;
 }
+
+
 
 @keyframes flyFromRight {
     from {

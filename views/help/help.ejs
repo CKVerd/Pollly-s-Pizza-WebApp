@@ -9,62 +9,187 @@
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="css/base.css">
         <link rel="stylesheet" type="text/css" href="css/help.css">
+        <link rel="stylesheet" href="/css/fa/css/font-awesome.min.css">
+        
     </head>
     <body>
         <div class = "main">
+            <div class = "header">
+                <h1 class = "h1-polly">Polly's Pizza: Inventory System</h1>
+            </div>
+            <div class = "lower">
+                <div class = "menu">
+                    <div class = "icons">
+                        <ul class = "menu-icons">
+                            <li>
+                                <a href="#login" class = menu-icons-indiv>
+                                    <img class = "qnsmarks-icon1" src="res/faq.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#account">
+                                    <img class = "qnsmarks-icon2" src="res/faq.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#inventory">
+                                    <img class = "qnsmarks-icon2" src="res/faq.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#sales">
+                                    <img class = "qnsmarks-icon2" src="res/faq.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#product">
+                                    <img class = "qnsmarks-icon2" src="res/faq.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#dashboard">
+                                    <img class = "qnsmarks-icon2" src="res/faq.png">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#statistics">
+                                    <img class = "qnsmarks-icon2" src="res/faq.png">
+                                </a>
+                            </li>
+                            
+                        </ul>
+                    </div>
+                    <div class = "menu-col">
+                        <ul class = "menu-items">
+                            <li>
+                                <a href="#login">Login</a>
+                            </li>
+                            <!--<div class = "selected"></div>-->
+                            <li class = "menu-item-5">
+                                <a href="#account">Accounts</a>
+                            </li>
+                            <li class = "menu-item-2">
+                                <a href="#inventory">Inventory</a>
+                            </li>
+                            <li class = "menu-item-3">
+                                <a href="#sales">Sales</a>
+                            </li>
+                            <li class = "menu-item-4">
+                                <a href="#product">Product</a>
+                            </li>
+                            <li class = "menu-item-4">
+                                <a href="#dashboard">Dashboard</a>
+                            </li>
+                            <li class = "menu-item-4">
+                                <a href="#statistics">Statistics</a>
+                            </li>
+                           
+                            
+                            <form action="/logout" method="POST">
+                            <input type="submit" id = "logout" class = "logout-button" value = "Logout"></form>
+
+                        </ul>
+                    </div>
+                </div>
             <div class = "inner-col">
                 <div class = "row-1">
-
                     <a href = "/dashboard" class = "back-button">◄ Home</a>
                 </div>
                 <div class = "row-body">
                     <div class = "body-content">
-                        <p class = "question q1">How can I enter the system?</p>
-                        <p class = "answer a1">- The user must enter their appropriate username and password in the login page then click submit.</p>
 
-                        <p class = "question q2">What if I forgot my password?</p>
-                        <p class = "answer a2">-Click the forgot password button then the user will be redirected to a page where they will enter their username then click next</p>
-                        <p class = "answer a2">-After clicking next, they will answer security questions then click next</p> 
-                        <p class = "answer a2">>-After answering the security questions, they will enter their new desired password and then re-enter for confirmation then will be redirected back to the login page</p>
-                        <p class = "answer a2">-The user will use the new password to login to the system</p>
-                            
+                        <span class="anchor" id="login"></span>
+                        <a class = "hdr">Login</a>
+                        <hr class = "line-bar">
+                        <p class = "qsn login1">How can I enter the system?</p>
+                        <p class = "ans login1">- The user must enter their appropriate username and password in the login page then click submit.</p>
 
-                        <p class = "question q3">Can I change/update the information of items/ingredients in the inventory?</p>
-                        <p class = "answer a3">- Yes, the edit button will enable the user to change the corresponding category, name, 
-                            and quantity of the chosen item if needed. </p>
-                        <p class = "answer a3.1">- The quantity of certain ingredients will reduce if they are used in a recently sold product (pizza).</p>
+                        <span class="anchor" id="account"></span>
+                        <a class = "hdr">Account</a>
+                        <hr class = "line-bar">
+                        <p class = "qsn account1">What if I forgot my password?</p>
+                        <p class = "ans account1">- Click the forgot password link and you will be redirected to a page where you will enter your current username.</p>
+                        <p class = "ans account1">- Click next to answer some security questions alongside with your new desired password and confirm password.</p> 
+                        <p class = "ans account1">- Once all steps are successful, you will be redirected to the login page and use your new password to login to the system</p>
+                         
+                        <p class = "qsn account2">Can I change the information of my account?</p>
+                        <p class = "ans account2">- Yes, in the account page the user can edit their username, change their password, and update their security questions. The user can also delete their own account or add new accounts if necessary.</p>
 
-                        <p class = "question q4">Can I add an item in the inventory?</p>
-                        <p class = "answer a4">- Yes, the add button is located at the upper right side of the page where there will be a pop-up form 
-                            for the user to use to add an item in stock along with the appropriate information.</p>
+                        <p class = "qsn account3">What if I want to add an account?</p>
+                        <p class = "ans account3">- Click the Add account button, a pop-up will appear wherein the current user can enter new account information.</p>
+                        <p class = "ans account3">- Fill out the username and password text fields, then click the dropdown menu to select security questions. 
+                        <p class = "ans account3">- Answer the respective security questions and click the submit button.</p>
+                        <p class = "ans account3">- A notification will be shown indicating the successful adding of account.</p>
 
-                        <p class = "question q5">Can I add or delete products in the sales page?</p>
-                        <p class = "answer a5">- For adding a new product, there is an “add product” button beside the cards of the current products. 
-                            The “add product” button, when clicked, will show a pop-up form where they can add the information for the new product.</p>
-                        <p class = "answer a5.1">- For deleting existing products, there is a clickable ellipsis (...) inside the card of the product 
-                            which will show a menu which shows a delete button. When the delete button is clicked, it will remove the selected item.</p>
+                        <p class = "qsn account4">What if I want to delete an account?</p>
+                        <p class = "ans account4">- Click the Delete account button, a pop-up will appear wherein you need to enter your password.</p>
+                        <p class = "ans account4">- A notification will be shown indicating the successful deletion of account.</p>
+  
+                        <span class="anchor" id="inventory"></span>
+                        <a class = "hdr">Inventory</a>
+                        <hr class = "line-bar">
+                        <p class = "qsn inventory4">Can I change/update the information of the stocks in the inventory?</p>
+                        <p class = "ans inventory4">- Yes, the Edit link will enable the user to change the corresponding category, name of stock, and quantity of the chosen item if needed.</p>
+                        <p class = "ans inventory4">- The quantity of certain ingredients  will reduce if they are used in a certain recently sold item (pizza).</p>
+                        <p class = "ans inventory4">- A notification will be shown indicating the successful editing of stocks.</p>
+  
+                        <p class = "qsn inventory5">Can I add an item in the inventory?</p>
+                        <p class = "ans inventory5">- Yes, the add button in the upper right side of the page will show a pop up form where the user can add the items along with the appropriate information. </p>
+                        <p class = "ans inventory5">- A notification will be shown indicating the successful adding of stocks.</p>
 
-                        <p class = "question q6">How can I add sales transactions?</p>
-                        <p class = "answer a6">- The system will record the submitted transactions in real time. In the Sales page, there are 
-                            corresponding items with “+” and “-” buttons. The user should click the “+” button, which will add one (1) for each click
-                            for the items that are sold in a transaction, and when the user clicks the submit button, the sale will be recorded in the
-                             sales history table.</p>
+                        <p class = "qsn inventory6">Can I delete an item in the inventory?</p>
+                        <p class = "ans inventory6">- Yes, click the Delete link on the right side of an ingredient. You will be redirected to the Edit page wherein you will click the delete button which will turn the textboxes read-only.</p>
+                        <p class = "ans inventory6">- Click the Delete button again to confirm the deletion of the product.</p>
+                        <p class = "ans inventory6">- A notification will be shown indicating the successful deleting of stocks.</p>
 
-                        <p class = "question q7">What if I added a wrong sale transaction?</p>
-                        <p class = "answer a7">- Each sales transaction in the sales table will have an edit button, which when clicked would show a 
-                            delete button beside them for the user to delete the transaction if needed. The user can minimize these mistakes by using the 
-                            “-” button beside the item to subtract one (1) from the quantity of the item chosen before submitting the transaction.</p>
+                        <span class="anchor" id="sales"></span>
+                        <a class = "hdr">Sales</a>
+                        <hr class = "line-bar">
+                        <p class = "qsn sales7">What if I added a wrong sale transaction?</p>
+                        <p class = "ans sales7">- Each sales transaction in the sales table will have a delete button beside them for the user to delete the transaction if needed. </p>
+                        <p class = "ans sales7">- A notification will be shown indicating the successful deleting of sales.</p>
+  
+                        <p class = "qsn sales8">How can I add sales in the sales page?</p>
+                        <p class = "ans sales8">- Click the Add sale link in the product card. You will be redirected to the Add sale page to enter the quantity of product sold.</p>
+                        <p class = "ans sales8">- A notification will be shown indicating the successful adding of sales.</p>
 
-                        <p class = "question q8">How will I update the Statistics page?</p>
-                        <p class = "answer a8">- The user cannot update the statistics page and they don’t need to. The system will automatically 
-                            compute the statistics according to the sales performance of the store. It will also the Best and least selling products 
-                            as well as the most used ingredients. </p>
+                        <p class = "qsn sales9">How can I delete sales in the sales page?</p>
+                        <p class = "ans sales9">- Click the Delete link in the sales transaction history. You will be redirected to the Delete page wherein you will click the delete button which will turn the textboxes read-only.</p>
+                        <p class = "ans sales9">- A notification will be shown indicating the successful deleting of sales.</p>
 
-                        <p class = "question q9">Can I change the information of my account? </p>
-                        <p class = "answer a9">- Yes, in the account page the user can edit their username, change their password, and update their 
-                            security questions. The user can also delete their own account or add new accounts if necessary.</p>
+                        <span class="anchor" id="product"></span>
+                        <a class = "hdr">Product</a>
+                        <hr class = "line-bar">
+                        <p class = "qsn product10">Can I change/update the information of the products?</p>
+                        <p class = "ans product10">- Yes, the Edit link will enable the user to change the corresponding name of product, price, ingredients and amount quantity of the chosen item.</p>
+                        <p class = "ans product10">- A notification will be shown indicating the successful editing of products.</p>
+  
+                        <p class = "qsn product11">How can I add product in the sales page?</p>
+                        <p class = "ans product11">- For adding a new product, there is an “add product” button below the sales table in the sales page. The “add product” button, when clicked, will show a popup form where they can add the information for the new product. </p>
+                        <p class = "ans product11">- A notification will be shown indicating the successful adding of product.</p>
+  
+                        <p class = "qsn product12">How can I delete product in the sales page?</p>
+                        <p class = "ans product12">- Click the Delete link in the product cards. You will be redirected to the Edit page wherein you will click the delete button which will turn the textboxes read-only.</p>
+                        <p class = "ans product12">- Click the Delete button again to confirm the deletion of the product.</p>
+                        <p class = "ans product12">- A notification will be shown indicating the successful deleting of products.</p>
+                      
+                        <span class="anchor" id="dashboard"></span>
+                        <a class = "hdr">Dashboard</a>
+                        <hr class = "line-bar">
+                        <p class = "qsn dashboard13">How can I update the dashboard?</p>
+                        <p class = "ans dashboard13">- The system will automatically analyze all the data inside the inventory and sales page. The dashboard will display low stock ingredients, the sales made from the previous month alongside with the current month. </p>
+                        <p class = "ans dashboard13">- There is also a graph that shows the store’s performance in the past four(4) weeks.</p>
 
-                            
+                        <span class="anchor" id="statistics"></span>
+                        <a class = "hdr">Statistics</a>
+                        <hr class = "line-bar">
+                        <p class = "qsn statistics14">How will I update the Statistics page?</p>
+                        <p class = "ans statistics14">- The user cannot update the statistics page and they don’t need to. The system will automatically compute the statistics according to the sales performance of the store. It will also determine the best and least selling products as well as the most used ingredients. </p>
+                        
+                        <p class = "qsn statistics15">What will I see in the Statistics page?</p>
+                        <p class = "ans statistics15">- The statistics page will show a bar graph that shows the store’s performance in the last seven(7) days. There are also cards showing the best selling and least selling products. </p>
+                        
+  
                                             
                     </div>
                 </div>
