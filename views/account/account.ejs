@@ -228,6 +228,7 @@
                                 <h1>Change Password</h1>
                                 <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1">
                                 <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
+                                <div class = "change-pass-tooltip tooltip" data-tooltip-value = "Password must be at least 8 characters long and must contain at least one uppercase and lower case letter, and one number."></div>
                                 <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
                                 <input type = "submit" class = "submit-pass"></input>
                             </div>
@@ -246,6 +247,7 @@
                                         <label>Username:</label>
                                         <input required type = "text" class = "info-entry" name="user">
                                         <label>Password:</label>
+                                        <div class = "add-acc-tooltip tooltip" data-tooltip-value = "Password must be at least 8 characters long and must contain at least one uppercase and lower case letter, and one number."></div>
                                         <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" class = "info-entry" name="pw" minlength="8">
                                         <label>Confirm Password:</label>
                                         <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" class = "info-entry" name="cpw" minlength="8">

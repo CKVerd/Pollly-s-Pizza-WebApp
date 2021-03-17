@@ -563,7 +563,7 @@ body {
 
 .close-add {
     width: 5%;
-    height: 3%;
+    height: 30px !important;
 }
 
 .inner-add-account-div {
@@ -787,6 +787,70 @@ body {
     margin-top: -2%;    
 }
 
+.tooltip {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-right: 30px;
+    pointer-events: all;
+    z-index: 100 !important;
+    height: 20px;
+    width: 20px;
+    background: url(/res/faq.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.tooltip::before,
+.tooltip::after {
+    --scale: 0;
+    font-weight: 300;
+    position: absolute;
+    content: '';
+    background-color: #333;
+    left: 50%;
+    top: -2px;
+    transform: translateX(-30%) translateY(-130%) scale(var(--scale));
+    transition: 150ms transform;
+    transform-origin: bottom left;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip-value);
+    color: white;
+    padding: 10px;
+    width: max-content;
+    left: 50px;
+    border-radius: 5px;
+}
+
+.tooltip:hover:before,
+.tooltip:hover::after { 
+    --scale: 1;
+}
+
+.tooltip::after {
+    transform: translateX(-50%) translateY(-50%) scale(var(--scale));
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #333;
+    background-color: transparent;
+    transform-origin: top left;
+}
+
+.change-pass-tooltip {
+    margin-left: 85%;
+    margin-top: -8%;
+    margin-bottom: 2%;
+}
+
+.add-acc-tooltip {
+    margin-left: 20%;
+    margin-top: -2.75%;
+    background-size: 95%;
+}
 
 @media (-webkit-device-pixel-ratio: 1.25) {
     .inner-security-questions {
@@ -811,6 +875,23 @@ body {
         font-size: 16px;
     }
     
+    .tooltip::before,
+    .tooltip::after {
+        font-size: 13px;
+    }
+
+    .tooltip {
+        background-size: 90%;
+    }
+
+    .add-acc-tooltip {
+        margin-top: -3.25%;
+    }
+
+    .change-pass-tooltip {
+        margin-top: -9%;
+    }
+
     .info-entry {
         margin-top: 0.5%;
         padding: 7px 0px;
