@@ -230,7 +230,6 @@
     background-size: 100%;
     height: 20px;
     width: 20px;
-    position: absolute;
     margin-left: -2%;
     margin-top: 0.6%;
     z-index: 10 !important;
@@ -244,6 +243,71 @@
 .dropdown-icon:hover {
     cursor: hand;
 }
+
+.st-header-3-inner {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.h3-name {
+    margin-right: 50px;
+}
+
+.tooltip {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-right: 30px;
+    pointer-events: all;
+    z-index: 100 !important;
+    height: 20px;
+    width: 20px;
+    background: url(/res/faq.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.tooltip::before,
+.tooltip::after {
+    --scale: 0;
+    font-weight: 300;
+    position: absolute;
+    content: '';
+    background-color: #333;
+    left: 50%;
+    top: -2px;
+    transform: translateX(-30%) translateY(-130%) scale(var(--scale));
+    transition: 150ms transform;
+    transform-origin: bottom left;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip-value);
+    color: white;
+    padding: 10px;
+    width: max-content;
+    left: 50px;
+    border-radius: 5px;
+}
+
+.tooltip:hover:before,
+.tooltip:hover::after { 
+    --scale: 1;
+}
+
+.tooltip::after {
+    transform: translateX(-50%) translateY(-50%) scale(var(--scale));
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #333;
+    background-color: transparent;
+    transform-origin: top left;
+}
+
 
 .add-stock-popup {
     overflow: auto;
@@ -424,6 +488,11 @@
     width: 100%; /*added by pat width*/
 }
 
+.add-stock-tooltip {
+    margin-left: 55%;
+    margin-top: -5.5%;
+}
+
 @media (-webkit-device-pixel-ratio: 1.25) {
     .search-icon {
         background-size: 25%;
@@ -443,11 +512,22 @@
         font-weight: 300;
     }
 
+    .tooltip::before,
+    .tooltip::after {
+        font-size: 13px;
+    }
     .sub-row-1 {
         margin-top: -2%;
         position: relative;
     }
 
+    .add-stock-tooltip {
+        margin-top: -6.5% !important;
+    }
+    .tooltip {
+        background-size: 90%;
+        margin-top: -0.5%;
+    }
     .add-stock {
         font-weight: 300;
         font-size: 14px;
