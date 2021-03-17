@@ -34,6 +34,7 @@
                     <form class = "new-pass-form" action="forgot-changePass3" method="POST">
                         <div class = "password-in">
                             <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder = "Enter new password" class = "password-loc" name="pass" minlength="8">
+                            <div class = "change-pass-tooltip tooltip" data-tooltip-value = "Password must be at least 8 characters long and must contain at least one uppercase and lower case letter, and one number."></div>
                             <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" placeholder = "Confirm new password" class = "password-loc" name="confirmPass" minlength="8">
                             <input type = "submit" class = "change-pass-button" value= "Submit">
                         </div>

@@ -44,7 +44,7 @@
 .password-loc {
     width: 30%;
     margin-left: 15%;
-    font-size: 20px;
+    font-size: 18px;
     padding: 10 0px;
     border-radius: 50px;
     border: 1px solid rgb(216, 216, 216);
@@ -59,12 +59,14 @@
     opacity: 0;
     animation-fill-mode: forwards;
     height: 18%;
-    margin-top: 1.5%;
+    margin-top: 2.5%;
 }
 
 .password-loc::placeholder {
     color: rgb(192, 192, 192);
     opacity: 80%;
+    font-size: 16px;
+    font-weight: 600;
 }
 
 .new-pass-form {
@@ -94,4 +96,75 @@
     animation-delay: 0.4s;
     opacity: 0;
     animation-fill-mode: forwards;
+}
+
+.tooltip {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-right: 30px;
+    pointer-events: all;
+    z-index: 100 !important;
+    height: 20px;
+    width: 20px;
+    background: url(/res/faq.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    animation-name: enterFromRight;
+    animation-duration: 0.8s;
+    animation-delay: 0.8s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+.tooltip::before,
+.tooltip::after {
+    --scale: 0;
+    font-weight: 300;
+    position: absolute;
+    content: '';
+    background-color: #333;
+    left: 50%;
+    top: -2px;
+    transform: translateX(-30%) translateY(-130%) scale(var(--scale));
+    transition: 150ms transform;
+    transform-origin: bottom left;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip-value);
+    color: white;
+    padding: 10px;
+    width: max-content;
+    left: 50px;
+    border-radius: 5px;
+}
+
+.tooltip:hover:before,
+.tooltip:hover::after { 
+    --scale: 1;
+}
+
+.tooltip::after {
+    transform: translateX(-50%) translateY(-50%) scale(var(--scale));
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #333;
+    background-color: transparent;
+    transform-origin: top left;
+}
+
+.change-pass-tooltip {
+    margin-left: 47%;
+    margin-top: -3%;
+    margin-bottom: 1%;
+}
+
+
+@media (-webkit-device-pixel-ratio: 1.25) {
+    .tooltip {
+        font-size: 13px;
+    }
 }
