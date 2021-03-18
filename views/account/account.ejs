@@ -226,10 +226,10 @@
                         <form class = "change-pass-popup-form-inner" method="POST" action="/changePass">
                             <div class = "change-pass-1">
                                 <h1>Change Password</h1>
-                                <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1">
-                                <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input">
+                                <input required type = "password" placeholder = "Old Password" name="oldPass" class = "pass-input pass1" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" minlength="8">
+                                <input required type = "password" placeholder = "New Password" name = "newPass" class = "pass-input" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$">
                                 <div class = "change-pass-tooltip tooltip" data-tooltip-value = "Password must be at least 8 characters long and must contain at least one uppercase and lower case letter, and one number."></div>
-                                <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input">
+                                <input required type = "password" placeholder = "Confirm New Password" name = "confirmPass" class = "pass-input" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" minlength="8">
                                 <input type = "submit" class = "submit-pass"></input>
                             </div>
                         </form>
