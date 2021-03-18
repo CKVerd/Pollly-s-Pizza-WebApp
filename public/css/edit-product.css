@@ -371,7 +371,7 @@
 
     .tooltip {
         font-size: 13px;
-        background-size: 80%;
+        background-size: 80% !important;
         margin-top: -15%;
     }
 }

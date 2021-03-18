@@ -90,7 +90,7 @@
     padding: 7px 0px;
     border-radius: 50px;
     width: 100%;
-    margin-top: 2px;
+    margin-top: 5px;
     outline: none;
     border: 1px solid rgb(216, 216, 216);
     margin-bottom: 3%;
@@ -194,6 +194,65 @@
     pointer-events: none;
 }
 
+.tooltip {
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    margin-right: 30px;
+    pointer-events: all;
+    z-index: 100 !important;
+    height: 20px;
+    width: 20px;
+    background: url(/res/faq.png);
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.tooltip::before,
+.tooltip::after {
+    --scale: 0;
+    font-weight: 300;
+    position: absolute;
+    content: '';
+    background-color: #333;
+    left: 50%;
+    top: -2px;
+    transform: translateX(-30%) translateY(-130%) scale(var(--scale));
+    transition: 150ms transform;
+    transform-origin: bottom left;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip-value);
+    color: white;
+    padding: 10px;
+    width: max-content;
+    left: 50px;
+    border-radius: 5px;
+}
+
+.tooltip:hover:before,
+.tooltip:hover::after { 
+    --scale: 1;
+}
+
+.edit-stock-tooltip {
+    margin-left: 14%;
+    margin-top: -2.5%;
+}
+
+.tooltip::after {
+    transform: translateX(-50%) translateY(-50%) scale(var(--scale));
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #333;
+    background-color: transparent;
+    transform-origin: top left;
+}
+
+
 @media (-webkit-device-pixel-ratio: 1.25) {
     .delete-button {
         margin-top: 20%;
@@ -206,6 +265,13 @@
     .submit-button {
         margin-top: 20%;
     }
+
+    .edit-stock-tooltip {
+        margin-left: 17%;
+        margin-top: -3.5%;
+        background-size: 90%;
+    }
+
 }
 
 @keyframes exitToLeft {
