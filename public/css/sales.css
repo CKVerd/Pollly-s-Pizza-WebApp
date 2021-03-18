@@ -677,6 +677,12 @@ th {
         height: 90%;
     }
 
+    .tooltip {
+        background-size: 75%;
+        margin-left: 54%;
+        margin-top: -32%;
+    }
+
     .add-product-button {
         font-size: 14px;
     }
