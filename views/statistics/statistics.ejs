@@ -122,9 +122,9 @@
         var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ["<%=bar[6].DT%>","<%=bar[5].DT%>","<%=bar[4].DT%>","<%=bar[3].DT%>","<%=bar[2].DT%>",'<%=bar[1].DT%>','<%=bar[0].DT%>'],
+            labels: ["<%=date[6]%>","<%=date[5]%>","<%=date[4]%>","<%=date[3]%>","<%=date[2]%>",'<%=date[1]%>','<%=date[0]%>'],
             datasets: [{
-                data: [ "<%=bar[6].totalSum%>", "<%=bar[5].totalSum%>", "<%=bar[4].totalSum%>", "<%=bar[3].totalSum%>","<%=bar[2].totalSum%>","<%=bar[1].totalSum%>","<%=bar[0].totalSum%>"],
+                data: [ "<%=sum[6]%>", "<%=sum[5]%>", "<%=sum[4]%>", "<%=sum[3]%>","<%=sum[2]%>","<%=sum[1]%>","<%=sum[0]%>"],
                 backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(54, 162, 235, 0.2)',

@@ -34,10 +34,24 @@ router.get("/statistics",middleware.auth,(req,res)=>{
                 console.log(err.message);
               }else{
                 db.all(sql_bar,[],(err,bar)=>{
+                var DT = [];
+                var totalSum = [];
+                 var i = 0;
+              for(i = 0;i<7;i++){
+                
+                if(bar[i].totalSum == undefined || bar[i].DT == undefined){ 
+                  
+                }
+                DT.push(bar[i].DT);
+                totalSum.push(bar[i].totalSum);
+
+              }
+           
+             
                   if(err){
                     console.log(err.message);
                   }else{
-                    res.render("statistics/statistics", {best : best , least:least, most:most,bar:bar, moment:moment});
+                    res.render("statistics/statistics", {best : best , least:least, most:most,date:DT,sum:totalSum, moment:moment});
                   }
                 });
                 

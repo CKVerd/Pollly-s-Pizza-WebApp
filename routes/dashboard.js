@@ -19,7 +19,7 @@ const db = new sqlite3.Database(db_name, (err) => {
 router.get("/dashboard",middleware.auth,(req,res)=>{
     const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= amountThreshold";
     const sql_monthlySales = "SELECT strftime('%Y-%m', DT) AS sales_month , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_month ORDER BY sales_month DESC LIMIT 2";
-    const sql_weekly = "SELECT strftime('%W', DT) AS sales_week , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_week ORDER BY sales_week DESC LIMIT 4 ";
+    const sql_weekly = "SELECT strftime('%W', DT) AS sales_week , sum(totalPrice) AS total_sales FROM sales GROUP BY sales_week ORDER BY sales_week DESC LIMIT 5 ";
     db.all(sql_lowStock,[],(err,rows)=>{
       if(err){
         console.log(err.message);
@@ -29,10 +29,20 @@ router.get("/dashboard",middleware.auth,(req,res)=>{
             console.log(err.message);
           }else{
             db.all(sql_weekly,[],(err,weekly)=>{
+              var weekgraph = [];
+              var i = 0;
+              for(i = 0;i<4;i++){
+                if(weekly[i].totalSales == undefined ){  
+                }
+                  weekgraph.push(weekly[i].total_sales);
+                
+ 
+              }
+              console.log(weekgraph)
               if(err){
                 console.log(err.message);
               }else{
-                res.render("dashboard/index",{model:rows , sales:sales ,weekly:weekly, moment:moment , formatter:formatter});
+                res.render("dashboard/index",{model:rows , sales:sales ,weekgraph:weekgraph, moment:moment , formatter:formatter});
               }
             });
             
