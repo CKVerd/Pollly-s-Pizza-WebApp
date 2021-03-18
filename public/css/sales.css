@@ -364,7 +364,8 @@ th {
 
 .inner-add-form {
     width: 100%;
-    overflow-y: scroll;
+    overflow: auto;
+    overflow-x: visible;
     display: flex;
     flex-direction: column;
     align-items: left;
@@ -426,6 +427,7 @@ th {
 
 .ingredient-qty {
     width: 20%;
+    position: relative;
 }
 
 .ingredient-add {
@@ -464,7 +466,7 @@ th {
 
 .dele-button {
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     outline: none;
     border: none;
     color: white;
@@ -566,6 +568,65 @@ th {
 .cancel-button:hover {
     background-color: #f14040;
     cursor: hand;
+}
+
+.tooltip {
+    height: 20px;
+    width: 20px;
+    margin-right: 30px;
+    pointer-events: all;
+    z-index: 100 !important;
+    height: 20px;
+    width: 20px;
+    background: url(/res/faq.png);
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.tooltip::before,
+.tooltip::after {
+    --scale: 0;
+    font-weight: 300;
+    position: absolute;
+    content: '';
+    background-color: #333;
+    left: 50%;
+    top: -2px;
+    transform: translateX(-30%) translateY(-130%) scale(var(--scale));
+    transition: 150ms transform;
+    transform-origin: bottom left;
+    z-index: 1000!important;
+}
+
+.tooltip::before {
+    content: attr(data-tooltip-value);
+    color: white;
+    padding: 10px;
+    width: max-content;
+    left: 50px;
+    border-radius: 5px;
+}
+
+.tooltip:hover:before,
+.tooltip:hover::after { 
+    --scale: 1;
+}
+
+.tooltip::after {
+    transform: translateX(-50%) translateY(-50%) scale(var(--scale));
+    content: '';
+    border: 15px solid transparent;
+    border-top-color: #333;
+    background-color: transparent;
+    transform-origin: top left;
+}
+
+.tooltip {
+    margin-left: 50%;
+    margin-top: -26%;
+    z-index: 100 !important;
 }
 
 @media (-webkit-device-pixel-ratio: 1.25) {

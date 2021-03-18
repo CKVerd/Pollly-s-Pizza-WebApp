@@ -233,13 +233,16 @@
     width: 20px;
     margin-left: -2%;
     position: absolute;
-    bottom: 8;
     z-index: 10 !important;
     outline: none;
     border: none;
     pointer-events: none;
     background-repeat: no-repeat;
-    
+}
+
+.dropdown-search {
+    position: absolute;
+    bottom: 8;
 }
 
 .dropdown-icon:hover {
@@ -507,7 +510,7 @@
         margin-top: 0.5%;
     }
 
-    .dropdown-icon {
+    .dropdown-search {
         bottom: 22;
     }
 
