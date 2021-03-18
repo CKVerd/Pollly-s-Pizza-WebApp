@@ -41,6 +41,7 @@
                                     </div>
                                     <div class = "ingredient-qty" id="qty">
                                         <label>Qty.</label>
+                                        <div class = "ingredient-tooltip tooltip" data-tooltip-value = "Solid Ingredients are measured in Grams (g) and Liquid Ingredients are measured in Milliliters (ml)"></div>
                                         <% for (const inv of recipe) { %>
                                         <input required class = "ingredient-add add-input" type= "number" value="<%=inv.recipe_qty%>" name= "qty[]" >
                                         <%}%>
