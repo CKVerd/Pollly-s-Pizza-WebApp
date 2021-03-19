@@ -46,8 +46,7 @@ router.get("/statistics",middleware.auth,(req,res)=>{
                 totalSum.push(bar[i].totalSum);
 
               }
-              console.log(DT)
-              console.log(totalSum)
+          
            
              
                   if(err){

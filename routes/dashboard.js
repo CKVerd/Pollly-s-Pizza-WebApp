@@ -38,7 +38,7 @@ router.get("/dashboard",middleware.auth,(req,res)=>{
                 
  
               }
-              console.log(weekgraph)
+              
               if(err){
                 console.log(err.message);
               }else{
