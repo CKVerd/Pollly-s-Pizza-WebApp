@@ -327,6 +327,7 @@ th {
 
 .add-product-popup {
     overflow: auto;
+    
     visibility: hidden;
     position: absolute;
     width: 100%;
@@ -583,6 +584,8 @@ th {
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
+    
+    
 }
 
 .tooltip::before,
