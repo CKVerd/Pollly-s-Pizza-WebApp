@@ -47,5 +47,16 @@ function closeConfirmDeletePopup() {
     popup.classList.remove('make-visible');
     popup.classList.add('make-invisible');
 }
+function validationAdd(){
+    var x = document.forms["addProductform"]["ingredients[]"].value;
+    var y = document.forms["addProductform"]["qty[]"].value;
+    if((x == "") && (y=="")){
+        return true;
+    }
+    if( (x == "") || (y == "")){
+      alert("All fields must be field out");
+      return false;
+    }
+}
 
 
