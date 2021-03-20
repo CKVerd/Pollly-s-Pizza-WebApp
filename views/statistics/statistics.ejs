@@ -94,8 +94,8 @@
                         </div>
                         <div class = "card-2">
                             <div class = "card-text">
-                                <p class = "card-header-2">Most used Ingredient</p>
-                                <p class = "card-info"><%=most[0].ingredients%></p>
+                                <p class = "card-header-2">Average Sales Per Day</p>
+                                <p class = "card-info"> <%=formatter.format(most[0].TotalSales)%></p>
                                 <p class = "card-footer">As of <%= moment().format('MMMM DD YYYY'); %></p>
                             </div>
                             <div class = "card-icon">
@@ -131,7 +131,8 @@
                 'rgba(255, 206, 86, 0.2)',
                 'rgba(75, 192, 192, 0.2)',
                 'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(255, 159, 64, 0.2)',
+                
             ],
             borderColor: [
                 'rgba(255, 99, 132, 1)',
