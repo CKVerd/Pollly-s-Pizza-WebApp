@@ -7,7 +7,7 @@
         <link rel="stylesheet" href="/css/font/fonts.css">
 
         <!-- JS -->
-        <script src="js/forgot.js"></script>
+        <script src="/js/forgot.js"></script>
 
         <!-- CSS -->
         <link rel="stylesheet" type="text/css" href="/css/base.css">
@@ -21,7 +21,7 @@
                 </div>
                 <div class = "row-body" >
                     <h1>Edit Product</h1>
-                    <form class="entry" action="/editProduct/<%=rows.productId%>" method="post">
+                    <form class="entry" action="/editProduct/<%=rows.productId%>" method="post" name="editProduct" onsubmit="return validateForm()">
                         <div class = "inner-card">
                             <label>Product Name</label>
                             <input  required type = "text" class = "input" name = "productName" value="<%=rows.productName%>">
