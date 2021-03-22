@@ -49,7 +49,7 @@
                             </div>
                             <div class = "row-before-4">
                                 <input class = "new-button" type="button" value="Add Ingredient" onclick="createNewElement();"/>
-                                <input  type="button" value="Remove" onclick="removeElement();"/>
+                                <input class = "new-button"  type="button" value="Remove Ingredient" onclick="removeElement();"/>
                             </div>
                             <div class = "row-4">
                                 <button type = "button" class = "delete-button outcome-button" onclick ="window.location.href = '/deleteProduct/<%= rows.productId %>'">Delete</button>
@@ -85,7 +85,7 @@ function removeElement() {
         document.getElementById('qty').removeChild(document.getElementById('div_' + intTextBox));
         intTextBox--;
     } else {
-        alert("No textbox to remove");
+        alert("Can no longer remove input.");
     }
  
 }

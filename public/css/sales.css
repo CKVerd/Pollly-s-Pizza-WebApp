@@ -449,7 +449,7 @@ th {
 }
 
 .new-button {
-    width: 50%;
+    width: 80%;
     height: 50%;
     font-size: 16px;
     margin-top: 5%;
@@ -631,6 +631,16 @@ th {
     margin-left: 50%;
     margin-top: -26%;
     z-index: 100 !important;
+}
+
+.ingredient-col {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    height: 100px;
+    padding-top: 2.5%;
+    padding-left: 2%;
+    padding-bottom: 20px;
 }
 
 @media (-webkit-device-pixel-ratio: 1.25) {

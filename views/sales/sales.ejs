@@ -286,8 +286,10 @@
                                 </div>
                             </div>
                             <div class = "submit-row">
-                                <input class = "new-button dele-button" type="button" value="Add Ingredient" onclick="createNewElement();"/>
-                                <input type="button" value="Remove" onclick="removeElement();"/>
+                                <div class = "ingredient-col">
+                                    <input class = "new-button dele-button" type="button" value="Add Ingredient" onclick="createNewElement();"/>
+                                    <input class = "new-button dele-button" type="button" value="Remove Ingredient" onclick="removeElement();"/>
+                                </div>
                                 <input class = "ingredient-submit submit-button" type = "submit" value = "Submit">
                             </div>
                         </div>
@@ -319,7 +321,7 @@ function removeElement() {
         document.getElementById('qty').removeChild(document.getElementById('div_' + intTextBox));
         intTextBox--;
     } else {
-        alert("No textbox to remove");
+        alert("Can no longer remove inputs.");
     }
  
 }
