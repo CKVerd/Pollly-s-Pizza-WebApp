@@ -263,7 +263,7 @@ router.post("/new",(req, res)=>{
 
   router.post("/delete", (req, res) => {
     const sql = "DELETE FROM userAccount WHERE username = ? AND username != 'admin'";
-    if(req.body.delAccount == req.session.password){
+    if((req.body.delAccount == req.session.password) && (req.session.username != 'admin')){//
       db.run(sql, req.session.username, (err,rows) => {
         if(err){
           console.log(err.message);
