@@ -73,8 +73,8 @@
     // Then add the content (a new input box) of the element.
     txtNewInputBox1.setAttribute('id', 'div_' + intTextBox);
     txtNewInputBox2.setAttribute('id', 'div_' + intTextBox);
-	txtNewInputBox1.innerHTML = "<select type='text' id='newInputBox' name = 'ingredient[]' class = 'ingredient-name add-input'><option value = '' disabled selected>Select</option><% for (const inv of model) { %> <option value = '<%=inv.ingredients%>'><%=inv.ingredients%></option><%}%> </select>";
-    txtNewInputBox2.innerHTML = "<input name = 'qtya[]'  class = 'ingredient-add add-input' type= 'number' min='1'>"
+	txtNewInputBox1.innerHTML = "<select required type='text' id='newInputBox' name = 'ingredient[]' class = 'ingredient-name add-input'><option value = '' disabled selected>Select</option><% for (const inv of model) { %> <option value = '<%=inv.ingredients%>'><%=inv.ingredients%></option><%}%> </select>";
+    txtNewInputBox2.innerHTML = "<input required name = 'qtya[]'  class = 'ingredient-add add-input' type= 'number' min='1'>"
     // Finally put it where it is supposed to appear.
 	document.getElementById("newElementId").appendChild(txtNewInputBox1);
     document.getElementById("qty").appendChild(txtNewInputBox2);
