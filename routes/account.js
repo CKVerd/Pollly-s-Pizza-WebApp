@@ -274,7 +274,7 @@ router.post("/new",(req, res)=>{
         }        
       });
     }else{
-      req.flash("ernamepass", "Delete account: Something went wrong, please try again");
+      req.flash("ernamepass", "Incorrect Password");
       res.redirect("back")
     }
   });
