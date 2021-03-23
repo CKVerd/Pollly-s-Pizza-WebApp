@@ -10,6 +10,14 @@
     color:#4CAF50;
     padding-right: 10px;
 }
+.addb{
+    background-color:  #93dd52  !important;
+}
+
+.addb:hover {
+    background-color: #75c931 !important;
+    cursor: hand;
+}
 
 .succ-row {
     width: 50%;
@@ -634,7 +642,7 @@ th {
     flex-direction: column;
     width: 80%;
     height: 100px;
-    padding-top: 2.5%;
+    padding-top: 2.25%;
     padding-left: 2%;
     padding-bottom: 20px;
 }

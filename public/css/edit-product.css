@@ -8,12 +8,14 @@
     height: 100%;
 }
 
+
 .row-1 {
     display: flex;
     flex-direction: row;
     width: 100%;
     transition: ease-out 0.8s;
 }
+
 
 .row-4 {
     margin-top: 5%;
@@ -228,6 +230,16 @@
     background-color: #f14040;
     cursor: hand;
 }
+
+.addb{
+    background-color:  #93dd52  !important;
+}
+
+.addb:hover {
+    background-color: #75c931 !important;
+    cursor: hand;
+}
+
 
 .image-input {
     font-size: 18px;
