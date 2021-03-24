@@ -19,6 +19,15 @@
     cursor: hand;
 }
 
+.removeb {
+    background-color: #eea073 !important;
+}
+
+.removeb:hover {
+    background-color: #d8773e!important;
+    cursor: hand;
+}
+
 .succ-row {
     width: 50%;
     margin-left: 35%; 

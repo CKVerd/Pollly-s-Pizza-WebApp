@@ -235,6 +235,15 @@
     background-color:  #93dd52  !important;
 }
 
+.removeb {
+    background-color: #eea073 !important;
+}
+
+.removeb:hover {
+    background-color: #d8773e!important;
+    cursor: hand;
+}
+
 .addb:hover {
     background-color: #75c931 !important;
     cursor: hand;
