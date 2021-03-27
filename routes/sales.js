@@ -4,12 +4,14 @@ const path = require("path");
 const sqlite3 = require("sqlite3").verbose();
 const multer = require('multer');
 const middleware = require('../middleware/middleware');
+const e = require('express');
 const db_name = path.join('./data', "PollyPizza.db");
 const formatter = new Intl.NumberFormat('en-PH', {
   style: 'currency',
   currency: 'PHP',
   minimumFractionDigits: 2
 });
+var arrayStock = [];
 
 const db = new sqlite3.Database(db_name, (err) => {
     if (err) {
@@ -262,6 +264,7 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
           const id = req.params.id;
           const sql = "SELECT * FROM Product WHERE productId = ?";
           const sql_ingredients = "Select ingredients From stock";
+          const sql_stockQty = "Select stockQty From stock where ingredients = ?";
           db.get(sql, id, (err, row) => {
             const productName = row.productName;
             if (err){
@@ -276,6 +279,16 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
                   if(err){
                     console.log(err.message);
                   }else{
+                    for(const stocks of recipe){
+                      db.all(sql_stockQty,[stocks.ingredients],(err,stock)=>{
+                        if(err){
+                          console.log(err.message)
+                        }else{
+                        arrayStock.push(stock[0].stockQty)
+                        }
+                      })
+                    }
+                    
                     var a = 0;
                   var b = 0;
                     res.render("sales/add-sale",{rows : row, recipe:recipe , model:ing});
@@ -286,12 +299,23 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
           }
           });
         });
-
+        
   router.post("/addSales",(req,res)=>{
     const sql_addSales = "INSERT INTO Sales(productName,price,sales_qty,totalPrice)VALUES(?,?,?,?)";
     const sql_search = " Select * FROM Recipe WHERE productName = ?";
     const sql_stock = " Select * FROM Stock WHERE ingredients = ?";
+    const sql_stock1 = " Select stockQty FROM Stock where ingredients = ?";
     const sql_update = "UPDATE stock set stockQty =stockQty - (? * ?) WHERE ingredients = ?";
+    const sql_recipe = " Select * FROM Recipe WHERE productName = ?";
+    const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= ?";
+    var intergerQty = (req.body.qty).map(function (x) { 
+    return parseInt(x, 10);}) 
+    var result = arrayStock.every(function (o1) {
+    return intergerQty.every(function (o2) {
+        return o1 > o2 // return the ones with equal id
+   });
+});
+   if(result == true){
     db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
       if(err){
         console.log(err.message);
@@ -306,6 +330,7 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
               if(err){
                 console.log(err.message);
               }else{
+                
                   db.run(sql_update,inv.recipe_qty,req.body.Qty,inv.ingredients,(err,row)=>{
                     if(err){
                       console.log(err.message);
@@ -320,8 +345,19 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
           }
         })
       }
+      
     })
-  })
+   }else{
+     console.log("error")
+   }
+      
+      
+
+       
+      })
+    
+
+  
 router.get("/deleteSale/:id",middleware.auth, (req, res) => {
     const id = req.params.id;
     const sql = "SELECT * FROM Sales WHERE salesID = ?";
