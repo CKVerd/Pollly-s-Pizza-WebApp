@@ -348,7 +348,8 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
       
     })
    }else{
-     console.log("error")
+     //req.flash(error)
+     res.redirect("/sales")
    }
       
       
