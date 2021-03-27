@@ -348,7 +348,7 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
       
     })
    }else{
-     //req.flash(error)
+    req.flash("eraddproduct", "Not enough ingredients");
      res.redirect("/sales")
    }
       
