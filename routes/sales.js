@@ -265,6 +265,7 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
           const sql = "SELECT * FROM Product WHERE productId = ?";
           const sql_ingredients = "Select ingredients From stock";
           const sql_stockQty = "Select stockQty From stock where ingredients = ?";
+          const sql_lowStock = "SELECT stock.ingredients,stock.stockQty FROM stock,Recipe WHERE stock.ingredients = Recipe.ingredients AND Recipe.productName = ?"
           db.get(sql, id, (err, row) => {
             const productName = row.productName;
             if (err){
@@ -279,18 +280,6 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
                   if(err){
                     console.log(err.message);
                   }else{
-                    for(const stocks of recipe){
-                      db.all(sql_stockQty,[stocks.ingredients],(err,stock)=>{
-                        if(err){
-                          console.log(err.message)
-                        }else{
-                        arrayStock.push(stock[0].stockQty)
-                        }
-                      })
-                    }
-                    
-                    var a = 0;
-                  var b = 0;
                     res.render("sales/add-sale",{rows : row, recipe:recipe , model:ing});
                   }
                 });
@@ -307,50 +296,50 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
     const sql_stock1 = " Select stockQty FROM Stock where ingredients = ?";
     const sql_update = "UPDATE stock set stockQty =stockQty - (? * ?) WHERE ingredients = ?";
     const sql_recipe = " Select * FROM Recipe WHERE productName = ?";
-    const sql_lowStock = "SELECT ingredients FROM stock WHERE stockQty <= ?";
-    var intergerQty = (req.body.qty).map(function (x) { 
-    return parseInt(x, 10);}) 
-    var result = arrayStock.every(function (o1) {
-    return intergerQty.every(function (o2) {
-        return o1 > o2 // return the ones with equal id
-   });
-});
-   if(result == true){
-    db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
-      if(err){
-        console.log(err.message);
+    const sql_lowStock = "SELECT stock.ingredients,stock.stockQty FROM stock,Recipe WHERE stock.ingredients = Recipe.ingredients AND Recipe.productName = ? And Recipe.recipe_qty > stock.stockQty";
+  db.all(sql_lowStock,[req.body.ProductName],(err,row)=>{
+  if(err){
+
+  }else{
+    if(row.length == 0){
+      db.run(sql_addSales,[req.body.ProductName,req.body.Price,req.body.Qty,req.body.Total],(err,row)=>{
+        if(err){
+          console.log(err.message);
+          
+        }else{
+          db.all(sql_search,[req.body.ProductName],(err,product)=>{
+            if(err){
+              console.log(err.message);
+            }else{
+              for(const inv of product){
+              db.all(sql_stock,[inv.ingredients],(err,stock)=>{
+                if(err){
+                  console.log(err.message);
+                }else{
+                  
+                    db.run(sql_update,inv.recipe_qty,req.body.Qty,inv.ingredients,(err,row)=>{
+                      if(err){
+                        console.log(err.message);
+                      }else{       
+                      }
+                    })      
+                }
+              })}
+              req.flash("succsale",  "Sale transaction successfully added");
+              res.redirect("/sales");
+              
+            }
+          })
+        }
         
-      }else{
-        db.all(sql_search,[req.body.ProductName],(err,product)=>{
-          if(err){
-            console.log(err.message);
-          }else{
-            for(const inv of product){
-            db.all(sql_stock,[inv.ingredients],(err,stock)=>{
-              if(err){
-                console.log(err.message);
-              }else{
-                
-                  db.run(sql_update,inv.recipe_qty,req.body.Qty,inv.ingredients,(err,row)=>{
-                    if(err){
-                      console.log(err.message);
-                    }else{       
-                    }
-                  })      
-              }
-            })}
-            req.flash("succsale",  "Sale transaction successfully added");
-            res.redirect("/sales");
-            
-          }
-        })
-      }
-      
-    })
-   }else{
-    req.flash("eraddproduct", "Not enough ingredients");
-     res.redirect("/sales")
-   }
+      })
+     }else{
+      req.flash("eraddproduct", "Not enough ingredients");
+       res.redirect("/sales")
+     }
+  }
+})
+   
       
       
 
