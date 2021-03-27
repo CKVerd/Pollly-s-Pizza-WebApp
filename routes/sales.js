@@ -264,8 +264,6 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
           const id = req.params.id;
           const sql = "SELECT * FROM Product WHERE productId = ?";
           const sql_ingredients = "Select ingredients From stock";
-          const sql_stockQty = "Select stockQty From stock where ingredients = ?";
-          const sql_lowStock = "SELECT stock.ingredients,stock.stockQty FROM stock,Recipe WHERE stock.ingredients = Recipe.ingredients AND Recipe.productName = ?"
           db.get(sql, id, (err, row) => {
             const productName = row.productName;
             if (err){
@@ -293,9 +291,7 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
     const sql_addSales = "INSERT INTO Sales(productName,price,sales_qty,totalPrice)VALUES(?,?,?,?)";
     const sql_search = " Select * FROM Recipe WHERE productName = ?";
     const sql_stock = " Select * FROM Stock WHERE ingredients = ?";
-    const sql_stock1 = " Select stockQty FROM Stock where ingredients = ?";
     const sql_update = "UPDATE stock set stockQty =stockQty - (? * ?) WHERE ingredients = ?";
-    const sql_recipe = " Select * FROM Recipe WHERE productName = ?";
     const sql_lowStock = "SELECT stock.ingredients,stock.stockQty FROM stock,Recipe WHERE stock.ingredients = Recipe.ingredients AND Recipe.productName = ? And Recipe.recipe_qty > stock.stockQty";
   db.all(sql_lowStock,[req.body.ProductName],(err,row)=>{
   if(err){
