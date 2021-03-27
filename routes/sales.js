@@ -292,8 +292,8 @@ router.get("/addSale/:id",middleware.auth, (req, res) => {
     const sql_search = " Select * FROM Recipe WHERE productName = ?";
     const sql_stock = " Select * FROM Stock WHERE ingredients = ?";
     const sql_update = "UPDATE stock set stockQty =stockQty - (? * ?) WHERE ingredients = ?";
-    const sql_lowStock = "SELECT stock.ingredients,stock.stockQty FROM stock,Recipe WHERE stock.ingredients = Recipe.ingredients AND Recipe.productName = ? And Recipe.recipe_qty > stock.stockQty";
-  db.all(sql_lowStock,[req.body.ProductName],(err,row)=>{
+    const sql_lowStock = "SELECT stock.ingredients,stock.stockQty FROM stock,Recipe WHERE stock.ingredients = Recipe.ingredients AND Recipe.productName = ? And (Recipe.recipe_qty * ?) > stock.stockQty";
+  db.all(sql_lowStock,[req.body.ProductName,req.body.Qty],(err,row)=>{
   if(err){
 
   }else{
