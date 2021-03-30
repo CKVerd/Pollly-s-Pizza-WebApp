@@ -209,7 +209,7 @@
                             
                             <div class = "change-usern-1">
                                 <h1>Change Username</h1>
-                                <input required type = "text" placeholder = "New Username" class = "new-usern" name="username" id="username">
+                                <input required type = "text" placeholder = "New Username" class = "new-usern" name="username" id="username" autocomplete="off">
                                 <button class = "next-usern" onclick="usernNext1()">Next</button>
                             </div>
                             <div class = "change-usern-2">
@@ -246,7 +246,7 @@
                                 <div class = "inner-add-account-div">
                                     <div class = "add-info-label">
                                         <label>Username:</label>
-                                        <input required type = "text" class = "info-entry" name="user">
+                                        <input required type = "text" class = "info-entry" name="user" autocomplete="off">
                                         <label>Password:</label>
                                         <div class = "add-acc-tooltip tooltip" data-tooltip-value = "Password must be at least 8 characters long and must contain at least one uppercase and lower case letter, and one number."></div>
                                         <input required type = "password" pattern= "^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?!.*\s).*$" class = "info-entry" name="pw" minlength="8">
@@ -293,9 +293,9 @@
                                         </div>
 
                                         <div class = "add-info-sec-ans">
-                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa1">
-                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa2">
-                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa3">
+                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa1" autocomplete="off">
+                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa2" autocomplete="off">
+                                            <input required type = "text" class = "add-acc-sec-ans" placeholder = "Answer" name="sa3" autocomplete="off">
                                             <input class = "add-acc-update-button" type = "submit" value = "Submit">
                                         </div>
                                     </div>
