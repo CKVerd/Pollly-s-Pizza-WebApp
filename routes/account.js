@@ -158,12 +158,13 @@ router.post("/changeUsername",(req,res)=>{
   const username = req.body.username;
   if(req.body.password == req.session.password){
   db.run(sql,[username],(err,row)=>{
-    req.flash("succnamepass", "Username changed successfully")
+    
     if(err){
-      console.log(err.message);
+      req.flash("ernamepass", "Username already taken, please try again");
+      res.redirect("/account");
     }else{
       req.session.username = username;
-      
+      req.flash("succnamepass", "Username changed successfully")
       res.redirect("/account");
     }    
     })
