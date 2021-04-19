@@ -16,9 +16,11 @@ router.get("/inventory", middleware.auth, (req, res) => {
       return console.error(err.message);
     } else {
       res.render("inventory/inventory", {
+        value : "",
         rows: rows,
         message: req.flash("erinventory"),
         success: req.flash("succinv"),
+        sort: "Sort",
       });
     }
   });
@@ -99,9 +101,11 @@ router.post("/sort", (req, res) => {
         console.error(err.message);
       } else {
         res.render("inventory/inventory", {
+          value:"",
           rows: rows,
           message: req.flash("erinventory"),
           success: req.flash("succinv"),
+          sort:"High to Low",
         });
       }
     });
@@ -111,9 +115,11 @@ router.post("/sort", (req, res) => {
         console.error(err.message);
       } else {
         res.render("inventory/inventory", {
+          value:"",
           rows: rows,
           message: req.flash("erinventory"),
           success: req.flash("succinv"),
+          sort: "Low to High",
         });
       }
     });
@@ -123,9 +129,11 @@ router.post("/sort", (req, res) => {
         console.error(err.message);
       } else {
         res.render("inventory/inventory", {
+          value:"",
           rows: rows,
           message: req.flash("erinventory"),
           success: req.flash("succinv"),
+          sort : "Recently Added",
         });
       }
     });
@@ -138,9 +146,11 @@ router.post("/sort", (req, res) => {
           req.flash("erinventory", "No ingredients in this category");
         }
         res.render("inventory/inventory", {
+          value:"",
           rows: rows,
           message: req.flash("erinventory"),
           success: req.flash("succinv"),
+          sort: req.body.sort,
         });
       }
     });
@@ -181,6 +191,8 @@ router.post("/search", (req, res) => {
         req.flash("erinventory", "Ingredient doesn't exist, please try again");
       }
       res.render("inventory/inventory", {
+        sort:"Sort",
+        value:req.body.search,
         rows: rows,
         message: req.flash("erinventory"),
         success: req.flash("succinv"),

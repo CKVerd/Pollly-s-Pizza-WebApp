@@ -96,7 +96,7 @@
                             </div> 
                         <div class = "select-container">
                             <select onchange = "this.form.submit()" name="sort" class = "category-list">
-                                <option value = "" disabled selected>Sort</option>
+                                <option value = "" disabled selected><%=sort%></option>
                                 <option value = "Recently Added">Recently Added</option>
                                 <option value = "Vegetables">Vegetables</option>
                                 <option value = "Dairy">Dairy</option>
@@ -112,8 +112,8 @@
                             </form>
                         </div>
                         <div class = "sub-row-1">
-                            <form class = "search-item-form" method="POST" action="/search">
-                                <input type = "text" class = "search-bar" placeholder = "Search" name="search">
+                            <form class = "search-item-form" method="post" action="/search">
+                                <input type = "text" class = "search-bar" placeholder = "Search" name="search" value="<%=value%>">
                                 <input type = "submit" class = "search-icon" value="">
                             </form>
                             <input class = "add-stock" type = "button" onclick = "showAddPopup()" value = "Add Stock">
