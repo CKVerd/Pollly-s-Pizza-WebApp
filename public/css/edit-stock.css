@@ -284,6 +284,10 @@
         margin-top: 70px !important;
     } 
 
+    .dropdown-icon {
+        bottom: 30;
+    }
+
 }
 
 @keyframes exitToLeft {
