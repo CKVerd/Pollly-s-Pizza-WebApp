@@ -182,7 +182,7 @@ router.get("/delete/:id", middleware.auth, (req, res) => {
 router.post("/search", (req, res) => {
   const item = req.body.search;
   const sql_search =
-    "SELECT * from stock where ingredients LIKE '" + req.body.search + "%'";
+    `SELECT * from stock where ingredients LIKE '%${req.body.search}%'`;
   db.all(sql_search, [], (err, rows) => {
     if (err) {
       console.log(err.message);
