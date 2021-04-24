@@ -394,6 +394,14 @@
         background-size: 80% !important;
         margin-top: -15%;
     }
+
+    .canc1 {
+        width: 200px;
+    }
+
+    .dele1 {
+        width: 200px;
+    }
 }
 
 @keyframes exitToLeft {

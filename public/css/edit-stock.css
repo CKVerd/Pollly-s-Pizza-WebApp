@@ -272,6 +272,22 @@
         background-size: 90%;
     }
 
+    .canc {
+        margin-top: 70px !important;
+    }
+
+    .dele {
+        margin-top: 70px !important;
+    }
+
+    .sub {
+        margin-top: 70px !important;
+    } 
+
+    .dropdown-icon {
+        bottom: 30;
+    }
+
 }
 
 @keyframes exitToLeft {
