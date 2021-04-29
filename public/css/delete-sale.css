@@ -177,6 +177,7 @@
     outline: none;
     border: none;
     margin-right: 5%;
+    margin-top: 20%;
 }
 
 .cancel-button:hover {
@@ -194,6 +195,7 @@
     background-color: #f37f7f;
     outline: none;
     border: none;
+    margin-top: 20%;
 }
 
 .delete-button:hover {
