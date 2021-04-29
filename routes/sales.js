@@ -417,10 +417,42 @@ router.get("/deleteSale/:id", middleware.auth, (req, res) => {
 router.post("/deleteSale/:id", (req, res) => {
   const id = req.params.id;
   const sql = "DELETE FROM Sales WHERE (salesID = ?)";
+  const sql_search = " Select * FROM Recipe WHERE productName = ?";
+  const sql_stock = " Select * FROM Stock WHERE ingredients = ?";
+  const sql_update =
+    "UPDATE stock set stockQty =stockQty + (? * ?) WHERE ingredients = ?";
   db.run(sql, id, (err) => {
     if (err) {
       console.log(err.message);
     } else {
+      db.all(sql_search, [req.body.ProductName], (err, product) => {
+        if(err){
+
+        }else{
+          for (const inv of product) {
+            db.all(sql_stock, [inv.ingredients], (err, stock) => {
+              if (err) {
+                console.log(err.message);
+              } else {
+    
+                db.run(
+                  sql_update,
+                  inv.recipe_qty,
+                  req.body.Qty,
+                  inv.ingredients,
+                  (err, row) => {
+                    if (err) {
+                      console.log(err.message);
+                    } else {
+                    }
+                  }
+                );
+              }
+            });
+          }
+        }
+      })
+     
       req.flash("succsale", "Sale transaction successfully deleted");
       res.redirect("/sales");
     }
