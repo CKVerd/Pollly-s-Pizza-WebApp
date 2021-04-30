@@ -27,7 +27,13 @@
                             <label>Item Name</label>
                             <input readonly type = "text" class = "delete-input input" name="eName" value="<%= model.ingredients %>">
                             <label>Amount in Stock</label>
-                            <input readonly type = "text" class = "delete-input input" name="eStock" value="<%= model.stockQty %>">
+                            <div class = "divide"> 
+                                <input readonly required type = "number" class = "amnt-stock delete-input input" name="eStock" value="<%= model.stockQty %>"  min="1">
+                                <select readonly class = "delete-input ingredient-type">
+                                    <option value="solid">g</option>
+                                    <option value="liquid">ml</option>
+                                </select>
+                            </div>
                             <label>Threshold</label>
                             <input readonly type = "text" class = "delete-input input" value="<%=model.amountThreshold%>" name="eThres">
                             <label>Category</label>

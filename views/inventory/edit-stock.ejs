@@ -25,9 +25,15 @@
                     <form class="entry" action="/edit/<%=model.stockID%>" method="post">
                         <div class = "inner-card">
                             <label>Item Name</label>
-                            <input  required type = "text" class = "input"  name="eName" value="<%= model.ingredients %>">
+                            <input  required type = "text" class = "input"  name="eName" value="<%= model.ingredients %>">   
                             <label>Amount in Stock</label>
-                            <input required type = "number" class = "input" name="eStock" value="<%= model.stockQty %>"  min="1">
+                            <div class = "divide"> 
+                                <input required type = "number" class = "amnt-stock input" name="eStock" value="<%= model.stockQty %>"  min="1">
+                                <select class = "ingredient-type">
+                                    <option value="solid">g</option>
+                                    <option value="liquid">ml</option>
+                                </select>
+                            </div>
                             <label>Threshold</label>
                             <div class = "edit-stock-tooltip tooltip" data-tooltip-value = "Solid Ingredients are measured in Grams (g) and Liquid Ingredients are measured in Milliliters (ml)"></div>
                             <input required type = "number" class = "input" value="<%=model.amountThreshold%>" name="eThres" min="1">
