@@ -29,9 +29,9 @@
                             <label>Amount in Stock</label>
                             <div class = "divide"> 
                                 <input readonly required type = "number" class = "amnt-stock delete-input input" name="eStock" value="<%= model.stockQty %>"  min="1">
-                                <select readonly class = "delete-input ingredient-type">
-                                    <option value="solid">g</option>
-                                    <option value="liquid">ml</option>
+                                <select readonly class = "delete-input ingredient-type" name="units">
+                                    <option selected value="<%=model.units%>"><%=model.units%></option>
+                                    
                                 </select>
                             </div>
                             <label>Threshold</label>
