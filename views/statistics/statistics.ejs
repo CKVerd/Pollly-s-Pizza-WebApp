@@ -125,12 +125,14 @@
                                 <th class = "st-header-5">Total</th>
                             </tr>
                             <tr>
-                                <td>sdasdas</td>
-                                <td>asdasdasd</td>
-                                <td>asdas</td>
-                                <td>asdasd</td>
-                                <td>asdasd</td>
+                                <% for (const sale of sales) { %>
+                                    <td><%=sale.DT%></td>
+                                    <td><%=sale.productName%></td>
+                                    <td><%=formatter.format(sale.Price)%></td>
+                                    <td><%=sale.sales_qty%></td>
+                                    <td><%=formatter.format(sale.totalPrice)%></td>
                             </tr>
+                        <%}%>
                         </table>
                     </div>
                     <div class = "spacer"></div>
