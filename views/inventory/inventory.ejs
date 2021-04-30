@@ -155,9 +155,15 @@
                         <div class = "inner-add-stock">
                             <label>Item Name:</label>
                             <input required class = "add-input" name="Item">
-                            <label>Amount in Stock</label>
-                            <div class = "add-stock-tooltip tooltip" data-tooltip-value = "Solid Ingredients are measured in Grams (g) and Liquid Ingredients are measured in Milliliters (ml)"></div>
-                            <input required class = "add-input" name="AmountStock" type="number" min="1">
+                            <div class = "divide">
+                                <label>Amount in Stock</label>
+                                <div class = "add-stock-tooltip tooltip" data-tooltip-value = "Solid Ingredients are measured in Grams (g) and Liquid Ingredients are measured in Milliliters (ml)"></div>
+                                <input required class = "amnt-stock add-input" name="AmountStock" type="number" min="1">
+                                <select class = "ingredient-type">
+                                    <option value="solid">g</option>
+                                    <option value="liquid">ml</option>
+                                </select>
+                            </div>
                             <label>Threshold</label>
                             <input required class = "add-input" name="threshold" type="number" min="1">
                             <label for="category">Category</label>
