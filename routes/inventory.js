@@ -27,15 +27,16 @@ router.get("/inventory", middleware.auth, (req, res) => {
 });
 router.post("/addStock", (req, res) => {
   const sql_insert =
-    "INSERT INTO stock(ingredients,category,stockQty,amountThreshold)VALUES(?,?,?,?)";
+    "INSERT INTO stock(ingredients,category,stockQty,amountThreshold,units)VALUES(?,?,?,?,?)";
   const ingredients = req.body.Item;
   const category = req.body.category;
   const Threshold = req.body.threshold;
   const Stock = req.body.AmountStock;
+  const unit = req.body.units;
   if (Stock > 0) {
     db.run(
       sql_insert,
-      [ingredients, category, Stock, Threshold],
+      [ingredients, category, Stock, Threshold,unit],
       (err, row) => {
         if (err) {
           console.log(err.message);

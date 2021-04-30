@@ -139,7 +139,7 @@
                             <tr>
                                 <td><%=inv.category%></td>
                                 <td><%=inv.ingredients%></td>
-                                <td><%=inv.stockQty%></td>
+                                <td><%=inv.stockQty%><%=inv.units%></td>
                                 <td><a class = "edit-button" href = "/edit/<%=inv.stockID %>">Edit/Delete</a></td>
                             </tr>
                             <% } %>
@@ -159,9 +159,9 @@
                                 <label>Amount in Stock</label>
                                 <div class = "add-stock-tooltip tooltip" data-tooltip-value = "Solid Ingredients are measured in Grams (g) and Liquid Ingredients are measured in Milliliters (ml)"></div>
                                 <input required class = "amnt-stock add-input" name="AmountStock" type="number" min="1">
-                                <select class = "ingredient-type">
-                                    <option value="solid">g</option>
-                                    <option value="liquid">ml</option>
+                                <select class = "ingredient-type" name="units">
+                                    <option value="g">g</option>
+                                    <option value="ml">ml</option>
                                 </select>
                             </div>
                             <label>Threshold</label>
