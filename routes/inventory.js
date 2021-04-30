@@ -60,10 +60,11 @@ router.post("/edit/:id", (req, res) => {
   const category = req.body.eCategory;
   const Threshold = req.body.eThres;
   const Stock = req.body.eStock;
+  const unit = req.body.units;
   const sql =
-    "UPDATE stock SET ingredients = ?, category = ?, stockQty = ?, amountThreshold = ? WHERE (stockID = ?)";
+    "UPDATE stock SET ingredients = ?, category = ?, stockQty = ?, amountThreshold = ?, units = ? WHERE (stockID = ?)";
   if (Stock > 0 && Threshold > 0) {
-    db.run(sql, [ingredients, category, Stock, Threshold, id], (err) => {
+    db.run(sql, [ingredients, category, Stock, Threshold,unit, id], (err) => {
       if (err) {
         req.flash("erinventory", "Ingredient name already exists");
         res.redirect("/inventory");

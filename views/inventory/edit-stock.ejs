@@ -29,9 +29,10 @@
                             <label>Amount in Stock</label>
                             <div class = "divide"> 
                                 <input required type = "number" class = "amnt-stock input" name="eStock" value="<%= model.stockQty %>"  min="1">
-                                <select class = "ingredient-type">
-                                    <option value="solid">g</option>
-                                    <option value="liquid">ml</option>
+                                <select class = "ingredient-type" name="units">
+                                    <option selected value="<%=model.units%>"><%=model.units%></option>
+                                    <option value="g">g</option>
+                                    <option value="ml">ml</option>
                                 </select>
                             </div>
                             <label>Threshold</label>
