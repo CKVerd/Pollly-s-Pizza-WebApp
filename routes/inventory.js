@@ -97,6 +97,8 @@ router.post("/sort", (req, res) => {
   const sql_recently = "SELECT * FROM stock ORDER BY stockID DESC";
   const sql_sort =
     "SELECT * FROM stock WHERE category ='" + req.body.sort + "'";
+  const sql_solid = `SELECT * FROM stock where units = "g" `
+  const sql_liquid = `SELECT * FROM stock where units = "ml" `
   if (req.body.sort == "High to Low") {
     db.all(sql_high, [], (err, rows) => {
       if (err) {
@@ -139,7 +141,37 @@ router.post("/sort", (req, res) => {
         });
       }
     });
-  } else if (req.body.sort) {
+  } else if(req.body.sort=="Solid Ingredients"){
+    db.all(sql_solid,[],(err,rows)=>{
+      if(err){
+
+      }else{
+        res.render("inventory/inventory", {
+          value:"",
+          rows: rows,
+          message: req.flash("erinventory"),
+          success: req.flash("succinv"),
+          sort: req.body.sort,
+        });
+      }
+    })
+  }
+  else if(req.body.sort=="Liquid Ingredients"){
+    db.all(sql_liquid,[],(err,rows)=>{
+      if(err){
+
+      }else{
+        res.render("inventory/inventory", {
+          value:"",
+          rows: rows,
+          message: req.flash("erinventory"),
+          success: req.flash("succinv"),
+          sort: req.body.sort,
+        });
+      }
+    })
+  }
+  else if (req.body.sort) {
     db.all(sql_sort, [], (err, rows) => {
       if (err) {
         console.error(err.message);

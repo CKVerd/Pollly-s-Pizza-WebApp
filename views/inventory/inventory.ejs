@@ -107,6 +107,8 @@
                                 
                                 <option value = "Low to High">Low to High</option>
                                 <option value = "High to Low">High to Low</option>
+                                <option value = "Solid Ingredients">Solid Ingredients</option>
+                                <option value = "Liquid Ingredients">Liquid Ingredients</option>
                             </select>
                             <button class = "dropdown-search dropdown-icon"></button>
                             </form>
@@ -139,7 +141,7 @@
                             <tr>
                                 <td><%=inv.category%></td>
                                 <td><%=inv.ingredients%></td>
-                                <td><%=inv.stockQty%><%=inv.units%></td>
+                                <td><%=inv.stockQty%> <%=inv.units%></td>
                                 <td><a class = "edit-button" href = "/edit/<%=inv.stockID %>">Edit/Delete</a></td>
                             </tr>
                             <% } %>
