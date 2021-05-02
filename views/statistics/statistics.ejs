@@ -1,206 +1,274 @@
 <html>
-    <head>
-        <title>Statistics</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- FONTS -->
-        <link rel="stylesheet" href="/css/font/fonts.css">
-        
-        <!-- JS -->
-        <script src="js/main.js"></script>
+  <head>
+    <title>Statistics</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- FONTS -->
+    <link rel="stylesheet" href="/css/font/fonts.css" />
 
-        <!-- CSS -->
-        <link rel="stylesheet" type="text/css" href="css/base.css">
-        <link rel="stylesheet" type="text/css" href="css/statistics.css">
-        <link rel="shortcut icon" type="image/png" href="/res/pizza.ico">
-    </head>
-    <body>
-        <div class = "main">
-            <div class = "header">
-                <h1>Polly's Pizza: Inventory System</h1>
-            </div>
-            <div class = "lower">
-                <div class = "menu">
-                    <div class = "icons">
-                        <ul class = "menu-icons">
-                            <li>
-                                <a href="/dashboard">
-                                    <img class = "icon-1" src="res/dashboard-icon.svg" alt="Dashboard icon">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/inventory">
-                                    <img class = "icon-2" src="res/inventory-icon.svg" alt="Inventory icon">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/sales">
-                                    <img class = "icon-3" src="res/sales-icon.svg" alt="Sales icon">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/statistics">
-                                    <img class = "icon-4" src="res/statistics-icon.svg" alt="Statistics icon">
-                                </a>
-                            </li>
-                            <li>
-                                <a href="/account">
-                                    <img class = "icon-5" src="res/account-icon.svg" alt="Account icon">
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class = "menu-col">
-                        <ul class = "menu-items">
-                            <li>
-                                <a href="/dashboard">Dashboard</a>
-                            </li>
-                            <li class = "menu-item-2">
-                                <a href="/inventory">Inventory</a>
-                            </li>
-                            <li class = "menu-item-3">
-                                <a href="/sales">Sales</a>
-                                
-                            </li>
-                            <li class = "menu-item-4">
-                                <a href="/statistics">Statistics</a>
-                            </li>
-                            <div class = "selected"></div>
-                            <li class = "menu-item-5">
-                                <a href="/account">Account</a>
-                            </li>
-                            <form action="/logout" method="POST">
-                                <input type="submit" id = "logout" class = "logout-button" value = "Logout"></form>
-                            <a href = "/help" class = "help-button">How to use</a>
-                        </ul>
-                    </div>
+    <!-- JS -->
+    <script src="js/main.js"></script>
 
-                </div>
-                <div class = "page">
-                    <div class = "row-1">
-                        <div class = "card-1">
-                            <canvas id= "myChart" ></canvas>
-                        </div>
-                    </div>
-                    <div class = "row-2">
-                        <div class = "card-2">
-                            <div class = "card-text">
-                                <p class = "card-header-2">Best Selling Product</p>
-                                <p class = "card-info"><%=best[0].productName%></p>
-                                <p class = "card-footer">As of <%= moment().format('MMMM DD YYYY'); %></p>
-                            </div>
-                            <div class = "card-icon">
-                                
-                            </div>
-                        </div>
-                        <div class = "card-2">
-                            <div class = "card-text">
-                                <p class = "card-header-2">Average Sales Per Day</p>
-                                <p class = "card-info"> <%=formatter.format(most[0].TotalSales)%></p>
-                                <p class = "card-footer">As of <%= moment().format('MMMM DD YYYY'); %></p>
-                            </div>
-                            <div class = "card-icon">
-                                
-                            </div>
-                        </div>
-                        <div class = "card-2">
-                            <div class = "card-text">
-                                <p class = "card-header-3">Least Sold Product</p>
-                                <p class = "card-info"><%=least[0].productName%></p>
-                                <p class = "card-footer">As of <%= moment().format('MMMM DD YYYY'); %></p>
-                            </div>
-                            <div class = "card-icon">
-                                
-                            </div>
-                        </div>
-                    </div>
-                    <h1 class = "sales-header">Sales Report</h1> 
-                    <div class = "row-3">
-                        <table class = "sales-table">
-                            <tr>
-                                <th class = "st-header-1">Date</th>
-                                <th class = "st-header-2">Product</th>
-                                <th class = "st-header-3">Price</th>
-                                <th class = "st-header-4">Quantity</th>
-                                <th class = "st-header-5">Total</th>
-                            </tr>
-                            <tr>
-                                <% for (const sale of sales) { %>
-                                    <td><%=sale.DT%></td>
-                                    <td><%=sale.productName%></td>
-                                    <td><%=formatter.format(sale.Price)%></td>
-                                    <td><%=sale.sales_qty%></td>
-                                    <td><%=formatter.format(sale.totalPrice)%></td>
-                            </tr>
-                        <%}%>
-                        </table>
-                    </div>
-                    <div class = "spacer"></div>
-                </div>
-            </div>
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/statistics.css" />
+    <link rel="shortcut icon" type="image/png" href="/res/pizza.ico" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="header">
+        <h1>Polly's Pizza: Inventory System</h1>
+      </div>
+      <div class="lower">
+        <div class="menu">
+          <div class="icons">
+            <ul class="menu-icons">
+              <li>
+                <a href="/dashboard">
+                  <img
+                    class="icon-1"
+                    src="res/dashboard-icon.svg"
+                    alt="Dashboard icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="/inventory">
+                  <img
+                    class="icon-2"
+                    src="res/inventory-icon.svg"
+                    alt="Inventory icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="/sales">
+                  <img
+                    class="icon-3"
+                    src="res/sales-icon.svg"
+                    alt="Sales icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="/statistics">
+                  <img
+                    class="icon-4"
+                    src="res/statistics-icon.svg"
+                    alt="Statistics icon"
+                  />
+                </a>
+              </li>
+              <li>
+                <a href="/account">
+                  <img
+                    class="icon-5"
+                    src="res/account-icon.svg"
+                    alt="Account icon"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="menu-col">
+            <ul class="menu-items">
+              <li>
+                <a href="/dashboard">Dashboard</a>
+              </li>
+              <li class="menu-item-2">
+                <a href="/inventory">Inventory</a>
+              </li>
+              <li class="menu-item-3">
+                <a href="/sales">Sales</a>
+              </li>
+              <li class="menu-item-4">
+                <a href="/statistics">Statistics</a>
+              </li>
+              <div class="selected"></div>
+              <li class="menu-item-5">
+                <a href="/account">Account</a>
+              </li>
+              <form action="/logout" method="POST">
+                <input
+                  type="submit"
+                  id="logout"
+                  class="logout-button"
+                  value="Logout"
+                />
+              </form>
+              <a href="/help" class="help-button">How to use</a>
+            </ul>
+          </div>
         </div>
-        <script src="js/Chart.bundle.min.js"></script>
-        <script>
-         var ctx = document.getElementById('myChart').getContext('2d');
-        var myChart = new Chart(ctx, {
-        type: 'bar',
+        <div class="page">
+          <div class="row-1">
+            <div class="card-1">
+              <canvas id="myChart"></canvas>
+            </div>
+          </div>
+          <div class="row-2">
+            <div class="card-2">
+              <div class="card-text">
+                <p class="card-header-2">Best Selling Product</p>
+                <p class="card-info"><%=best[0].productName%></p>
+                <p class="card-footer">
+                  As of <%= moment().format('MMMM DD YYYY'); %>
+                </p>
+              </div>
+              <div class="card-icon"></div>
+            </div>
+            <div class="card-2">
+              <div class="card-text">
+                <p class="card-header-2">Average Sales Per Day</p>
+                <p class="card-info">
+                  <%=formatter.format(most[0].TotalSales)%>
+                </p>
+                <p class="card-footer">
+                  As of <%= moment().format('MMMM DD YYYY'); %>
+                </p>
+              </div>
+              <div class="card-icon"></div>
+            </div>
+            <div class="card-2">
+              <div class="card-text">
+                <p class="card-header-3">Least Sold Product</p>
+                <p class="card-info"><%=least[0].productName%></p>
+                <p class="card-footer">
+                  As of <%= moment().format('MMMM DD YYYY'); %>
+                </p>
+              </div>
+              <div class="card-icon"></div>
+            </div>
+          </div>
+          <h1 class="sales-header">Sales Report</h1>
+          <div class="row-3">
+            <table class="sales-table">
+              <tr>
+                <th class="st-header-1">Month</th>
+                <th class="st-header-2">Best Selling Pizza</th>
+                <th class="st-header-3">Total Quantity Sold</th>
+                <th class="st-header-4">Average Sale</th>
+                <th class="st-header-5">Total Sale</th>
+              </tr>
+              <tr>
+                <% for (const sale of sales) { %> <%if(sale.sales_week == 1){%>
+                <td>January</td>
+                <%}%> <%if(sale.sales_week == 2){%>
+                <td>February</td>
+                <%}%> <%if(sale.sales_week == 3){%>
+                <td>March</td>
+                <%}%> <%if(sale.sales_week == 4){%>
+                <td>April</td>
+                <%}%> <%if(sale.sales_week == 5){%>
+                <td>May</td>
+                <%}%> <%if(sale.sales_week == 6){%>
+                <td>June</td>
+                <%}%> <%if(sale.sales_week == 7){%>
+                <td>July</td>
+                <%}%> <%if(sale.sales_week == 8){%>
+                <td>August</td>
+                <%}%> <%if(sale.sales_week == 9){%>
+                <td>September</td>
+                <%}%> <%if(sale.sales_week == 10){%>
+                <td>October</td>
+                <%}%> <%if(sale.sales_week == 11){%>
+                <td>November</td>
+                <%}%> <%if(sale.sales_week == 12){%>
+                <td>December</td>
+                <%}%>
+                <td><%=sale.productName%></td>
+                <td><%=sale.TotalQuantity%></td>
+                <td><%=formatter.format(sale.Average)%></td>
+                <td><%=formatter.format(sale.total_sales)%></td>
+              </tr>
+              <%}%>
+            </table>
+          </div>
+          <div class="spacer"></div>
+        </div>
+      </div>
+    </div>
+    <script src="js/Chart.bundle.min.js"></script>
+    <script>
+      var ctx = document.getElementById("myChart").getContext("2d");
+      var myChart = new Chart(ctx, {
+        type: "bar",
         data: {
-            labels: ["<%=date[6]%>","<%=date[5]%>","<%=date[4]%>","<%=date[3]%>","<%=date[2]%>",'<%=date[1]%>','<%=date[0]%>'],
-            datasets: [{
-                data: [ "<%=sum[6]%>", "<%=sum[5]%>", "<%=sum[4]%>", "<%=sum[3]%>","<%=sum[2]%>","<%=sum[1]%>","<%=sum[0]%>"],
-                backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)',
-                
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
+          labels: [
+            "<%=date[6]%>",
+            "<%=date[5]%>",
+            "<%=date[4]%>",
+            "<%=date[3]%>",
+            "<%=date[2]%>",
+            "<%=date[1]%>",
+            "<%=date[0]%>",
+          ],
+          datasets: [
+            {
+              data: [
+                "<%=sum[6]%>",
+                "<%=sum[5]%>",
+                "<%=sum[4]%>",
+                "<%=sum[3]%>",
+                "<%=sum[2]%>",
+                "<%=sum[1]%>",
+                "<%=sum[0]%>",
+              ],
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(255, 206, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+              ],
+              borderColor: [
+                "rgba(255, 99, 132, 1)",
+                "rgba(54, 162, 235, 1)",
+                "rgba(255, 206, 86, 1)",
+                "rgba(75, 192, 192, 1)",
+                "rgba(153, 102, 255, 1)",
+                "rgba(255, 159, 64, 1)",
+              ],
+              borderWidth: 1,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
 
-        scales: {
-            yAxes: [{
+          scales: {
+            yAxes: [
+              {
                 ticks: {
-                    beginAtZero: true
-                }
-            }]
-        },
-        
-        layout: {
-            padding: {
-                left: 40,
-                right: 40,
-                top: 10,
-                bottom: 10
-            }
-        },
-        
-        title: {
-            display: true,
-            text: 'Amount of Sales in the last 7 days (in Php.)',
-            fontSize: 16
-        },
+                  beginAtZero: true,
+                },
+              },
+            ],
+          },
 
-        legend: {
+          layout: {
+            padding: {
+              left: 40,
+              right: 40,
+              top: 10,
+              bottom: 10,
+            },
+          },
+
+          title: {
+            display: true,
+            text: "Amount of Sales in the last 7 days (in Php.)",
+            fontSize: 16,
+          },
+
+          legend: {
             display: false,
-            position:'right'
-        }
-    }
-});
-</script>
-    </body>
+            position: "right",
+          },
+        },
+      });
+    </script>
+  </body>
 </html>

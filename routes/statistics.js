@@ -23,8 +23,10 @@ router.get("/statistics", middleware.auth, (req, res) => {
   const sql_most = "SELECT avg(totalPrice) AS TotalSales FROM Sales ";
   const sql_bar =
     "SELECT   DT, sum(totalPrice) as totalSum FROM Sales GROUP BY DT ORDER by DT DESC LIMIT 7";
+    const sql_inter =
+    "SELECT strftime('%m', DT) AS sales_week ,productName, sum(totalPrice) AS total_sales, avg(totalPrice) as Average, SUM(sales_qty) AS TotalQuantity FROM sales GROUP BY sales_week ORDER BY sales_week ASC";
     const sql_sales = "SELECT * FROM Sales ";
-  db.all(sql_sales,[],(err,sales)=>{
+  db.all(sql_inter,[],(err,sales)=>{
     if(err){
       console.log(err.message)
     }else{
