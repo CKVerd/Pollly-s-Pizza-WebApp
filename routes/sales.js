@@ -453,7 +453,7 @@ router.post("/deleteSale/:id", (req, res) => {
         }
       })
      
-      req.flash("succsale", "Sale transaction successfully deleted");
+      req.flash("succsale", "Sale transaction successfully voided");
       res.redirect("/sales");
     }
   });
